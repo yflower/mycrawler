@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.download";
+import "task.proto";
+
+package rpc;
+
+service RpcDownloadTask {
+    rpc downloadTask (DownloadTask) returns (DownloadTaskResponse);
+}
+
+message DownloadTask {
+    TaskType task_type = 1;
+    string task_tag = 2;
+    bool dynamic = 3;
+    repeated string start_url = 4;
+    message Processor {
+        int32 order = 1;
+        Type type = 2;
+        string query = 3;
+        string value = 4;
+        enum Type {
+            CLICK = 0;
+            INPUT = 1;
+            INPUT_SUBMIT = 2;
+            LINK_TO = 3;
+            WAIT_UTIL = 4;
+        }
+    }
+    repeated Processor pre = 5;
+    repeated Processor post = 6;
+
+}
+
+
+message DownloadTaskResponse {
+    OPStatus op_status = 1;
+    string task_tag = 2;
+}

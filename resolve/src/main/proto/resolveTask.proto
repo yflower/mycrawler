@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.resolve";
+import "task.proto";
+
+package rpc;
+
+service RpcResolveTask {
+    rpc resolveTask (ResolveTask) returns (ResolveTaskResponse);
+
+}
+
+message ResolveTask {
+
+    TaskType task_type = 1;
+    string taskTag = 2;
+    message Var {
+        string name = 1;
+        string query = 2;
+        string option=3;
+        string option_value=4;
+    }
+    repeated Var var = 3;
+}
+
+message ResolveTaskResponse {
+    OPStatus op_status = 1;
+    string taskTag = 2;
+}
+
