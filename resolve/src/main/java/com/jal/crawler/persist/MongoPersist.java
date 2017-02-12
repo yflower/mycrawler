@@ -29,5 +29,6 @@ public class MongoPersist implements Persist {
     @Override
     public void persist(String taskTag, Map<String, Object> map) {
         mongoClient.getDatabase(mongoCredential.getSource()).getCollection(taskTag + "_vars").insertOne(new Document(map));
+        map=null;
     }
 }

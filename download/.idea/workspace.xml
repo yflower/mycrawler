@@ -2,32 +2,134 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2247efac-fecb-4eae-85da-9e279ebe42ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/PageUrlFactory.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/UrlFetch.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/UrlRegister.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/url/UrlFetch.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/url/UrlRegister.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/context/DownLoadContext.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/context/DownLoadContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/AbstractDownLoad$AbstractBuilder.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/AbstractDownLoad$AbstractBuilder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/AbstractDownLoad.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/AbstractDownLoad.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/SeleniumDownload$Builder.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/SeleniumDownload$Builder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/SeleniumDownload.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/download/SeleniumDownload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/url/AbstractPageUrlFactory.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/url/AbstractPageUrlFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/url/RedisPageUrlFactory.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/url/RedisPageUrlFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/pom.xml" afterPath="$PROJECT_DIR$/../config/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_8.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_8.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_google_code_gson_gson_2_7.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_google_guava_guava_19_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_0_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_google_protobuf_protobuf_java_util_3_0_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_grpc_grpc_context_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_grpc_grpc_core_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_grpc_grpc_netty_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_grpc_grpc_protobuf_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_grpc_grpc_protobuf_lite_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_grpc_grpc_stub_1_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_buffer_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_codec_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_codec_http2_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_codec_http_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_codec_socks_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_common_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_handler_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_handler_proxy_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_resolver_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__io_netty_netty_transport_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__junit_junit_4_12.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_assertj_assertj_core_2_5_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_json_json_20140107.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_jsoup_jsoup_1_10_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_mongodb_bson_3_4_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_4_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_4_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_3_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_22.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_22.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_22.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_22.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_4_3_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_12_6_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_1_1_6_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_data_spring_data_redis_1_7_6_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_aop_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_beans_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_context_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_context_support_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_core_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_expression_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_oxm_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_test_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_springframework_spring_tx_4_3_5_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/libraries/Maven__redis_clients_jedis_2_8_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/resolve.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/Test.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/phantomjsdriver.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/Test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/Test.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../test/mycrawler" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/DownloadApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/DownloadApplication.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/DownloadController.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/DownloadController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/ResolveController.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/ResolveController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/resolveTask.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/DownLoadContext.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/DownLoadContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/download/AbstractDownLoad.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/download/AbstractDownLoad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/download/SeleniumDownload.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/download/SeleniumDownload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPagePersist.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPagePersist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/pom.xml" afterPath="$PROJECT_DIR$/../resolve/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownlandConfigGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownlandConfigGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownloadTaskGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownloadTaskGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfig.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOuterClass.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTask.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOuterClass.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponse.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponseOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponseOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/context/ResolveContext.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/context/ResolveContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/parse/selector/CssSelector.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/parse/selector/CssSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/persist/MongoPersist.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/persist/MongoPersist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/task/Task.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/../resolve/src/main/proto/resolveTask.proto" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,11 +148,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DownLoadContext.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/context/DownLoadContext.java">
+      <file leaf-file-name="ComponentServer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ComponentServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="249" column="0" lean-forward="true" selection-start-line="196" selection-start-column="32" selection-end-line="249" selection-end-column="0" />
+            <state relative-caret-position="646">
+              <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -58,92 +160,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RedisPagePersist.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPagePersist.java">
+      <file leaf-file-name="DownloadApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+            <state relative-caret-position="0">
+              <caret line="0" column="24" lean-forward="true" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractDownLoad.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/download/AbstractDownLoad.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="63" column="24" lean-forward="false" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
-              <folding>
-                <element signature="e#1584#1585#0" expanded="true" />
-                <element signature="e#1616#1617#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedisPageUrlFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="42" column="71" lean-forward="false" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SeleniumDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/download/SeleniumDownload.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="879">
-              <caret line="84" column="24" lean-forward="false" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Page.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/Page.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-              <folding>
-                <element signature="e#955#956#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractPageUrlFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="38" column="32" lean-forward="false" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageUrlFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/PageUrlFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-              <folding>
-                <element signature="e#680#681#0" expanded="true" />
-                <element signature="e#710#711#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -193,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java" />
         <option value="$PROJECT_DIR$/src/main/proto/task.proto" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java" />
         <option value="$PROJECT_DIR$/src/main/proto/downloadConfig.proto" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadConfigServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ComponentServer.java" />
@@ -205,6 +226,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/DownLoadContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPagePersist.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java" />
       </list>
     </option>
   </component>
@@ -223,8 +245,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="1038" />
+    <option name="y" value="-8" />
+    <option name="width" value="2576" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -244,7 +267,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -351,226 +373,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="url" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="request" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="download" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crawler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="context" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../resolve" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -756,6 +569,17 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
@@ -952,9 +776,6 @@
       </MavenSettings>
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1011,19 +832,6 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
@@ -1164,6 +972,7 @@
       <workItem from="1485311271196" duration="4949000" />
       <workItem from="1485599604287" duration="13220000" />
       <workItem from="1486517170108" duration="21230000" />
+      <workItem from="1486818104821" duration="4708000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1483932438835</created>
@@ -1183,43 +992,44 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137215000" />
+    <option name="totallyTimeSpent" value="141923000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.5031299" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Memory View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2492163" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18965517" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39511654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852387" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32796934" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819724" sideWeight="0.5031299" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32408434" sideWeight="0.4968701" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32337165" sideWeight="0.4968701" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Runtime Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2168234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34406215" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16210938" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14179687" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39511654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2492163" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Memory View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Runtime Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34406215" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1243,14 +1053,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/proto/downloadTask.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownlandConfigGrpc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -1258,14 +1060,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-core/1.0.3/grpc-core-1.0.3-sources.jar!/io/grpc/internal/ServerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="504" column="0" lean-forward="false" selection-start-line="504" selection-start-column="0" selection-end-line="504" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-core/1.0.3/grpc-core-1.0.3-sources.jar!/io/grpc/internal/ServerImpl.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-stub/1.0.3/grpc-stub-1.0.3.jar!/io/grpc/stub/ServerCalls.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -1322,77 +1117,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisAccessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/1.4.3.RELEASE/spring-boot-autoconfigure-1.4.3.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/data/redis/RedisAutoConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1359">
-          <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#7611#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="109" column="16" lean-forward="false" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/DefaultSetOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#1421#1560#0" expanded="false" />
-            <element signature="e#1559#1560#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisAccessor.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/1.4.3.RELEASE/spring-boot-autoconfigure-1.4.3.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/data/redis/RedisAutoConfiguration.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisTemplate.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/DefaultSetOperations.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/request/PageRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#676#677#0" expanded="false" />
-            <element signature="e#702#703#0" expanded="false" />
-            <element signature="e#736#737#0" expanded="false" />
-            <element signature="e#765#766#0" expanded="false" />
-            <element signature="e#809#810#0" expanded="false" />
-            <element signature="e#845#846#0" expanded="false" />
-            <element signature="e#888#889#0" expanded="false" />
-            <element signature="e#921#922#0" expanded="false" />
-            <element signature="e#979#980#0" expanded="false" />
-            <element signature="e#1023#1024#0" expanded="false" />
-            <element signature="e#1061#1062#0" expanded="false" />
-            <element signature="e#1091#1092#0" expanded="false" />
-            <element signature="e#1140#1141#0" expanded="false" />
-            <element signature="e#1172#1173#0" expanded="false" />
-            <element signature="e#1235#1236#0" expanded="false" />
-            <element signature="e#1277#1278#0" expanded="false" />
-            <element signature="e#1324#1325#0" expanded="false" />
-            <element signature="e#1354#1355#0" expanded="false" />
-            <element signature="e#1413#1414#0" expanded="false" />
-            <element signature="e#1451#1452#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1400,7 +1132,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="384" column="0" lean-forward="false" selection-start-line="384" selection-start-column="0" selection-end-line="384" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1408,7 +1139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1416,23 +1146,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="123" column="6" lean-forward="true" selection-start-line="123" selection-start-column="6" selection-end-line="123" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/String.java" />
     <entry file="file://$PROJECT_DIR$/src/main/proto/task.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1448,15 +1169,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ComponentServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1468,19 +1180,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="29" column="104" lean-forward="false" selection-start-line="29" selection-start-column="104" selection-end-line="29" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/download/DownloadProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1488,7 +1191,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1496,7 +1198,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,29 +1205,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="1190" column="31" lean-forward="false" selection-start-line="1190" selection-start-column="31" selection-end-line="1190" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1-sources.jar!/org/openqa/selenium/WebDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="62" column="7" lean-forward="false" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/concurrent/TimeUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="268" column="16" lean-forward="false" selection-start-line="268" selection-start-column="16" selection-end-line="268" selection-end-column="16" />
-          <folding>
-            <element signature="e#10182#10183#0" expanded="false" />
-            <element signature="e#10229#10230#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/2.53.1/selenium-api-2.53.1-sources.jar!/org/openqa/selenium/WebDriver.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/concurrent/TimeUnit.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadTaskServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-896">
@@ -1539,7 +1222,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1547,112 +1229,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39">
           <caret line="98" column="17" lean-forward="false" selection-start-line="98" selection-start-column="17" selection-end-line="98" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-support/2.53.1/selenium-support-2.53.1-sources.jar!/org/openqa/selenium/support/ui/FluentWait.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-support/2.53.1/selenium-support-2.53.1-sources.jar!/org/openqa/selenium/support/ui/FluentWait.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="950">
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#680#681#0" expanded="false" />
+            <element signature="e#710#711#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/SetOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="40" column="20" lean-forward="false" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/UrlFetch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/UrlRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/SetOperations.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/UrlFetch.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/UrlRegister.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/PageUrlFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="323">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="38" column="32" lean-forward="false" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        <state relative-caret-position="646">
+          <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="300" column="30" lean-forward="false" selection-start-line="300" selection-start-column="30" selection-end-line="300" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Thread.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="42" column="71" lean-forward="false" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
-          <folding />
+        <state relative-caret-position="712">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <marker date="1486817878251" expanded="true" signature="1161:1170" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/download/SeleniumDownload.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="879">
-          <caret line="84" column="24" lean-forward="false" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
+        <state relative-caret-position="1900">
+          <caret line="101" column="24" lean-forward="false" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/Page.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
+        <state relative-caret-position="665">
           <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
           <folding>
-            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/download/AbstractDownLoad.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="63" column="24" lean-forward="false" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+        <state relative-caret-position="1026">
+          <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
           <folding>
-            <element signature="e#1584#1585#0" expanded="true" />
-            <element signature="e#1616#1617#0" expanded="true" />
+            <marker date="1486817878185" expanded="false" signature="1647:1658" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="1673:1679" ph=" }" />
+            <marker date="1486817878185" expanded="false" signature="1713:1724" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="1741:1747" ph=" }" />
+            <marker date="1486817878185" expanded="false" signature="1795:1806" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="1833:1839" ph=" }" />
+            <marker date="1486817878185" expanded="false" signature="1870:1881" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="1898:1904" ph=" }" />
+            <marker date="1486817878185" expanded="false" signature="1949:1960" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="1987:1993" ph=" }" />
+            <marker date="1486817878185" expanded="false" signature="2058:2069" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="2102:2108" ph=" }" />
+            <marker date="1486817878185" expanded="false" signature="2175:2186" ph=" { " />
+            <marker date="1486817878185" expanded="false" signature="2221:2227" ph=" }" />
+            <marker date="1486817878185" expanded="true" signature="2531:3385" ph="{...}" />
+            <marker date="1486817878185" expanded="true" signature="2711:2943" ph="{...}" />
+            <marker date="1486817878185" expanded="true" signature="2985:3225" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1661,14 +1324,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/context/DownLoadContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="249" column="0" lean-forward="true" selection-start-line="196" selection-start-column="32" selection-end-line="249" selection-end-column="0" />
+        <state relative-caret-position="4218">
+          <caret line="249" column="0" lean-forward="false" selection-start-line="197" selection-start-column="21" selection-end-line="249" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1677,9 +1339,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPagePersist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+        <state relative-caret-position="475">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/download.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="55" lean-forward="false" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/DownloadApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="24" lean-forward="true" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ComponentServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

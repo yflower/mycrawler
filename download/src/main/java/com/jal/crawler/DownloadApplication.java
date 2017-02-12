@@ -26,7 +26,7 @@ public class DownloadApplication {
 
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\webdriver\\chromedriver.exe");
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
         Server server = ServerBuilder.forPort(9001)
                 .addService(context.getBean(DownloadConfigServer.class))

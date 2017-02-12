@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 
 /**
  * Created by jal on 2017/1/23.
@@ -30,8 +32,7 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
         if (isRun(resolveContext)) {
             if (request.getTaskType() == TaskType.ADD) {
                 Task task = new Task(request.getTaskTag());
-                request.getVarList().stream().forEach(t -> task.var(t.getName(), t.getQuery(),t.getOption(),t.getOptionValue()));
-                task.setStatus(1);
+                taskInit(request,task);
                 resolveContext.addTask(task);
                 logger.info("success to add resolve task {}", task.getTaskTag());
                 builder.setOpStatus(OPStatus.SUCCEED);
@@ -62,5 +63,14 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
 
     private boolean isRun(ResolveContext context) {
         return context.status() == 2;
+    }
+
+    private void taskInit(ResolveTask resolveTask,Task task){
+        resolveTask.getVarList().stream().forEach(t -> task.var(new Task.var(t.getName(), t.getQuery(),t.getOption(),t.getOptionValue())));
+        resolveTask.getItemList().stream().forEach(t->
+                task.item(t.getItemName(),
+                        t.getVarList().stream().map(
+                                var -> new Task.var(var.getName(),var.getQuery(),var.getOption(),var.getOptionValue())).collect(Collectors.toList())));
+        task.setStatus(1);
     }
 }

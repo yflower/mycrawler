@@ -47,7 +47,6 @@ public class ResolveContext {
      */
     private int status;
 
-    public Set<String> test=new HashSet<>();
 
 
     //context configure public method
@@ -109,12 +108,12 @@ public class ResolveContext {
         for (int i = 0; i < thread; ++i) {
             executorService.submit(() -> {
                 Page page = null;
+                Task task=null;
+                Map<String, Object> result=null;
                 while (true) {
-                    Task task = randomRunnableTask();
+                    task = randomRunnableTask();
                     if ((page = pageFetch.fetch(task.getTaskTag())) != null) {
-                        final Page finalPage = page;
-                        test.add(finalPage.getRawContent());
-                        Map<String, Object> result = task.result(finalPage);
+                        result = task.result(page);
                         persist.persist(task.getTaskTag(), result);
                     }
                 }

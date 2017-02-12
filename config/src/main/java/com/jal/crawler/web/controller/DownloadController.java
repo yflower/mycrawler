@@ -38,7 +38,7 @@ public class DownloadController {
         if (num == 1) {
             Clients.DownloadClient("localhost", 9000 + num)
                     .setConfig(DownloadConfig.newBuilder()
-                            .setThread(5)
+                            .setThread(10)
                             .setPersist(DownloadConfig.Persist.REDIS)
                             .setRedisConfig(
                                     RedisConfig.newBuilder()
@@ -51,7 +51,7 @@ public class DownloadController {
                     )
                     .pushTask(
                             DownloadTask.newBuilder()
-                                    .setTaskTag("page")
+                                    .setTaskTag("renren")
                                     .setDynamic(true)
                                     .addPre(
                                             DownloadTask.Processor.newBuilder()
@@ -98,7 +98,7 @@ public class DownloadController {
                                                     .build()
                                     )
                                     .addAllStartUrl(new ArrayList<String>() {{
-                                        for (int i = 212_5212; i <= 213_5220; ++i) {
+                                        for (int i = 210_0000; i <= 213_5220; ++i) {
                                             add("https://www.we.com/loan/" + i);
                                         }
                                     }})

@@ -33,7 +33,7 @@ public class ResolveController {
     }
 
     @GetMapping("/resolves/test/{num}")
-    public String test(@PathVariable int num){
+    public String test(@PathVariable int num) {
 
         Clients.resolveClient("localhost", 9005 + num)
                 .setConfig(
@@ -48,7 +48,7 @@ public class ResolveController {
                                                 .build()
                                 )
                                 .setPersist(ResolveConfig.Persist.MONGO)
-                                .setThread(1)
+                                .setThread(2)
                                 .setRedisConfig(
                                         RedisConfig.newBuilder()
                                                 .setHost("192.168.1.3")
@@ -60,7 +60,7 @@ public class ResolveController {
                 )
                 .pushTask(
                         ResolveTask.newBuilder()
-                                .setTaskTag("page")
+                                .setTaskTag("renren")
                                 .addVar(
                                         ResolveTask.Var.newBuilder()
                                                 .setName("name")
@@ -178,6 +178,31 @@ public class ResolveController {
                                         ResolveTask.Var.newBuilder()
                                                 .setName("carLoad")
                                                 .setQuery("#loan-tab-content > div > div.ui-tab-content.ui-tab-content-info> div.ui-tab-content-basic.border-bottom.pt25.mlr60 > table > tbody > tr:nth-child(10) > td:nth-child(2) > div > em")
+                                                .build()
+                                )
+
+                                //
+                                .addItem(
+                                        ResolveTask.Item.newBuilder()
+                                                .setItemName("toubiao")
+                                                .addVar(
+                                                        ResolveTask.Var.newBuilder()
+                                                                .setName("toubiaoren")
+                                                                .setQuery("#investment-records > table > tbody > tr:nth-child(1) > td.ui-list-field.text-left > div > a:nth-child(1)")
+                                                                .build()
+                                                )
+                                                .addVar(
+                                                        ResolveTask.Var.newBuilder()
+                                                                .setName("toubiaojiner")
+                                                                .setQuery("#investment-records > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > em")
+                                                                .build()
+                                                )
+                                                .addVar(
+                                                        ResolveTask.Var.newBuilder()
+                                                                .setName("toubiaoshijian")
+                                                                .setQuery("#investment-records > table > tbody > tr:nth-child(1) > td:nth-child(4) > div")
+                                                                .build()
+                                                )
                                                 .build()
                                 )
 
