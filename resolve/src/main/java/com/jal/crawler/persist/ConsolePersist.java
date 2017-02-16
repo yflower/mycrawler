@@ -9,6 +9,5 @@ public class ConsolePersist implements Persist {
     @Override
     public void persist(String taskTag, Map<String, Object> map) {
         System.out.println(map);
-        ;
     }
 }
