@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="123efef0-be43-4663-ba19-58655d3c6ab5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../data/src/main/java/com/jal/crawler/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../data/src/main/java/com/jal/crawler/Test.java" afterPath="$PROJECT_DIR$/../data/src/main/java/com/jal/crawler/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../resolve/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/resolve.iml" afterPath="$PROJECT_DIR$/../resolve/resolve.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/persist/ConsolePersist.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/persist/ConsolePersist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/task/Task.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/task/Task.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -537,7 +534,7 @@
     <option name="totallyTimeSpent" value="11049000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1092" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1092" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
