@@ -1,9 +1,7 @@
 package com.jal.crawler.task;
 
 import com.jal.crawler.download.DownloadProcessor;
-import com.jal.crawler.page.PagePersist;
 import com.jal.crawler.url.AbstractPageUrlFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,21 +10,15 @@ import java.util.Set;
  * Created by jal on 2017/1/23.
  */
 public class Task {
+    public boolean urlInit;
     private int status;
-
     private String taskTag;
-
     private boolean dynamic;
-
     private DownloadProcessor preProcessor = downLoad -> {
     };
-
     private DownloadProcessor postProcessor = downLoad -> {
     };
-
     private Set<String> startUrls = new HashSet<>();
-
-    public boolean urlInit;
 
     public boolean isUrlInit() {
         return urlInit;
@@ -40,10 +32,13 @@ public class Task {
         return taskTag;
     }
 
+    public void setTaskTag(String taskTag) {
+        this.taskTag = taskTag;
+    }
+
     public boolean isDynamic() {
         return dynamic;
     }
-
 
     public void setDynamic(boolean dynamic) {
         this.dynamic = dynamic;
@@ -63,10 +58,6 @@ public class Task {
 
     public void setPostProcessor(DownloadProcessor postProcessor) {
         this.postProcessor = postProcessor;
-    }
-
-    public void setTaskTag(String taskTag) {
-        this.taskTag = taskTag;
     }
 
     public Set<String> getStartUrls() {

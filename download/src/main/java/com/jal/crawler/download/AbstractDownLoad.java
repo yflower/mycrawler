@@ -15,21 +15,14 @@ import java.util.Map;
 public abstract class AbstractDownLoad implements DownLoad {
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractDownLoad.class);
-
+    public DownloadProcessor preProcessor;
+    public DownloadProcessor postProcessor;
     protected String proxyHost;
-
     protected int proxyPort;
-
     protected boolean isProxy;
-
     protected boolean isSkip;
 
-    public DownloadProcessor preProcessor;
-
-    public DownloadProcessor postProcessor;
-
-
-    public AbstractDownLoad   init(){
+    public AbstractDownLoad init() {
         preProcessor.process(this);
         return this;
     }
@@ -60,8 +53,9 @@ public abstract class AbstractDownLoad implements DownLoad {
     public boolean isSkip() {
         return isSkip;
     }
-    public void setSkip(boolean skip){
-        this.isSkip=skip;
+
+    public void setSkip(boolean skip) {
+        this.isSkip = skip;
     }
 
     public boolean isProxy() {
@@ -93,9 +87,6 @@ public abstract class AbstractDownLoad implements DownLoad {
     }
 
 
-
-
-
     protected abstract void internalDown(PageRequest pageRequest) throws IOException;
 
     protected abstract String rawContent();
@@ -103,9 +94,6 @@ public abstract class AbstractDownLoad implements DownLoad {
     protected abstract int responseCode();
 
     protected abstract Map<String, List<String>> responseHeaders();
-
-
-
 
 
     public static abstract class AbstractBuilder {
@@ -126,10 +114,10 @@ public abstract class AbstractDownLoad implements DownLoad {
 
         public AbstractDownLoad build() {
             logger.info("success create download ");
-            if(isProxy){
-                internalProxy(proxyHost,proxyPort);
+            if (isProxy) {
+                internalProxy(proxyHost, proxyPort);
             }
-            AbstractDownLoad downLoad= internalBuild();
+            AbstractDownLoad downLoad = internalBuild();
             return downLoad;
         }
 

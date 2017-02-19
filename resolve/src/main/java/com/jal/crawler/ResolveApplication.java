@@ -1,11 +1,8 @@
 package com.jal.crawler;
 
-import com.jal.crawler.context.ResolveContext;
 import com.jal.crawler.proto.GrpcComponentServer;
 import com.jal.crawler.proto.GrpcConfigServer;
 import com.jal.crawler.proto.GrpcTaskServer;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;

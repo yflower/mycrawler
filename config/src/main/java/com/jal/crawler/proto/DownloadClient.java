@@ -13,24 +13,12 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by jal on 2017/1/24.
  */
-public class DownloadClient extends ComponentClient<DownloadConfig, DownloadTask> {
-
-    private OPStatus result(DownloadTask task, ManagedChannel channel) throws InterruptedException, ExecutionException {
-        RpcDownloadTaskGrpc.RpcDownloadTaskFutureStub futureStub = RpcDownloadTaskGrpc.newFutureStub(channel);
-        ListenableFuture<DownloadTaskResponse> future = futureStub.downloadTask(task);
-        DownloadTaskResponse downloadTaskResponse = DownloadTaskResponse.getDefaultInstance();
-        try {
-            downloadTaskResponse = future.get();
-        } catch (InterruptedException | ExecutionException e) {
-            throw e;
-        }
-        return downloadTaskResponse.getOpStatus();
-    }
+public class DownloadClient extends AbstractComponentClient<DownloadConfig, DownloadTask> {
 
 
     @Override
-    protected OPStatus internalTask(DownloadTask task, ManagedChannel channel) throws InterruptedException, ExecutionException {
-        return result(task, channel);
+    protected OPStatus internalTask(DownloadTask taskOperation, ManagedChannel channel) throws InterruptedException, ExecutionException {
+        return result(taskOperation, channel);
     }
 
     @Override
@@ -59,6 +47,19 @@ public class DownloadClient extends ComponentClient<DownloadConfig, DownloadTask
     @Override
     protected String taskTag(DownloadTask task) {
         return task.getTaskTag();
+    }
+
+
+    private OPStatus result(DownloadTask task, ManagedChannel channel) throws InterruptedException, ExecutionException {
+        RpcDownloadTaskGrpc.RpcDownloadTaskFutureStub futureStub = RpcDownloadTaskGrpc.newFutureStub(channel);
+        ListenableFuture<DownloadTaskResponse> future = futureStub.downloadTask(task);
+        DownloadTaskResponse downloadTaskResponse = DownloadTaskResponse.getDefaultInstance();
+        try {
+            downloadTaskResponse = future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw e;
+        }
+        return downloadTaskResponse.getOpStatus();
     }
 
 

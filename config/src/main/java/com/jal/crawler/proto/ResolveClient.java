@@ -13,24 +13,12 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by jal on 2017/1/23.
  */
-public class ResolveClient extends ComponentClient<ResolveConfig, ResolveTask> {
-
-    private OPStatus result(ResolveTask task, ManagedChannel channel) throws InterruptedException, ExecutionException {
-        RpcResolveTaskGrpc.RpcResolveTaskFutureStub futureStub = RpcResolveTaskGrpc.newFutureStub(channel);
-        ListenableFuture<ResolveTaskResponse> future = futureStub.resolveTask(task);
-        ResolveTaskResponse resolveTaskResponse = ResolveTaskResponse.getDefaultInstance();
-        try {
-            resolveTaskResponse = future.get();
-        } catch (InterruptedException | ExecutionException e) {
-            throw e;
-        }
-        return resolveTaskResponse.getOpStatus();
-    }
+public class ResolveClient extends AbstractComponentClient<ResolveConfig, ResolveTask> {
 
 
     @Override
-    protected OPStatus internalTask(ResolveTask task, ManagedChannel channel) throws InterruptedException, ExecutionException {
-        return result(task, channel);
+    protected OPStatus internalTask(ResolveTask taskOperation, ManagedChannel channel) throws InterruptedException, ExecutionException {
+        return result(taskOperation, channel);
     }
 
     @Override
@@ -59,5 +47,17 @@ public class ResolveClient extends ComponentClient<ResolveConfig, ResolveTask> {
     @Override
     protected String taskTag(ResolveTask task) {
         return task.getTaskTag();
+    }
+
+    private OPStatus result(ResolveTask task, ManagedChannel channel) throws InterruptedException, ExecutionException {
+        RpcResolveTaskGrpc.RpcResolveTaskFutureStub futureStub = RpcResolveTaskGrpc.newFutureStub(channel);
+        ListenableFuture<ResolveTaskResponse> future = futureStub.resolveTask(task);
+        ResolveTaskResponse resolveTaskResponse = ResolveTaskResponse.getDefaultInstance();
+        try {
+            resolveTaskResponse = future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw e;
+        }
+        return resolveTaskResponse.getOpStatus();
     }
 }

@@ -5,9 +5,11 @@ import com.jal.crawler.parse.tag.HtmlTag;
 import com.jal.crawler.parse.tag.Tag;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.util.StringUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**

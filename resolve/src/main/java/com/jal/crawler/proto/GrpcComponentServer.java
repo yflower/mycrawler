@@ -4,7 +4,6 @@ import com.jal.crawler.context.ResolveContext;
 import com.jal.crawler.proto.configComponnet.ConfigComponentStatus;
 import com.jal.crawler.proto.status.ComponentStatus;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
-import com.jal.crawler.task.Task;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -4,39 +4,103 @@ import com.jal.crawler.proto.Clients;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.download.DownloadConfig;
 import com.jal.crawler.proto.download.DownloadTask;
-import com.jal.crawler.web.data.VO.DownloadVO;
-import com.jal.crawler.web.service.DownloadService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.jal.crawler.web.data.apiResponse.ApiResponse;
+import com.jal.crawler.web.data.enums.ExceptionEnum;
+import com.jal.crawler.web.data.exception.AddressNotFound;
+import com.jal.crawler.web.data.exception.ComponentNotFoundException;
+import com.jal.crawler.web.data.exception.DBConfigException;
+import com.jal.crawler.web.data.exception.ParamErrorException;
+import com.jal.crawler.web.data.param.ComponentParam;
+import com.jal.crawler.web.data.param.DownloadConfigParam;
+import com.jal.crawler.web.service.IDownloadService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by jal on 2017/2/10.
+ * 下载组件相关的api接口
  */
 @RestController
 public class DownloadController {
-    @Autowired
-    private DownloadService downloadService;
+    private static final Logger logger = LoggerFactory.getLogger(DownloadController.class);
 
-    @GetMapping("/downloads")
-    public List<DownloadVO> downloadVOList() {
-        return downloadService.status();
+
+    @Resource
+    private IDownloadService downloadService;
+
+
+    /**
+     * 得到所有下载组件的信息
+     *
+     * @return
+     */
+    @GetMapping("/downloads/status")
+    public ApiResponse view(@RequestParam(required = false) List<String> address) {
+        return ApiResponse.successBuild(downloadService.status(address));
 
     }
 
-    @GetMapping("/downloads/{address}")
-    public DownloadVO downloadVO(@PathVariable String address) {
-        return downloadService.status(address);
+    /**
+     * 添加新的节点
+     *
+     * @param param
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/downloads")
+    public ApiResponse component(@Valid @RequestBody ComponentParam param, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR, new ParamErrorException("download component error"));
+        }
+        try {
+            downloadService.component(param);
+        } catch (AddressNotFound addressNotFound) {
+            return ApiResponse.failBuild(ExceptionEnum.ADDRESS_NOT_FOUND, addressNotFound);
+        }
+        return ApiResponse.successBuild("");
+
     }
 
+
+    /**
+     * 添加新的节点并初始化
+     *
+     * @param downloadConfigParam
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/downloads/config")
+    public ApiResponse config(@Valid @RequestBody DownloadConfigParam downloadConfigParam, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR, new ParamErrorException("download param error"));
+        }
+        try {
+            downloadService.config(downloadConfigParam);
+        } catch (ComponentNotFoundException ex) {
+            return ApiResponse.failBuild(ExceptionEnum.COMPONENT_NOT_FOUND, ex);
+        } catch (DBConfigException dbConfigEx) {
+            return ApiResponse.failBuild(ExceptionEnum.DB_CONFIG_ERROR, dbConfigEx);
+        }
+        return ApiResponse.successBuild("");
+    }
+
+    /**
+     * 暂时的测试开始任务
+     *
+     * @param num
+     * @return
+     */
     @GetMapping("/downloads/test/{num}")
-    public String test(@PathVariable int num) {
+    public ApiResponse test(@PathVariable int num) {
         if (num == 1) {
-            Clients.DownloadClient("localhost", 9000 + num)
+            Clients.downloadClient("localhost", 9000 + num)
                     .setConfig(DownloadConfig.newBuilder()
                             .setThread(10)
                             .setPersist(DownloadConfig.Persist.REDIS)
@@ -107,7 +171,7 @@ public class DownloadController {
 
                     );
         } else {
-            Clients.DownloadClient("192.168.1.30", 9000 + num)
+            Clients.downloadClient("192.168.1.30", 9000 + num)
                     .setConfig(DownloadConfig.newBuilder()
                             .setThread(1)
                             .setPersist(DownloadConfig.Persist.REDIS)
@@ -175,6 +239,6 @@ public class DownloadController {
                     );
         }
 
-        return "test";
+        return ApiResponse.successBuild("test");
     }
 }

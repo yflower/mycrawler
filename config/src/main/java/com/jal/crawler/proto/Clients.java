@@ -13,13 +13,13 @@ import java.util.Map;
 public class Clients {
     private static final Logger logger = LoggerFactory.getLogger(Clients.class);
 
-    public static Map<String, ComponentClient> clients = new HashMap<>();
+    public static Map<String, AbstractComponentClient> clients = new HashMap<>();
 
     public static Map<String, ResolveClient> resolves = new HashMap<>();
 
     public static Map<String, DownloadClient> downs = new HashMap<>();
 
-    public static ComponentClient DownloadClient(String host, int port) {
+    public static AbstractComponentClient downloadClient(String host, int port) {
         String address = host + ":" + port;
         if (clients.containsKey(address)) {
             return clients.get(address);
@@ -33,7 +33,7 @@ public class Clients {
         }
     }
 
-    public static ComponentClient resolveClient(String host, int port) {
+    public static AbstractComponentClient resolveClient(String host, int port) {
         String address = host + ":" + port;
         if (clients.containsKey(address)) {
             return clients.get(address);
@@ -47,12 +47,12 @@ public class Clients {
         }
     }
 
-    public static void close(ComponentClient componentClient) {
-        if (clients.containsKey(componentClient.address)) {
-            componentClient.close();
-            clients.remove(componentClient.address);
-            resolves.remove(componentClient.address);
-            downs.remove(componentClient.address);
+    public static void close(AbstractComponentClient abstractComponentClient) {
+        if (clients.containsKey(abstractComponentClient.address)) {
+            abstractComponentClient.close();
+            clients.remove(abstractComponentClient.address);
+            resolves.remove(abstractComponentClient.address);
+            downs.remove(abstractComponentClient.address);
         }
     }
 

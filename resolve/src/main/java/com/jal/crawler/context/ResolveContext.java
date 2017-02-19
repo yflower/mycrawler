@@ -9,7 +9,10 @@ import com.jal.crawler.task.Task;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
@@ -46,7 +49,6 @@ public class ResolveContext {
         DESTORYED=4;
      */
     private int status;
-
 
 
     //context configure public method
@@ -108,8 +110,8 @@ public class ResolveContext {
         for (int i = 0; i < thread; ++i) {
             executorService.submit(() -> {
                 Page page = null;
-                Task task=null;
-                Map<String, Object> result=null;
+                Task task = null;
+                Map<String, Object> result = null;
                 while (true) {
                     task = randomRunnableTask();
                     if ((page = pageFetch.fetch(task.getTaskTag())) != null) {

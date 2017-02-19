@@ -5,7 +5,6 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import org.bson.Document;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -29,6 +28,6 @@ public class MongoPersist implements Persist {
     @Override
     public void persist(String taskTag, Map<String, Object> map) {
         mongoClient.getDatabase(mongoCredential.getSource()).getCollection(taskTag + "_vars").insertOne(new Document(map));
-        map=null;
+        map = null;
     }
 }

@@ -46,7 +46,7 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload input(String inputTextElementQuery, String value) {
-        if(isSkip){
+        if (isSkip) {
             return this;
         }
         webDriver.findElement(By.cssSelector(inputTextElementQuery)).sendKeys(value);
@@ -55,7 +55,7 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload inputSubmit(String submitElementQuery) {
-        if(isSkip){
+        if (isSkip) {
             return this;
         }
         webDriver.findElement(By.cssSelector(submitElementQuery)).submit();
@@ -64,14 +64,14 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload click(String enableClickElementQuery) {
-        if(isSkip){
+        if (isSkip) {
             return this;
         }
         List<WebElement> elements = webDriver.findElements(By.cssSelector(enableClickElementQuery));
         if (!elements.isEmpty()) {
             elements.get(0).click();
-        }else {
-            isSkip=true;
+        } else {
+            isSkip = true;
         }
         return this;
     }
@@ -81,8 +81,8 @@ public class SeleniumDownload extends DynamicDownload {
         try {
             new WebDriverWait(webDriver, timeUnit.toSeconds(time))
                     .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementQuery)));
-        }catch (TimeoutException ex){
-            isSkip=true;
+        } catch (TimeoutException ex) {
+            isSkip = true;
         }
         return this;
     }

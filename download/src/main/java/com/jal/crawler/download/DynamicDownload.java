@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class DynamicDownload extends AbstractDownLoad {
 
-    public abstract DynamicDownload input(String inputTextElementQuery,String value);
+    public abstract DynamicDownload input(String inputTextElementQuery, String value);
 
     public abstract DynamicDownload inputSubmit(String submitElementQuery);
 

@@ -1,6 +1,8 @@
 package com.jal.crawler.context;
 
-import com.jal.crawler.download.*;
+import com.jal.crawler.download.AbstractDownLoad;
+import com.jal.crawler.download.OkHttpDownLoad;
+import com.jal.crawler.download.SeleniumDownload;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PagePersist;
 import com.jal.crawler.page.RedisPagePersist;
@@ -13,7 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
@@ -27,36 +31,20 @@ import java.util.concurrent.locks.ReentrantLock;
 public class DownLoadContext {
 
     private static final Logger logger = LoggerFactory.getLogger(DownLoadContext.class);
-
-    private int thread;
-
-    private boolean isProxy = false;
-
-    private String proxyHost;
-
-    private int proxyPort;
-
-    private int sleepTime;
-
-    private List<Task> tasks;
-
-    private Lock taskLock = new ReentrantLock();
-
-    private Condition taskCondition = taskLock.newCondition();
-
-
-    private AbstractDownLoad.AbstractBuilder staticBuilder;
-
-    private AbstractDownLoad.AbstractBuilder dynamicBuilder;
-
-    private RedisTemplate redisTemplate;
-
     AbstractPageUrlFactory abstractPageUrlFactory;
-
     ExecutorService executorService;
-
     PagePersist pagePersist;
-
+    private int thread;
+    private boolean isProxy = false;
+    private String proxyHost;
+    private int proxyPort;
+    private int sleepTime;
+    private List<Task> tasks;
+    private Lock taskLock = new ReentrantLock();
+    private Condition taskCondition = taskLock.newCondition();
+    private AbstractDownLoad.AbstractBuilder staticBuilder;
+    private AbstractDownLoad.AbstractBuilder dynamicBuilder;
+    private RedisTemplate redisTemplate;
     /*
          NO_INIT=0;
         INIT=1;
@@ -183,7 +171,7 @@ public class DownLoadContext {
                 AbstractDownLoad dynamicDownLoad = dynamicBuilder.build();
                 Task task;
                 while ((task = randomRunnableTask()) != null) {
-                    if (!task.isUrlInit()&&!task.getStartUrls().isEmpty()) task.urlsInit(abstractPageUrlFactory);
+                    if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) task.urlsInit(abstractPageUrlFactory);
                     AbstractDownLoad downLoad = task.isDynamic() ? dynamicDownLoad : staticDownLoad;
                     downLoad.setPreProcessor(task.getPreProcessor());
                     downLoad.setPostProcessor(task.getPostProcessor());
@@ -192,7 +180,7 @@ public class DownLoadContext {
                     while (task.getStatus() == 2 && (url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) != null) {
                         String finalUrl = url;
                         Page page = downLoad.downLoad(new PageRequest(finalUrl));
-                        if(!downLoad.isSkip())pagePersist.persist(task.getTaskTag(), page);
+                        if (!downLoad.isSkip()) pagePersist.persist(task.getTaskTag(), page);
                         downLoad.setSkip(false);
                         sleep();
                     }

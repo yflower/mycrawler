@@ -32,6 +32,9 @@ public class PageRequest {
         return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getMethod() {
         return method;
@@ -47,10 +50,6 @@ public class PageRequest {
 
     public void setAcceptCode(Set<Integer> acceptCode) {
         this.acceptCode = acceptCode;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public Map<String, String> getBodyParam() {

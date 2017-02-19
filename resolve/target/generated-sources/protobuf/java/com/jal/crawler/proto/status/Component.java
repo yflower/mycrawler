@@ -41,7 +41,7 @@ public final class Component {
       "&\n\005value\030\002 \001(\0162\027.ComponentStatus.Status:" +
       "\0028\001\"V\n\006Status\022\013\n\007NO_INIT\020\000\022\010\n\004INIT\020\001\022\013\n\007" +
       "STARTED\020\002\022\013\n\007STOPPED\020\003\022\014\n\010FINISHED\020\004\022\r\n\t" +
-      "DESTORYED\020\0052T\n\022RpcComponentStatus\022>\n\022rpc" +
+      "DESTROYED\020\0052T\n\022RpcComponentStatus\022>\n\022rpc" +
       "ComponentStatus\022\026.ConfigComponentStatus\032",
       "\020.ComponentStatusB \n\034com.jal.crawler.pro" +
       "to.statusP\001b\006proto3"

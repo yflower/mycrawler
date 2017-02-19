@@ -1,11 +1,5 @@
 package com.jal.crawler;
 
-import com.jal.crawler.proto.Clients;
-import com.jal.crawler.proto.config.RedisConfig;
-import com.jal.crawler.proto.download.DownloadConfig;
-import com.jal.crawler.proto.download.DownloadTask;
-import com.jal.crawler.proto.resolve.ResolveConfig;
-import com.jal.crawler.proto.resolve.ResolveTask;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

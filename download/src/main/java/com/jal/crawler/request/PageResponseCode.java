@@ -5,6 +5,6 @@ package com.jal.crawler.request;
  */
 public class PageResponseCode {
     public static final int OK = 200;
-    public static final int CACHE=302;
+    public static final int CACHE = 302;
 
 }

@@ -20,12 +20,12 @@ message DownloadTask {
         Type type = 2;
         string query = 3;
         string value = 4;
-        enum Type{
-            CLICK=0;
-            INPUT=1;
-            INPUT_SUBMIT=2;
-            LINK_TO=3;
-            WAIT_UTIL=4;
+        enum Type {
+            CLICK = 0;
+            INPUT = 1;
+            INPUT_SUBMIT = 2;
+            LINK_TO = 3;
+            WAIT_UTIL = 4;
         }
     }
     repeated Processor pre = 5;

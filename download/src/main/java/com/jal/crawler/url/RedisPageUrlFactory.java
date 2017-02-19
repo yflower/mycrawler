@@ -3,7 +3,6 @@ package com.jal.crawler.url;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -13,14 +12,12 @@ import java.util.Set;
 public class RedisPageUrlFactory extends AbstractPageUrlFactory {
 
     private RedisTemplate<String, String> redisTemplate;
+    private SetOperations<String, String> setOperations;
 
     public RedisPageUrlFactory(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
-        setOperations=redisTemplate.opsForSet();
+        setOperations = redisTemplate.opsForSet();
     }
-
-    private SetOperations<String,String> setOperations;
-
 
     @Override
     public String fetchUrl(String taskTag) {
@@ -35,12 +32,12 @@ public class RedisPageUrlFactory extends AbstractPageUrlFactory {
 
     @Override
     public void urlRegister(String taksTag, List<String> urls) {
-        setOperations.add(taksTag+"_url", urls.toArray(new String[0]));
+        setOperations.add(taksTag + "_url", urls.toArray(new String[0]));
     }
 
     @Override
     public void urlRegister(String taksTag, Set<String> urls) {
-        setOperations.add(taksTag+"_url", urls.toArray(new String[0]));
+        setOperations.add(taksTag + "_url", urls.toArray(new String[0]));
 
     }
 

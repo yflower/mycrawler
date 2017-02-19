@@ -16,7 +16,7 @@ public class Page {
 
     private int code;
 
-    private Map<String,List<String>> headers;
+    private Map<String, List<String>> headers;
 
     public Map<String, List<String>> getHeaders() {
         return headers;

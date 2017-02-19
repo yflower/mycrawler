@@ -5,5 +5,5 @@ package com.jal.crawler.page;
  */
 @FunctionalInterface
 public interface PagePersist {
-    void persist(String taskTag,Page page);
+    void persist(String taskTag, Page page);
 }

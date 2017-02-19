@@ -2,8 +2,217 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="123efef0-be43-4663-ba19-58655d3c6ab5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../data/src/main/java/com/jal/crawler/Test.java" afterPath="$PROJECT_DIR$/../data/src/main/java/com/jal/crawler/Test.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ConfigContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/DBConfigAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/DownloadAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/ResolveAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/CommonDBController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/apiResponse/ApiResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ComponentStatusEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ExceptionEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/AddressNotFound.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/ComponentNotFoundException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/ParamErrorException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/ComponentModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/DownloadConfigModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/MongoConfigModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/RedisConfigModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/ResolveConfigModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/ComponentParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/DownloadConfigParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/MongoConfigParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/RedisConfigParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/ResolveConfigParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/DBConfigVO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDBConfigService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDownloadService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IResolveService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/DBConfigServiceImpl.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/Test.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/ComponentClient$componentStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/ComponentClient$internalTask.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/ComponentClient.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/Test.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/data/VO/ComponentVO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/data/VO/DownloadVO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/data/VO/ResolveVO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/service/DownloadService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/service/ResolveService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task$query.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ComponentClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/AbstractComponentClient.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/VO/ComponentVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/ComponentVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/VO/DownloadVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/DownloadVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/VO/ResolveVO.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/ResolveVO.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/DownloadService.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/DownloadServiceImpl.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/ResolveService.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/ResolveServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/ConfigApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/ConfigApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/Clients.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/Clients.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/DownloadClient.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/DownloadClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/ResolveClient.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/ResolveClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/controller/DownloadController$1.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/controller/DownloadController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/controller/DownloadController.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/controller/DownloadController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/controller/ResolveController.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/web/controller/ResolveController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/DownloadApplication.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/DownloadApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/context/DownLoadContext.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/context/DownLoadContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad$AbstractBuilder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad$AbstractBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/page/RedisPagePersist.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/page/RedisPagePersist.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/ComponentServer.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/ComponentServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/Component.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/Component.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/request/PageRequest.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/request/PageRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/task/Task.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/task/Task.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/url/RedisPageUrlFactory.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/url/RedisPageUrlFactory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/ResolveApplication.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/ResolveApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/Test.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/Test.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/context/ResolveContext.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/context/ResolveContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/page/RedisPageFetch.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/page/RedisPageFetch.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/parse/selector/CssSelector.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/parse/selector/CssSelector.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/parse/tag/HtmlTag.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/parse/tag/HtmlTag.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/persist/ConsolePersist.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/persist/ConsolePersist.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/persist/MongoPersist.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/persist/MongoPersist.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/proto/GrpcComponentServer.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/proto/GrpcComponentServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/proto/status/Component.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/proto/status/Component.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task$item.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task$item.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task$var.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task$var.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task.class" afterPath="$PROJECT_DIR$/../resolve/target/classes/com/jal/crawler/task/Task.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.iml" afterPath="$PROJECT_DIR$/config.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/ConfigApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/ConfigApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/Clients.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/Clients.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ResolveClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ResolveClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/DownloadController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/DownloadController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/ResolveController.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/ResolveController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/src/main/proto/component.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/src/main/proto/resolveTask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../download/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/pom.xml" afterPath="$PROJECT_DIR$/../download/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/DownloadApplication.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/DownloadApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/context/DownLoadContext.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/context/DownLoadContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/AbstractDownLoad.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/AbstractDownLoad.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownLoad.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownLoad.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownloadProcessor.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownloadProcessor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DynamicDownload.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DynamicDownload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/SeleniumDownload.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/SeleniumDownload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/Page.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/Page.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/PagePersist.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/PagePersist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/RedisPagePersist.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/RedisPagePersist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/proto/ComponentServer.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/proto/ComponentServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageRequest.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageResponseCode.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageResponseCode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/task/Task.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/component.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/configCommon.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/configCommon.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/downloadConfig.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/downloadConfig.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/downloadTask.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/downloadTask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/task.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/task.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" afterPath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../resolve/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/pom.xml" afterPath="$PROJECT_DIR$/../resolve/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/ResolveApplication.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/ResolveApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/Test.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/Test.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/context/ResolveContext.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/context/ResolveContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/page/RedisPageFetch.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/page/RedisPageFetch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/parse/selector/CssSelector.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/parse/selector/CssSelector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/parse/tag/HtmlTag.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/parse/tag/HtmlTag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/persist/MongoPersist.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/persist/MongoPersist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/task/Task.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/../resolve/src/main/proto/component.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/../resolve/src/main/proto/resolveTask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigShowGrpc.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigShowGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfig.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTask.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponse.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" afterPath="$PROJECT_DIR$/../resolve/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" afterPath="$PROJECT_DIR$/../resolve/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,51 +228,26 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ResolveController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/ResolveController.java">
+      <file leaf-file-name="DBConfigException.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/DBConfigException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="178" column="65" lean-forward="false" selection-start-line="178" selection-start-column="58" selection-end-line="178" selection-end-column="65" />
+            <state relative-caret-position="168">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="downloadConfig.proto" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/downloadConfig.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resolveTask.proto" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/resolveTask.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DownloadController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/DownloadController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="53" column="55" lean-forward="false" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1012#1013#0" expanded="false" />
-                <element signature="e#1066#1067#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -77,8 +261,55 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/proto/resolveTask.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/ComponentVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/DownloadVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/ResolveVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/apiResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/MongoConfigModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/DBConfigVO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/MongoConfigParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/ResolveServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/DownloadServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadClientAbstract.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ResolveClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDBService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ConfigContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/RedisConfigModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/RedisConfigParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ExecptionEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/BaseException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/ParamErrorException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDBConfigService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/DBConfigServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/CommonDBController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/DBConfigAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/DownloadConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/AddressNotFound.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/component.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ComponentStatusEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/ResolveConfigModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/ResolveAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/ConfigApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/ResolveConfigParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/Clients.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/apiResponse/ApiResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/DownloadConfigParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/DownloadConfigModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/DownloadAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/ResolveComponentParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/ResolveComponentModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/ComponentNotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ExceptionEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IResolveService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/DownloadComponentParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDownloadService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/DownloadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/ResolveController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/ResolveServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/DownloadServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/AbstractComponentClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/DBConfigException.java" />
       </list>
     </option>
   </component>
@@ -88,11 +319,21 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="1092" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1918" />
+    <option name="height" value="1028" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -109,6 +350,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -118,7 +360,89 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: javax.validation:validation-api:1.1.0.Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation-api-1.1.0.Final.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: javax.validation:validation-api:1.1.0.Final" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation-api-1.1.0.Final.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -235,6 +559,196 @@
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="param" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exception" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enums" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -296,13 +810,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="proto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -311,6 +888,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../download" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RunManager" selected="Spring Boot.ConfigApplication">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -318,6 +896,61 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -343,6 +976,161 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -362,6 +1150,61 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="config" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -426,6 +1269,28 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
     <configuration default="false" name="protobuf" type="MavenRunConfiguration" factoryName="Maven">
@@ -527,47 +1392,49 @@
       <updated>1486817988122</updated>
       <workItem from="1486817990598" duration="9562000" />
       <workItem from="1487252699910" duration="1487000" />
+      <workItem from="1487407506322" duration="7619000" />
+      <workItem from="1487479381649" duration="19847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11049000" />
+    <option name="totallyTimeSpent" value="38515000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1092" extended-state="1" />
-    <editor active="true" />
+    <frame x="1" y="1" width="1918" height="1028" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1859979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25263157" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +1444,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -585,38 +1454,130 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/ResolveController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/apiResponse.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/Model.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param.kt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/view/DBConfigVO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="336">
+          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding>
+            <element signature="e#222#223#0" expanded="false" />
+            <element signature="e#256#257#0" expanded="false" />
+            <element signature="e#310#311#0" expanded="false" />
+            <element signature="e#356#357#0" expanded="false" />
+            <element signature="e#394#395#0" expanded="false" />
+            <element signature="e#428#429#0" expanded="false" />
+            <element signature="e#482#483#0" expanded="false" />
+            <element signature="e#528#529#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/downloadConfig.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/MongoConfigModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="366">
+          <caret line="67" column="5" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="67" selection-end-column="5" />
+          <folding>
+            <element signature="e#298#299#0" expanded="false" />
+            <element signature="e#325#326#0" expanded="false" />
+            <element signature="e#365#366#0" expanded="false" />
+            <element signature="e#397#398#0" expanded="false" />
+            <element signature="e#425#426#0" expanded="false" />
+            <element signature="e#452#453#0" expanded="false" />
+            <element signature="e#489#490#0" expanded="false" />
+            <element signature="e#521#522#0" expanded="false" />
+            <element signature="e#552#553#0" expanded="false" />
+            <element signature="e#579#580#0" expanded="false" />
+            <element signature="e#619#620#0" expanded="false" />
+            <element signature="e#651#652#0" expanded="false" />
+            <element signature="e#686#687#0" expanded="false" />
+            <element signature="e#717#718#0" expanded="false" />
+            <element signature="e#765#766#0" expanded="false" />
+            <element signature="e#805#806#0" expanded="false" />
+            <element signature="e#840#841#0" expanded="false" />
+            <element signature="e#871#872#0" expanded="false" />
+            <element signature="e#919#920#0" expanded="false" />
+            <element signature="e#959#960#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/resolveTask.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/ResolveClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding>
+            <element signature="e#1433#1434#0" expanded="false" />
+            <element signature="e#1460#1461#0" expanded="false" />
+            <element signature="e#1527#1528#0" expanded="false" />
+            <element signature="e#1568#1569#0" expanded="false" />
+            <element signature="e#1632#1633#0" expanded="false" />
+            <element signature="e#1672#1673#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/Test.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/RedisConfigModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding>
+            <element signature="e#548#549#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ConfigContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-441">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/DownloadController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/BaseException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="53" column="55" lean-forward="false" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+        <state relative-caret-position="378">
+          <caret line="18" column="62" lean-forward="false" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="44" column="13" lean-forward="false" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/ParamErrorException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1012#1013#0" expanded="false" />
-            <element signature="e#1066#1067#0" expanded="false" />
+            <element signature="e#186#187#0" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -625,10 +1586,65 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/downloadConfig.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/DBConfigAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/DBConfigServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="38" column="80" lean-forward="false" selection-start-line="38" selection-start-column="80" selection-end-line="38" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar!/javax/validation/constraints/NotNull.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/DownloadConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="35" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/AddressNotFound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding>
+            <element signature="e#207#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDBConfigService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/configComponent.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -636,30 +1652,317 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/resolveTask.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/configCommon.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/component.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ComponentStatusEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/ResolveConfigModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <element signature="e#894#895#0" expanded="false" />
+            <element signature="e#921#922#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/ResolveAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/CommonDBController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/RedisConfigParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#635#636#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/ConfigApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/MongoConfigParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/ResolveConfigParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding>
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/DownloadClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/apiResponse/ApiResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="27" column="97" lean-forward="false" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
+          <folding>
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/DownloadConfigParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#528#529#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#971#972#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1073#1074#0" expanded="true" />
+            <element signature="e#1116#1117#0" expanded="true" />
+            <element signature="e#1150#1151#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+            <element signature="e#1230#1231#0" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="e#1340#1341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/DownloadConfigModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="70" column="31" lean-forward="false" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
+          <folding>
+            <element signature="e#1206#1207#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1304#1305#0" expanded="true" />
+            <element signature="e#1351#1352#0" expanded="true" />
+            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#1425#1426#0" expanded="true" />
+            <element signature="e#1453#1454#0" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+            <element signature="e#1672#1673#0" expanded="true" />
+            <element signature="e#1720#1721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/adapter/DownloadAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="18" column="68" lean-forward="false" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/ComponentParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#427#428#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/model/ComponentModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#315#316#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/ComponentNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="55" lean-forward="false" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+          <folding>
+            <element signature="e#229#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/enums/ExceptionEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="54" lean-forward="false" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IResolveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/param/DownloadComponentParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/IDownloadService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="19" column="73" lean-forward="false" selection-start-line="19" selection-start-column="73" selection-end-line="19" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/DownloadController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="53" column="55" lean-forward="false" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+        <state relative-caret-position="146">
+          <caret line="44" column="58" lean-forward="false" selection-start-line="44" selection-start-column="58" selection-end-line="44" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1012#1013#0" expanded="false" />
-            <element signature="e#1066#1067#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/controller/ResolveController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="178" column="65" lean-forward="false" selection-start-line="178" selection-start-column="58" selection-end-line="178" selection-end-column="65" />
+        <state relative-caret-position="262">
+          <caret line="42" column="62" lean-forward="false" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="1002" column="0" lean-forward="false" selection-start-line="1002" selection-start-column="0" selection-end-line="1002" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/Clients.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/DownloadServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="62" column="37" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/service/impl/ResolveServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/AbstractComponentClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1953">
+          <caret line="115" column="130" lean-forward="false" selection-start-line="115" selection-start-column="130" selection-end-line="115" selection-end-column="130" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/web/data/exception/DBConfigException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>

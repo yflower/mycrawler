@@ -127,9 +127,9 @@ public  final class ComponentStatus extends
      */
     FINISHED(4),
     /**
-     * <code>DESTORYED = 5;</code>
+     * <code>DESTROYED = 5;</code>
      */
-    DESTORYED(5),
+    DESTROYED(5),
     UNRECOGNIZED(-1),
     ;
 
@@ -154,9 +154,9 @@ public  final class ComponentStatus extends
      */
     public static final int FINISHED_VALUE = 4;
     /**
-     * <code>DESTORYED = 5;</code>
+     * <code>DESTROYED = 5;</code>
      */
-    public static final int DESTORYED_VALUE = 5;
+    public static final int DESTROYED_VALUE = 5;
 
 
     public final int getNumber() {
@@ -182,7 +182,7 @@ public  final class ComponentStatus extends
         case 2: return STARTED;
         case 3: return STOPPED;
         case 4: return FINISHED;
-        case 5: return DESTORYED;
+        case 5: return DESTROYED;
         default: return null;
       }
     }

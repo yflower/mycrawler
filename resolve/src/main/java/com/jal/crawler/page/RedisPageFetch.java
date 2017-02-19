@@ -1,10 +1,8 @@
 package com.jal.crawler.page;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 

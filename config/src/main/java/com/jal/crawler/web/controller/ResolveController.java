@@ -4,36 +4,96 @@ import com.jal.crawler.proto.Clients;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.resolve.ResolveConfig;
 import com.jal.crawler.proto.resolve.ResolveTask;
-import com.jal.crawler.web.data.VO.ResolveVO;
-import com.jal.crawler.web.service.ResolveService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.jal.crawler.web.data.apiResponse.ApiResponse;
+import com.jal.crawler.web.data.enums.ExceptionEnum;
+import com.jal.crawler.web.data.exception.AddressNotFound;
+import com.jal.crawler.web.data.exception.ComponentNotFoundException;
+import com.jal.crawler.web.data.exception.DBConfigException;
+import com.jal.crawler.web.data.exception.ParamErrorException;
+import com.jal.crawler.web.data.param.ComponentParam;
+import com.jal.crawler.web.data.param.ResolveConfigParam;
+import com.jal.crawler.web.service.IResolveService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
+ * 数据解析组件的相关接口
  * Created by jal on 2017/2/8.
  */
 @RestController
 public class ResolveController {
-    @Autowired
-    private ResolveService resolveService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResolveController.class);
 
 
-    @GetMapping("/resolves")
-    public List<ResolveVO> resolves() {
-        return resolveService.status();
+    @Resource
+    private IResolveService resolveService;
+
+    /**
+     * 得到解析组件的信息
+     *
+     * @return
+     */
+    @GetMapping("/resolves/status")
+    public ApiResponse resolves(@RequestParam(required = false) List<String> address) {
+        return ApiResponse.successBuild(resolveService.status(address));
     }
 
-    @GetMapping("/resolves/{address}")
-    public ResolveVO resolve(@PathVariable("address") String address) {
-        return resolveService.status(address);
+    /**
+     * 添加信息的解析组件
+     *
+     * @param componentParam
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/resolves")
+    public ApiResponse component(@Valid @RequestBody ComponentParam componentParam, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR, new ParamErrorException("resolve component error"));
+        }
+        try {
+            resolveService.component(componentParam);
+        } catch (AddressNotFound addressNotFound) {
+            return ApiResponse.failBuild(ExceptionEnum.ADDRESS_NOT_FOUND, addressNotFound);
+        }
+        return ApiResponse.successBuild("");
     }
 
+    /**
+     * 对组件进行初始化
+     *
+     * @param resolveConfigParam
+     * @param bindingResult
+     * @return
+     */
+    @PostMapping("/resolves/config")
+    public ApiResponse config(@Valid @RequestBody ResolveConfigParam resolveConfigParam, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR, new ParamErrorException("resolve param error"));
+        }
+        try {
+            resolveService.config(resolveConfigParam);
+        } catch (ComponentNotFoundException ex) {
+            return ApiResponse.failBuild(ExceptionEnum.COMPONENT_NOT_FOUND, ex);
+        } catch (DBConfigException dbConfigEx) {
+            return ApiResponse.failBuild(ExceptionEnum.DB_CONFIG_ERROR, dbConfigEx);
+        }
+        return ApiResponse.successBuild("");
+    }
+
+    /**
+     * 测试启动组件
+     *
+     * @param num
+     * @return
+     */
     @GetMapping("/resolves/test/{num}")
-    public String test(@PathVariable int num) {
+    public ApiResponse test(@PathVariable int num) {
 
         Clients.resolveClient("localhost", 9005 + num)
                 .setConfig(
@@ -208,6 +268,6 @@ public class ResolveController {
 
                                 .build());
 
-        return "test";
+        return ApiResponse.successBuild("test");
     }
 }

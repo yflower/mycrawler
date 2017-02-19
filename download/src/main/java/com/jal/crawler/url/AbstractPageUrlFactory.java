@@ -36,6 +36,6 @@ public abstract class AbstractPageUrlFactory implements PageUrlFactory {
 
     public void addUrl(String taskTag, Set<String> urls) {
         count.addAndGet(urls.size());
-        urlRegister(taskTag,urls);
+        urlRegister(taskTag, urls);
     }
 }

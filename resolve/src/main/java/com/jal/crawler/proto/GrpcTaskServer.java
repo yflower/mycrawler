@@ -32,7 +32,7 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
         if (isRun(resolveContext)) {
             if (request.getTaskType() == TaskType.ADD) {
                 Task task = new Task(request.getTaskTag());
-                taskInit(request,task);
+                taskInit(request, task);
                 resolveContext.addTask(task);
                 logger.info("success to add resolve task {}", task.getTaskTag());
                 builder.setOpStatus(OPStatus.SUCCEED);
@@ -65,12 +65,12 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
         return context.status() == 2;
     }
 
-    private void taskInit(ResolveTask resolveTask,Task task){
-        resolveTask.getVarList().stream().forEach(t -> task.var(new Task.var(t.getName(), t.getQuery(),t.getOption(),t.getOptionValue())));
-        resolveTask.getItemList().stream().forEach(t->
+    private void taskInit(ResolveTask resolveTask, Task task) {
+        resolveTask.getVarList().stream().forEach(t -> task.var(new Task.var(t.getName(), t.getQuery(), t.getOption(), t.getOptionValue())));
+        resolveTask.getItemList().stream().forEach(t ->
                 task.item(t.getItemName(),
                         t.getVarList().stream().map(
-                                var -> new Task.var(var.getName(),var.getQuery(),var.getOption(),var.getOptionValue())).collect(Collectors.toList())));
+                                var -> new Task.var(var.getName(), var.getQuery(), var.getOption(), var.getOptionValue())).collect(Collectors.toList())));
         task.setStatus(1);
     }
 }

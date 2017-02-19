@@ -19,7 +19,7 @@ message ComponentStatus {
         STARTED = 2;
         STOPPED = 3;
         FINISHED = 4;
-        DESTORYED = 5;
+        DESTROYED = 5;
     }
 }
 
