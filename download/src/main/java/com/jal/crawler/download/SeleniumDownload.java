@@ -30,6 +30,11 @@ public class SeleniumDownload extends DynamicDownload {
     }
 
     @Override
+    protected void internalClose() {
+        webDriver.close();
+    }
+
+    @Override
     protected String rawContent() {
         return webDriver.getPageSource();
     }

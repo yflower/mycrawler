@@ -32,6 +32,11 @@ public abstract class AbstractDownLoad implements DownLoad {
         return this;
     }
 
+    public AbstractDownLoad close(){
+        internalClose();
+        return this;
+    }
+
 
 
 
@@ -95,6 +100,8 @@ public abstract class AbstractDownLoad implements DownLoad {
 
 
     protected abstract void internalDown(PageRequest pageRequest) throws IOException;
+
+    protected abstract void internalClose();
 
     protected abstract String rawContent();
 

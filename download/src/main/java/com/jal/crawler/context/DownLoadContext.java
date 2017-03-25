@@ -49,7 +49,7 @@ public class DownLoadContext {
     private RedisTemplate redisTemplate;
     private ThreadLocalRandom random;
 
-    private StatusEnum status=StatusEnum.NO_INIT;
+    private StatusEnum status = StatusEnum.NO_INIT;
 
     public boolean addTask(Task task) {
         tasks.add(task);
@@ -177,8 +177,11 @@ public class DownLoadContext {
             Task task;
             String url = null;
             try {
-                while ((task = randomRunnableTask()) != null && (url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) != null) {
+                while ((task = randomRunnableTask()) != null) {
                     if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) task.urlsInit(abstractPageUrlFactory);
+                    if ((url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) == null) {
+                        continue;
+                    }
                     AbstractDownLoad downLoad = task.isDynamic() ? dynamicDownLoad : staticDownLoad;
                     downLoad.setPreProcessor(task.getPreProcessor());
                     downLoad.setPostProcessor(task.getPostProcessor());
@@ -186,7 +189,10 @@ public class DownLoadContext {
                     while (task.getStatus() == StatusEnum.STARTED && url != null) {
                         String finalUrl = url;
                         Page page = downLoad.downLoad(new PageRequest(finalUrl));
-                        if (!downLoad.isSkip()) pagePersist.persist(task.getTaskTag(), page);
+                        if (!downLoad.isSkip()) {
+                            pagePersist.persist(task.getTaskTag(), page);
+                            logger.info("persist page");
+                        }
                         downLoad.setSkip(false);
                         sleep();
                         url = abstractPageUrlFactory.fetchUrl(task.getTaskTag());
@@ -197,6 +203,9 @@ public class DownLoadContext {
             } catch (Exception e) {
                 logger.error(" download error", e);
                 execute();
+            } finally {
+                staticDownLoad.close();
+                dynamicDownLoad.close();
             }
 
         });

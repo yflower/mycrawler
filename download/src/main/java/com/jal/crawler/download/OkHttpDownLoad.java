@@ -42,6 +42,11 @@ public class OkHttpDownLoad extends AbstractDownLoad {
     }
 
     @Override
+    protected void internalClose() {
+
+    }
+
+    @Override
     protected String rawContent() {
         String raw = "";
         try {
