@@ -56,7 +56,7 @@ public class ResolveContext {
         STOPPED=3;
         DESTORYED=4;
      */
-    private StatusEnum status;
+    private StatusEnum status=StatusEnum.NO_INIT;
 
 
     //context configure public method
