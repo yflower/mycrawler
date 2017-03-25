@@ -1,7 +1,7 @@
 package com.jal.crawler.web.service.impl.download;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.web.data.model.ComponentModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.service.ITaskLoadService;
 import org.springframework.stereotype.Service;
 

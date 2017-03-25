@@ -62,6 +62,11 @@ public class OkHttpDownLoad extends AbstractDownLoad {
         return response.headers().toMultimap();
     }
 
+    @Override
+    protected void internalReset() {
+
+    }
+
 
     public static class Builder extends AbstractBuilder {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();

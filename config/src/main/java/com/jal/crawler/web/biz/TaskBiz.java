@@ -23,7 +23,6 @@ public class TaskBiz {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ComponentBiz.class);
 
-
     @Resource
     private ITaskService resolveTaskService;
 

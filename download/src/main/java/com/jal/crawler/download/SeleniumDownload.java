@@ -45,6 +45,11 @@ public class SeleniumDownload extends DynamicDownload {
     }
 
     @Override
+    protected void internalReset() {
+        webDriver.manage().deleteAllCookies();
+    }
+
+    @Override
     public DynamicDownload input(String inputTextElementQuery, String value) {
         if (isSkip) {
             return this;

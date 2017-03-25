@@ -1,7 +1,5 @@
 package com.jal.crawler.web.data.model.taskOperation;
 
-import com.jal.crawler.web.data.model.TaskOperationModel;
-
 import java.util.List;
 import java.util.Set;
 

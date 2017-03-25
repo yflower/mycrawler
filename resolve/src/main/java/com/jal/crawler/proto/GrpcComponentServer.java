@@ -1,8 +1,10 @@
 package com.jal.crawler.proto;
 
 import com.jal.crawler.context.ResolveContext;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.proto.configComponnet.ConfigComponentStatus;
 import com.jal.crawler.proto.status.ComponentStatus;
+import com.jal.crawler.proto.status.ComponentType;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,12 @@ public class GrpcComponentServer extends RpcComponentStatusGrpc.RpcComponentStat
     public void rpcComponentStatus(ConfigComponentStatus request, StreamObserver<ComponentStatus> responseObserver) {
         //处理config tag
         ComponentStatus.Builder builder = ComponentStatus.newBuilder();
-        builder.setComponentStatus(ComponentStatus.Status.forNumber(resolveContext.status()));
+        builder.setComponentStatus(ComponentStatus.Status.forNumber(resolveContext.status().getCode()));
+        builder.setComponentType(ComponentType.RESOLVE);
         if (isRun(resolveContext)) {
             builder.setTaskNum(resolveContext.tasks().size());
             builder.putAllTasks(resolveContext.tasks().stream()
-                    .collect(Collectors.toMap(t -> t.getTaskTag(), t -> ComponentStatus.Status.forNumber(t.getStatus()))));
+                    .collect(Collectors.toMap(t -> t.getTaskTag(), t -> ComponentStatus.Status.forNumber(t.getStatus().getCode()))));
         }
         responseObserver.onNext(builder.build());
         responseObserver.onCompleted();
@@ -34,6 +37,6 @@ public class GrpcComponentServer extends RpcComponentStatusGrpc.RpcComponentStat
     }
 
     private boolean isRun(ResolveContext context) {
-        return context.status() == 2;
+        return context.status() == StatusEnum.STARTED;
     }
 }

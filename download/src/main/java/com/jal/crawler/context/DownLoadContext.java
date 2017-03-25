@@ -3,6 +3,7 @@ package com.jal.crawler.context;
 import com.jal.crawler.download.AbstractDownLoad;
 import com.jal.crawler.download.OkHttpDownLoad;
 import com.jal.crawler.download.SeleniumDownload;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PagePersist;
 import com.jal.crawler.page.RedisPagePersist;
@@ -17,12 +18,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 /**
  * Created by home on 2017/1/9.
@@ -45,6 +47,7 @@ public class DownLoadContext {
     private AbstractDownLoad.AbstractBuilder staticBuilder;
     private AbstractDownLoad.AbstractBuilder dynamicBuilder;
     private RedisTemplate redisTemplate;
+    private ThreadLocalRandom random;
     /*
          NO_INIT=0;
         INIT=1;
@@ -52,11 +55,11 @@ public class DownLoadContext {
         STOPPED=3;
         DESTORYED=4;
      */
-    private int status;
+    private StatusEnum status;
 
     public boolean addTask(Task task) {
         tasks.add(task);
-        task.setStatus(2);
+        task.setStatus(StatusEnum.INIT);
         signalTask();
         return true;
     }
@@ -64,8 +67,8 @@ public class DownLoadContext {
 
     public boolean stopTask(String taskTag) {
         Task innerTask = getTaskByTag(taskTag);
-        if (innerTask != null && innerTask.getStatus() == 2) {
-            innerTask.setStatus(3);
+        if (innerTask != null && innerTask.getStatus() == StatusEnum.STARTED) {
+            innerTask.setStatus(StatusEnum.STOPPED);
             return true;
         } else {
             return false;
@@ -74,8 +77,8 @@ public class DownLoadContext {
 
     public boolean finishTask(String taskTag) {
         Task innerTask = getTaskByTag(taskTag);
-        if (innerTask != null && innerTask.getStatus() >= 2) {
-            innerTask.setStatus(4);
+        if (innerTask != null && StatusEnum.isStart(innerTask.getStatus())) {
+            innerTask.setStatus(StatusEnum.FINISHED);
             return true;
         } else {
             return false;
@@ -85,7 +88,7 @@ public class DownLoadContext {
     public boolean destroyTask(String taskTag) {
         Task innerTask = getTaskByTag(taskTag);
         if (innerTask != null) {
-            innerTask.setStatus(4);
+            innerTask.setStatus(StatusEnum.DESTROYED);
             return true;
         } else {
             return false;
@@ -127,9 +130,9 @@ public class DownLoadContext {
     }
 
     private Task randomRunnableTask() {
-        Optional<Task> task = tasks.stream().filter(t -> t.getStatus() == 2).findAny();
-        if (task.isPresent()) {
-            return task.get();
+        List<Task> list = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED).collect(Collectors.toList());
+        if (!list.isEmpty()) {
+            return list.get(Math.abs(random.nextInt() % list.size()));
         } else {
             lockTasks();
         }
@@ -164,31 +167,45 @@ public class DownLoadContext {
 
     public void run() {
         init();
-        setStatus(2);
+        setStatus(StatusEnum.STARTED);
         for (int i = 0; i < thread; ++i) {
-            executorService.submit(() -> {
-                AbstractDownLoad staticDownLoad = staticBuilder.build();
-                AbstractDownLoad dynamicDownLoad = dynamicBuilder.build();
-                Task task;
-                while ((task = randomRunnableTask()) != null) {
+
+        }
+
+    }
+
+    private void execute() {
+        executorService.submit(() -> {
+
+            AbstractDownLoad staticDownLoad = staticBuilder.build();
+            AbstractDownLoad dynamicDownLoad = dynamicBuilder.build();
+            random = ThreadLocalRandom.current();
+            Task task;
+            String url = null;
+            try {
+                while ((task = randomRunnableTask()) != null && (url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) != null) {
                     if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) task.urlsInit(abstractPageUrlFactory);
                     AbstractDownLoad downLoad = task.isDynamic() ? dynamicDownLoad : staticDownLoad;
                     downLoad.setPreProcessor(task.getPreProcessor());
                     downLoad.setPostProcessor(task.getPostProcessor());
                     downLoad.init();
-                    String url;
-                    while (task.getStatus() == 2 && (url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) != null) {
+                    while (task.getStatus() == StatusEnum.STARTED && url != null) {
                         String finalUrl = url;
                         Page page = downLoad.downLoad(new PageRequest(finalUrl));
                         if (!downLoad.isSkip()) pagePersist.persist(task.getTaskTag(), page);
                         downLoad.setSkip(false);
                         sleep();
+                        url = abstractPageUrlFactory.fetchUrl(task.getTaskTag());
                     }
+                    dynamicDownLoad.reset();
+                    staticDownLoad.reset();
                 }
-            });
-        }
-        close();
+            } catch (Exception e) {
+                logger.error(" download error", e);
+                execute();
+            }
 
+        });
     }
 
     private void init() {
@@ -206,7 +223,7 @@ public class DownLoadContext {
             throw new NullPointerException("redisTemplate must init");
         }
         tasks = new ArrayList<>();
-        setStatus(1);
+        setStatus(StatusEnum.INIT);
     }
 
     private void sleep() {
@@ -221,11 +238,11 @@ public class DownLoadContext {
         executorService.shutdown();
     }
 
-    private synchronized void setStatus(int status) {
+    private synchronized void setStatus(StatusEnum status) {
         this.status = status;
     }
 
-    public synchronized int status() {
+    public synchronized StatusEnum status() {
         return status;
     }
 

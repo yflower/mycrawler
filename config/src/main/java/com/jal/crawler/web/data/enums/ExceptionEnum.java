@@ -7,7 +7,9 @@ public enum ExceptionEnum {
     PARAM_ERROR("500", "param error"),
     DB_CONFIG_ERROR("500", "db config error"),
     ADDRESS_NOT_FOUND("404", "address not found"),
-    COMPONENT_NOT_FOUND("404", "component not found");
+    COMPONENT_NOT_FOUND("404", "component not found"),
+    CONFIG_ERROR("400", "config error"),
+    UNKNOWN("500", "server error");
 
 
     private String code;

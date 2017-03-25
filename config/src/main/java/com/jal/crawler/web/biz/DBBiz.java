@@ -26,6 +26,6 @@ public class DBBiz {
     }
 
     public DBConfigVO showDBConfigs() {
-        return dbConfigService.showDBConfig();
+        return DBConfigConvert.modelToView(dbConfigService.mongo(), dbConfigService.redis());
     }
 }

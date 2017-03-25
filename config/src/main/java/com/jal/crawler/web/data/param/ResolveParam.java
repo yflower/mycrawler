@@ -18,7 +18,7 @@ public class ResolveParam {
         this.resolves = resolves;
     }
 
-    public static class resolveSocket{
+    public static class resolveSocket {
         @NotNull
         private String host;
 

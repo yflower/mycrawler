@@ -1,7 +1,6 @@
 package com.jal.crawler.web.data.model.taskOperation;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.model.TaskOperationModel;
 
 import java.util.List;
 
@@ -12,6 +11,10 @@ public class ResolveOperationModel extends TaskOperationModel {
     private List<var> vars;
 
     private List<item> items;
+
+    public ResolveOperationModel(String taskTag) {
+        this.setComponentType(ComponentEnum.RESOLVE);
+    }
 
     public List<var> getVars() {
         return vars;
@@ -27,10 +30,6 @@ public class ResolveOperationModel extends TaskOperationModel {
 
     public void setItems(List<item> items) {
         this.items = items;
-    }
-
-    public ResolveOperationModel(String taskTag) {
-        this.setComponentType(ComponentEnum.RESOLVE);
     }
 
     public static class item {

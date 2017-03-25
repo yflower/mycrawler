@@ -1,6 +1,7 @@
 package com.jal.crawler.task;
 
 import com.jal.crawler.download.DownloadProcessor;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.url.AbstractPageUrlFactory;
 
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import java.util.Set;
  */
 public class Task {
     public boolean urlInit;
-    private int status;
+    private StatusEnum status;
     private String taskTag;
     private boolean dynamic;
     private DownloadProcessor preProcessor = downLoad -> {
@@ -73,11 +74,11 @@ public class Task {
         setUrlInit(true);
     }
 
-    public int getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
     }
 }

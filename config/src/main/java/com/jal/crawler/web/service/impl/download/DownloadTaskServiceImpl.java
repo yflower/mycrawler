@@ -4,13 +4,12 @@ import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.proto.AbstractComponentClient;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.task.TaskType;
-import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;
 import com.jal.crawler.web.data.exception.BizException;
-import com.jal.crawler.web.data.model.ComponentModel;
-import com.jal.crawler.web.data.model.TaskOperationModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.data.model.taskOperation.DownloadOperationModel;
+import com.jal.crawler.web.data.model.taskOperation.TaskOperationModel;
 import com.jal.crawler.web.data.view.TaskOperationVO;
 import com.jal.crawler.web.service.ITaskLoadService;
 import com.jal.crawler.web.service.ITaskService;
@@ -64,7 +63,7 @@ public class DownloadTaskServiceImpl implements ITaskService {
 
     private void componentOp(List<ComponentModel> componentModels, TaskOperationModel taskOperationModel) {
         componentModels.forEach(componentModel -> {
-            Optional<AbstractComponentClient> clientOptional = configContext.getClients().getClient(componentModel);
+            Optional<AbstractComponentClient> clientOptional = configContext.getRpcClient().getClient(componentModel);
             AbstractComponentClient abstractComponentClient = clientOptional
                     .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
             download(abstractComponentClient, taskOperationModel);

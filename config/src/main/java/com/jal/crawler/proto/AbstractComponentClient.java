@@ -5,6 +5,7 @@ import com.jal.crawler.proto.status.ComponentStatus;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
 import com.jal.crawler.proto.task.OPStatus;
 import com.jal.crawler.proto.task.TaskType;
+import com.jal.crawler.web.data.enums.StatusEnum;
 import io.grpc.ManagedChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,25 +27,20 @@ public abstract class AbstractComponentClient<C, T> {
     protected String address;
 
 
-    //public client method
-
-    public boolean isConnected() {
-        return !channel.isShutdown();
-    }
-
     //显示组件的运行状态
-    public String status() {
-        return internalStatus().getStatus();
+    public StatusEnum status() {
+        return StatusEnum.valueOf(internalStatus().getStatus());
     }
 
     //组件添加设置
-    public AbstractComponentClient setConfig(C config) {
+    public boolean setConfig(C config) {
         if (validConfig(config) && internalConfigSet(config)) {
             logger.info("success config {},{}", config.getClass().getSimpleName(), address);
+            return true;
         } else {
             logger.info("fail to configSet,check the connection or configSet {},{}", config.getClass().getSimpleName(), address);
+            return false;
         }
-        return this;
     }
 
     //组件显示设置

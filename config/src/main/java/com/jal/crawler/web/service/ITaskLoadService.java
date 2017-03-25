@@ -1,7 +1,6 @@
 package com.jal.crawler.web.service;
 
-import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.model.ComponentModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
 
 import java.util.List;
 

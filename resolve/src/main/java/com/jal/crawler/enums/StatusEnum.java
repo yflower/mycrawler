@@ -25,4 +25,8 @@ public enum StatusEnum {
     public void setCode(int code) {
         this.code = code;
     }
+
+    public static boolean isStart(StatusEnum statusEnum){
+        return statusEnum.getCode()>=2;
+    }
 }

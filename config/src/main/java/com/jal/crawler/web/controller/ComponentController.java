@@ -4,7 +4,9 @@ import com.jal.crawler.web.biz.ComponentBiz;
 import com.jal.crawler.web.data.apiResponse.ApiResponse;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
-import com.jal.crawler.web.data.param.*;
+import com.jal.crawler.web.data.param.ComponentParam;
+import com.jal.crawler.web.data.param.DownloadParam;
+import com.jal.crawler.web.data.param.ResolveParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by jal on 2017/2/25.
@@ -51,7 +52,7 @@ public class ComponentController {
     @PostMapping
     public ApiResponse component(@Valid @RequestBody ComponentParam param, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ApiResponse.failBuild(new BizException(ExceptionEnum.PARAM_ERROR));
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
         }
         try {
             componentBiz.component(param);
@@ -73,7 +74,7 @@ public class ComponentController {
     @PostMapping("/download")
     public ApiResponse downloadConfig(@Valid @RequestBody DownloadParam downloadParam, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ApiResponse.failBuild(new BizException(ExceptionEnum.PARAM_ERROR));
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
         }
         try {
             componentBiz.component(downloadParam);
@@ -82,7 +83,6 @@ public class ComponentController {
         }
         return ApiResponse.successBuild("");
     }
-
 
 
     /**
@@ -95,7 +95,7 @@ public class ComponentController {
     @PostMapping("/resolve")
     public ApiResponse resolveConfig(@Valid @RequestBody ResolveParam resolveParam, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ApiResponse.failBuild(new BizException(ExceptionEnum.PARAM_ERROR));
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
         }
         try {
             componentBiz.component(resolveParam);
@@ -104,7 +104,6 @@ public class ComponentController {
         }
         return ApiResponse.successBuild("");
     }
-
 
 
 }

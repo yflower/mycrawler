@@ -1,7 +1,7 @@
 package com.jal.crawler.web.adapter;
 
-import com.jal.crawler.web.data.model.MongoConfigModel;
-import com.jal.crawler.web.data.model.RedisConfigModel;
+import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
+import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 import com.jal.crawler.web.data.param.MongoConfigParam;
 import com.jal.crawler.web.data.param.RedisConfigParam;
 import com.jal.crawler.web.data.view.DBConfigVO;

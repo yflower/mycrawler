@@ -1,5 +1,6 @@
 package com.jal.crawler.task;
 
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.parse.tag.HtmlTag;
 import com.jal.crawler.parse.tag.Tag;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * Created by home on 2017/1/20.
  */
 public class Task {
-    private int status;
+    private StatusEnum status;
 
     private String taskTag;
 
@@ -117,14 +118,13 @@ public class Task {
         return new HtmlTag(document);
     }
 
-    public int getStatus() {
+    public StatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(StatusEnum status) {
         this.status = status;
     }
-
 
     public static class var {
         String name;

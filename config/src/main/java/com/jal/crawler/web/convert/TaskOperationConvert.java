@@ -1,7 +1,6 @@
 package com.jal.crawler.web.convert;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.enums.TaskOperationEnum;
 import com.jal.crawler.web.data.model.taskOperation.DownloadOperationModel;
 import com.jal.crawler.web.data.model.taskOperation.ResolveOperationModel;
 import com.jal.crawler.web.data.param.TaskPushParam;
@@ -57,7 +56,7 @@ public class TaskOperationConvert {
         return var;
     }
 
-    private static DownloadOperationModel.process toProcess(TaskPushParam.download .process process) {
+    private static DownloadOperationModel.process toProcess(TaskPushParam.download.process process) {
         DownloadOperationModel.process pr = new DownloadOperationModel.process();
         pr.setType(DownloadOperationModel.process.type.numberOf(process.getType()));
         pr.setOrder(process.getOrder());

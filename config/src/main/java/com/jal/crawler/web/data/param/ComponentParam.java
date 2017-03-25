@@ -2,30 +2,45 @@ package com.jal.crawler.web.data.param;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by jal on 2017/2/19.
  */
 public class ComponentParam {
-    @NotNull
-    private String host;
+    private List<socket> components;
 
-    @Min(1)
-    private int port;
-
-    public String getHost() {
-        return host;
+    public List<socket> getComponents() {
+        return components;
     }
 
-    public void setHost(String host) {
-        this.host = host;
+    public void setComponents(List<socket> components) {
+        this.components = components;
     }
 
-    public int getPort() {
-        return port;
+    public static class socket {
+        @NotNull
+        private String host;
+
+        @Min(1)
+        private int port;
+
+        public String getHost() {
+            return host;
+        }
+
+        public void setHost(String host) {
+            this.host = host;
+        }
+
+        public int getPort() {
+            return port;
+        }
+
+        public void setPort(int port) {
+            this.port = port;
+        }
     }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
+
 }

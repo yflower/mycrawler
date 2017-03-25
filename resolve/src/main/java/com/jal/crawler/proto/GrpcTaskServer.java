@@ -1,6 +1,7 @@
 package com.jal.crawler.proto;
 
 import com.jal.crawler.context.ResolveContext;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.proto.resolve.ResolveTask;
 import com.jal.crawler.proto.resolve.ResolveTaskResponse;
 import com.jal.crawler.proto.resolve.RpcResolveTaskGrpc;
@@ -62,7 +63,7 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
     }
 
     private boolean isRun(ResolveContext context) {
-        return context.status() == 2;
+        return context.status() == StatusEnum.STARTED;
     }
 
     private void taskInit(ResolveTask resolveTask, Task task) {
@@ -71,6 +72,6 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
                 task.item(t.getItemName(),
                         t.getVarList().stream().map(
                                 var -> new Task.var(var.getName(), var.getQuery(), var.getOption(), var.getOptionValue())).collect(Collectors.toList())));
-        task.setStatus(1);
+        task.setStatus(StatusEnum.INIT);
     }
 }

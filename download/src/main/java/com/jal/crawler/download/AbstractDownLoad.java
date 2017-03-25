@@ -27,6 +27,13 @@ public abstract class AbstractDownLoad implements DownLoad {
         return this;
     }
 
+    public AbstractDownLoad reset(){
+        internalReset();
+        return this;
+    }
+
+
+
 
     @Override
     public Page downLoad(PageRequest pageRequest) {
@@ -95,6 +102,7 @@ public abstract class AbstractDownLoad implements DownLoad {
 
     protected abstract Map<String, List<String>> responseHeaders();
 
+    protected abstract void internalReset();
 
     public static abstract class AbstractBuilder {
 

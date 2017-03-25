@@ -1,8 +1,10 @@
 package com.jal.crawler.proto;
 
 import com.jal.crawler.context.DownLoadContext;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.proto.configComponnet.ConfigComponentStatus;
 import com.jal.crawler.proto.status.ComponentStatus;
+import com.jal.crawler.proto.status.ComponentType;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,12 @@ public class ComponentServer extends RpcComponentStatusGrpc.RpcComponentStatusIm
     public void rpcComponentStatus(ConfigComponentStatus request, StreamObserver<ComponentStatus> responseObserver) {
         //处理config tag
         ComponentStatus.Builder builder = ComponentStatus.newBuilder();
-        builder.setComponentStatus(ComponentStatus.Status.forNumber(downLoadContext.status()));
-        if (downLoadContext.status() == 2) {
+        builder.setComponentStatus(ComponentStatus.Status.forNumber(downLoadContext.status().getCode()));
+        builder.setComponentType(ComponentType.DOWNLOAD);
+        if (downLoadContext.status() == StatusEnum.STARTED) {
             builder.setTaskNum(downLoadContext.tasks().size());
             builder.putAllTasks(downLoadContext.tasks().stream()
-                    .collect(Collectors.toMap(t -> t.getTaskTag(), t -> ComponentStatus.Status.forNumber(t.getStatus()))));
+                    .collect(Collectors.toMap(t -> t.getTaskTag(), t -> ComponentStatus.Status.forNumber(t.getStatus().getCode()))));
         }
         responseObserver.onNext(builder.build());
         responseObserver.onCompleted();

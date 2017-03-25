@@ -5,10 +5,10 @@ import com.jal.crawler.web.convert.ComponentConvert;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
-import com.jal.crawler.web.data.model.ComponentConfigModel;
-import com.jal.crawler.web.data.model.ComponentModel;
-import com.jal.crawler.web.data.model.configModel.DownloadConfigModel;
-import com.jal.crawler.web.data.model.configModel.ResolveConfigModel;
+import com.jal.crawler.web.data.model.component.ComponentConfigModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.web.data.model.component.DownloadConfigModel;
+import com.jal.crawler.web.data.model.component.ResolveConfigModel;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
@@ -95,8 +95,6 @@ public class ComponentBiz {
 
 
     public void component(DownloadParam downloadParam) {
-
-
         downloadParam.getDownloads().forEach(t -> {
             ComponentModel componentModel = ComponentConvert.paramToModel(t);
             component(componentModel, () -> ComponentConvert.paramToModel(

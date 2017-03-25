@@ -1,6 +1,7 @@
 package com.jal.crawler.web.data.apiResponse;
 
 import com.jal.crawler.web.data.enums.ExceptionEnum;
+import com.jal.crawler.web.data.exception.BizException;
 
 /**
  * 返回api的统一格式
@@ -24,10 +25,19 @@ public class ApiResponse<T> {
     }
 
 
-    public static <T> ApiResponse failBuild(ExceptionEnum exceptionEnum, Exception exception) {
-        return new ApiResponse(exceptionEnum.getCode(), "exception:" + exceptionEnum.getMessage() + "," + exception.getMessage(), "");
+    public static <T> ApiResponse failBuild(ExceptionEnum exceptionEnum) {
+        return new ApiResponse(exceptionEnum.getCode(), "exception:" + exceptionEnum.getMessage(), "");
 
     }
+
+    public static <T> ApiResponse failBuild(Exception e) {
+        if (e instanceof BizException) {
+            return failBuild(((BizException) e).getExceptionEnum());
+        } else {
+            return failBuild(ExceptionEnum.UNKNOWN);
+        }
+    }
+
 
     public String getCode() {
         return code;

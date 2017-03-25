@@ -1,17 +1,14 @@
 package com.jal.crawler.web.convert;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.model.ComponentModel;
-import com.jal.crawler.web.data.model.configModel.DownloadConfigModel;
-import com.jal.crawler.web.data.model.configModel.ResolveConfigModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.web.data.model.component.DownloadConfigModel;
+import com.jal.crawler.web.data.model.component.ResolveConfigModel;
 import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
 import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by jal on 2017/2/25.
@@ -48,15 +45,15 @@ public class ComponentConvert {
 
 
     public static ComponentModel paramToModel(ComponentParam.socket componentParam) {
-        return new ComponentModel(componentParam.getHost(),componentParam.getPort());
+        return new ComponentModel(componentParam.getHost(), componentParam.getPort());
     }
 
     public static ComponentModel paramToModel(DownloadParam.downloadSocket downloadSocket) {
-        return new ComponentModel(downloadSocket.getHost(),downloadSocket.getPort());
+        return new ComponentModel(downloadSocket.getHost(), downloadSocket.getPort());
 
     }
 
     public static ComponentModel paramToModel(ResolveParam.resolveSocket resolveSocket) {
-        return new ComponentModel(resolveSocket.getHost(),resolveSocket.getPort());
+        return new ComponentModel(resolveSocket.getHost(), resolveSocket.getPort());
     }
 }

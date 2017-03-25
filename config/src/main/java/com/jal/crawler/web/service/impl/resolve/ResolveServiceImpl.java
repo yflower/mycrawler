@@ -2,15 +2,12 @@ package com.jal.crawler.web.service.impl.resolve;
 
 import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.proto.AbstractComponentClient;
-import com.jal.crawler.proto.ResolveClient;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.resolve.ResolveConfig;
 import com.jal.crawler.web.data.enums.StatusEnum;
-import com.jal.crawler.web.data.model.ComponentConfigModel;
-import com.jal.crawler.web.data.model.ComponentModel;
-import com.jal.crawler.web.data.model.configModel.ResolveConfigModel;
-import com.jal.crawler.web.data.view.ComponentVO;
-import com.jal.crawler.web.data.view.ResolveVO;
+import com.jal.crawler.web.data.model.component.ComponentConfigModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.web.data.model.component.ResolveConfigModel;
 import com.jal.crawler.web.service.IComponentService;
 import org.springframework.stereotype.Service;
 
@@ -26,30 +23,15 @@ public class ResolveServiceImpl implements IComponentService {
     private ConfigContext configContext;
 
 
-    public Optional<ComponentVO> status(ComponentModel componentModel) {
-        ResolveVO resolveStatus = new ResolveVO();
-        Optional<AbstractComponentClient> optional = configContext.getClients().getClient(componentModel);
-        if (optional.isPresent()) {
-            ResolveClient client = (ResolveClient) optional.get();
-            resolveStatus.setStatus(client.status().name());
-            resolveStatus.setAddress(client.address());
-            resolveStatus.setThread(client.showConfig().getThread());
-            resolveStatus.setTaskNum(client.showTask().size());
-            resolveStatus.setTasks(client.showTask());
-            return Optional.of(resolveStatus);
-        }
-        return Optional.empty();
-    }
-
     @Override
     public boolean component(ComponentModel componentModel) {
-        return configContext.getClients().getClient(componentModel).isPresent();
+        return configContext.getRpcClient().getClient(componentModel).isPresent();
     }
 
     @Override
     public boolean config(ComponentConfigModel componentConfigModel) {
         boolean result = false;
-        Optional<AbstractComponentClient> clientOptional = configContext.getClients().getClient(componentConfigModel);
+        Optional<AbstractComponentClient> clientOptional = configContext.getRpcClient().getClient(componentConfigModel);
         if (clientOptional.isPresent()) {
             result = resolveConfig(clientOptional.get(), (ResolveConfigModel) componentConfigModel);
         }

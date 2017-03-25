@@ -1,6 +1,7 @@
 package com.jal.crawler.proto;
 
 import com.jal.crawler.context.ResolveContext;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.persist.MongoPersist;
 import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
@@ -71,6 +72,6 @@ public class GrpcConfigServer extends RpcResolveConfigGrpc.RpcResolveConfigImplB
     }
 
     private boolean isRun(ResolveContext context) {
-        return context.status() == 2;
+        return context.status() == StatusEnum.STARTED;
     }
 }

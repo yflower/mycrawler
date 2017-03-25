@@ -2,17 +2,13 @@ package com.jal.crawler.web.service.impl.resolve;
 
 import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.proto.AbstractComponentClient;
-import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.resolve.ResolveTask;
-import com.jal.crawler.proto.task.TaskType;
-import com.jal.crawler.web.data.enums.ComponentEnum;
+import com.jal.crawler.web.convert.RpcEnumConvert;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
-import com.jal.crawler.web.data.enums.TaskOperationEnum;
 import com.jal.crawler.web.data.exception.BizException;
-import com.jal.crawler.web.data.model.ComponentModel;
-import com.jal.crawler.web.data.model.TaskOperationModel;
-import com.jal.crawler.web.data.model.taskOperation.DownloadOperationModel;
+import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.data.model.taskOperation.ResolveOperationModel;
+import com.jal.crawler.web.data.model.taskOperation.TaskOperationModel;
 import com.jal.crawler.web.data.view.TaskOperationVO;
 import com.jal.crawler.web.service.ITaskLoadService;
 import com.jal.crawler.web.service.ITaskService;
@@ -30,7 +26,7 @@ import java.util.stream.Collectors;
  */
 @Service("resolveTaskService")
 public class ResolveTaskServiceImpl implements ITaskService {
-    private static final Logger LOGGER= LoggerFactory.getLogger(ResolveTaskServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResolveTaskServiceImpl.class);
 
     @Resource
     private ConfigContext configContext;
@@ -42,7 +38,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
     @Override
     public TaskOperationVO push(TaskOperationModel taskOperationModel) {
         List<ComponentModel> componentModels = resolveTaskLoadService.balanceComponent();
-        LOGGER.info("push resolve task {}",componentModels);
+        LOGGER.info("push resolve task {}", componentModels);
         componentOp(componentModels, taskOperationModel);
         return null;
     }
@@ -71,7 +67,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
 
     private void componentOp(List<ComponentModel> componentModels, TaskOperationModel taskOperationModel) {
         componentModels.forEach(componentModel -> {
-            Optional<AbstractComponentClient> clientOptional = configContext.getClients().getClient(componentModel);
+            Optional<AbstractComponentClient> clientOptional = configContext.getRpcClient().getClient(componentModel);
             AbstractComponentClient abstractComponentClient = clientOptional
                     .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
             resolve(abstractComponentClient, taskOperationModel);
@@ -83,7 +79,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
         abstractComponentClient.pushTask(
                 ResolveTask.newBuilder()
                         .setTaskTag(model.getTaskTag())
-                        .setTaskType(this.enumToRpcEnum(model.getType()))
+                        .setTaskType(RpcEnumConvert.taskOperationType(model.getType()))
                         .addAllVar(
                                 model.getVars().stream()
                                         .map(t -> ResolveTask.Var.newBuilder()
@@ -121,21 +117,5 @@ public class ResolveTaskServiceImpl implements ITaskService {
 
     }
 
-    private TaskType enumToRpcEnum(TaskOperationEnum taskOperationEnum) {
-        switch (taskOperationEnum) {
-            case ADD:
-                return TaskType.ADD;
-            case DESTROY:
-                return TaskType.DESTROY;
-            case FINISH:
-                return TaskType.FINISH;
-            case STOP:
-                return TaskType.STOP;
-            case UPDATE:
-                return TaskType.UPDATE;
-            default:
-                return null;
-        }
-    }
 
 }

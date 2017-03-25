@@ -1,17 +1,18 @@
 package com.jal.crawler.web.service;
 
 import com.jal.crawler.web.data.exception.DBConfigException;
-import com.jal.crawler.web.data.param.MongoConfigParam;
-import com.jal.crawler.web.data.param.RedisConfigParam;
-import com.jal.crawler.web.data.view.DBConfigVO;
+import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
+import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 
 /**
  * Created by jal on 2017/2/18.
  */
 public interface IDBConfigService {
-    DBConfigVO showDBConfig();
+    MongoConfigModel mongo();
 
-    void mongoConfig(MongoConfigParam mongoConfigParam) throws DBConfigException;
+    RedisConfigModel redis();
 
-    void redisConfig(RedisConfigParam redisConfigParam) throws DBConfigException;
+    void mongoConfig(MongoConfigModel mongoConfigModel) throws DBConfigException;
+
+    void redisConfig(RedisConfigModel redisConfigModel) throws DBConfigException;
 }

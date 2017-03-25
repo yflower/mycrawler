@@ -14,8 +14,8 @@ public enum ComponentEnum {
     }
 
     public static ComponentEnum numberOf(int value) {
-        for(ComponentEnum componentEnum:ComponentEnum.values()){
-            if(value==componentEnum.getCode()){
+        for (ComponentEnum componentEnum : ComponentEnum.values()) {
+            if (value == componentEnum.getCode()) {
                 return componentEnum;
             }
         }
