@@ -3,6 +3,7 @@ package com.jal.crawler.proto;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.download.DownloadProcessor;
 import com.jal.crawler.download.DynamicDownload;
+import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.download.DownloadTaskResponse;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
@@ -59,7 +60,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                 } else {
                     //静态处理器
                 }
-                task.setStatus(1);
+                task.setStatus(StatusEnum.INIT);
                 downLoadContext.addTask(task);
                 logger.info("success to add download task {}", task.getTaskTag());
                 responseBuilder.setTaskTag(task.getTaskTag());
@@ -114,6 +115,6 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
     }
 
     private boolean isRun(DownLoadContext context) {
-        return context.status() == 2;
+        return context.status() == StatusEnum.STARTED;
     }
 }
