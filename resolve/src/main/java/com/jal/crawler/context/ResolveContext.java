@@ -62,7 +62,7 @@ public class ResolveContext {
     //context configure public method
     public void addTask(Task task) {
         this.tasks.add(task);
-        task.setStatus(StatusEnum.INIT);
+        task.setStatus(StatusEnum.STARTED);
         signalTask();
     }
 

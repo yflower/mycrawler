@@ -48,18 +48,12 @@ public class DownLoadContext {
     private AbstractDownLoad.AbstractBuilder dynamicBuilder;
     private RedisTemplate redisTemplate;
     private ThreadLocalRandom random;
-    /*
-         NO_INIT=0;
-        INIT=1;
-        STARTED=2;
-        STOPPED=3;
-        DESTORYED=4;
-     */
+
     private StatusEnum status=StatusEnum.NO_INIT;
 
     public boolean addTask(Task task) {
         tasks.add(task);
-        task.setStatus(StatusEnum.INIT);
+        task.setStatus(StatusEnum.STARTED);
         signalTask();
         return true;
     }
@@ -169,7 +163,7 @@ public class DownLoadContext {
         init();
         setStatus(StatusEnum.STARTED);
         for (int i = 0; i < thread; ++i) {
-
+            execute();
         }
 
     }
