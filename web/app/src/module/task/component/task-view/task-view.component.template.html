@@ -1,0 +1,21 @@
+<md-nav-bar
+        md-selected-nav-item="page2"
+        nav-bar-aria-label="navigation links"
+        md-no-ink-bar=false>
+    <md-nav-item md-nav-sref="goto('page1')" name="page1">
+        任务总览
+    </md-nav-item>
+    <md-nav-item md-nav-sref="taskList" name="taskList">
+        任务管理
+    </md-nav-item>
+    <md-nav-item md-nav-sref="taskInfo" name="taskInfo">
+        任务详细
+    </md-nav-item>
+    <md-nav-item md-nav-sref="taskPush" name="taskPush">
+        任务添加
+    </md-nav-item>
+</md-nav-bar>
+<md-content>
+    <ui-view ng-cloak></ui-view>
+</md-content>
+

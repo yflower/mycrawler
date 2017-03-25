@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.resolve";
+
+import "common/configCommon.proto";
+import "config/configComponent.proto";
+
+
+package grpc;
+
+service RpcResolveConfig {
+    rpc resolveConfig (ResolveConfig) returns (ConfigStatus);
+    rpc resolveConfigShow (ConfigComponentStatus) returns (ResolveConfig);
+
+}
+
+message ResolveConfig {
+    int32 thread = 1;
+    enum Persist {
+        MONGO = 0;
+        CONSOLE = 1;
+    }
+    Persist persist = 2;
+    MongoConfig mongo_config = 3;
+    RedisConfig redis_config = 4;
+
+
+    message MongoConfig {
+        string host = 1;
+        int32 port = 2;
+        string user = 3;
+        string password = 4;
+        string database = 5;
+    }
+}
+

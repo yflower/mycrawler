@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.download";
+
+import "common/configCommon.proto";
+import "config/configComponent.proto";
+
+
+package grpc;
+
+service RpcDownlandConfig {
+    rpc downloadConfig (DownloadConfig) returns (ConfigStatus);
+    rpc downloadConfigShow (ConfigComponentStatus) returns (DownloadConfig);
+
+}
+
+message DownloadConfig {
+    int32 thread = 1;
+    int32 sleep_time = 2;
+    enum Persist {
+        REDIS = 0;
+        CONSOLE = 1;
+    }
+    Persist persist = 3;
+    RedisConfig redis_config = 4;
+    bool proxy = 5;
+    repeated string proxy_address = 6;
+}
+

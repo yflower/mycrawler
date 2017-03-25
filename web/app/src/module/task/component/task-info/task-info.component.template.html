@@ -1,0 +1,176 @@
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>任务总览</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-card-content flex layout="row">
+        <md-list flex="35">
+            <md-list-item class="secondary-button-padding">
+                <md-icon md-svg-icon="time" flex="10"></md-icon>
+                <h4 flex>总运行时间:4 天</h4>
+            </md-list-item>
+            <md-list-item>
+                <md-icon md-svg-icon="time" flex="10"></md-icon>
+                <h4 flex>开始时间:2017-3-11</h4>
+            </md-list-item>
+            <md-list-item>
+                <md-icon md-svg-icon="time" flex="10"></md-icon>
+                <h4 flex>结束时间:2017-3-23</h4>
+            </md-list-item>
+        </md-list>
+
+        <md-list flex="35">
+            <md-list-item class="secondary-button-padding">
+                <md-icon md-svg-icon="time" flex="10"></md-icon>
+                <h4 flex>总获取数据行数:4 天</h4>
+            </md-list-item>
+            <md-list-item>
+                <md-icon md-svg-icon="time" flex="10"></md-icon>
+                <h4 flex>今日获取数据行数:32</h4>
+            </md-list-item>
+            <md-list-item>
+                <md-icon md-svg-icon="time" flex="10"></md-icon>
+                <h4 flex>昨日获取数据行数:232</h4>
+            </md-list-item>
+        </md-list>
+
+
+        <form layout="column" flex-offset="10" ng-cloak>
+            <md-switch ng-model="data.cb1" aria-label="Switch 1">
+                暂停
+            </md-switch>
+            <md-switch ng-model="data.cb1" aria-label="Switch 1">
+                结束
+            </md-switch>
+            <md-switch ng-model="data.cb2">
+                毁灭
+            </md-switch>
+        </form>
+
+    </md-card-content>
+</md-card>
+
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>数据统计</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-card-content flex layout="row">
+        <div id="main" style="width: 800px;height:400px" flex>
+        </div>
+    </md-card-content>
+</md-card>
+
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>任务配置详细</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-card-title>
+        <md-card-title-text>
+            <!--<span class="md-headline">添加链接</span>-->
+            <span class="md-subhead">task config</span>
+        </md-card-title-text>
+    </md-card-title>
+    <!--<md-subheader class="md-primary">添加链接</md-subheader>-->
+    <md-card-content layout-padding flex>
+        <form layout="column" flex>
+            <md-subheader class="md-no-sticky">链接</md-subheader>
+            <md-input-container flex="100">
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>url</label>
+                <input ng-model="user.title" flex="60" value="http://www.baidu.com" disabled>
+            </md-input-container>
+            <md-input-container flex="100">
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>url</label>
+                <input ng-model="user.title" flex="60" disabled>
+            </md-input-container>
+            <md-divider></md-divider>
+        </form>
+
+        <md-list ng-cloak>
+            <md-subheader class="md-no-sticky">处理流程</md-subheader>
+            <md-list-item class="secondary-button-padding">
+                <p>前置处理-->点击元素:</p>
+            </md-list-item>
+            <md-list-item class="secondary-button-padding" ng-click="doPrimaryAction($event)">
+                <p>前置处理-->{}元素输入{}</p>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+
+        <md-list ng-cloak>
+            <md-subheader class="md-no-sticky">解析数据</md-subheader>
+
+            <md-list-item class="secondary-button-padding">
+                <div class="md-list-item-text" flex="80">
+                    <h3>{</h3>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>name:name</h4>
+                    </div>
+
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>query:.item</h4>
+                    </div>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>option:attr</h4>
+                    </div>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>option-value:color</h4>
+                    </div>
+                    <h3>}</h3>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+    </md-card-content>
+</md-card>
+
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>数据列表</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <!--<md-subheader class="md-primary">添加链接</md-subheader>-->
+    <md-card-content layout-padding flex>
+        <md-list ng-cloak>
+            <md-list-item class="secondary-button-padding">
+                <div class="md-list-item-text" flex="80">
+                    <h3>{</h3>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>name:name</h4>
+                    </div>
+
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>value:fdsfd</h4>
+                    </div>
+                    <h3>}</h3>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+    </md-card-content>
+</md-card>

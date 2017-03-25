@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.status";
+
+import "config/configComponent.proto";
+
+
+service RpcComponentStatus {
+    rpc rpcComponentStatus (ConfigComponentStatus) returns (ComponentStatus);
+}
+
+message ComponentStatus {
+    ComponentType componentType = 4;
+    Status component_status = 1;
+    int32 taskNum = 2;
+    map<string, Status> tasks = 3;
+    enum Status {
+        NO_INIT = 0;
+        INIT = 1;
+        STARTED = 2;
+        STOPPED = 3;
+        FINISHED = 4;
+        DESTROYED = 5;
+    }
+}
+
+enum ComponentType {
+    DOWNLOAD = 0;
+    RESOLVE = 1;
+}

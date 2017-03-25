@@ -2,128 +2,286 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05aeb0c9-3536-439d-9b03-8bfebc7222ea" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/context/ConfigContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/adapter/DBConfigAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/adapter/DownloadAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/adapter/ResolveAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/CommonDBController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/apiResponse/ApiResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/ComponentStatusEnum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/ExceptionEnum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/AddressNotFound.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/ComponentNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/ParamErrorException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/ComponentModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/DownloadConfigModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/MongoConfigModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/RedisConfigModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/ResolveConfigModel.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/ComponentParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/DownloadConfigParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/MongoConfigParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/RedisConfigParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/ResolveConfigParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/DBConfigVO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IDBConfigService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IDownloadService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IResolveService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/DBConfigServiceImpl.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/Test.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/ComponentClient$componentStatus.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/ComponentClient$internalTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/ComponentClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/Test.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/VO/ComponentVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/VO/DownloadVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/VO/ResolveVO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/DownloadService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/ResolveService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task$query.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/ComponentClient.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/AbstractComponentClient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/VO/ComponentVO.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/ComponentVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/VO/DownloadVO.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/DownloadVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/VO/ResolveVO.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/ResolveVO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/DownloadService.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/DownloadServiceImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/ResolveService.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/ResolveServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/ConfigApplication.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/ConfigApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/Clients.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/Clients.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/DownloadClient.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/DownloadClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/ResolveClient.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/ResolveClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/DownloadController$1.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/DownloadController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/DownloadController.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/DownloadController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/ResolveController.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/ResolveController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/DownloadApplication.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/DownloadApplication.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/biz/ComponentBiz.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/biz/DBBiz.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/biz/TaskBiz.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/ComponentController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/TaskController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/convert/ComponentConvert.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/convert/TaskOperationConvert.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/ComponentEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/StatusEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/TaskLoadTypeEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/TaskOperationEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/TaskOperationVOEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/BizException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/ComponentConfigModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/TaskOperationModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/taskOperation/DownloadOperationModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/taskOperation/ResolveOperationModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/TaskPushParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/TaskOperationVO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IComponentService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IComponentStatService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/ITaskLoadService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/ITaskService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/ComponentStatServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/download/DownloadServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/download/DownloadTaskLoadServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/download/DownloadTaskServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/resolve/ResolveServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/resolve/ResolveTaskLoadServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/resolve/ResolveTaskServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/enums/StatusEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/enums/StatusEnum.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/adapter/DownloadAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/adapter/ResolveAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/DownloadController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/ResolveController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/ComponentStatusEnum.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/AddressNotFound.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/ComponentNotFoundException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/DBConfigException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IDownloadService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IResolveService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/DownloadServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/ResolveServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/ConfigApplication.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/context/ConfigContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/AbstractComponentClient$componentStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/AbstractComponentClient$internalTask.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/AbstractComponentClient.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/Clients.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/DownloadClient.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/ResolveClient.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/config/ConfigCommon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/config/ConfigCommon.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/configComponnet/ConfigComponent$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/configComponnet/ConfigComponent.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/configComponnet/ConfigComponentStatus$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/configComponnet/ConfigComponentStatus$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfig$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfig$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfig$Persist$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfig$Persist.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfigOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfigOuterClass$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadConfigOuterClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$Processor$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$Processor$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$Processor$Type$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$Processor$Type.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$Processor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask$ProcessorOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTask.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskOuterClass$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskOuterClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskResponse$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskResponse$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskResponse.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/DownloadTaskResponseOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc$MethodHandlers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc$RpcDownlandConfigBlockingStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc$RpcDownlandConfigFutureStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc$RpcDownlandConfigImplBase.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc$RpcDownlandConfigStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownlandConfigGrpc.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc$MethodHandlers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc$RpcDownloadTaskBlockingStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc$RpcDownloadTaskFutureStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc$RpcDownloadTaskImplBase.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc$RpcDownloadTaskStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/download/RpcDownloadTaskGrpc.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveConfigOuterClass$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveTaskOuterClass$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveTaskResponse$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveTaskResponse$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveTaskResponse.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc$MethodHandlers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc$RpcResolveConfigBlockingStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc$RpcResolveConfigFutureStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc$RpcResolveConfigImplBase.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc$RpcResolveConfigStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc$MethodHandlers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc$RpcResolveTaskBlockingStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc$RpcResolveTaskFutureStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc$RpcResolveTaskImplBase.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc$RpcResolveTaskStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/Component$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/Component.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatus$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatus$Builder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatus$TasksDefaultEntryHolder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/ComponentStatusOrBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc$MethodHandlers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc$RpcComponentStatusBlockingStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc$RpcComponentStatusFutureStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc$RpcComponentStatusImplBase.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc$RpcComponentStatusStub.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/status/RpcComponentStatusGrpc.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/task/Task$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/proto/task/Task.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/adapter/DBConfigAdapter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/adapter/DownloadAdapter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/adapter/ResolveAdapter.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/CommonDBController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/DownloadController$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/DownloadController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/controller/ResolveController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/apiResponse/ApiResponse.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/enums/ComponentStatusEnum.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/exception/AddressNotFound.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/exception/ComponentNotFoundException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/exception/DBConfigException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/model/DownloadConfigModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/model/MongoConfigModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/model/RedisConfigModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/model/ResolveConfigModel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/param/DownloadConfigParam.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/param/ResolveConfigParam.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/view/ResolveVO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/IDownloadService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/IResolveService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/impl/DBConfigServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/impl/DownloadServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/impl/ResolveServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../config/target/test-classes/com/jal/crawler/ConfigApplicationTests.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/adapter/DBConfigAdapter.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/convert/DBConfigConvert.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/DownloadConfigModel.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/configModel/DownloadConfigModel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/MongoConfigModel.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/dbModel/MongoConfigModel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/RedisConfigModel.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/dbModel/RedisConfigModel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/ResolveConfigModel.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/configModel/ResolveConfigModel.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/DownloadConfigParam.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/DownloadParam.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/ResolveConfigParam.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/ResolveParam.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/common/component.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/configCommon.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/common/configCommon.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/configComponent.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/config/configComponent.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/downloadConfig.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/download/downloadConfig.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/downloadTask.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/download/downloadTask.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/resolveConfig.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/resolve/resolveConfig.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/resolve/resolveTask.proto" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../config/src/main/proto/task.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/common/task.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/enums/ExceptionEnum.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/enums/ExceptionEnum.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/exception/ParamErrorException.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/exception/ParamErrorException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/model/ComponentModel.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/model/ComponentModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/param/ComponentParam.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/data/param/ComponentParam.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/IDBConfigService.class" afterPath="$PROJECT_DIR$/../config/target/classes/com/jal/crawler/web/service/IDBConfigService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/context/DownLoadContext.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/context/DownLoadContext.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad$AbstractBuilder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad$AbstractBuilder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/AbstractDownLoad.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/page/RedisPagePersist.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/page/RedisPagePersist.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/OkHttpDownLoad$Builder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/OkHttpDownLoad$Builder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/OkHttpDownLoad.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/OkHttpDownLoad.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/SeleniumDownload$Builder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/SeleniumDownload$Builder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/SeleniumDownload.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/download/SeleniumDownload.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/ComponentServer.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/ComponentServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/DownloadTaskServer$1.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/DownloadTaskServer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/DownloadTaskServer.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/DownloadTaskServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/Component$1.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/Component$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/Component.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/Component.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$1.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Builder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Builder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status$1.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/request/PageRequest.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/request/PageRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$TasksDefaultEntryHolder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus$TasksDefaultEntryHolder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatusOrBuilder.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/proto/status/ComponentStatusOrBuilder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/task/Task.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/task/Task.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/url/RedisPageUrlFactory.class" afterPath="$PROJECT_DIR$/../download/target/classes/com/jal/crawler/url/RedisPageUrlFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/ResolveApplication.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/ResolveApplication.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/Test.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/Test.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/context/ResolveContext.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/context/ResolveContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/page/RedisPageFetch.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/page/RedisPageFetch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/parse/selector/CssSelector.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/parse/selector/CssSelector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/parse/tag/HtmlTag.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/parse/tag/HtmlTag.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/persist/ConsolePersist.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/persist/ConsolePersist.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/persist/MongoPersist.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/persist/MongoPersist.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/GrpcComponentServer.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/GrpcComponentServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/GrpcConfigServer.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/GrpcConfigServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/GrpcTaskServer.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/GrpcTaskServer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/Component$1.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/Component$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/Component.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/Component.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$1.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$Builder.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$Builder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status$1.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$Status.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task$item.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task$item.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task$var.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task$var.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$TasksDefaultEntryHolder.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus$TasksDefaultEntryHolder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatusOrBuilder.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/proto/status/ComponentStatusOrBuilder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task.class" afterPath="$PROJECT_DIR$/target/classes/com/jal/crawler/task/Task.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../config/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/config.iml" afterPath="$PROJECT_DIR$/../config/config.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/pom.xml" afterPath="$PROJECT_DIR$/../config/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/ConfigApplication.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/ConfigApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/context/ConfigContext.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/context/ConfigContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/AbstractComponentClient.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/AbstractComponentClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/Clients.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/Clients.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/DownloadClient.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/DownloadClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/ResolveClient.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/proto/ResolveClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/DownloadController.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/DownloadController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/ResolveController.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/ResolveController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/component.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/../config/src/main/proto/resolveTask.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/any.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/api.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/compiler/plugin.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/descriptor.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/duration.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/empty.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/field_mask.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/source_context.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/struct.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/timestamp.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/type.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/0555569b950b678c515506a82447d483/google/protobuf/wrappers.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/CommonDBController.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/controller/CommonDBController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/apiResponse/ApiResponse.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/apiResponse/ApiResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/ExceptionEnum.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/enums/ExceptionEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/ParamErrorException.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/exception/ParamErrorException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/ComponentModel.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/model/ComponentModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/ComponentParam.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/param/ComponentParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/ResolveVO.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/data/view/ResolveVO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IDBConfigService.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/IDBConfigService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/DBConfigServiceImpl.java" afterPath="$PROJECT_DIR$/../config/src/main/java/com/jal/crawler/web/service/impl/DBConfigServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/../config/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/classes/application.properties" afterPath="$PROJECT_DIR$/../config/target/classes/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownlandConfigGrpc.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownlandConfigGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownloadTaskGrpc.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/download/RpcDownloadTaskGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfig.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOuterClass.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadConfigOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTask.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOuterClass.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponse.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponseOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/download/DownloadTaskResponseOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfig.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTask.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponse.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" afterPath="$PROJECT_DIR$/../config/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" />
@@ -137,70 +295,39 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" afterPath="$PROJECT_DIR$/../config/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../download/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/pom.xml" afterPath="$PROJECT_DIR$/../download/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/DownloadApplication.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/DownloadApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/context/DownLoadContext.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/context/DownLoadContext.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/AbstractDownLoad.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/AbstractDownLoad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownLoad.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownLoad.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownloadProcessor.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DownloadProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DynamicDownload.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/DynamicDownload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/OkHttpDownLoad.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/OkHttpDownLoad.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/SeleniumDownload.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/download/SeleniumDownload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/Page.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/Page.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/PagePersist.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/PagePersist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/RedisPagePersist.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/page/RedisPagePersist.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/proto/ComponentServer.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/proto/ComponentServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageRequest.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageResponseCode.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/request/PageResponseCode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/proto/DownloadTaskServer.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/proto/DownloadTaskServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/task/Task.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/task/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/AbstractPageUrlFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/url/RedisPageUrlFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/component.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/configCommon.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/configCommon.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/downloadConfig.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/downloadConfig.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/downloadTask.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/downloadTask.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/task.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/task.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" afterPath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/../download/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/descriptor.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/duration.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/empty.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/field_mask.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/source_context.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/struct.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/timestamp.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/type.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" afterPath="$PROJECT_DIR$/../download/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/wrappers.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/ResolveApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/ResolveApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/Test.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPageFetch.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPageFetch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/selector/CssSelector.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/selector/CssSelector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/HtmlTag.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/HtmlTag.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcConfigServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcConfigServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java" afterPath="$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/src/main/proto/component.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/proto/resolveTask.proto" afterPath="$PROJECT_DIR$/src/main/proto/resolveTask.proto" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigShowGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigShowGrpc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveTaskGrpc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/status/RpcComponentStatusGrpc.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigCommon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/ConfigStatusOrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/config/RedisConfigOrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/configComponnet/ConfigComponentStatusOrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfig.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveConfigOuterClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTask.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskOuterClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponse.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/resolve/ResolveTaskResponseOrBuilder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/Component.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatus.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/status/ComponentStatusOrBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/OPStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/jal/crawler/proto/task/TaskType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/any.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/api.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" afterPath="$PROJECT_DIR$/target/protoc-dependencies/8497809fde5bf95387fa226522e6e5a5/google/protobuf/compiler/plugin.proto" />
@@ -227,7 +354,71 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="component.proto" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/component.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResolveContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="179" column="44" lean-forward="false" selection-start-line="179" selection-start-column="44" selection-end-line="179" selection-end-column="44" />
+              <folding>
+                <element signature="e#6108#6109#0" expanded="true" />
+                <element signature="e#6137#6138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/ArrayList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="457" column="0" lean-forward="false" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GrpcTaskServer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedisPageFetch.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPageFetch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="28" column="71" lean-forward="true" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResolveApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/ResolveApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -250,14 +441,17 @@
         <option value="$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.5.RELEASE/spring-core-4.3.5.RELEASE.jar!/org/springframework/util/StringUtils.class" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/Test.java" />
         <option value="$PROJECT_DIR$/src/main/proto/resolveTask.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/NodeTag.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/ConsolePersist.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/component.proto" />
         <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/ResolveApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/component.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcConfigServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPageFetch.java" />
       </list>
     </option>
   </component>
@@ -572,14 +766,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="page" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resolve" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="crawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="context" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -589,6 +813,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="SearchEverywhereHistoryKey" value="Files&#9;PSI&#9;JAVA://java.nio.file.Files&#10;HashM&#9;PSI&#9;JAVA://java.util.HashMap&#10;collectors&#9;PSI&#9;JAVA://java.util.stream.Collectors" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jal.crawler.enums" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ResoveApplication">
     <configuration default="false" name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -949,6 +1180,9 @@
       </MavenSettings>
       <method />
     </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1005,6 +1239,19 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
@@ -1126,46 +1373,50 @@
       <workItem from="1487252223576" duration="617000" />
       <workItem from="1487407504365" duration="683000" />
       <workItem from="1487479374915" duration="5003000" />
+      <workItem from="1487986388060" duration="8599000" />
+      <workItem from="1489417720649" duration="900000" />
+      <workItem from="1489672551307" duration="606000" />
+      <workItem from="1489909452979" duration="17392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27797000" />
+    <option name="totallyTimeSpent" value="55294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1918" height="1028" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32851985" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32851985" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29229936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39969373" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21736842" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39951864" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1211,12 +1462,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java</url>
-          <line>51</line>
+          <line>52</line>
           <properties />
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPageFetch.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1225,177 +1482,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/ConsolePersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2583">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#686#687#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#3354#3355#0" expanded="false" />
-            <element signature="e#3383#3384#0" expanded="false" />
-            <element signature="e#3424#3425#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/ConsolePersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2583">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#686#687#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#3354#3355#0" expanded="false" />
-            <element signature="e#3383#3384#0" expanded="false" />
-            <element signature="e#3424#3425#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/ConsolePersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2583">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#686#687#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#3354#3355#0" expanded="false" />
-            <element signature="e#3383#3384#0" expanded="false" />
-            <element signature="e#3424#3425#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1638">
-          <caret line="78" column="54" lean-forward="false" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#686#687#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#3354#3355#0" expanded="false" />
-            <element signature="e#3383#3384#0" expanded="false" />
-            <element signature="e#3424#3425#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/NodeTag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#288#289#0" expanded="false" />
-            <element signature="e#326#327#0" expanded="false" />
-            <element signature="e#379#380#0" expanded="false" />
-            <element signature="e#436#437#0" expanded="false" />
-            <element signature="e#498#499#0" expanded="false" />
-            <element signature="e#555#556#0" expanded="false" />
-            <element signature="e#605#606#0" expanded="false" />
-            <element signature="e#664#665#0" expanded="false" />
-            <element signature="e#724#725#0" expanded="false" />
-            <element signature="e#787#788#0" expanded="false" />
-            <element signature="e#840#841#0" expanded="false" />
-            <element signature="e#881#882#0" expanded="false" />
-            <element signature="e#923#924#0" expanded="false" />
-            <element signature="e#960#961#0" expanded="false" />
-            <element signature="e#1006#1007#0" expanded="false" />
-            <element signature="e#1048#1049#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/selector/CssSelector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -1409,12 +1495,6 @@
           <caret line="117" column="21" lean-forward="false" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#4894#4895#0" expanded="false" />
-            <element signature="e#4930#4931#0" expanded="false" />
-            <element signature="e#4970#4971#0" expanded="false" />
-            <element signature="e#4999#5000#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5060#5061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1423,11 +1503,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2816#2817#0" expanded="false" />
-            <element signature="e#2860#2861#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1436,15 +1512,12 @@
         <state relative-caret-position="1638">
           <caret line="78" column="54" lean-forward="true" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#686#687#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#3354#3355#0" expanded="false" />
-            <element signature="e#3383#3384#0" expanded="false" />
-            <element signature="e#3424#3425#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
+            <element signature="e#3409#3410#0" expanded="false" />
+            <element signature="e#3438#3439#0" expanded="false" />
+            <element signature="e#3486#3487#0" expanded="false" />
+            <element signature="e#3522#3523#0" expanded="false" />
+            <element signature="e#4261#4262#0" expanded="false" />
+            <element signature="e#4302#4303#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1498,12 +1571,6 @@
           <caret line="117" column="21" lean-forward="true" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#4894#4895#0" expanded="false" />
-            <element signature="e#4930#4931#0" expanded="false" />
-            <element signature="e#4970#4971#0" expanded="false" />
-            <element signature="e#4999#5000#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5060#5061#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1512,11 +1579,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2816#2817#0" expanded="false" />
-            <element signature="e#2860#2861#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1574,6 +1637,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/java/jdk1.8.0_121/src.zip!/java/util/Map.java" />
+    <entry file="jar://C:/Program Files/java/jdk1.8.0_121/src.zip!/java/util/HashMap.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/nio/file/Files.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11571">
+          <caret line="89" column="19" lean-forward="false" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/ConsolePersist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="e#226#227#0" expanded="false" />
+            <element signature="e#265#266#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/HtmlTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/Tag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/parse/tag/NodeTag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -1600,113 +1716,181 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/java/jdk1.8.0_121/src.zip!/java/util/Map.java" />
-    <entry file="jar://C:/Program Files/java/jdk1.8.0_121/src.zip!/java/util/HashMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/enums/StatusEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2163">
-          <caret line="117" column="21" lean-forward="false" selection-start-line="117" selection-start-column="21" selection-end-line="117" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4894#4895#0" expanded="false" />
-            <element signature="e#4930#4931#0" expanded="false" />
-            <element signature="e#4970#4971#0" expanded="false" />
-            <element signature="e#4999#5000#0" expanded="false" />
-            <element signature="e#5032#5033#0" expanded="false" />
-            <element signature="e#5060#5061#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-stub/1.0.3/grpc-stub-1.0.3.jar!/io/grpc/stub/ServerCalls.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="155">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/nio/file/Files.java">
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/jal/crawler/proto/resolve/RpcResolveConfigGrpc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11571">
-          <caret line="89" column="19" lean-forward="false" selection-start-line="89" selection-start-column="19" selection-end-line="89" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/MongoPersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2583">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#686#687#0" expanded="false" />
-            <element signature="e#715#716#0" expanded="false" />
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#3354#3355#0" expanded="false" />
-            <element signature="e#3383#3384#0" expanded="false" />
-            <element signature="e#3424#3425#0" expanded="false" />
-            <element signature="e#3460#3461#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/persist/ConsolePersist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="e#226#227#0" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/component.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="155">
+          <caret line="235" column="0" lean-forward="false" selection-start-line="235" selection-start-column="0" selection-end-line="235" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcConfigServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="369">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/ResolveApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+        <state relative-caret-position="289">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="753" column="0" lean-forward="false" selection-start-line="753" selection-start-column="0" selection-end-line="753" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="617" column="0" lean-forward="false" selection-start-line="617" selection-start-column="0" selection-end-line="617" selection-end-column="0" />
+          <folding>
+            <element signature="e#25063#25064#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/concurrent/FutureTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="267" column="0" lean-forward="false" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/task/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+          <folding>
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1011#1012#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcComponentServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/component.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="457" column="0" lean-forward="false" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="354" column="23" lean-forward="false" selection-start-line="354" selection-start-column="23" selection-end-line="354" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="501" column="0" lean-forward="false" selection-start-line="501" selection-start-column="0" selection-end-line="501" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-core/1.0.3/grpc-core-1.0.3-sources.jar!/io/grpc/internal/ServerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/proto/GrpcTaskServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/concurrent/ThreadLocalRandom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5558">
+          <caret line="336" column="15" lean-forward="false" selection-start-line="336" selection-start-column="15" selection-end-line="336" selection-end-column="15" />
+          <folding>
+            <element signature="e#12065#12066#0" expanded="false" />
+            <element signature="e#12105#12106#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/2.8.2/jedis-2.8.2.jar!/redis/clients/jedis/Connection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/context/ResolveContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="179" column="44" lean-forward="false" selection-start-line="179" selection-start-column="44" selection-end-line="179" selection-end-column="44" />
+          <folding>
+            <element signature="e#6108#6109#0" expanded="true" />
+            <element signature="e#6137#6138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/1.7.6.RELEASE/spring-data-redis-1.7.6.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-455">
+          <caret line="80" column="13" lean-forward="false" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jal/crawler/page/RedisPageFetch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="28" column="71" lean-forward="true" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
           <folding />
         </state>
       </provider>
