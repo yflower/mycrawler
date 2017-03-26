@@ -58,10 +58,10 @@ public class DownloadConfigServer extends RpcDownlandConfigGrpc.RpcDownlandConfi
         try {
             downLoadContext.run();
             builder.setInit(true);
-            logger.info("start download component {}", request);
+            logger.info("start download component \n {}", request);
         } catch (Exception ex) {
             builder.setInit(false);
-            logger.info("fail to start download component {}", request);
+            logger.info("fail to start download component \n {}", request);
         }
         this.config = request;
         responseObserver.onNext(builder.build());

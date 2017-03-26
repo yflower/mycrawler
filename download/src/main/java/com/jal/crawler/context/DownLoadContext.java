@@ -3,6 +3,7 @@ package com.jal.crawler.context;
 import com.jal.crawler.download.AbstractDownLoad;
 import com.jal.crawler.download.OkHttpDownLoad;
 import com.jal.crawler.download.SeleniumDownload;
+import com.jal.crawler.enums.CycleEnum;
 import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PagePersist;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -54,6 +56,7 @@ public class DownLoadContext {
     public boolean addTask(Task task) {
         tasks.add(task);
         task.setStatus(StatusEnum.STARTED);
+        task.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.STARTED);
         signalTask();
         return true;
     }
@@ -63,6 +66,7 @@ public class DownLoadContext {
         Task innerTask = getTaskByTag(taskTag);
         if (innerTask != null && innerTask.getStatus() == StatusEnum.STARTED) {
             innerTask.setStatus(StatusEnum.STOPPED);
+            innerTask.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.STOPPED);
             return true;
         } else {
             return false;
@@ -73,6 +77,8 @@ public class DownLoadContext {
         Task innerTask = getTaskByTag(taskTag);
         if (innerTask != null && StatusEnum.isStart(innerTask.getStatus())) {
             innerTask.setStatus(StatusEnum.FINISHED);
+            innerTask.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.FINISHED);
+            innerTask.getTaskStatistics().setEndTime(LocalDateTime.now());
             return true;
         } else {
             return false;
@@ -83,6 +89,8 @@ public class DownLoadContext {
         Task innerTask = getTaskByTag(taskTag);
         if (innerTask != null) {
             innerTask.setStatus(StatusEnum.DESTROYED);
+            innerTask.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.DESTROYED);
+            innerTask.getTaskStatistics().setEndTime(LocalDateTime.now());
             return true;
         } else {
             return false;
@@ -128,7 +136,7 @@ public class DownLoadContext {
         List<Task> testList = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED)
                 .filter(Task::isTest)
                 .collect(Collectors.toList());
-        if(!testList.isEmpty()){
+        if (!testList.isEmpty()) {
             return testList.get(Math.abs(random.nextInt() % testList.size()));
         }
 
@@ -182,27 +190,52 @@ public class DownLoadContext {
             AbstractDownLoad dynamicDownLoad = dynamicBuilder.build();
             random = ThreadLocalRandom.current();
             Task task;
-            String url = null;
+            String url;
             try {
                 while ((task = randomRunnableTask()) != null) {
+                    task.getTaskStatistics().getUrlTotalCycle().accumulate(1);
+                    taskCycleCheck(task);
                     if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) task.urlsInit(abstractPageUrlFactory);
                     if ((url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) == null) {
+                        task.getTaskStatistics().getUrlNotFoundCycle().accumulate(1);
                         continue;
                     }
+                    task.getTaskStatistics().getUrlFoundCycle().accumulate(1);
                     AbstractDownLoad downLoad = task.isDynamic() ? dynamicDownLoad : staticDownLoad;
                     downLoad.setPreProcessor(task.getPreProcessor());
                     downLoad.setPostProcessor(task.getPostProcessor());
                     downLoad.init();
-                    while (task.getStatus() == StatusEnum.STARTED && url != null) {
+                    while (task.getStatus() == StatusEnum.STARTED) {
                         String finalUrl = url;
-                        Page page = downLoad.downLoad(new PageRequest(finalUrl));
-                        if (!downLoad.isSkip()) {
-                            pagePersist.persist(task.getTaskTag(), page);
-                            logger.info("persist page");
+                        try {
+                            Page page = downLoad.downLoad(new PageRequest(finalUrl));
+                            task.getTaskStatistics().getDownloadSuccessCycle().accumulate(1);
+                            if (!downLoad.isSkip()) {
+                                try {
+                                    pagePersist.persist(task.getTaskTag(), page);
+                                    logger.info("persist page");
+                                    task.getTaskStatistics().getPersistSuccessCycle().accumulate(1);
+                                } catch (Exception e) {
+                                    task.getTaskStatistics().getPersistErrorCycle().accumulate(1);
+                                } finally {
+                                    task.getTaskStatistics().getPersistTotalCycle().accumulate(1);
+                                }
+                            }
+                            downLoad.setSkip(false);
+                        } catch (Exception e) {
+                            task.getTaskStatistics().getDownloadErrorCycle().accumulate(1);
+                        } finally {
+                            task.getTaskStatistics().getDownloadTotalCycle().accumulate(1);
                         }
-                        downLoad.setSkip(false);
                         sleep();
                         url = abstractPageUrlFactory.fetchUrl(task.getTaskTag());
+                        if (url == null) {
+                            task.getTaskStatistics().getUrlNotFoundCycle().accumulate(1);
+                            task.getTaskStatistics().getUrlTotalCycle().accumulate(1);
+                            break;
+                        } else {
+                            task.getTaskStatistics().getUrlFoundCycle().accumulate(1);
+                        }
                     }
                     dynamicDownLoad.reset();
                     staticDownLoad.reset();
@@ -216,6 +249,18 @@ public class DownLoadContext {
             }
 
         });
+    }
+
+    private void taskCycleCheck(Task task) {
+        if(task.isTest()&&task.getTaskStatistics().getUrlTotalCycle().get()> CycleEnum.TEST_URL.getCycle()){
+            destroyTask(task.getTaskTag());
+        }
+        if(task.getTaskStatistics().getUrlNotFoundCycle().get()>CycleEnum.URL_NOT_FOUND.getCycle()){
+            finishTask(task.getTaskTag());
+        }
+        if( task.getTaskStatistics().getDownloadErrorCycle().get()>CycleEnum.PAGE_DOWN_ERROR.getCycle()){
+            stopTask(task.getTaskTag());
+        }
     }
 
     private void init() {

@@ -10,12 +10,14 @@ import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
 import com.jal.crawler.proto.task.OPStatus;
 import com.jal.crawler.proto.task.TaskType;
 import com.jal.crawler.task.Task;
+import com.jal.crawler.task.TaskStatistics;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +43,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                 task.setTaskTag(request.getTaskTag());
                 task.setDynamic(request.getDynamic());
                 task.setTest(request.getTest());
+                task.setTaskStatistics(new TaskStatistics());
                 task.setStartUrls(new HashSet<>(request.getStartUrlList()));
                 //目前只有动态的processor
                 if (request.getDynamic()) {
@@ -62,6 +65,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                     //静态处理器
                 }
                 task.setStatus(StatusEnum.INIT);
+                task.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.INIT);
                 downLoadContext.addTask(task);
                 logger.info("success to add download task {}", task.getTaskTag());
                 responseBuilder.setTaskTag(task.getTaskTag());

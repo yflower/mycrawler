@@ -26,10 +26,13 @@ public class Task {
 
     private List<item> items;
 
+    private TaskStatistics taskStatistics;
+
     public Task(String taskTag) {
         this.taskTag = taskTag;
         vars = new ArrayList<>();
         items = new ArrayList<>();
+        taskStatistics=new TaskStatistics();
     }
 
 
@@ -150,5 +153,13 @@ public class Task {
 
     public boolean isTest() {
         return test;
+    }
+
+    public void setTest(boolean test) {
+        this.test = test;
+    }
+
+    public TaskStatistics getTaskStatistics() {
+        return taskStatistics;
     }
 }

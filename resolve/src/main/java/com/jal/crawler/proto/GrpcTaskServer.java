@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 
@@ -73,5 +74,8 @@ public class GrpcTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase {
                         t.getVarList().stream().map(
                                 var -> new Task.var(var.getName(), var.getQuery(), var.getOption(), var.getOptionValue())).collect(Collectors.toList())));
         task.setStatus(StatusEnum.INIT);
+        task.setTest(resolveTask.getTest());
+        task.getTaskStatistics().setBeginTime(LocalDateTime.now());
+        task.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.INIT);
     }
 }

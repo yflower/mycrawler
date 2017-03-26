@@ -10,17 +10,19 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     self.urls = [];
     self.processors = [];
     self.resolveData = [];
+    self.test=false;
 
     self.processorType = taskService.processorType;
     self.resolveOptionType = taskService.resolveOptionType;
 
-    self.tempUrl = "http://www.baidu.com";
+    self.tempUrl = "";
     self.tempProcessor = {};
     self.tempResolve = {};
 
     self.addLink = function () {
         if (!self.urls.includes(self.tempUrl)) {
             self.urls.push(self.tempUrl);
+            self.tempUrl="";
             console.log(self.urls)
         }
     }
@@ -34,6 +36,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     }
     self.addResolve = function () {
         self.resolveData.push(self.tempResolve);
+        self.tempResolve=null;
     }
 
 
@@ -97,11 +100,13 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
                     {
                         download: {
                             dynamic: true,
+                            test:self.test,
                             urls: self.urls,
                             preProcess: self.findPre(),
                             postProcess: self.findPost(),
                         },
                         resolve: {
+                            test:self.test,
                             vars: self.resolveData,
                             items: []
                         }

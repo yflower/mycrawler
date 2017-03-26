@@ -47,7 +47,7 @@ public class TaskStatistics {
     public TaskStatistics() {
         beginTime=LocalDateTime.now();
         historyStatus=new HashMap<>();
-        historyStatus.put(beginTime,StatusEnum.NO_INIT);
+        historyStatus.put(beginTime, StatusEnum.NO_INIT);
     }
 
     public LocalDateTime getBeginTime() {
