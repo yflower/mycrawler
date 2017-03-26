@@ -30,6 +30,8 @@ public class TaskPushParam {
 
     public static class download {
 
+        private boolean test;
+
         private boolean dynamic;
 
         private Set<String> urls;
@@ -65,6 +67,14 @@ public class TaskPushParam {
         public List<process> getPreProcess() {
 
             return preProcess;
+        }
+
+        public boolean isTest() {
+            return test;
+        }
+
+        public void setTest(boolean test) {
+            this.test = test;
         }
 
         public void setPreProcess(List<process> preProcess) {
@@ -115,6 +125,7 @@ public class TaskPushParam {
     }
 
     public static class resolve {
+        private boolean test;
 
         private int type;
 
@@ -145,6 +156,14 @@ public class TaskPushParam {
 
         public void setType(int type) {
             this.type = type;
+        }
+
+        public boolean isTest() {
+            return test;
+        }
+
+        public void setTest(boolean test) {
+            this.test = test;
         }
 
         public static class item {

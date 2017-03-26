@@ -41,6 +41,10 @@ public class TaskBiz {
         }};
     }
 
+
+
+
+
     public TaskOperationVO taskPause(String taskTag) {
         ResolveOperationModel resolveOperationModel = new ResolveOperationModel(taskTag);
         resolveOperationModel.setType(TaskOperationEnum.STOP);
@@ -103,6 +107,7 @@ public class TaskBiz {
         downloadOperationModel.setType(TaskOperationEnum.ADD);
         downloadTaskService.push(downloadOperationModel);
     }
+
 
 
     //rpc中参数不为空，填充可能为空的参数

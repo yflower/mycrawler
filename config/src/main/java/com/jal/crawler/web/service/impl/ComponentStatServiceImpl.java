@@ -4,6 +4,7 @@ import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.proto.AbstractComponentClient;
 import com.jal.crawler.proto.RpcClient;
 import com.jal.crawler.web.data.enums.ComponentEnum;
+import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.data.view.ComponentVO;
 import com.jal.crawler.web.service.IComponentStatService;
@@ -32,7 +33,8 @@ public class ComponentStatServiceImpl implements IComponentStatService {
         Optional<AbstractComponentClient> optional = configContext.getRpcClient().getClient(componentModel);
         if (optional.isPresent()) {
             AbstractComponentClient client = optional.get();
-            componentVO.setStatus(client.status().name());
+            Optional<StatusEnum> status = client.status();
+            componentVO.setStatus(status.get().name());
             componentVO.setAddress(client.address());
             componentVO.setTaskNum(client.showTask().size());
             componentVO.setTasks(client.showTask());

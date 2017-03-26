@@ -4,7 +4,7 @@
 
 let name = 'taskPushController'
 
-let controller = ['taskService', function (taskService) {
+let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
 
     var self = this;
     self.urls = [];
@@ -48,23 +48,67 @@ let controller = ['taskService', function (taskService) {
             return t.kind == 1;
         })
     }
-    self.submit = function () {
-        taskService.taskPush(null,
-            {
-                download: {
-                    dynamic: true,
-                    urls: self.urls,
-                    preProcess: self.findPre(),
-                    postProcess: self.findPost(),
-                },
-                resolve: {
-                    vars: self.resolveData,
-                    items: []
-                }
-            }
-        ).then(function (result) {
-            console.log(result)
+    self.submit  = function(ev) {
+       $mdDialog.show({
+                contentElement: '#task-push-dialog',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+              });
+
+    }
+
+    self.clear=function(ev){
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.confirm()
+              .title('确认是否清空')
+              .textContent('一旦你清空了设置，你之前的配置全都没有了哦！')
+              .ariaLabel('Lucky day')
+              .clickOutsideToClose(true)
+              .targetEvent(ev)
+              .ok('确认清空')
+              .cancel('手滑点错');
+
+        $mdDialog.show(confirm).then(function() {
+              self.urls = [];
+              self.processors = [];
+              self.resolveData = [];
+              self.tempUrl = "http://www.baidu.com";
+              self.tempProcessor = {};
+              self.tempResolve = {};
+        }, function() {
+
         });
+
+    }
+
+    self.test=function(ev){
+        $mdDialog.show({
+                    contentElement: '#task-test-dialog',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose: true
+                  });
+
+    }
+
+    self.pushRequest=function(ev){
+        taskService.taskPush(null,
+                    {
+                        download: {
+                            dynamic: true,
+                            urls: self.urls,
+                            preProcess: self.findPre(),
+                            postProcess: self.findPost(),
+                        },
+                        resolve: {
+                            vars: self.resolveData,
+                            items: []
+                        }
+                    }
+                ).then(function (result) {
+                    console.log(result)
+                });
     }
 
 

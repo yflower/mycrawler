@@ -1,3 +1,65 @@
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="task-push-dialog">
+        <md-dialog layout-padding>
+            <h2>确认添加任务</h2>
+            <p>
+                请确认是否正确填写爬虫设置的相关的选项，强烈建议你先进行一次测试爬虫来确保设置正确性
+            </p>
+            <md-dialog-actions>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini"
+                           ng-click="$ctrl.pushRequest($event)">
+                    <md-icon md-svg-icon="done" aria-label="done"></md-icon>
+                    <md-tooltip>提交</md-tooltip>
+                </md-button>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-icon="test" aria-label="test"></md-icon>
+                    <md-tooltip>测试</md-tooltip>
+                </md-button>
+            </md-dialog-actions>
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="task-test-dialog">
+        <md-dialog layout-padding flex="60">
+            <h2>配置测试</h2>
+            <div layout="row" layout-sm="column" layout-align="space-around">
+                <md-progress-circular ng-disabled="false"></md-progress-circular>
+            </div>
+            <md-list ng-cloak>
+                <md-list-item class="secondary-button-padding">
+                    <div class="md-list-item-text" flex="80">
+                        <h3>{</h3>
+                        <div layout="row">
+                            <span flex="5"></span>
+                            <h4>name:name</h4>
+                        </div>
+
+                        <div layout="row">
+                            <span flex="5"></span>
+                            <h4>value:fdsfd</h4>
+                        </div>
+                        <h3>}</h3>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
+            <md-dialog-actions>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-icon="done" aria-label="done"></md-icon>
+                    <md-tooltip>提交</md-tooltip>
+                </md-button>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-icon="edit" aria-label="edit"></md-icon>
+                    <md-tooltip>修改</md-tooltip>
+                </md-button>
+            </md-dialog-actions>
+        </md-dialog>
+    </div>
+</div>
+
+
 <md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
     <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
                 layout-align="center center">
@@ -65,7 +127,8 @@
                 <md-input-container flex="25">
                     <label>类型</label>
                     <md-select ng-model="$ctrl.tempProcessor.type">
-                        <md-option  ng-value="item.value" ng-repeat="item in $ctrl.processorType"><em>{{item.message}}</em></md-option>
+                        <md-option ng-value="item.value" ng-repeat="item in $ctrl.processorType">
+                            <em>{{item.message}}</em></md-option>
                     </md-select>
                 </md-input-container>
 
@@ -184,7 +247,8 @@
                 <md-input-container flex="25">
                     <label>可选项</label>
                     <md-select ng-model="$ctrl.tempResolve.option">
-                        <md-option ng-model="item.value" ng-repeat="item in $ctrl.resolveOptionType">{{item.message}}</md-option>
+                        <md-option ng-model="item.value" ng-repeat="item in $ctrl.resolveOptionType">{{item.message}}
+                        </md-option>
                     </md-select>
                 </md-input-container>
 
@@ -250,7 +314,7 @@
      layout-align="center center"
 
      style="position:fixed;z-index:21;bottom:100px;right:200px">
-    <md-fab-speed-dial  md-direction="up"
+    <md-fab-speed-dial md-direction="up"
                        class="md-fling">
         <md-fab-trigger>
             <md-button class="md-fab  md-button">
@@ -260,22 +324,25 @@
         </md-fab-trigger>
         <!--style="position: fixed;right: 150px;bottom: 100px"-->
         <md-fab-actions>
-            <md-button aria-label="Twitter" class="md-fab md-raised md-mini" ng-click="$ctrl.submit()">
-                <md-icon md-svg-icon="done" aria-label="Twitter"></md-icon>
+            <md-button aria-label="push" class="md-fab md-raised md-mini" ng-click="$ctrl.submit($event)">
+                <md-icon md-svg-icon="done" aria-label="push"></md-icon>
                 <md-tooltip>提交</md-tooltip>
             </md-button>
-            <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
-                <md-icon md-svg-icon="fresh" aria-label="Facebook"></md-icon>
+            <md-button aria-label="clear" class="md-fab md-raised md-mini" ng-click="$ctrl.clear($event)">
+                <md-icon md-svg-icon="fresh" aria-label="clear"></md-icon>
                 <md-tooltip>重置</md-tooltip>
             </md-button>
-            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
-                <md-icon md-svg-icon="test" aria-label="Google Hangout"></md-icon>
+            <md-button aria-label="test" class="md-fab md-raised md-mini" ng-click="$ctrl.test($event)">
+                <md-icon md-svg-icon="test" aria-label="test"></md-icon>
                 <md-tooltip>测试</md-tooltip>
             </md-button>
         </md-fab-actions>
     </md-fab-speed-dial>
 
 </div>
+
+
+
 
 
 

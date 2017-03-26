@@ -39,8 +39,8 @@ public class ResolveServiceImpl implements IComponentService {
     }
 
     private boolean resolveConfig(AbstractComponentClient componentClient, ResolveConfigModel configModel) {
-        //todo  已经设置的情况下
-        if (componentClient.status() != StatusEnum.NO_INIT) {
+        //todo  已经设置的情况下 状态获取失败
+        if (componentClient.status().get() != StatusEnum.NO_INIT) {
             return true;
         }
         return componentClient.setConfig(ResolveConfig.newBuilder()

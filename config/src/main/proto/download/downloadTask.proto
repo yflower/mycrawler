@@ -15,6 +15,7 @@ message DownloadTask {
     string task_tag = 2;
     bool dynamic = 3;
     repeated string start_url = 4;
+    bool test=7;
     message Processor {
         int32 order = 1;
         Type type = 2;

@@ -16,13 +16,15 @@ public class RedisPageFetch implements PageFetch {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    private SetOperations<String, String> stringStringSetOperations;
+
     public RedisPageFetch(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
+        this.stringStringSetOperations=redisTemplate.opsForSet();
     }
 
     @Override
     public Page fetch(String taskTag) {
-        SetOperations<String, String> stringStringSetOperations = redisTemplate.opsForSet();
         String page = stringStringSetOperations.pop(taskTag + "_page");
         if (page != null) {
             try {

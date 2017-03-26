@@ -1,5 +1,6 @@
 package com.jal.crawler.proto;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.jal.crawler.proto.configComponnet.ConfigComponentStatus;
 import com.jal.crawler.proto.status.ComponentStatus;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
@@ -10,9 +11,13 @@ import io.grpc.ManagedChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
 /**
@@ -28,8 +33,14 @@ public abstract class AbstractComponentClient<C, T> {
 
 
     //显示组件的运行状态
-    public StatusEnum status() {
-        return StatusEnum.valueOf(internalStatus().getStatus());
+    public  Optional<StatusEnum> status() {
+        Optional<componentStatus> componentStatus = internalStatus();
+        if (componentStatus.isPresent()) {
+            StatusEnum statusEnum=StatusEnum.valueOf(componentStatus.get().getStatus());
+            return Optional.of(statusEnum);
+        }else {
+            return Optional.empty();
+        }
     }
 
     //组件添加设置
@@ -49,17 +60,20 @@ public abstract class AbstractComponentClient<C, T> {
     }
 
     //推送任务相关的操作
-    public AbstractComponentClient pushTask(T taskOperation) {
+    public boolean pushTask(T taskOperation) {
         executeTaskOperation(taskOperation);
-        return this;
+        return true;
     }
 
     //显示所有的任务
     public List<internalTask> showTask() {
-        componentStatus componentStatus = internalStatus();
-        List<internalTask> internalTasks = componentStatus.getStatusTag().entrySet()
-                .stream().map(t -> new internalTask(t.getKey(), t.getValue())).collect(Collectors.toList());
-        return internalTasks;
+        Optional<componentStatus> componentStatus = internalStatus();
+        if (componentStatus.isPresent()) {
+            List<internalTask> internalTasks = componentStatus.get().getStatusTag().entrySet()
+                    .stream().map(t -> new internalTask(t.getKey(), t.getValue())).collect(Collectors.toList());
+            return internalTasks;
+        }
+        return new ArrayList<>();
     }
 
     //关闭client
@@ -75,19 +89,29 @@ public abstract class AbstractComponentClient<C, T> {
 
     //private　methods
     //rpc获取组件的状态
-    private componentStatus internalStatus() {
-        ComponentStatus componentStatus = RpcComponentStatusGrpc.newBlockingStub(channel).
+    private Optional<componentStatus> internalStatus() {
+        ListenableFuture<ComponentStatus> componentStatus = RpcComponentStatusGrpc.newFutureStub(channel).
                 rpcComponentStatus(ConfigComponentStatus.getDefaultInstance());
-        componentStatus internalStatus = new componentStatus();
-        internalStatus.setStatus(componentStatus.getComponentStatus().name());
-        internalStatus.setStatusTag(componentStatus.getTasksMap().entrySet()
-                .stream().collect(Collectors.toMap(t -> t.getKey(), t -> t.getValue().name())));
-        return internalStatus;
+        try {
+            ComponentStatus status = componentStatus.get(1, TimeUnit.SECONDS);
+            componentStatus internalStatus = new componentStatus();
+            internalStatus.setStatus(status.getComponentStatus().name());
+            internalStatus.setStatusTag(status.getTasksMap().entrySet()
+                    .stream().collect(Collectors.toMap(t -> t.getKey(), t -> t.getValue().name())));
+            return Optional.of(internalStatus);
+        } catch (InterruptedException e) {
+            return Optional.empty();
+        } catch (ExecutionException e) {
+            return Optional.empty();
+        } catch (TimeoutException e) {
+            return Optional.empty();
+        }
+
     }
 
-    //执行任务操作
+    //执行任务操作 //todo 数据反馈
     private void executeTaskOperation(T taskOperation) {
-        if (internalStatus().getStatus() == ComponentStatus.Status.STARTED.name()) {
+        if (internalStatus().isPresent() && internalStatus().get().getStatus() == ComponentStatus.Status.STARTED.name()) {
             OPStatus status = taskOperationRequest(taskOperation, channel);
             if (status == OPStatus.SUCCEED) {
                 logger.info(" {} add task {},{}", address, taskOperation.getClass().getSimpleName(), taskOperation);

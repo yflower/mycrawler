@@ -56,7 +56,7 @@ public class ResolveContext {
         STOPPED=3;
         DESTORYED=4;
      */
-    private StatusEnum status=StatusEnum.NO_INIT;
+    private StatusEnum status = StatusEnum.NO_INIT;
 
 
     //context configure public method
@@ -152,6 +152,15 @@ public class ResolveContext {
     //internal private method
 
     private Task randomRunnableTask() {
+        //有限获取test
+        List<Task> testList = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED)
+                .filter(Task::isTest)
+                .collect(Collectors.toList());
+        if (!testList.isEmpty()) {
+            return testList.get(Math.abs(random.nextInt() % testList.size()));
+        }
+
+
         List<Task> list = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED).collect(Collectors.toList());
         if (!list.isEmpty()) {
             return list.get(Math.abs(random.nextInt() % list.size()));

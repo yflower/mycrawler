@@ -7,6 +7,8 @@ import com.jal.crawler.web.data.enums.TaskOperationEnum;
  * Created by jal on 2017/2/25.
  */
 public class TaskOperationModel {
+    private boolean test;
+
     private ComponentEnum componentType;
 
     private TaskOperationEnum type;
@@ -35,5 +37,13 @@ public class TaskOperationModel {
 
     public void setComponentType(ComponentEnum componentType) {
         this.componentType = componentType;
+    }
+
+    public boolean isTest() {
+        return test;
+    }
+
+    public void setTest(boolean test) {
+        this.test = test;
     }
 }

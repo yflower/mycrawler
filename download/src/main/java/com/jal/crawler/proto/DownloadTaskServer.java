@@ -40,6 +40,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                 Task task = new Task();
                 task.setTaskTag(request.getTaskTag());
                 task.setDynamic(request.getDynamic());
+                task.setTest(request.getTest());
                 task.setStartUrls(new HashSet<>(request.getStartUrlList()));
                 //目前只有动态的processor
                 if (request.getDynamic()) {

@@ -3,6 +3,7 @@ package com.jal.crawler.web.controller;
 import com.jal.crawler.web.biz.DBBiz;
 import com.jal.crawler.web.data.apiResponse.ApiResponse;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
+import com.jal.crawler.web.data.param.DBConfigParam;
 import com.jal.crawler.web.data.param.MongoConfigParam;
 import com.jal.crawler.web.data.param.RedisConfigParam;
 import org.slf4j.Logger;
@@ -77,5 +78,18 @@ public class CommonDBController {
         }
         return ApiResponse.successBuild("");
     }
+
+    @PostMapping("/db")
+    public ApiResponse dbConfig(@Valid @RequestBody DBConfigParam param, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
+        }
+        try {
+            return ApiResponse.successBuild(dbBiz.dbConfig(param));
+        } catch (Exception ex) {
+            return ApiResponse.failBuild(ex);
+        }
+    }
+
 
 }

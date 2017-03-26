@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
  * Created by home on 2017/1/20.
  */
 public class Task {
+    private boolean test;
     private StatusEnum status;
 
     private String taskTag;
@@ -147,4 +148,7 @@ public class Task {
         List<var> itemVar;
     }
 
+    public boolean isTest() {
+        return test;
+    }
 }

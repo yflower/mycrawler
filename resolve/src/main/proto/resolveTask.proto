@@ -15,6 +15,7 @@ message ResolveTask {
 
     TaskType task_type = 1;
     string taskTag = 2;
+    bool test=5;
     message Var {
         string name = 1;
         string query = 2;

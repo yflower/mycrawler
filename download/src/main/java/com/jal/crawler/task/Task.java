@@ -4,22 +4,28 @@ import com.jal.crawler.download.DownloadProcessor;
 import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.url.AbstractPageUrlFactory;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
  * Created by jal on 2017/1/23.
  */
 public class Task {
-    public boolean urlInit;
+    private boolean test;
+    private boolean urlInit;
     private StatusEnum status;
     private String taskTag;
     private boolean dynamic;
+
     private DownloadProcessor preProcessor = downLoad -> {
     };
     private DownloadProcessor postProcessor = downLoad -> {
     };
     private Set<String> startUrls = new HashSet<>();
+
+    private TaskStatistics taskStatistics;
 
     public boolean isUrlInit() {
         return urlInit;
@@ -80,5 +86,21 @@ public class Task {
 
     public void setStatus(StatusEnum status) {
         this.status = status;
+    }
+
+    public TaskStatistics getTaskStatistics() {
+        return taskStatistics;
+    }
+
+    public void setTaskStatistics(TaskStatistics taskStatistics) {
+        this.taskStatistics = taskStatistics;
+    }
+
+    public boolean isTest() {
+        return test;
+    }
+
+    public void setTest(boolean test) {
+        this.test = test;
     }
 }

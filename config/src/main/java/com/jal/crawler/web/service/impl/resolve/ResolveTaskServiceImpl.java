@@ -79,6 +79,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
         abstractComponentClient.pushTask(
                 ResolveTask.newBuilder()
                         .setTaskTag(model.getTaskTag())
+                        .setTest(model.isTest())
                         .setTaskType(RpcEnumConvert.taskOperationType(model.getType()))
                         .addAllVar(
                                 model.getVars().stream()

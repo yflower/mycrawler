@@ -78,6 +78,7 @@ public class DownloadTaskServiceImpl implements ITaskService {
                         .setTaskType(this.enumToRpcEnum(model.getType()))
                         .setTaskTag(model.getTaskTag())
                         .setDynamic(model.isDynamic())
+                        .setTest(model.isTest())
                         .addAllStartUrl(model.getUrls())
                         .addAllPre(
                                 model.getPreProcess().stream()

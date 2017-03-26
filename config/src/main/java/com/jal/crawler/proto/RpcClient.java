@@ -69,30 +69,29 @@ public class RpcClient {
     public Optional<AbstractComponentClient> getClient(ComponentModel componentModel) {
         String address = componentModel.getHost() + ":" + componentModel.getPort();
         if (clients.containsKey(address)) {
-            Optional<ComponentEnum> componentEnum = tryConnect(componentModel);
-            if (componentEnum.isPresent()) {
-                return Optional.of(clients.get(address));
+            AbstractComponentClient client = clients.get(address);
+            if (client.status().isPresent()) {
+                return Optional.of(client);
             } else {
                 remove(address);
-                return cacheClient(componentModel);
             }
 
-        } else {
-            return cacheClient(componentModel);
         }
+        return cacheClient(componentModel);
     }
 
     public List<ComponentModel> resolveModel() {
         Function<AbstractComponentClient, Optional<ComponentModel>> function = t -> {
-            ComponentModel componentModel = new ComponentModel();
-            componentModel.setComponentEnum(ComponentEnum.RESOLVE);
-            String address = t.address;
-            componentModel.setHost(address.split(":")[0]);
-            componentModel.setPort(Integer.parseInt(address.split(":")[1]));
-            Optional<ComponentEnum> componentEnum = tryConnect(componentModel);
+            Optional<ComponentEnum> componentEnum = t.status();
             if (componentEnum.isPresent()) {
+                ComponentModel componentModel = new ComponentModel();
+                componentModel.setComponentEnum(ComponentEnum.RESOLVE);
+                String address = t.address;
+                componentModel.setHost(address.split(":")[0]);
+                componentModel.setPort(Integer.parseInt(address.split(":")[1]));
                 return Optional.of(componentModel);
             }
+            remove(t);
             return Optional.empty();
         };
 
@@ -105,15 +104,16 @@ public class RpcClient {
 
     public List<ComponentModel> downloadModel() {
         Function<AbstractComponentClient, Optional<ComponentModel>> function = t -> {
-            ComponentModel componentModel = new ComponentModel();
-            componentModel.setComponentEnum(ComponentEnum.DOWNLOAD);
-            String address = t.address;
-            componentModel.setHost(address.split(":")[0]);
-            componentModel.setPort(Integer.parseInt(address.split(":")[1]));
-            Optional<ComponentEnum> componentEnum = tryConnect(componentModel);
+            Optional<ComponentEnum> componentEnum = t.status();
             if (componentEnum.isPresent()) {
+                ComponentModel componentModel = new ComponentModel();
+                componentModel.setComponentEnum(ComponentEnum.DOWNLOAD);
+                String address = t.address;
+                componentModel.setHost(address.split(":")[0]);
+                componentModel.setPort(Integer.parseInt(address.split(":")[1]));
                 return Optional.of(componentModel);
             }
+            remove(t);
             return Optional.empty();
         };
         return downs.values().stream()
@@ -180,6 +180,13 @@ public class RpcClient {
         clients.remove(address);
         downs.remove(address);
         resolves.remove(address);
+    }
+
+    private void remove(AbstractComponentClient client){
+        client.close();
+        clients.remove(client.address);
+        downs.remove(client.address);
+        resolves.remove(client.address);
     }
 
 }

@@ -14,6 +14,7 @@ public class TaskOperationConvert {
     public static ResolveOperationModel paramToModel(TaskPushParam.resolve param, String taskTag) {
         ResolveOperationModel model = new ResolveOperationModel(taskTag);
         model.setTaskTag(taskTag);
+        model.setTest(param.isTest());
         model.setComponentType(ComponentEnum.RESOLVE);
         model.setVars(
                 param.getVars().stream()
@@ -41,6 +42,7 @@ public class TaskOperationConvert {
         model.setComponentType(ComponentEnum.DOWNLOAD);
         model.setDynamic(param.isDynamic());
         model.setUrls(param.getUrls());
+        model.setTest(param.isTest());
         model.setPreProcess(param.getPreProcess().stream().map(TaskOperationConvert::toProcess).collect(Collectors.toList()));
         model.setPostProcess(param.getPostProcess().stream().map(TaskOperationConvert::toProcess).collect(Collectors.toList()));
         return model;

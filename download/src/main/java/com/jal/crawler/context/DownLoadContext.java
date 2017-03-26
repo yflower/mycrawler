@@ -124,6 +124,14 @@ public class DownLoadContext {
     }
 
     private Task randomRunnableTask() {
+        //优先获取test
+        List<Task> testList = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED)
+                .filter(Task::isTest)
+                .collect(Collectors.toList());
+        if(!testList.isEmpty()){
+            return testList.get(Math.abs(random.nextInt() % testList.size()));
+        }
+
         List<Task> list = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED).collect(Collectors.toList());
         if (!list.isEmpty()) {
             return list.get(Math.abs(random.nextInt() % list.size()));
@@ -170,7 +178,6 @@ public class DownLoadContext {
 
     private void execute() {
         executorService.submit(() -> {
-
             AbstractDownLoad staticDownLoad = staticBuilder.build();
             AbstractDownLoad dynamicDownLoad = dynamicBuilder.build();
             random = ThreadLocalRandom.current();

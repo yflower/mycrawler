@@ -41,7 +41,8 @@ public class DownloadServiceImpl implements IComponentService {
     }
 
     private boolean downloadConfig(AbstractComponentClient componentClient, DownloadConfigModel configModel) {
-        if (componentClient.status() != StatusEnum.NO_INIT) {
+        //todo 状态获取失败
+        if (componentClient.status().get() != StatusEnum.NO_INIT) {
             //todo 已经设置
             return true;
         }
