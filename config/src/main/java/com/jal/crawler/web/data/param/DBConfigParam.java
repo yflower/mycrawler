@@ -1,7 +1,5 @@
 package com.jal.crawler.web.data.param;
 
-import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
-
 /**
  * Created by jianganlan on 2017/3/26.
  */

@@ -1,8 +1,8 @@
 package com.jal.crawler.web.service.impl.resolve;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.proto.AbstractComponentClient;
 import com.jal.crawler.proto.resolve.ResolveTask;
+import com.jal.crawler.rpc.AbstractComponentClient;
 import com.jal.crawler.web.convert.RpcEnumConvert;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
@@ -38,7 +38,6 @@ public class ResolveTaskServiceImpl implements ITaskService {
     @Override
     public TaskOperationVO push(TaskOperationModel taskOperationModel) {
         List<ComponentModel> componentModels = resolveTaskLoadService.balanceComponent();
-        LOGGER.info("push resolve task {}", componentModels);
         componentOp(componentModels, taskOperationModel);
         return null;
     }

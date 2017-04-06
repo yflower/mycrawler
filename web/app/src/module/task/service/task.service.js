@@ -15,21 +15,21 @@ let service = ['$q', '$http', function ($q, $http) {
 
     var processorType = [
         {
-            value: 0,
+            value: 1,
             message: '点击'
         },
         {
-            value: 1,
+            value: 2,
             message: '输入'
         },
         {
-            value: 2,
+            value: 3,
             message: '提交'
         }, {
-            value: 3,
+            value: 4,
             message: '跳转'
         }, {
-            value: 4,
+            value: 5,
             message: '等待出现'
         }]
     var resolveOptionType = [

@@ -1,6 +1,6 @@
 package com.jal.crawler.context;
 
-import com.jal.crawler.proto.RpcClient;
+import com.jal.crawler.rpc.RpcClient;
 import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
 import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;

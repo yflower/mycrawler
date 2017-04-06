@@ -1,10 +1,9 @@
 package com.jal.crawler.context;
 
+import com.cufe.taskProcessor.context.ComponentContext;
 import com.jal.crawler.download.AbstractDownLoad;
 import com.jal.crawler.download.OkHttpDownLoad;
 import com.jal.crawler.download.SeleniumDownload;
-import com.jal.crawler.enums.CycleEnum;
-import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PagePersist;
 import com.jal.crawler.page.RedisPagePersist;
@@ -17,86 +16,65 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-
 /**
  * Created by home on 2017/1/9.
  */
 @Component
-public class DownLoadContext {
+public class DownLoadContext extends ComponentContext<String, Page> {
 
     private static final Logger logger = LoggerFactory.getLogger(DownLoadContext.class);
+
     AbstractPageUrlFactory abstractPageUrlFactory;
-    ExecutorService executorService;
     PagePersist pagePersist;
-    private int thread;
     private boolean isProxy = false;
     private String proxyHost;
     private int proxyPort;
     private int sleepTime;
-    private List<Task> tasks;
-    private Lock taskLock = new ReentrantLock();
-    private Condition taskCondition = taskLock.newCondition();
     private AbstractDownLoad.AbstractBuilder staticBuilder;
     private AbstractDownLoad.AbstractBuilder dynamicBuilder;
+    private AbstractDownLoad staticDownload;
+    private AbstractDownLoad dynamicDownload;
     private RedisTemplate redisTemplate;
-    private ThreadLocalRandom random;
+    private ThreadLocal<AbstractDownLoad> downLoad = new ThreadLocal<>();
 
-    private StatusEnum status = StatusEnum.NO_INIT;
+    {
+        sink = task -> abstractPageUrlFactory.getUrl(task.getTaskTag());
 
-    public boolean addTask(Task task) {
-        tasks.add(task);
-        task.setStatus(StatusEnum.STARTED);
-        task.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.STARTED);
-        signalTask();
-        return true;
+        processor = (task, url) -> downLoad.get().downLoad(new PageRequest(url));
+
+        repository = (task, page) -> pagePersist.persist(task.getTaskTag(), page);
+
+        cycleBefore = () -> {
+            staticDownload = staticBuilder.build();
+            dynamicDownload = dynamicBuilder.build();
+        };
+
+        taskBeforeHook = t -> {
+            Task task = (Task) t;
+            downLoad.set(task.isDynamic() ? dynamicDownload : staticDownload);
+            if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) {
+                task.urlsInit(abstractPageUrlFactory);
+            }
+            downLoad.get().setPreProcessor(task.getPreProcessor());
+            downLoad.get().setPostProcessor(task.getPostProcessor());
+            downLoad.get().init();
+        };
+
+        taskAfterHook = t -> {
+            dynamicDownload.reset();
+            staticDownload.reset();
+        };
+
+        cycleError = () -> {
+            dynamicDownload.close();
+            staticDownload.close();
+        };
+
+        cycleFinally = () -> {
+            dynamicDownload.close();
+            staticDownload.close();
+        };
     }
-
-
-    public boolean stopTask(String taskTag) {
-        Task innerTask = getTaskByTag(taskTag);
-        if (innerTask != null && innerTask.getStatus() == StatusEnum.STARTED) {
-            innerTask.setStatus(StatusEnum.STOPPED);
-            innerTask.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.STOPPED);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean finishTask(String taskTag) {
-        Task innerTask = getTaskByTag(taskTag);
-        if (innerTask != null && StatusEnum.isStart(innerTask.getStatus())) {
-            innerTask.setStatus(StatusEnum.FINISHED);
-            innerTask.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.FINISHED);
-            innerTask.getTaskStatistics().setEndTime(LocalDateTime.now());
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean destroyTask(String taskTag) {
-        Task innerTask = getTaskByTag(taskTag);
-        if (innerTask != null) {
-            innerTask.setStatus(StatusEnum.DESTROYED);
-            innerTask.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.DESTROYED);
-            innerTask.getTaskStatistics().setEndTime(LocalDateTime.now());
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 
     public DownLoadContext proxy(String host, int port) {
         isProxy = true;
@@ -115,195 +93,16 @@ public class DownLoadContext {
         return this;
     }
 
-    public DownLoadContext thread(int thread) {
-        this.thread = thread;
-        return this;
-    }
-
     public DownLoadContext redisTemplate(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
         return this;
     }
 
-    //tasktag
-    public DownLoadContext signalTask() {
-        releaseTasks();
-        return this;
-    }
-
-    private Task randomRunnableTask() {
-        //优先获取test
-        List<Task> testList = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED)
-                .filter(Task::isTest)
-                .collect(Collectors.toList());
-        if (!testList.isEmpty()) {
-            return testList.get(Math.abs(random.nextInt() % testList.size()));
-        }
-
-        List<Task> list = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED).collect(Collectors.toList());
-        if (!list.isEmpty()) {
-            return list.get(Math.abs(random.nextInt() % list.size()));
-        } else {
-            lockTasks();
-        }
-        return randomRunnableTask();
-    }
-
-    private Task getTaskByTag(String taskTag) {
-        return tasks.stream().filter(task -> task.getTaskTag().equals(taskTag)).findAny().get();
-    }
-
-    // task lock method
-    private void lockTasks() {
-        taskLock.lock();
-        try {
-            taskCondition.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            taskLock.unlock();
-        }
-    }
-
-    private void releaseTasks() {
-        taskLock.lock();
-        try {
-            taskCondition.signal();
-        } finally {
-            taskLock.unlock();
-        }
-    }
-
-
-    public void run() {
-        init();
-        setStatus(StatusEnum.STARTED);
-        for (int i = 0; i < thread; ++i) {
-            execute();
-        }
-
-    }
-
-    private void execute() {
-        executorService.submit(() -> {
-            AbstractDownLoad staticDownLoad = staticBuilder.build();
-            AbstractDownLoad dynamicDownLoad = dynamicBuilder.build();
-            random = ThreadLocalRandom.current();
-            Task task;
-            String url;
-            try {
-                while ((task = randomRunnableTask()) != null) {
-                    task.getTaskStatistics().getUrlTotalCycle().accumulate(1);
-                    taskCycleCheck(task);
-                    if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) task.urlsInit(abstractPageUrlFactory);
-                    if ((url = abstractPageUrlFactory.fetchUrl(task.getTaskTag())) == null) {
-                        task.getTaskStatistics().getUrlNotFoundCycle().accumulate(1);
-                        continue;
-                    }
-                    task.getTaskStatistics().getUrlFoundCycle().accumulate(1);
-                    AbstractDownLoad downLoad = task.isDynamic() ? dynamicDownLoad : staticDownLoad;
-                    downLoad.setPreProcessor(task.getPreProcessor());
-                    downLoad.setPostProcessor(task.getPostProcessor());
-                    downLoad.init();
-                    while (task.getStatus() == StatusEnum.STARTED) {
-                        String finalUrl = url;
-                        try {
-                            Page page = downLoad.downLoad(new PageRequest(finalUrl));
-                            task.getTaskStatistics().getDownloadSuccessCycle().accumulate(1);
-                            if (!downLoad.isSkip()) {
-                                try {
-                                    pagePersist.persist(task.getTaskTag(), page);
-                                    logger.info("persist page");
-                                    task.getTaskStatistics().getPersistSuccessCycle().accumulate(1);
-                                } catch (Exception e) {
-                                    task.getTaskStatistics().getPersistErrorCycle().accumulate(1);
-                                } finally {
-                                    task.getTaskStatistics().getPersistTotalCycle().accumulate(1);
-                                }
-                            }
-                            downLoad.setSkip(false);
-                        } catch (Exception e) {
-                            task.getTaskStatistics().getDownloadErrorCycle().accumulate(1);
-                        } finally {
-                            task.getTaskStatistics().getDownloadTotalCycle().accumulate(1);
-                        }
-                        sleep();
-                        url = abstractPageUrlFactory.fetchUrl(task.getTaskTag());
-                        if (url == null) {
-                            task.getTaskStatistics().getUrlNotFoundCycle().accumulate(1);
-                            task.getTaskStatistics().getUrlTotalCycle().accumulate(1);
-                            break;
-                        } else {
-                            task.getTaskStatistics().getUrlFoundCycle().accumulate(1);
-                        }
-                    }
-                    dynamicDownLoad.reset();
-                    staticDownLoad.reset();
-                }
-            } catch (Exception e) {
-                logger.error(" download error", e);
-                execute();
-            } finally {
-                staticDownLoad.close();
-                dynamicDownLoad.close();
-            }
-
-        });
-    }
-
-    private void taskCycleCheck(Task task) {
-        if(task.isTest()&&task.getTaskStatistics().getUrlTotalCycle().get()> CycleEnum.TEST_URL.getCycle()){
-            destroyTask(task.getTaskTag());
-        }
-        if(task.getTaskStatistics().getUrlNotFoundCycle().get()>CycleEnum.URL_NOT_FOUND.getCycle()){
-            finishTask(task.getTaskTag());
-        }
-        if( task.getTaskStatistics().getDownloadErrorCycle().get()>CycleEnum.PAGE_DOWN_ERROR.getCycle()){
-            stopTask(task.getTaskTag());
-        }
-    }
-
-    private void init() {
-        dynamicBuilder = new SeleniumDownload.Builder();
+    @Override
+    protected void internalInit() {
+        abstractPageUrlFactory = new RedisPageUrlFactory(redisTemplate);
+        pagePersist = new RedisPagePersist(redisTemplate);
         staticBuilder = new OkHttpDownLoad.Builder();
-        if (isProxy) {
-            dynamicBuilder.proxy(proxyHost, proxyPort);
-            staticBuilder.proxy(proxyHost, proxyPort);
-        }
-        executorService = Executors.newFixedThreadPool(thread);
-        if (redisTemplate != null) {
-            abstractPageUrlFactory = new RedisPageUrlFactory(redisTemplate);
-            pagePersist = new RedisPagePersist(redisTemplate);
-        } else {
-            throw new NullPointerException("redisTemplate must init");
-        }
-        tasks = new ArrayList<>();
-        setStatus(StatusEnum.INIT);
+        dynamicBuilder = new SeleniumDownload.Builder();
     }
-
-    private void sleep() {
-        try {
-            Thread.currentThread().sleep(sleepTime);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void close() {
-        executorService.shutdown();
-    }
-
-    private synchronized void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
-    public synchronized StatusEnum status() {
-        return status;
-    }
-
-    public List<Task> tasks() {
-        return tasks;
-    }
-
-
 }

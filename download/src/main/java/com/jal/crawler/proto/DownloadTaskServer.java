@@ -1,25 +1,25 @@
 package com.jal.crawler.proto;
 
+import com.cufe.taskProcessor.enums.TaskTypeEnum;
+import com.cufe.taskProcessor.service.AbstractComponentTaskService;
+import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.download.DownloadProcessor;
 import com.jal.crawler.download.DynamicDownload;
-import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.download.DownloadTaskResponse;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
 import com.jal.crawler.proto.task.OPStatus;
-import com.jal.crawler.proto.task.TaskType;
 import com.jal.crawler.task.Task;
-import com.jal.crawler.task.TaskStatistics;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
@@ -29,70 +29,37 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(DownloadConfigServer.class);
+    private static final Logger logger = LoggerFactory.getLogger(DownloadInitServer.class);
 
     @Autowired
     private DownLoadContext downLoadContext;
 
     @Override
     public void downloadTask(DownloadTask request, StreamObserver<DownloadTaskResponse> responseObserver) {
+        ComponentTaskService taskService = new ComponentTaskService();
+        taskService.setComponentContext(downLoadContext);
+        taskService.dynamic = request.getDynamic();
+        taskService.test = request.getTest();
+        taskService.urls = new HashSet<>(request.getStartUrlList());
+
+        taskService.pre = downLoad -> {
+            DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
+            request.getPreList().stream()
+                    .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
+                    .forEach(pro -> processor(pro, dynamicDownload));
+        };
+        taskService.post = downLoad -> {
+            DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
+            request.getPostList().stream()
+                    .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
+                    .forEach(pro -> processor(pro, dynamicDownload));
+        };
+        boolean result = taskService.task(request.getTaskTag(), TaskTypeEnum.numberOf(request.getTaskTypeValue()));
+
+
         DownloadTaskResponse.Builder responseBuilder = DownloadTaskResponse.newBuilder();
-        if (isRun(downLoadContext)) {
-            if (request.getTaskType() == TaskType.ADD) {
-                Task task = new Task();
-                task.setTaskTag(request.getTaskTag());
-                task.setDynamic(request.getDynamic());
-                task.setTest(request.getTest());
-                task.setTaskStatistics(new TaskStatistics());
-                task.setStartUrls(new HashSet<>(request.getStartUrlList()));
-                //目前只有动态的processor
-                if (request.getDynamic()) {
-                    DownloadProcessor pre = downLoad -> {
-                        DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
-                        request.getPreList().stream()
-                                .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
-                                .forEach(pro -> processor(pro, dynamicDownload));
-                    };
-                    DownloadProcessor post = downLoad -> {
-                        DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
-                        request.getPostList().stream()
-                                .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
-                                .forEach(pro -> processor(pro, dynamicDownload));
-                    };
-                    task.setPreProcessor(pre);
-                    task.setPostProcessor(post);
-                } else {
-                    //静态处理器
-                }
-                task.setStatus(StatusEnum.INIT);
-                task.getTaskStatistics().getHistoryStatus().put(LocalDateTime.now(),StatusEnum.INIT);
-                downLoadContext.addTask(task);
-                logger.info("success to add download task {}", task.getTaskTag());
-                responseBuilder.setTaskTag(task.getTaskTag());
-                responseBuilder.setOpStatus(OPStatus.SUCCEED);
-            } else if (request.getTaskType() == TaskType.STOP) {
-                //停止download
-                boolean is = downLoadContext.stopTask(request.getTaskTag());
-                logger.info("success to stop download task {}", request.getTaskTag());
-                responseBuilder.setTaskTag(request.getTaskTag());
-                responseBuilder.setOpStatus(is ? OPStatus.SUCCEED : OPStatus.FAILD);
-            } else if (request.getTaskType() == TaskType.FINISH) {
-                //完成任务指令
-                boolean is = downLoadContext.finishTask(request.getTaskTag());
-                logger.info("success to finish download task {}", request.getTaskTag());
-                responseBuilder.setTaskTag(request.getTaskTag());
-                responseBuilder.setOpStatus(is ? OPStatus.SUCCEED : OPStatus.FAILD);
-            } else {
-                //完成任务指令
-                boolean is = downLoadContext.destroyTask(request.getTaskTag());
-                logger.info("success to destroy download task {}", request.getTaskTag());
-                responseBuilder.setTaskTag(request.getTaskTag());
-                responseBuilder.setOpStatus(is ? OPStatus.SUCCEED : OPStatus.FAILD);
-            }
-        } else {
-            //组件还未启动
-            responseBuilder.setOpStatus(OPStatus.FAILD);
-        }
+
+        responseBuilder.setOpStatus(result ? OPStatus.SUCCEED : OPStatus.FAILD);
         responseObserver.onNext(responseBuilder.build());
         responseObserver.onCompleted();
     }
@@ -119,7 +86,29 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
         }
     }
 
-    private boolean isRun(DownLoadContext context) {
-        return context.status() == StatusEnum.STARTED;
+
+    private class ComponentTaskService extends AbstractComponentTaskService {
+        boolean dynamic;
+        boolean test;
+        Set<String> urls;
+        DownloadProcessor pre;
+        DownloadProcessor post;
+
+        @Override
+        public AbstractTask generateTask(String taskTag) {
+            Task task = new Task();
+            task.setTaskTag(taskTag);
+            task.setDynamic(dynamic);
+            task.setTest(test);
+            task.setStartUrls(urls);
+            //目前只有动态的processor
+            if (dynamic) {
+                task.setPreProcessor(pre);
+                task.setPostProcessor(post);
+            } else {
+                //静态处理器
+            }
+            return task;
+        }
     }
 }

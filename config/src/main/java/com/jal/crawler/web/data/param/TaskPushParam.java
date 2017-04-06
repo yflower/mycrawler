@@ -69,16 +69,16 @@ public class TaskPushParam {
             return preProcess;
         }
 
+        public void setPreProcess(List<process> preProcess) {
+            this.preProcess = preProcess;
+        }
+
         public boolean isTest() {
             return test;
         }
 
         public void setTest(boolean test) {
             this.test = test;
-        }
-
-        public void setPreProcess(List<process> preProcess) {
-            this.preProcess = preProcess;
         }
 
         public static class process {

@@ -1,6 +1,6 @@
 package com.jal.crawler.web.data.view;
 
-import com.jal.crawler.proto.AbstractComponentClient;
+import com.jal.crawler.rpc.AbstractComponentClient;
 
 import java.util.List;
 

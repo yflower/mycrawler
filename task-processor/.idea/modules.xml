@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/task-processor.iml" filepath="$PROJECT_DIR$/.idea/modules/task-processor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/task-processor_main.iml" filepath="$PROJECT_DIR$/.idea/modules/task-processor_main.iml" group="task-processor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/task-processor_test.iml" filepath="$PROJECT_DIR$/.idea/modules/task-processor_test.iml" group="task-processor" />
+    </modules>
+  </component>
+</project>

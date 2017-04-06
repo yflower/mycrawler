@@ -43,4 +43,13 @@ public class ComponentModel {
     public void setPort(int port) {
         this.port = port;
     }
+
+    @Override
+    public String toString() {
+        return "ComponentModel{" +
+                "componentEnum=" + componentEnum +
+                ", host='" + host + '\'' +
+                ", port=" + port +
+                '}';
+    }
 }

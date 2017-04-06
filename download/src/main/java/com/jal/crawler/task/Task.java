@@ -1,22 +1,17 @@
 package com.jal.crawler.task;
 
+import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.download.DownloadProcessor;
-import com.jal.crawler.enums.StatusEnum;
 import com.jal.crawler.url.AbstractPageUrlFactory;
 
-import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
  * Created by jal on 2017/1/23.
  */
-public class Task {
-    private boolean test;
+public class Task extends AbstractTask {
     private boolean urlInit;
-    private StatusEnum status;
-    private String taskTag;
     private boolean dynamic;
 
     private DownloadProcessor preProcessor = downLoad -> {
@@ -25,22 +20,14 @@ public class Task {
     };
     private Set<String> startUrls = new HashSet<>();
 
-    private TaskStatistics taskStatistics;
 
-    public boolean isUrlInit() {
-        return urlInit;
-    }
-
-    public synchronized void setUrlInit(boolean urlInit) {
-        this.urlInit = urlInit;
-    }
-
-    public String getTaskTag() {
-        return taskTag;
-    }
-
-    public void setTaskTag(String taskTag) {
-        this.taskTag = taskTag;
+    public synchronized boolean isUrlInit() {
+        if (urlInit) {
+            return true;
+        } else {
+            urlInit = true;
+            return false;
+        }
     }
 
     public boolean isDynamic() {
@@ -76,31 +63,11 @@ public class Task {
     }
 
     public void urlsInit(AbstractPageUrlFactory abstractPageUrlFactory) {
-        abstractPageUrlFactory.addUrl(taskTag, startUrls);
-        setUrlInit(true);
+        abstractPageUrlFactory.addUrl(super.getTaskTag(), startUrls);
     }
 
-    public StatusEnum getStatus() {
-        return status;
-    }
+    @Override
+    public void init() {
 
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
-    public TaskStatistics getTaskStatistics() {
-        return taskStatistics;
-    }
-
-    public void setTaskStatistics(TaskStatistics taskStatistics) {
-        this.taskStatistics = taskStatistics;
-    }
-
-    public boolean isTest() {
-        return test;
-    }
-
-    public void setTest(boolean test) {
-        this.test = test;
     }
 }

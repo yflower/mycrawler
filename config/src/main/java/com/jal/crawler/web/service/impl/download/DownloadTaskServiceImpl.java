@@ -1,9 +1,9 @@
 package com.jal.crawler.web.service.impl.download;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.proto.AbstractComponentClient;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.task.TaskType;
+import com.jal.crawler.rpc.AbstractComponentClient;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;
 import com.jal.crawler.web.data.exception.BizException;
@@ -14,6 +14,7 @@ import com.jal.crawler.web.data.view.TaskOperationVO;
 import com.jal.crawler.web.service.ITaskLoadService;
 import com.jal.crawler.web.service.ITaskService;
 import org.springframework.stereotype.Service;
+
 
 import javax.annotation.Resource;
 import java.util.List;

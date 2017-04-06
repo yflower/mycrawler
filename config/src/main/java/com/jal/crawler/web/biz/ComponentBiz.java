@@ -2,13 +2,12 @@ package com.jal.crawler.web.biz;
 
 import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.web.convert.ComponentConvert;
+import com.jal.crawler.web.data.constants.DefaultConfigModelConstant;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.model.component.ComponentConfigModel;
 import com.jal.crawler.web.data.model.component.ComponentModel;
-import com.jal.crawler.web.data.model.component.DownloadConfigModel;
-import com.jal.crawler.web.data.model.component.ResolveConfigModel;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
@@ -29,6 +28,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by jal on 2017/2/25.
+ * 组件相关的业务
  */
 @Component
 public class ComponentBiz {
@@ -59,11 +59,12 @@ public class ComponentBiz {
             componentModels = getCurrentComponentModel();
         }
 
-        Map<String, ComponentVO> result = componentModels.stream()
-                .collect(Collectors
-                        .toMap(entry -> this.address(entry),
-                                entry -> componentStatService.status(entry).orElseGet(ComponentVO::new)));
-        LOGGER.info("get component status {}", result);
+        Map<String, ComponentVO> result =
+                componentModels.stream()
+                        .collect(Collectors
+                                .toMap(this::address,
+                                        entry -> componentStatService.status(entry).orElseGet(ComponentVO::new)));
+        LOGGER.info("获取组件状态", result);
         return result;
 
     }
@@ -74,18 +75,20 @@ public class ComponentBiz {
             ComponentModel componentModel = ComponentConvert.paramToModel(socket);
             Optional<ComponentEnum> type = componentStatService.type(componentModel);
             if (!type.isPresent()) {
-                throw new BizException(ExceptionEnum.ADDRESS_NOT_FOUND);
+                throw new BizException(ExceptionEnum.ADDRESS_NOT_FOUND,socket.toString());
             }
             componentModel.setComponentEnum(type.get());
             component(componentModel, () -> {
                 if (componentModel.getComponentEnum() == ComponentEnum.DOWNLOAD) {
-                    LOGGER.info("add download component {}", componentModel);
-                    return defaultDownloadConfig(componentModel);
+                    LOGGER.info("添加下载组件 {}", componentModel);
+                    return DefaultConfigModelConstant.defaultDownloadConfig(componentModel,
+                            configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 } else if (componentModel.getComponentEnum() == ComponentEnum.RESOLVE) {
-                    LOGGER.info("add resolve component {}", componentModel);
-                    return defaultResolveConfig(componentModel);
+                    LOGGER.info("添加解析组件 {}", componentModel);
+                    return DefaultConfigModelConstant.defaultResolveConfig(componentModel,
+                            configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 }
-                LOGGER.error("error add component,{}", componentModel);
+                LOGGER.warn("[警告]添加组件 {}", componentModel);
                 throw new BizException(ExceptionEnum.UNKNOWN);
             });
         });
@@ -118,15 +121,12 @@ public class ComponentBiz {
     private void component(ComponentModel componentModel, Supplier<ComponentConfigModel> getComponentConfig) {
         internalComponent(componentModel);
 
-        LOGGER.info("add a component {}", componentModel);
-
         checkDbConfig(configContext);
 
         ComponentConfigModel componentConfigModel = getComponentConfig.get();
 
         internalConfig(componentConfigModel);
 
-        LOGGER.info("config a component {}", componentConfigModel.getComponentEnum());
     }
 
 
@@ -138,7 +138,7 @@ public class ComponentBiz {
             result = resolveService.component(componentModel);
         }
         if (!result) {
-            LOGGER.warn("can't find address component={}", componentModel);
+            LOGGER.warn("[警告] 没有找到组件的地址 {}", componentModel);
             throw new BizException(ExceptionEnum.ADDRESS_NOT_FOUND);
         }
     }
@@ -149,11 +149,13 @@ public class ComponentBiz {
         //组件设置
         if (componentConfigModel.getComponentEnum() == ComponentEnum.DOWNLOAD) {
             result = downloadService.config(componentConfigModel);
+            LOGGER.info("下载组件设置成功");
         } else {
             result = resolveService.config(componentConfigModel);
+            LOGGER.info("解析组件设置成功");
         }
         if (!result) {
-            LOGGER.warn("config error component={}", componentConfigModel);
+            LOGGER.warn("[警告] 组件设置失败 {}", componentConfigModel);
             throw new BizException(ExceptionEnum.CONFIG_ERROR);
         }
     }
@@ -161,7 +163,7 @@ public class ComponentBiz {
 
     private void checkDbConfig(ConfigContext configContext) {
         if (configContext.getRedisConfigModel() == null || configContext.getMongoConfigModel() == null) {
-            LOGGER.warn("you must config you db before you config you component");
+            LOGGER.warn("[警告]你必须先设置数据库");
             throw new BizException(ExceptionEnum.DB_CONFIG_ERROR);
         }
     }
@@ -175,7 +177,7 @@ public class ComponentBiz {
     /**
      * 得到当前所有可用的组件
      *
-     * @return
+     * @return 返回当前可用所有的组件
      */
     private List<ComponentModel> getCurrentComponentModel() {
         List<ComponentModel> result = new ArrayList<>();
@@ -183,36 +185,6 @@ public class ComponentBiz {
         result.addAll(configContext.downloadComponent());
         return result;
 
-    }
-
-
-    /**
-     * 默认的组件设置
-     *
-     * @param componentModel
-     * @return
-     */
-    private ComponentConfigModel defaultDownloadConfig(ComponentModel componentModel) {
-        DownloadConfigModel downloadConfigModel = new DownloadConfigModel();
-        downloadConfigModel.setHost(componentModel.getHost());
-        downloadConfigModel.setPort(componentModel.getPort());
-        downloadConfigModel.setComponentEnum(componentModel.getComponentEnum());
-        downloadConfigModel.setThread(2);
-        downloadConfigModel.setSleepTime(100);
-        downloadConfigModel.setMongoConfigModel(configContext.getMongoConfigModel());
-        downloadConfigModel.setRedisConfigModel(configContext.getRedisConfigModel());
-        return downloadConfigModel;
-    }
-
-    private ComponentConfigModel defaultResolveConfig(ComponentModel componentModel) {
-        ResolveConfigModel resolveConfigModel = new ResolveConfigModel();
-        resolveConfigModel.setComponentEnum(componentModel.getComponentEnum());
-        resolveConfigModel.setHost(componentModel.getHost());
-        resolveConfigModel.setPort(componentModel.getPort());
-        resolveConfigModel.setThread(2);
-        resolveConfigModel.setMongoConfigModel(configContext.getMongoConfigModel());
-        resolveConfigModel.setRedisConfigModel(configContext.getRedisConfigModel());
-        return resolveConfigModel;
     }
 
 

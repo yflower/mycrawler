@@ -4,6 +4,7 @@ package com.jal.crawler.url;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -25,9 +26,13 @@ public abstract class AbstractPageUrlFactory implements PageUrlFactory {
         urlRegister(taskTag, url);
     }
 
-    public String getUrl(String taskTag) {
+    public Optional<String> getUrl(String taskTag) {
         count.decrementAndGet();
-        return fetchUrl(taskTag);
+        String result= fetchUrl(taskTag);
+        if(result==null){
+            return Optional.empty();
+        }
+        return Optional.of(result);
     }
 
     public int count() {

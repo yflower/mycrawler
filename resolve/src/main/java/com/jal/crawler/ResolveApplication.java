@@ -1,8 +1,8 @@
 package com.jal.crawler;
 
-import com.jal.crawler.proto.GrpcComponentServer;
-import com.jal.crawler.proto.GrpcConfigServer;
-import com.jal.crawler.proto.GrpcTaskServer;
+import com.jal.crawler.proto.GrpcComponentStatusServer;
+import com.jal.crawler.proto.GrpcComponentInitServer;
+import com.jal.crawler.proto.GrpcComponentTaskServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
@@ -24,9 +24,9 @@ public class ResolveApplication {
 
         Server server = ServerBuilder
                 .forPort(9006)
-                .addService(run.getBean(GrpcConfigServer.class))
-                .addService(run.getBean(GrpcTaskServer.class))
-                .addService(run.getBean(GrpcComponentServer.class))
+                .addService(run.getBean(GrpcComponentInitServer.class))
+                .addService(run.getBean(GrpcComponentTaskServer.class))
+                .addService(run.getBean(GrpcComponentStatusServer.class))
                 .build();
         server.start();
         try {

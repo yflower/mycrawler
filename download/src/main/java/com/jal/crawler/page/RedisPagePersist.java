@@ -17,14 +17,16 @@ public class RedisPagePersist implements PagePersist {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
+    SetOperations<String, String> stringStringSetOperations;
+
     public RedisPagePersist(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
+        stringStringSetOperations = redisTemplate.opsForSet();
     }
 
 
     @Override
     public void persist(String taskTag, Page page) {
-        SetOperations<String, String> stringStringSetOperations = redisTemplate.opsForSet();
         try {
             stringStringSetOperations.add(taskTag + "_page", objectMapper.writeValueAsString(page));
         } catch (JsonProcessingException e) {

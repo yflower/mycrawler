@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Created by jal on 2017/1/10.
@@ -24,15 +25,15 @@ public class RedisPageFetch implements PageFetch {
     }
 
     @Override
-    public Page fetch(String taskTag) {
+    public Optional<Page> fetch(String taskTag) {
         String page = stringStringSetOperations.pop(taskTag + "_page");
         if (page != null) {
             try {
-                return objectMapper.readValue(page, Page.class);
+                return Optional.of(objectMapper.readValue(page, Page.class));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return null;
+        return Optional.empty();
     }
 }

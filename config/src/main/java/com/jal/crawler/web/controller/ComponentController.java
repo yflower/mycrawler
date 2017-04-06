@@ -3,7 +3,6 @@ package com.jal.crawler.web.controller;
 import com.jal.crawler.web.biz.ComponentBiz;
 import com.jal.crawler.web.data.apiResponse.ApiResponse;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
-import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;

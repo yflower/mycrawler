@@ -2,12 +2,16 @@ package com.jal.crawler.web.data.apiResponse;
 
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 返回api的统一格式
  * Created by jal on 2017/2/18.
  */
 public class ApiResponse<T> {
+    private static final Logger LOGGER= LoggerFactory.getLogger(ApiResponse.class);
+
     private String code;
 
     private String message;
@@ -25,16 +29,23 @@ public class ApiResponse<T> {
     }
 
 
+    public static <T> ApiResponse failBuild(ExceptionEnum exceptionEnum, String message) {
+        return new ApiResponse(exceptionEnum.getCode(), "exception:" + exceptionEnum.getMessage() + "," + message, "");
+
+    }
+
     public static <T> ApiResponse failBuild(ExceptionEnum exceptionEnum) {
         return new ApiResponse(exceptionEnum.getCode(), "exception:" + exceptionEnum.getMessage(), "");
 
     }
 
+
     public static <T> ApiResponse failBuild(Exception e) {
         if (e instanceof BizException) {
-            return failBuild(((BizException) e).getExceptionEnum());
+            return failBuild(((BizException) e).getExceptionEnum(), e.getMessage());
         } else {
-            return failBuild(ExceptionEnum.UNKNOWN);
+            LOGGER.error("error",e);
+            return failBuild(ExceptionEnum.UNKNOWN, "");
         }
     }
 

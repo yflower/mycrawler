@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by home on 2017/1/8.
@@ -41,16 +42,13 @@ public abstract class AbstractDownLoad implements DownLoad {
 
 
     @Override
-    public Page downLoad(PageRequest pageRequest) {
+    public Optional<Page> downLoad(PageRequest pageRequest) {
         try {
             internalDown(pageRequest);
             postProcessor.process(this);
         } catch (IOException ex) {
             logger.info("fail down html  {}", pageRequest.getUrl());
-            Page failPage = new Page();
-            failPage.setUrl(pageRequest.getUrl());
-            failPage.setRawContent("");
-            return new Page();
+            return Optional.empty();
         }
         logger.info("success down html {}", pageRequest.getUrl());
         Page page = new Page();
@@ -58,7 +56,7 @@ public abstract class AbstractDownLoad implements DownLoad {
         page.setRawContent(rawContent());
         page.setHeaders(responseHeaders());
         page.setCode(responseCode());
-        return page;
+        return Optional.of(page);
     }
 
 

@@ -1,8 +1,8 @@
 package com.jal.crawler.web.service.impl;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.proto.AbstractComponentClient;
-import com.jal.crawler.proto.RpcClient;
+import com.jal.crawler.rpc.AbstractComponentClient;
+import com.jal.crawler.rpc.RpcClient;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentModel;

@@ -1,7 +1,7 @@
 package com.jal.crawler;
 
-import com.jal.crawler.proto.ComponentServer;
-import com.jal.crawler.proto.DownloadConfigServer;
+import com.jal.crawler.proto.ComponentStatusServer;
+import com.jal.crawler.proto.DownloadInitServer;
 import com.jal.crawler.proto.DownloadTaskServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -21,9 +21,9 @@ public class DownloadApplication {
         System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
         Server server = ServerBuilder.forPort(9001)
-                .addService(context.getBean(DownloadConfigServer.class))
+                .addService(context.getBean(DownloadInitServer.class))
                 .addService(context.getBean(DownloadTaskServer.class))
-                .addService(context.getBean(ComponentServer.class))
+                .addService(context.getBean(ComponentStatusServer.class))
                 .build();
         server.start();
         server.awaitTermination();

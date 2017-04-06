@@ -1,59 +1,27 @@
 package com.jal.crawler.task;
 
-import com.jal.crawler.enums.StatusEnum;
+import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.parse.tag.HtmlTag;
 import com.jal.crawler.parse.tag.Tag;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * Created by home on 2017/1/20.
  */
-public class Task {
-    private boolean test;
-    private StatusEnum status;
+public class Task extends AbstractTask{
 
-    private String taskTag;
 
     private List<var> vars;
 
     private List<item> items;
 
-    private TaskStatistics taskStatistics;
 
-    public Task(String taskTag) {
-        this.taskTag = taskTag;
-        vars = new ArrayList<>();
-        items = new ArrayList<>();
-        taskStatistics=new TaskStatistics();
-    }
-
-
-    public void var(var var) {
-        vars.add(var);
-    }
-
-    public void item(String itemName, List<var> vars) {
-        item item = new item();
-        item.itemName = itemName;
-        item.itemVar = vars;
-        items.add(item);
-    }
-
-
-    public String getTaskTag() {
-        return taskTag;
-    }
-
-
-    public Map<String, Object> result(Page page) {
+    public Optional<Map<String, Object>> result(Page page) {
         Tag htmlTag = tag(page);
         Map<String, Object> stringMap = vars.stream().collect(Collectors.toMap(query -> query.name, query -> evaluate(query, htmlTag)));
         Map<String, Object> itemResult = items.stream().map(item -> itemResult(item, htmlTag)).collect(Collectors.reducing(new HashMap<String, Object>(), (m, n) -> {
@@ -63,7 +31,7 @@ public class Task {
         stringMap.putAll(itemResult);
         stringMap.put("url", page.getUrl());
         helpGC(page, htmlTag);
-        return stringMap;
+        return Optional.of(stringMap);
     }
 
     private void helpGC(Page page, Tag tag) {
@@ -122,12 +90,18 @@ public class Task {
         return new HtmlTag(document);
     }
 
-    public StatusEnum getStatus() {
-        return status;
+
+    public void setVars(List<var> vars) {
+        this.vars = vars;
     }
 
-    public void setStatus(StatusEnum status) {
-        this.status = status;
+    public void setItems(List<item> items) {
+        this.items = items;
+    }
+
+    @Override
+    public void init() {
+
     }
 
     public static class var {
@@ -149,17 +123,13 @@ public class Task {
     public static class item {
         String itemName;
         List<var> itemVar;
+
+        public item(String itemName, List<var> itemVar) {
+            this.itemName = itemName;
+            this.itemVar = itemVar;
+        }
     }
 
-    public boolean isTest() {
-        return test;
-    }
 
-    public void setTest(boolean test) {
-        this.test = test;
-    }
 
-    public TaskStatistics getTaskStatistics() {
-        return taskStatistics;
-    }
 }

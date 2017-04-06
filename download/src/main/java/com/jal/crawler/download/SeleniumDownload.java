@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 /**
  * Created by home on 2017/1/16.
@@ -77,20 +79,32 @@ public class SeleniumDownload extends DynamicDownload {
         if (isSkip) {
             return this;
         }
-        List<WebElement> elements = webDriver.findElements(By.cssSelector(enableClickElementQuery));
-        if (!elements.isEmpty()) {
-            elements.get(0).click();
-        } else {
+        boolean clicked = false;
+        for (int retryTime = 0; retryTime < 5; ++retryTime) {
+            List<WebElement> elements = webDriver.findElements(By.cssSelector(enableClickElementQuery));
+            if (!elements.isEmpty()) {
+                elements.get(0).click();
+                clicked = true;
+                break;
+            } else {
+                waitUtilShow(enableClickElementQuery, 2, TimeUnit.SECONDS);
+                retryTime++;
+            }
+        }
+        if (!clicked) {
             isSkip = true;
         }
         return this;
     }
 
+
     @Override
     public DynamicDownload waitUtilShow(String elementQuery, long time, TimeUnit timeUnit) {
         try {
+            ExpectedCondition<WebElement> condition = ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementQuery));
+            Function<WebDriver, WebElement> function = webDriver1 -> condition.apply(webDriver1);
             new WebDriverWait(webDriver, timeUnit.toSeconds(time))
-                    .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementQuery)));
+                    .until(condition);
         } catch (TimeoutException ex) {
             isSkip = true;
         }

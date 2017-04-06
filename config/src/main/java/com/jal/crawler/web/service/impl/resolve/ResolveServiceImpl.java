@@ -1,15 +1,16 @@
 package com.jal.crawler.web.service.impl.resolve;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.proto.AbstractComponentClient;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.resolve.ResolveConfig;
+import com.jal.crawler.rpc.AbstractComponentClient;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentConfigModel;
 import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.data.model.component.ResolveConfigModel;
 import com.jal.crawler.web.service.IComponentService;
 import org.springframework.stereotype.Service;
+
 
 import javax.annotation.Resource;
 import java.util.Optional;

@@ -21,7 +21,7 @@ import java.util.function.Consumer;
 @Component
 public class TaskBiz {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ComponentBiz.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TaskBiz.class);
 
     @Resource
     private ITaskService resolveTaskService;
@@ -35,14 +35,11 @@ public class TaskBiz {
         String taskTag = generateTaskTag();
         taskPush(param.getDownload(), taskTag);
         taskPush(param.getResolve(), taskTag);
-        LOGGER.info("taskOp push task");
+        LOGGER.info("任务添加成功");
         return new TaskOperationVO() {{
             setResult(1);
         }};
     }
-
-
-
 
 
     public TaskOperationVO taskPause(String taskTag) {
@@ -107,7 +104,6 @@ public class TaskBiz {
         downloadOperationModel.setType(TaskOperationEnum.ADD);
         downloadTaskService.push(downloadOperationModel);
     }
-
 
 
     //rpc中参数不为空，填充可能为空的参数
