@@ -11,6 +11,8 @@ download/.idea/*
 
 resolve/.idea/*
 
+task-processor/.idea/*
+
 web/.idea/*
 
 web/node_modules/*
