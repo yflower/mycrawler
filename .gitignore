@@ -18,3 +18,7 @@ web/node_modules/*
 web/app/jspm_packages/*
 
 *.iml
+
+.gradle/*
+
+task_processor/.gradle/*
