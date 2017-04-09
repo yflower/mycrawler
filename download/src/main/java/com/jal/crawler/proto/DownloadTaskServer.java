@@ -36,8 +36,8 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
 
     @Override
     public void downloadTask(DownloadTask request, StreamObserver<DownloadTaskResponse> responseObserver) {
-        ComponentTaskService taskService = new ComponentTaskService();
-        taskService.setComponentContext(downLoadContext);
+        ComponentTaskService taskService = new ComponentTaskService(downLoadContext);
+
         taskService.dynamic = request.getDynamic();
         taskService.test = request.getTest();
         taskService.urls = new HashSet<>(request.getStartUrlList());
@@ -88,6 +88,10 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
 
 
     private class ComponentTaskService extends AbstractComponentTaskService {
+        public ComponentTaskService(DownLoadContext context) {
+            super.componentContext=context;
+        }
+
         boolean dynamic;
         boolean test;
         Set<String> urls;

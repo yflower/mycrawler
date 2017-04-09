@@ -9,20 +9,15 @@ import java.util.logging.Logger;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class AbstractComponentInitService {
+public abstract class AbstractComponentInitService<C extends ComponentContext> {
     private static final Logger LOGGER = Logger.getLogger(AbstractComponentInitService.class.getSimpleName());
 
-    protected ComponentContext componentContext;
-
-
-    public void setComponentContext(ComponentContext componentContext) {
-        this.componentContext = componentContext;
-    }
+    protected C componentContext;
 
     public boolean init(int thread) {
         componentContext.setThread(thread);
         try {
-            LOGGER.log(Level.INFO,"组件开始初始化");
+            LOGGER.log(Level.INFO, "组件开始初始化");
             extraInit();
             componentContext.init();
             componentContext.setStatus(StatusEnum.INIT);

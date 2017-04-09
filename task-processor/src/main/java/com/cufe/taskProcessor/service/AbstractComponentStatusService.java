@@ -7,8 +7,9 @@ import com.cufe.taskProcessor.model.ComponentStatus;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class AbstractComponentStatusService {
-    protected ComponentContext componentContext;
+public abstract class AbstractComponentStatusService<C extends ComponentContext> {
+
+    protected C componentContext;
 
 
     public ComponentStatus componentStatus(ComponentStatus componentStatus) {
@@ -20,10 +21,6 @@ public abstract class AbstractComponentStatusService {
         }
         return self;
 
-    }
-
-    public void setComponentContext(ComponentContext componentContext) {
-        this.componentContext = componentContext;
     }
 
 

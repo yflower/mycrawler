@@ -87,7 +87,7 @@ public class SeleniumDownload extends DynamicDownload {
                 clicked = true;
                 break;
             } else {
-                waitUtilShow(enableClickElementQuery, 2, TimeUnit.SECONDS);
+                waitUtilShow(enableClickElementQuery, 1, TimeUnit.SECONDS);
                 retryTime++;
             }
         }

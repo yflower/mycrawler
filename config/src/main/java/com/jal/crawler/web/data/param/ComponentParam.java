@@ -1,5 +1,6 @@
 package com.jal.crawler.web.data.param;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * Created by jal on 2017/2/19.
  */
 public class ComponentParam {
+    @Valid
     private List<socket> components;
 
     public List<socket> getComponents() {

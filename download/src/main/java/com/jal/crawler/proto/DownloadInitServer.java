@@ -35,9 +35,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
 
     @Override
     public void downloadConfig(DownloadConfig request, StreamObserver<ConfigStatus> responseObserver) {
-        ComponentInitService initService = new ComponentInitService();
-        initService.setComponentContext(downLoadContext);
-
+        ComponentInitService initService = new ComponentInitService(downLoadContext);
 
         initService.sleep = request.getSleepTime();
         initService.proxy = request.getProxy();
@@ -57,7 +55,6 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
         boolean init = initService.init(request.getThread());
 
 
-
         ConfigStatus.Builder builder = ConfigStatus.newBuilder();
         //启动组件
         builder.setInit(init);
@@ -73,7 +70,11 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
         responseObserver.onCompleted();
     }
 
-    private class ComponentInitService extends AbstractComponentInitService {
+    private class ComponentInitService extends AbstractComponentInitService<DownLoadContext> {
+        public ComponentInitService(DownLoadContext context) {
+            super.componentContext = context;
+        }
+
         int sleep;
         boolean proxy;
         List<String> proxyAddress;
@@ -81,7 +82,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
 
         @Override
         public void extraInit() {
-            DownLoadContext downLoadContext = (DownLoadContext) componentContext;
+            DownLoadContext downLoadContext = componentContext;
             downLoadContext.sleep(sleep);
             if (proxy) {
                 //目前只能设定单代理

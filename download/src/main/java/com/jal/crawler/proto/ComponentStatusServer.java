@@ -23,8 +23,7 @@ public class ComponentStatusServer extends RpcComponentStatusGrpc.RpcComponentSt
 
     @Override
     public void rpcComponentStatus(ConfigComponentStatus request, StreamObserver<ComponentStatus> responseObserver) {
-        ComponentStatusService statusService = new ComponentStatusService();
-        statusService.setComponentContext(downLoadContext);
+        ComponentStatusService statusService = new ComponentStatusService(downLoadContext);
         com.cufe.taskProcessor.model.ComponentStatus componentStatus = statusService.componentStatus(null);
 
         ComponentStatus.Builder builder = ComponentStatus.newBuilder();
@@ -37,9 +36,9 @@ public class ComponentStatusServer extends RpcComponentStatusGrpc.RpcComponentSt
                             .setStatus(Status.forNumber(t.getStatus().getCode()))
                             .setStartTime(t.getTaskStatistics().getBeginTime()
                                     .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
-                            .setEndTime(t.getTaskStatistics().getEndTime()==null?0:
+                            .setEndTime(t.getTaskStatistics().getEndTime() == null ? 0 :
                                     t.getTaskStatistics().getEndTime()
-                                    .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                                            .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                             .setResourceTotal((int) t.getTaskStatistics().getResourceTotalCycle())
                             .setProcessorTotal((int) t.getTaskStatistics().getProcessorTotalCycle())
                             .setPersistTotal((int) t.getTaskStatistics().getPersistTotalCycle())
@@ -53,6 +52,10 @@ public class ComponentStatusServer extends RpcComponentStatusGrpc.RpcComponentSt
     }
 
     private class ComponentStatusService extends AbstractComponentStatusService {
+        public ComponentStatusService(DownLoadContext context) {
+            super.componentContext = context;
+        }
+
         @Override
         public int componentType() {
             return ComponentType.DOWNLOAD_VALUE;

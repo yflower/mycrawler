@@ -11,14 +11,10 @@ import java.util.logging.Logger;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class AbstractComponentTaskService {
+public abstract class AbstractComponentTaskService<C extends ComponentContext> {
     private static final Logger LOGGER = Logger.getLogger(AbstractComponentTaskService.class.getSimpleName());
 
-    protected ComponentContext componentContext;
-
-    public void setComponentContext(ComponentContext componentContext) {
-        this.componentContext = componentContext;
-    }
+    protected C componentContext;
 
     public boolean task(String taskTag, TaskTypeEnum taskType) {
         boolean result = false;

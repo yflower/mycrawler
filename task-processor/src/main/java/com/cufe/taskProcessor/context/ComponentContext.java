@@ -5,8 +5,8 @@ import com.cufe.taskProcessor.Repository;
 import com.cufe.taskProcessor.Sink;
 import com.cufe.taskProcessor.enums.CycleEnum;
 import com.cufe.taskProcessor.enums.StatusEnum;
-import com.cufe.taskProcessor.help.FunctionHelp;
 import com.cufe.taskProcessor.task.AbstractTask;
+import com.cufe.taskProcessor.ProcessorHook;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -26,7 +25,7 @@ import java.util.stream.Collectors;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class ComponentContext<S, R> {
+public abstract class ComponentContext<S, R, T extends AbstractTask> implements ProcessorHook<T> {
 
     private static final Logger LOGGER = Logger.getLogger(Processor.class.getSimpleName());
 
@@ -36,19 +35,9 @@ public abstract class ComponentContext<S, R> {
 
     protected Processor<S, R> processor;
 
-    protected Consumer<AbstractTask> taskBeforeHook;
-
-    protected Consumer<AbstractTask> taskAfterHook;
-
-    protected Runnable cycleBefore;
-
-    protected Runnable cycleError;
-
-    protected Runnable cycleFinally;
-
     private int thread;
 
-    private List<AbstractTask> tasks;
+    private List<T> tasks;
 
     private Lock taskLock = new ReentrantLock();
 
@@ -68,7 +57,7 @@ public abstract class ComponentContext<S, R> {
 
     }
 
-    public boolean addTask(AbstractTask task) {
+    public boolean addTask(T task) {
         //只有任务到来时才启动
         if (status == StatusEnum.INIT) {
             setStatus(StatusEnum.STARTED);
@@ -115,21 +104,6 @@ public abstract class ComponentContext<S, R> {
         if (sink == null || repository == null || processor == null) {
             throw new IllegalStateException("sink,repository,processor必须设置");
         }
-        if (taskBeforeHook == null) {
-            taskBeforeHook = FunctionHelp.TASK_CYCLE_EMPTY_HOOK;
-        }
-        if (taskAfterHook == null) {
-            taskAfterHook = FunctionHelp.TASK_CYCLE_EMPTY_HOOK;
-        }
-        if (cycleBefore == null) {
-            cycleBefore = FunctionHelp.CYCLE_EMPTY_HOOK;
-        }
-        if (cycleError == null) {
-            cycleError = FunctionHelp.CYCLE_EMPTY_HOOK;
-        }
-        if (cycleFinally == null) {
-            cycleFinally = FunctionHelp.CYCLE_EMPTY_HOOK;
-        }
 
         executorService = Executors.newFixedThreadPool(thread);
         tasks = new ArrayList<>();
@@ -138,17 +112,17 @@ public abstract class ComponentContext<S, R> {
 
     }
 
-    protected abstract void internalInit();
+
 
     private void execute() {
         executorService.submit(() -> {
-            cycleBefore.run();
+            cycleBeforeHook();
             random = ThreadLocalRandom.current();
-            AbstractTask task;
+            T task;
             S resource;
             try {
                 while ((task = randomRunnableTask()) != null) {
-                    taskBeforeHook.accept(task);
+                    taskBeforeHook(task);
                     taskCycleCheck(task);
                     Optional<S> optional = sink.get(task);
                     if (!optional.isPresent()) {
@@ -182,14 +156,14 @@ public abstract class ComponentContext<S, R> {
                             break;
                         }
                     }
-                    taskAfterHook.accept(task);
+                    taskAfterHook(task);
                 }
             } catch (Exception e) {
-                cycleError.run();
+                cycleErrorHook();
                 LOGGER.log(Level.SEVERE, "循环过程出错", e);
                 execute();
             } finally {
-                cycleFinally.run();
+                cycleFinalHook();
             }
         });
     }
@@ -198,16 +172,16 @@ public abstract class ComponentContext<S, R> {
         return singletonCycle >= CycleEnum.SINGLETON_CYCLE_LIMIT.getCycle();
     }
 
-    private AbstractTask randomRunnableTask() {
+    private T randomRunnableTask() {
         //优先获取test
-        List<AbstractTask> testList = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED)
+        List<T> testList = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED)
                 .filter(AbstractTask::isTest)
                 .collect(Collectors.toList());
         if (!testList.isEmpty()) {
             return testList.get(Math.abs(random.nextInt() % testList.size()));
         }
 
-        List<AbstractTask> list = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED).collect(Collectors.toList());
+        List<T> list = tasks.stream().filter(t -> t.getStatus() == StatusEnum.STARTED).collect(Collectors.toList());
         if (!list.isEmpty()) {
             return list.get(Math.abs(random.nextInt() % list.size()));
         } else {
@@ -254,28 +228,19 @@ public abstract class ComponentContext<S, R> {
         }
     }
 
+    protected abstract void internalInit();
 
-    public void setSink(Sink<S> sink) {
-        this.sink = sink;
-    }
+
 
     public synchronized void setStatus(StatusEnum status) {
         this.status = status;
-    }
-
-    public void setRepository(Repository<R> repository) {
-        this.repository = repository;
-    }
-
-    public void setProcessor(Processor<S, R> processor) {
-        this.processor = processor;
     }
 
     public int getThread() {
         return thread;
     }
 
-    public List<AbstractTask> getTasks() {
+    public List<T> getTasks() {
         return tasks;
     }
 
@@ -285,26 +250,6 @@ public abstract class ComponentContext<S, R> {
 
     public void setThread(int thread) {
         this.thread = thread;
-    }
-
-    public void setTaskBeforeHook(Consumer<AbstractTask> taskBeforeHook) {
-        this.taskBeforeHook = taskBeforeHook;
-    }
-
-    public void setTaskAfterHook(Consumer<AbstractTask> taskAfterHook) {
-        this.taskAfterHook = taskAfterHook;
-    }
-
-    public void setCycleBefore(Runnable cycleBefore) {
-        this.cycleBefore = cycleBefore;
-    }
-
-    public void setCycleError(Runnable cycleError) {
-        this.cycleError = cycleError;
-    }
-
-    public void setCycleFinally(Runnable cycleFinally) {
-        this.cycleFinally = cycleFinally;
     }
 
 

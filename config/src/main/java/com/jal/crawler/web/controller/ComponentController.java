@@ -3,6 +3,7 @@ package com.jal.crawler.web.controller;
 import com.jal.crawler.web.biz.ComponentBiz;
 import com.jal.crawler.web.data.apiResponse.ApiResponse;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
+import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
@@ -33,12 +34,7 @@ public class ComponentController {
      */
     @GetMapping("/status")
     public ApiResponse view(@RequestParam(required = false) ComponentParam componentParams) {
-        try {
-            return ApiResponse.successBuild(componentBiz.status(componentParams));
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
-
+        return ApiResponse.successBuild(componentBiz.status(componentParams));
     }
 
     /**
@@ -51,13 +47,9 @@ public class ComponentController {
     @PostMapping
     public ApiResponse component(@Valid @RequestBody ComponentParam param, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
+            throw new BizException(ExceptionEnum.PARAM_ERROR);
         }
-        try {
-            componentBiz.component(param);
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        componentBiz.component(param);
         return ApiResponse.successBuild("");
 
     }
@@ -73,13 +65,9 @@ public class ComponentController {
     @PostMapping("/download")
     public ApiResponse downloadConfig(@Valid @RequestBody DownloadParam downloadParam, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
+            throw new BizException(ExceptionEnum.PARAM_ERROR);
         }
-        try {
-            componentBiz.component(downloadParam);
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        componentBiz.component(downloadParam);
         return ApiResponse.successBuild("");
     }
 
@@ -94,13 +82,9 @@ public class ComponentController {
     @PostMapping("/resolve")
     public ApiResponse resolveConfig(@Valid @RequestBody ResolveParam resolveParam, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
+            throw new BizException(ExceptionEnum.PARAM_ERROR);
         }
-        try {
-            componentBiz.component(resolveParam);
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        componentBiz.component(resolveParam);
         return ApiResponse.successBuild("");
     }
 

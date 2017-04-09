@@ -107,8 +107,8 @@ public abstract class AbstractComponentClient<C, T> {
                         taskStatistics.resourceTotal = t.getValue().getResourceTotal();
                         taskStatistics.processorTotal = t.getValue().getPersistTotal();
                         taskStatistics.persistTotal = t.getValue().getPersistTotal();
-                        taskStatistics.startTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getStartTime()), ZoneOffset.UTC);
-                        taskStatistics.endTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getEndTime()), ZoneOffset.UTC);
+                        taskStatistics.startTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getStartTime()), ZoneOffset.systemDefault());
+                        taskStatistics.endTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getEndTime()), ZoneOffset.systemDefault());
                         return taskStatistics;
                     })));
             return Optional.of(internalStatus);

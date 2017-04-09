@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7377b659-9776-4a14-a966-b0b820d129da" name="Default" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
+    <list default="true" id="179f510f-683e-44ba-a0f3-50adb5a9dec1" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,6 +10,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="ExternalProjectsData">
@@ -74,12 +76,12 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="ComponentContext.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4230">
-              <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+            <state relative-caret-position="3665">
+              <caret line="205" column="9" lean-forward="false" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,25 +89,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Processor.java">
+      <file leaf-file-name="ComponentStatus.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/model/ComponentStatus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="147">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CycleEnum.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/CycleEnum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="e#268#269#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -113,18 +102,8 @@
       <file leaf-file-name="AbstractComponentInitService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractComponentTaskService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="33" column="60" lean-forward="false" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+            <state relative-caret-position="-91">
+              <caret line="12" column="110" lean-forward="false" selection-start-line="12" selection-start-column="110" selection-end-line="12" selection-end-column="110" />
               <folding />
             </state>
           </provider>
@@ -133,8 +112,58 @@
       <file leaf-file-name="AbstractComponentStatusService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractComponentTaskService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-28">
+              <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sink.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Sink.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="16" column="62" lean-forward="false" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Repository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Repository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Processor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcessorHook.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ProcessorHook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -145,86 +174,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="GradleExtensions">
-    <project path="$PROJECT_DIR$">
-      <sub-project>
-        <project path="$PROJECT_DIR$">
-          <extensions>
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <ext name="publishing" type="org.gradle.api.publish.internal.DefaultPublishingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by root project 'task-processor'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of root project 'task-processor'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="sourceJar" type="org.gradle.api.tasks.bundling.Jar">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="dependentComponents" type="org.gradle.api.reporting.dependents.DependentComponentsReport">Displays the dependent components of components in root project 'task-processor'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in root project 'task-processor'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="wrapper" type="org.gradle.api.tasks.wrapper.Wrapper">Generates Gradle wrapper files. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="generatePomFileForMavenJavaPublication" type="org.gradle.api.publish.maven.tasks.GenerateMavenPom">Generates the Maven POM file for publication 'mavenJava'.&lt;p&gt;&lt;i&gt;Task group: publishing&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of root project 'task-processor'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from root project 'task-processor'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="init" type="org.gradle.buildinit.tasks.InitBuild">Initializes a new Gradle build. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="publishMavenJavaPublicationToMavenLocal" type="org.gradle.api.publish.maven.tasks.PublishToMavenLocal">Publishes Maven publication 'mavenJava' to the local Maven repository.&lt;p&gt;&lt;i&gt;Task group: publishing&lt;i&gt;</task>
-            <task name="ideaWorkspace" type="org.gradle.plugins.ide.idea.GenerateIdeaWorkspace">Generates an IDEA workspace file (IWS)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in root project 'task-processor'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="cleanIdeaProject" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in root project 'task-processor'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="publish">Publishes all publications produced by this project.&lt;p&gt;&lt;i&gt;Task group: publishing&lt;i&gt;</task>
-            <task name="publishToMavenLocal">Publishes all Maven publications produced by this project to the local Maven cache.&lt;p&gt;&lt;i&gt;Task group: publishing&lt;i&gt;</task>
-            <task name="ideaProject" type="org.gradle.plugins.ide.idea.GenerateIdeaProject">Generates IDEA project file (IPR)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of root project 'task-processor'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaWorkspace" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-      </sub-project>
-    </project>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3" />
+        <entry key="$PROJECT_DIR$" value="C:\Program Files\gradle-3.4.1-all\gradle-3.4.1" />
       </map>
     </option>
     <option name="myGradleVersions">
       <map>
-        <entry key="$PROJECT_DIR$" value="3.3" />
+        <entry key="$PROJECT_DIR$" value="3.4.1" />
       </map>
     </option>
     <option name="availableProjects">
@@ -418,8 +380,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4473602360000" />
-        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="714125404" />
+        <entry key="$PROJECT_DIR$" value="2983480726094" />
+        <entry key="$USER_HOME$/work/zcm-pos-promotion" value="2979343382313" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -441,75 +403,141 @@
               <option name="name" value="task-processor" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/ant-1.9.6.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/ant-launcher-1.9.6.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-base-services-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-base-services-groovy-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-cli-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-core-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-docs-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-installation-beacon-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-jvm-services-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-launcher-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-logging-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-messaging-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-model-core-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-model-groovy-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-native-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-open-api-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-process-services-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-resources-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-script-kotlin-0.5.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-tooling-api-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-ui-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-version-info-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/gradle-wrapper-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/groovy-all-2.4.7.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-announce-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-antlr-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-build-cache-http-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-build-comparison-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-build-init-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-code-quality-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-composite-builds-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-dependency-management-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-diagnostics-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-ear-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-ide-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-ide-native-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-ide-play-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-ivy-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-jacoco-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-javascript-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-jetty-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-language-groovy-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-language-java-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-language-jvm-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-language-native-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-language-scala-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-maven-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-osgi-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-platform-base-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-platform-jvm-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-platform-native-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-platform-play-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-plugin-development-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-plugin-use-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-plugins-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-publish-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-reporting-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-resources-http-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-resources-s3-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-resources-sftp-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-scala-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-signing-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-test-kit-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-testing-base-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-testing-jvm-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-testing-native-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-tooling-api-builders-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/gradle-workers-3.3.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/announce" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/antlr" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/base-services" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/base-services-groovy" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/build-cache-http" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/build-comparison" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/build-init" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/cli" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/code-quality" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/composite-builds" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/core" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/dependency-management" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/diagnostics" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/ear" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/ide" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/ide-native" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/ide-play" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/installation-beacon" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/internal-android-performance-testing" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/internal-integ-testing" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/internal-performance-testing" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/internal-testing" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/ivy" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/jacoco" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/javascript" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/jetty" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/jvm-services" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/language-groovy" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/language-java" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/language-jvm" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/language-native" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/language-scala" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/launcher" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/logging" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/maven" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/messaging" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/model-core" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/model-groovy" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/native" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/open-api" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/osgi" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/platform-base" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/platform-jvm" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/platform-native" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/platform-play" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/plugin-development" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/plugin-use" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/plugins" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/process-services" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/publish" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/reporting" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/resources" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/resources-http" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/resources-s3" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/resources-sftp" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/scala" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/signing" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/test-kit" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/testing-base" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/testing-jvm" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/testing-native" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/tooling-api" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/tooling-api-builders" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/ui" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/workers" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/src/wrapper" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/ant-1.9.6.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/ant-launcher-1.9.6.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-base-services-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-base-services-groovy-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-cli-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-core-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-docs-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-installation-beacon-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-jvm-services-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-launcher-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-logging-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-messaging-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-model-core-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-model-groovy-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-native-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-open-api-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-process-services-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-resources-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-script-kotlin-0.5.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-tooling-api-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-ui-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-version-info-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/gradle-wrapper-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/groovy-all-2.4.7.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-announce-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-antlr-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-build-cache-http-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-build-comparison-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-build-init-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-code-quality-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-composite-builds-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-dependency-management-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-diagnostics-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-ear-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-ide-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-ide-native-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-ide-play-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-ivy-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-jacoco-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-javascript-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-jetty-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-language-groovy-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-language-java-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-language-jvm-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-language-native-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-language-scala-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-maven-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-osgi-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-platform-base-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-platform-jvm-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-platform-native-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-platform-play-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-plugin-development-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-plugin-use-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-plugins-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-publish-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-reporting-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-resources-http-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-resources-s3-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-resources-sftp-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-scala-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-signing-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-test-kit-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-testing-base-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-testing-jvm-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-testing-native-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-tooling-api-builders-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/gradle-workers-3.4.1.jar" />
+                  <option value="C:/Program Files/gradle-3.4.1-all/gradle-3.4.1/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
@@ -526,39 +554,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/proto/model/componentStatus" />
-        <option value="$PROJECT_DIR$/src/main/proto/enums/ComponentType.proto" />
-        <option value="$PROJECT_DIR$/src/main/proto/enums/ComponentStatusEnum.proto" />
-        <option value="$PROJECT_DIR$/src/main/proto/service/ComponentStatusService.proto" />
-        <option value="$PROJECT_DIR$/src/main/proto/message/ComponentStatusMessage.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/sink/Resource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/processor/AbstractTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/processor/enums/StatusEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/processor/enums/CycleEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/processor/task/TaskStatistics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/processor/task/AbstractTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/sink/Sink.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/processor/Processor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/persist/Repository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/CycleHook.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/help/FuntionHelp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/help/FunctionHelp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ProcessorContext.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/model/ComponentStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstraceComponentStatusService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstracetComponentInitService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/TaskType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/AbstractTask.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Processor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Repository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Sink.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/TaskTypeEnum.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/ProcessorHook.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ProcessorHook.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/CycleEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java" />
       </list>
     </option>
   </component>
@@ -568,21 +569,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="userSettingsFile" value="$PROJECT_DIR$/../../../apache-maven-3.3.9/conf/settings.xml" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="20" />
-    <option name="y" value="43" />
-    <option name="width" value="1400" />
-    <option name="height" value="770" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1918" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -599,7 +593,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -625,38 +620,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-processor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-processor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-processor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task-processor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
@@ -696,7 +659,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="enums" />
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -710,60 +673,71 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gradle" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="wrapper" />
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taskProcessor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task-processor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task-processor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taskProcessor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="context" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="io.protostuff.jetbrains.plugin.settings.ProtobufSettingsConfigurable" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.cufe.taskProcessor.processor.task" />
-      <recent name="com.cufe.taskProcessor.processor.enums" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Gradle.task-processor [publishToMavenLocal]">
-    <configuration default="false" name="build (1)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="task-processor" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="false" name="task-processor [publishToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.task-processor [publishMavenJavaPublicationToMavenLocal]">
+    <configuration default="false" name="task-processor [publishMavenJavaPublicationToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -774,7 +748,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="publishToMavenLocal" />
+            <option value="publishMavenJavaPublicationToMavenLocal" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -966,7 +940,7 @@
           <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
           <option name="launcherType" value="OSDefault" />
           <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
         </LauncherParameters>
       </option>
       <option name="mobileRunTarget" value="Emulator" />
@@ -989,7 +963,7 @@
           <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
           <option name="launcherType" value="OSDefault" />
           <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
         </LauncherParameters>
       </option>
       <option name="moduleName" value="" />
@@ -1018,16 +992,6 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1072,13 +1036,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -1111,6 +1068,9 @@
       <option name="workingDirectory" />
       <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1156,12 +1116,6 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -1171,32 +1125,31 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="build" type="GroovyScriptRunConfiguration" factoryName="Groovy">
-      <module name="task-processor" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
-    </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Groovy.build" />
-      <item index="1" class="java.lang.String" itemvalue="Groovy.build (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Gradle.task-processor [publishToMavenLocal]" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Gradle.task-processor [publishMavenJavaPublicationToMavenLocal]" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Gradle.task-processor [publishToMavenLocal]" />
-        <item index="1" class="java.lang.String" itemvalue="Groovy.build (1)" />
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Gradle.task-processor [publishMavenJavaPublicationToMavenLocal]" />
       </list>
     </recent_temporary>
   </component>
@@ -1205,59 +1158,51 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7377b659-9776-4a14-a966-b0b820d129da" name="Default" comment="" />
-      <created>1491190137070</created>
+      <changelist id="179f510f-683e-44ba-a0f3-50adb5a9dec1" name="Default" comment="" />
+      <created>1491747866700</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1491190137070</updated>
-      <workItem from="1491190140651" duration="711000" />
-      <workItem from="1491190902315" duration="9158000" />
-      <workItem from="1491205511413" duration="86000" />
-      <workItem from="1491205684582" duration="5214000" />
-      <workItem from="1491212613129" duration="300000" />
-      <workItem from="1491213232043" duration="1632000" />
-      <workItem from="1491218236245" duration="3303000" />
-      <workItem from="1491228589403" duration="1519000" />
-      <workItem from="1491291958768" duration="83000" />
+      <updated>1491747866700</updated>
+      <workItem from="1491747870263" duration="3367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22006000" />
+    <option name="totallyTimeSpent" value="3367000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="43" width="1400" height="770" extended-state="0" />
+    <frame x="1" y="1" width="1918" height="1028" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30338734" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.359352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496318" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32972324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1267,615 +1212,83 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java</url>
-          <line>151</line>
-          <properties />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="110" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="46" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/AbstractTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="54" column="32" lean-forward="false" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="30" column="91" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12060">
-          <caret line="804" column="23" lean-forward="false" selection-start-line="804" selection-start-column="23" selection-end-line="804" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#90506#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10545#10546#0" expanded="false" />
-            <element signature="e#10624#10625#0" expanded="false" />
-            <element signature="e#18773#18774#0" expanded="false" />
-            <element signature="e#18811#18812#0" expanded="false" />
-            <element signature="e#19992#19993#0" expanded="false" />
-            <element signature="e#20062#20063#0" expanded="false" />
-            <element signature="e#27979#27980#0" expanded="false" />
-            <element signature="e#28026#28027#0" expanded="false" />
-            <element signature="e#30919#30920#0" expanded="false" />
-            <element signature="e#30991#30992#0" expanded="false" />
-            <element signature="e#31692#31693#0" expanded="false" />
-            <element signature="e#31746#31747#0" expanded="false" />
-            <element signature="e#32506#32507#0" expanded="false" />
-            <element signature="e#32535#32536#0" expanded="false" />
-            <element signature="e#64195#64196#0" expanded="false" />
-            <element signature="e#64233#64234#0" expanded="false" />
-            <element signature="e#64585#64586#0" expanded="false" />
-            <element signature="e#64624#64625#0" expanded="false" />
-            <element signature="e#64968#64969#0" expanded="false" />
-            <element signature="e#65004#65005#0" expanded="false" />
-            <element signature="e#65353#65354#0" expanded="false" />
-            <element signature="e#65391#65392#0" expanded="false" />
-            <element signature="e#65734#65735#0" expanded="false" />
-            <element signature="e#65770#65771#0" expanded="false" />
-            <element signature="e#66116#66117#0" expanded="false" />
-            <element signature="e#66153#66154#0" expanded="false" />
-            <element signature="e#66502#66503#0" expanded="false" />
-            <element signature="e#66540#66541#0" expanded="false" />
-            <element signature="e#67410#67411#0" expanded="false" />
-            <element signature="e#67456#67457#0" expanded="false" />
-            <element signature="e#68063#68064#0" expanded="false" />
-            <element signature="e#68110#68111#0" expanded="false" />
-            <element signature="e#68708#68709#0" expanded="false" />
-            <element signature="e#68752#68753#0" expanded="false" />
-            <element signature="e#69356#69357#0" expanded="false" />
-            <element signature="e#69402#69403#0" expanded="false" />
-            <element signature="e#70000#70001#0" expanded="false" />
-            <element signature="e#70044#70045#0" expanded="false" />
-            <element signature="e#70645#70646#0" expanded="false" />
-            <element signature="e#70690#70691#0" expanded="false" />
-            <element signature="e#71294#71295#0" expanded="false" />
-            <element signature="e#71340#71341#0" expanded="false" />
-            <element signature="e#72455#72456#0" expanded="false" />
-            <element signature="e#72497#72498#0" expanded="false" />
-            <element signature="e#72773#72774#0" expanded="false" />
-            <element signature="e#72807#72808#0" expanded="false" />
-            <element signature="e#73475#73476#0" expanded="false" />
-            <element signature="e#73502#73503#0" expanded="false" />
-            <element signature="e#74956#74957#0" expanded="false" />
-            <element signature="e#75002#75003#0" expanded="false" />
-            <element signature="e#75171#75172#0" expanded="false" />
-            <element signature="e#75225#75226#0" expanded="false" />
-            <element signature="e#76166#76167#0" expanded="false" />
-            <element signature="e#76206#76207#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/help/FunctionHelp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/model/ComponentStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="110" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/AbstractTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="54" column="32" lean-forward="false" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11295">
-          <caret line="804" column="23" lean-forward="true" selection-start-line="804" selection-start-column="23" selection-end-line="804" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#90506#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10545#10546#0" expanded="false" />
-            <element signature="e#10624#10625#0" expanded="false" />
-            <element signature="e#18773#18774#0" expanded="false" />
-            <element signature="e#18811#18812#0" expanded="false" />
-            <element signature="e#19992#19993#0" expanded="false" />
-            <element signature="e#20062#20063#0" expanded="false" />
-            <element signature="e#27979#27980#0" expanded="false" />
-            <element signature="e#28026#28027#0" expanded="false" />
-            <element signature="e#30919#30920#0" expanded="false" />
-            <element signature="e#30991#30992#0" expanded="false" />
-            <element signature="e#31692#31693#0" expanded="false" />
-            <element signature="e#31746#31747#0" expanded="false" />
-            <element signature="e#32506#32507#0" expanded="false" />
-            <element signature="e#32535#32536#0" expanded="false" />
-            <element signature="e#64195#64196#0" expanded="false" />
-            <element signature="e#64233#64234#0" expanded="false" />
-            <element signature="e#64585#64586#0" expanded="false" />
-            <element signature="e#64624#64625#0" expanded="false" />
-            <element signature="e#64968#64969#0" expanded="false" />
-            <element signature="e#65004#65005#0" expanded="false" />
-            <element signature="e#65353#65354#0" expanded="false" />
-            <element signature="e#65391#65392#0" expanded="false" />
-            <element signature="e#65734#65735#0" expanded="false" />
-            <element signature="e#65770#65771#0" expanded="false" />
-            <element signature="e#66116#66117#0" expanded="false" />
-            <element signature="e#66153#66154#0" expanded="false" />
-            <element signature="e#66502#66503#0" expanded="false" />
-            <element signature="e#66540#66541#0" expanded="false" />
-            <element signature="e#67410#67411#0" expanded="false" />
-            <element signature="e#67456#67457#0" expanded="false" />
-            <element signature="e#68063#68064#0" expanded="false" />
-            <element signature="e#68110#68111#0" expanded="false" />
-            <element signature="e#68708#68709#0" expanded="false" />
-            <element signature="e#68752#68753#0" expanded="false" />
-            <element signature="e#69356#69357#0" expanded="false" />
-            <element signature="e#69402#69403#0" expanded="false" />
-            <element signature="e#70000#70001#0" expanded="false" />
-            <element signature="e#70044#70045#0" expanded="false" />
-            <element signature="e#70645#70646#0" expanded="false" />
-            <element signature="e#70690#70691#0" expanded="false" />
-            <element signature="e#71294#71295#0" expanded="false" />
-            <element signature="e#71340#71341#0" expanded="false" />
-            <element signature="e#72455#72456#0" expanded="false" />
-            <element signature="e#72497#72498#0" expanded="false" />
-            <element signature="e#72773#72774#0" expanded="false" />
-            <element signature="e#72807#72808#0" expanded="false" />
-            <element signature="e#73475#73476#0" expanded="false" />
-            <element signature="e#73502#73503#0" expanded="false" />
-            <element signature="e#74956#74957#0" expanded="false" />
-            <element signature="e#75002#75003#0" expanded="false" />
-            <element signature="e#75171#75172#0" expanded="false" />
-            <element signature="e#75225#75226#0" expanded="false" />
-            <element signature="e#76166#76167#0" expanded="false" />
-            <element signature="e#76206#76207#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/help/FunctionHelp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="91" lean-forward="false" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Test.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/proto/model/ComponentStatus.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Test.java" />
-    <entry file="file://$PROJECT_DIR$/../download/src/main/proto/enums/ComponentTypeEnum.proto" />
-    <entry file="file://$PROJECT_DIR$/../download/src/main/proto/enums/ComponentStatusEnum.proto" />
-    <entry file="file://$PROJECT_DIR$/../download/src/main/proto/service/ComponentStatusService.proto" />
-    <entry file="file://$PROJECT_DIR$/../download/src/main/proto/message/ComponentStatusMessage.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/StatusEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/CycleEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/TaskStatistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" column="35" lean-forward="true" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/com/sun/org/apache/xml/internal/security/Init.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="82" column="36" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/function/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="55" column="17" lean-forward="false" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/CycleHook.java" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/lang/IllegalStateException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="53" column="11" lean-forward="false" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/logging/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="65" column="15" lean-forward="true" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11340">
-          <caret line="804" column="23" lean-forward="false" selection-start-line="804" selection-start-column="23" selection-end-line="804" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#90506#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10545#10546#0" expanded="false" />
-            <element signature="e#10624#10625#0" expanded="false" />
-            <element signature="e#18773#18774#0" expanded="false" />
-            <element signature="e#18811#18812#0" expanded="false" />
-            <element signature="e#19992#19993#0" expanded="false" />
-            <element signature="e#20062#20063#0" expanded="false" />
-            <element signature="e#27979#27980#0" expanded="false" />
-            <element signature="e#28026#28027#0" expanded="false" />
-            <element signature="e#30919#30920#0" expanded="false" />
-            <element signature="e#30991#30992#0" expanded="false" />
-            <element signature="e#31692#31693#0" expanded="false" />
-            <element signature="e#31746#31747#0" expanded="false" />
-            <element signature="e#32506#32507#0" expanded="false" />
-            <element signature="e#32535#32536#0" expanded="false" />
-            <element signature="e#64195#64196#0" expanded="false" />
-            <element signature="e#64233#64234#0" expanded="false" />
-            <element signature="e#64585#64586#0" expanded="false" />
-            <element signature="e#64624#64625#0" expanded="false" />
-            <element signature="e#64968#64969#0" expanded="false" />
-            <element signature="e#65004#65005#0" expanded="false" />
-            <element signature="e#65353#65354#0" expanded="false" />
-            <element signature="e#65391#65392#0" expanded="false" />
-            <element signature="e#65734#65735#0" expanded="false" />
-            <element signature="e#65770#65771#0" expanded="false" />
-            <element signature="e#66116#66117#0" expanded="false" />
-            <element signature="e#66153#66154#0" expanded="false" />
-            <element signature="e#66502#66503#0" expanded="false" />
-            <element signature="e#66540#66541#0" expanded="false" />
-            <element signature="e#67410#67411#0" expanded="false" />
-            <element signature="e#67456#67457#0" expanded="false" />
-            <element signature="e#68063#68064#0" expanded="false" />
-            <element signature="e#68110#68111#0" expanded="false" />
-            <element signature="e#68708#68709#0" expanded="false" />
-            <element signature="e#68752#68753#0" expanded="false" />
-            <element signature="e#69356#69357#0" expanded="false" />
-            <element signature="e#69402#69403#0" expanded="false" />
-            <element signature="e#70000#70001#0" expanded="false" />
-            <element signature="e#70044#70045#0" expanded="false" />
-            <element signature="e#70645#70646#0" expanded="false" />
-            <element signature="e#70690#70691#0" expanded="false" />
-            <element signature="e#71294#71295#0" expanded="false" />
-            <element signature="e#71340#71341#0" expanded="false" />
-            <element signature="e#72455#72456#0" expanded="false" />
-            <element signature="e#72497#72498#0" expanded="false" />
-            <element signature="e#72773#72774#0" expanded="false" />
-            <element signature="e#72807#72808#0" expanded="false" />
-            <element signature="e#73475#73476#0" expanded="false" />
-            <element signature="e#73502#73503#0" expanded="false" />
-            <element signature="e#74956#74957#0" expanded="false" />
-            <element signature="e#75002#75003#0" expanded="false" />
-            <element signature="e#75171#75172#0" expanded="false" />
-            <element signature="e#75225#75226#0" expanded="false" />
-            <element signature="e#76166#76167#0" expanded="false" />
-            <element signature="e#76206#76207#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/ComponentStatus.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/model/ComponentStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/help/FunctionHelp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="9" lean-forward="false" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Repository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="168">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ProcessorHook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Sink.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/TaskTypeEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="28" column="28" lean-forward="false" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/AbstractTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="16" column="62" lean-forward="false" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Processor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="33" column="60" lean-forward="false" selection-start-line="33" selection-start-column="60" selection-end-line="33" selection-end-column="60" />
+        <state relative-caret-position="189">
+          <caret line="11" column="57" lean-forward="false" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4230">
-          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+        <state relative-caret-position="3665">
+          <caret line="205" column="9" lean-forward="false" selection-start-line="205" selection-start-column="9" selection-end-line="205" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/Processor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentInitService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="-91">
+          <caret line="12" column="110" lean-forward="false" selection-start-line="12" selection-start-column="110" selection-end-line="12" selection-end-column="110" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/enums/CycleEnum.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentTaskService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-28">
+          <caret line="20" column="62" lean-forward="false" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="gradleExecuteTaskHistory">
-    <option value="" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>task-processor</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/service/AbstractComponentStatusService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/model/ComponentStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

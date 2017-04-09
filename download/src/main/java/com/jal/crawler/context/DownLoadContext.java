@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  * Created by home on 2017/1/9.
  */
 @Component
-public class DownLoadContext extends ComponentContext<String, Page> {
+public class DownLoadContext extends ComponentContext<String, Page, Task> {
 
     private static final Logger logger = LoggerFactory.getLogger(DownLoadContext.class);
 
@@ -44,48 +44,13 @@ public class DownLoadContext extends ComponentContext<String, Page> {
 
         repository = (task, page) -> pagePersist.persist(task.getTaskTag(), page);
 
-        cycleBefore = () -> {
-            staticDownload = staticBuilder.build();
-            dynamicDownload = dynamicBuilder.build();
-        };
-
-        taskBeforeHook = t -> {
-            Task task = (Task) t;
-            downLoad.set(task.isDynamic() ? dynamicDownload : staticDownload);
-            if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) {
-                task.urlsInit(abstractPageUrlFactory);
-            }
-            downLoad.get().setPreProcessor(task.getPreProcessor());
-            downLoad.get().setPostProcessor(task.getPostProcessor());
-            downLoad.get().init();
-        };
-
-        taskAfterHook = t -> {
-            dynamicDownload.reset();
-            staticDownload.reset();
-        };
-
-        cycleError = () -> {
-            dynamicDownload.close();
-            staticDownload.close();
-        };
-
-        cycleFinally = () -> {
-            dynamicDownload.close();
-            staticDownload.close();
-        };
     }
 
-    public DownLoadContext proxy(String host, int port) {
-        isProxy = true;
-        proxyHost = host;
-        proxyPort = port;
-        return this;
-    }
-
-    public DownLoadContext proxy(String address) {
+    public void proxy(String address) {
         String[] args = address.split(":");
-        return proxy(args[0], Integer.parseInt(args[1]));
+        isProxy = true;
+        proxyHost = args[0];
+        proxyPort = Integer.parseInt(args[1]);
     }
 
     public DownLoadContext sleep(int sleepTime) {
@@ -105,4 +70,40 @@ public class DownLoadContext extends ComponentContext<String, Page> {
         staticBuilder = new OkHttpDownLoad.Builder();
         dynamicBuilder = new SeleniumDownload.Builder();
     }
+
+    @Override
+    public void taskBeforeHook(Task task) {
+        downLoad.set(task.isDynamic() ? dynamicDownload : staticDownload);
+        if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) {
+            task.urlsInit(abstractPageUrlFactory);
+        }
+        downLoad.get().setPreProcessor(task.getPreProcessor());
+        downLoad.get().setPostProcessor(task.getPostProcessor());
+        downLoad.get().init();
+    }
+
+    @Override
+    public void taskAfterHook(Task task) {
+        dynamicDownload.reset();
+        staticDownload.reset();
+    }
+
+    @Override
+    public void cycleBeforeHook() {
+        staticDownload = staticBuilder.build();
+        dynamicDownload = dynamicBuilder.build();
+    }
+
+    @Override
+    public void cycleErrorHook() {
+        dynamicDownload.close();
+        staticDownload.close();
+    }
+
+    @Override
+    public void cycleFinalHook() {
+        dynamicDownload.close();
+        staticDownload.close();
+    }
+
 }

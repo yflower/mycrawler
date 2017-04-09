@@ -13,6 +13,8 @@ resolve/.idea/*
 
 task-processor/.idea/*
 
+task-processor/build/*
+
 web/.idea/*
 
 web/node_modules/*
