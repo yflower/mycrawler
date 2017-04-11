@@ -6,11 +6,14 @@ import com.jal.crawler.rpc.RpcClient;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentModel;
-import com.jal.crawler.web.data.view.ComponentVO;
+import com.jal.crawler.web.data.model.task.TaskStatusModel;
+import com.jal.crawler.web.data.view.componnet.ComponentVO;
+import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.IComponentStatService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -18,6 +21,7 @@ import java.util.Optional;
  */
 @Service
 public class ComponentStatServiceImpl implements IComponentStatService {
+
     @Resource
     private ConfigContext configContext;
 
@@ -42,5 +46,14 @@ public class ComponentStatServiceImpl implements IComponentStatService {
             return Optional.of(componentVO);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<TaskStatusVO> taskStatus(String taskTag) {
+        List<ComponentModel> componentModels = configContext.resolveComponent();
+        RpcClient rpcClient = configContext.getRpcClient();
+        TaskStatusVO statusVO=new TaskStatusVO();
+
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.jal.crawler.web.data.view;
+package com.jal.crawler.web.data.view.task;
 
 /**
  * Created by jal on 2017/2/25.

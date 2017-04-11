@@ -6,8 +6,9 @@ import com.jal.crawler.proto.status.ComponentStatus;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
 import com.jal.crawler.proto.status.Status;
 import com.jal.crawler.proto.task.OPStatus;
-import com.jal.crawler.proto.task.TaskType;
 import com.jal.crawler.web.data.enums.StatusEnum;
+import com.jal.crawler.web.data.model.component.ComponentStatusModel;
+import com.jal.crawler.web.data.model.task.TaskStatusModel;
 import io.grpc.ManagedChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +38,7 @@ public abstract class AbstractComponentClient<C, T> {
 
     //显示组件的运行状态
     public Optional<StatusEnum> status() {
-        Optional<componentStatus> componentStatus = internalStatus();
+        Optional<ComponentStatusModel> componentStatus = internalStatus();
         if (componentStatus.isPresent()) {
             StatusEnum statusEnum = StatusEnum.valueOf(componentStatus.get().getStatus());
             return Optional.of(statusEnum);
@@ -70,11 +70,10 @@ public abstract class AbstractComponentClient<C, T> {
     }
 
     //显示所有的任务
-    public List<internalTask> showTask() {
-        Optional<componentStatus> componentStatus = internalStatus();
+    public List<TaskStatusModel> showTask() {
+        Optional<ComponentStatusModel> componentStatus = internalStatus();
         if (componentStatus.isPresent()) {
-            List<internalTask> internalTasks = componentStatus.get().getTasks().entrySet()
-                    .stream().map(t -> new internalTask(t.getKey(), t.getValue())).collect(Collectors.toList());
+            List<TaskStatusModel> internalTasks = componentStatus.get().getTasks();
             return internalTasks;
         }
         return new ArrayList<>();
@@ -93,24 +92,26 @@ public abstract class AbstractComponentClient<C, T> {
 
     //private　methods
     //rpc获取组件的状态
-    private Optional<componentStatus> internalStatus() {
+    private Optional<ComponentStatusModel> internalStatus() {
         ListenableFuture<ComponentStatus> future = RpcComponentStatusGrpc.newFutureStub(channel).
                 rpcComponentStatus(ConfigComponentStatus.getDefaultInstance());
         try {
             ComponentStatus status = future.get(1, TimeUnit.SECONDS);
-            componentStatus internalStatus = new componentStatus();
+            ComponentStatusModel internalStatus = new ComponentStatusModel();
             internalStatus.setStatus(status.getComponentStatus().name());
-            internalStatus.setTasks(status.getTasksMap().entrySet()
-                    .stream().collect(Collectors.toMap(t -> t.getKey(), t -> {
-                        taskStatistics taskStatistics = new taskStatistics();
-                        taskStatistics.status = t.getValue().getStatus().name();
-                        taskStatistics.resourceTotal = t.getValue().getResourceTotal();
-                        taskStatistics.processorTotal = t.getValue().getPersistTotal();
-                        taskStatistics.persistTotal = t.getValue().getPersistTotal();
-                        taskStatistics.startTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getStartTime()), ZoneOffset.systemDefault());
-                        taskStatistics.endTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getEndTime()), ZoneOffset.systemDefault());
-                        return taskStatistics;
-                    })));
+            internalStatus.setTasks(
+                    status.getTasksMap().entrySet()
+                            .stream().map(t -> {
+                        TaskStatusModel.TaskStatistics taskStatistics = new TaskStatusModel.TaskStatistics();
+                        taskStatistics.setStatus(t.getValue().getStatus().name());
+                        taskStatistics.setResourceTotal(t.getValue().getResourceTotal());
+                        taskStatistics.setProcessorTotal(t.getValue().getProcessorTotal());
+                        taskStatistics.setPersistTotal(t.getValue().getPersistTotal());
+                        taskStatistics.setStartTime(LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getStartTime()), ZoneOffset.systemDefault()));
+                        taskStatistics.setEndTime(LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getEndTime()), ZoneOffset.systemDefault()));
+                        return new TaskStatusModel(t.getKey(), taskStatistics);
+                    }).collect(Collectors.toList()));
+
             return Optional.of(internalStatus);
         } catch (InterruptedException e) {
             return Optional.empty();
@@ -165,8 +166,6 @@ public abstract class AbstractComponentClient<C, T> {
 
     protected abstract boolean validConfig(C config);
 
-    protected abstract TaskType taskType(T task);
-
     protected abstract String taskTag(T task);
 
 
@@ -188,79 +187,4 @@ public abstract class AbstractComponentClient<C, T> {
         this.address = address;
     }
 
-    public static class internalTask {
-        String taskTag;
-
-        taskStatistics taskStatistics;
-
-        public internalTask(String taskTag, taskStatistics taskStatistics) {
-            this.taskTag = taskTag;
-            this.taskStatistics = taskStatistics;
-        }
-
-        public String getTaskTag() {
-            return taskTag;
-        }
-
-        public AbstractComponentClient.taskStatistics getTaskStatistics() {
-            return taskStatistics;
-        }
-    }
-
-    public static class componentStatus {
-        private String status;
-
-        private Map<String, taskStatistics> tasks;
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public Map<String, taskStatistics> getTasks() {
-            return tasks;
-        }
-
-        public void setTasks(Map<String, taskStatistics> tasks) {
-            this.tasks = tasks;
-        }
-
-
-    }
-
-    public static class taskStatistics {
-        String status;
-        int resourceTotal;
-        int processorTotal;
-        int persistTotal;
-        LocalDateTime startTime;
-        LocalDateTime endTime;
-
-        public String getStatus() {
-            return status;
-        }
-
-        public int getResourceTotal() {
-            return resourceTotal;
-        }
-
-        public int getProcessorTotal() {
-            return processorTotal;
-        }
-
-        public int getPersistTotal() {
-            return persistTotal;
-        }
-
-        public LocalDateTime getStartTime() {
-            return startTime;
-        }
-
-        public LocalDateTime getEndTime() {
-            return endTime;
-        }
-    }
 }

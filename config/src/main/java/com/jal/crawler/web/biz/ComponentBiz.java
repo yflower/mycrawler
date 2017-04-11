@@ -11,7 +11,7 @@ import com.jal.crawler.web.data.model.component.ComponentModel;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
-import com.jal.crawler.web.data.view.ComponentVO;
+import com.jal.crawler.web.data.view.componnet.ComponentVO;
 import com.jal.crawler.web.service.IComponentService;
 import com.jal.crawler.web.service.IComponentStatService;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.jal.crawler.web.data.view;
+package com.jal.crawler.web.data.view.componnet;
 
 import com.jal.crawler.rpc.AbstractComponentClient;
 

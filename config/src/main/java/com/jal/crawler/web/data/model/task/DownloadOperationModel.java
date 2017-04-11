@@ -1,4 +1,4 @@
-package com.jal.crawler.web.data.model.taskOperation;
+package com.jal.crawler.web.data.model.task;
 
 import java.util.List;
 import java.util.Set;

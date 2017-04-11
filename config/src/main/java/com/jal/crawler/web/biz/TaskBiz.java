@@ -1,11 +1,13 @@
 package com.jal.crawler.web.biz;
 
+import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.web.convert.TaskOperationConvert;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;
-import com.jal.crawler.web.data.model.taskOperation.DownloadOperationModel;
-import com.jal.crawler.web.data.model.taskOperation.ResolveOperationModel;
+import com.jal.crawler.web.data.model.task.DownloadOperationModel;
+import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import com.jal.crawler.web.data.param.TaskPushParam;
-import com.jal.crawler.web.data.view.TaskOperationVO;
+import com.jal.crawler.web.data.view.task.TaskOperationVO;
+import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,9 @@ import java.util.function.Consumer;
 public class TaskBiz {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskBiz.class);
+
+    @Resource
+    private ConfigContext configContext;
 
     @Resource
     private ITaskService resolveTaskService;
@@ -83,6 +88,24 @@ public class TaskBiz {
             setResult(1);
         }};
     }
+
+    public TaskStatusVO status(String taskTag){
+        configContext.resolveComponent().forEach(t->configContext.getRpcClient().getClient(t));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private String generateTaskTag() {
         return UUID.randomUUID().toString();

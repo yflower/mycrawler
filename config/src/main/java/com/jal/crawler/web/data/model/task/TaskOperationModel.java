@@ -1,4 +1,4 @@
-package com.jal.crawler.web.data.model.taskOperation;
+package com.jal.crawler.web.data.model.task;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;

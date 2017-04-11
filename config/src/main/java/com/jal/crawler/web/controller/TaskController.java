@@ -31,39 +31,29 @@ public class TaskController {
      */
     @PostMapping("/push")
     public ApiResponse push(@RequestBody TaskPushParam param) {
-        try {
-            return ApiResponse.successBuild(taskBiz.taskPush(param));
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        return ApiResponse.successBuild(taskBiz.taskPush(param));
+
     }
 
 
     @PostMapping("/pause")
     public ApiResponse pause(@RequestBody String taskTag) {
-        try {
-            return ApiResponse.successBuild(taskBiz.taskPause(taskTag));
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        return ApiResponse.successBuild(taskBiz.taskPause(taskTag));
     }
 
     @PostMapping("/stop")
     public ApiResponse stop(@RequestBody String taskTag) {
-        try {
-            return ApiResponse.successBuild(taskBiz.taskStop(taskTag));
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        return ApiResponse.successBuild(taskBiz.taskStop(taskTag));
     }
 
     @PostMapping("/destroy")
     public ApiResponse destroy(@RequestBody String taskTag) {
-        try {
-            return ApiResponse.successBuild(taskBiz.taskDestroy(taskTag));
-        } catch (Exception e) {
-            return ApiResponse.failBuild(e);
-        }
+        return ApiResponse.successBuild(taskBiz.taskDestroy(taskTag));
+    }
+
+    @GetMapping("/status")
+    public ApiResponse status(String taskTag) {
+        return ApiResponse.successBuild(taskBiz.status(taskTag));
     }
 
 }

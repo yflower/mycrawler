@@ -1,8 +1,8 @@
 package com.jal.crawler.web.convert;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.model.taskOperation.DownloadOperationModel;
-import com.jal.crawler.web.data.model.taskOperation.ResolveOperationModel;
+import com.jal.crawler.web.data.model.task.DownloadOperationModel;
+import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import com.jal.crawler.web.data.param.TaskPushParam;
 
 import java.util.stream.Collectors;
