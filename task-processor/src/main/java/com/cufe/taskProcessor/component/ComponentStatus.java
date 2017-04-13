@@ -1,10 +1,9 @@
-package com.cufe.taskProcessor.model;
+package com.cufe.taskProcessor.component;
 
-import com.cufe.taskProcessor.enums.StatusEnum;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.cufe.taskProcessor.task.AbstractTask;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by jianganlan on 2017/4/3.

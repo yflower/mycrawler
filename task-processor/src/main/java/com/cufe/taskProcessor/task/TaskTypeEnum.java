@@ -1,4 +1,4 @@
-package com.cufe.taskProcessor.enums;
+package com.cufe.taskProcessor.task;
 
 /**
  * Created by jianganlan on 2017/4/3.

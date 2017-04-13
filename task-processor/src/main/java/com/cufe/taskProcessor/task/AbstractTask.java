@@ -1,7 +1,5 @@
 package com.cufe.taskProcessor.task;
 
-import com.cufe.taskProcessor.enums.StatusEnum;
-
 import java.time.LocalDateTime;
 
 /**

@@ -3,10 +3,12 @@ package com.cufe.taskProcessor.context;
 import com.cufe.taskProcessor.Processor;
 import com.cufe.taskProcessor.Repository;
 import com.cufe.taskProcessor.Sink;
-import com.cufe.taskProcessor.enums.CycleEnum;
-import com.cufe.taskProcessor.enums.StatusEnum;
+import com.cufe.taskProcessor.component.relation.ComponentRelationHolder;
+import com.cufe.taskProcessor.component.ComponentStatus;
+import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.task.AbstractTask;
-import com.cufe.taskProcessor.ProcessorHook;
+import com.cufe.taskProcessor.task.CycleEnum;
+import com.cufe.taskProcessor.task.StatusEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +26,21 @@ import java.util.stream.Collectors;
 
 /**
  * Created by jianganlan on 2017/4/3.
+ * 主要的task-processor的使用流程。
  */
-public abstract class ComponentContext<S, R, T extends AbstractTask> implements ProcessorHook<T> {
+public abstract class ComponentContext<S, R, T extends AbstractTask> {
 
     private static final Logger LOGGER = Logger.getLogger(Processor.class.getSimpleName());
+
+    private ComponentRelation componentRelation;
+
+    private ComponentRelationHolder componentRelationHolder;
 
     protected Sink<S> sink;
 
     protected Repository<R> repository;
 
-    protected Processor<S, R> processor;
+    protected Processor<S, R, T> processor;
 
     private int thread;
 
@@ -45,21 +52,27 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
 
     private ThreadLocalRandom random;
 
-    private StatusEnum status = StatusEnum.NO_INIT;
-
     private ExecutorService executorService;
 
 
-    public void run() {
+    private void run() {
         for (int i = 0; i < thread; ++i) {
             execute();
         }
 
     }
 
+    public boolean componentStart(String host, int port) {
+        componentRelation = new ComponentRelation();
+        componentRelation.setStatus(StatusEnum.NO_INIT);
+        componentRelation.setHost(host);
+        componentRelation.setPort(port);
+        return true;
+    }
+
     public boolean addTask(T task) {
         //只有任务到来时才启动
-        if (status == StatusEnum.INIT) {
+        if (componentRelation.getStatus() == StatusEnum.INIT) {
             setStatus(StatusEnum.STARTED);
             run();
         }
@@ -71,8 +84,9 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
 
 
     public boolean stopTask(String taskTag) {
-        AbstractTask innerTask = getTaskByTag(taskTag);
-        if (innerTask != null && innerTask.getStatus() == StatusEnum.STARTED) {
+        Optional<T> optional = getTaskByTag(taskTag);
+        T innerTask;
+        if (optional.isPresent() && (innerTask = optional.get()).getStatus() == StatusEnum.STARTED) {
             innerTask.setStatus(StatusEnum.STOPPED);
             return true;
         } else {
@@ -81,9 +95,10 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
     }
 
     public boolean finishTask(String taskTag) {
-        AbstractTask innerTask = getTaskByTag(taskTag);
-        if (innerTask != null && StatusEnum.isStart(innerTask.getStatus())) {
-            innerTask.setStatus(StatusEnum.FINISHED);
+        Optional<T> optional = getTaskByTag(taskTag);
+        T interTask;
+        if (optional.isPresent() && (StatusEnum.isStart((interTask = optional.get()).getStatus()))) {
+            interTask.setStatus(StatusEnum.FINISHED);
             return true;
         } else {
             return false;
@@ -91,8 +106,10 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
     }
 
     public boolean destroyTask(String taskTag) {
-        AbstractTask innerTask = getTaskByTag(taskTag);
-        if (innerTask != null) {
+        Optional<T> optional = getTaskByTag(taskTag);
+        T innerTask;
+        if (optional.isPresent()) {
+            innerTask = optional.get();
             innerTask.setStatus(StatusEnum.DESTROYED);
             return true;
         } else {
@@ -113,16 +130,15 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
     }
 
 
-
     private void execute() {
         executorService.submit(() -> {
-            cycleBeforeHook();
+            processor.cycleBeforeHook();
             random = ThreadLocalRandom.current();
             T task;
             S resource;
             try {
                 while ((task = randomRunnableTask()) != null) {
-                    taskBeforeHook(task);
+                    processor.taskBeforeHook(task);
                     taskCycleCheck(task);
                     Optional<S> optional = sink.get(task);
                     if (!optional.isPresent()) {
@@ -136,7 +152,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
                         try {
                             Optional<R> data = this.processor.processor(task, resource);
                             task.processorSuccessHook();
-                            if (optional.isPresent()) {
+                            if (data.isPresent()) {
                                 try {
                                     repository.persist(task, data.get());
                                     task.persisSuccessHook();
@@ -145,6 +161,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
                                     LOGGER.log(Level.WARNING, "数据持久化失败", e);
                                 }
                             }
+
                         } catch (Exception e) {
                             task.processorErrorHook();
                             LOGGER.log(Level.WARNING, "数据处理失败", e);
@@ -156,14 +173,14 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
                             break;
                         }
                     }
-                    taskAfterHook(task);
+                    processor.taskAfterHook(task);
                 }
             } catch (Exception e) {
-                cycleErrorHook();
+                processor.cycleErrorHook();
                 LOGGER.log(Level.SEVERE, "循环过程出错", e);
                 execute();
             } finally {
-                cycleFinalHook();
+                processor.cycleFinalHook();
             }
         });
     }
@@ -190,8 +207,8 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
         return randomRunnableTask();
     }
 
-    private AbstractTask getTaskByTag(String taskTag) {
-        return tasks.stream().filter(task -> task.getTaskTag().equals(taskTag)).findAny().get();
+    private Optional<T> getTaskByTag(String taskTag) {
+        return tasks.stream().filter(task -> task.getTaskTag().equals(taskTag)).findAny();
     }
 
     private void taskCycleCheck(AbstractTask task) {
@@ -228,16 +245,22 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
         }
     }
 
-    protected abstract void internalInit();
 
+    abstract void internalInit();
+
+    public ComponentStatus componentStatus(int componentType) {
+        ComponentStatus self = new ComponentStatus();
+        self.setComponentType(componentType);
+        self.setComponentStatus(componentRelation.getStatus());
+        if (componentRelation.getStatus() == StatusEnum.STARTED) {
+            self.setTasks((List<AbstractTask>) tasks);
+        }
+        return self;
+    }
 
 
     public synchronized void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
-    public int getThread() {
-        return thread;
+        componentRelation.setStatus(status);
     }
 
     public List<T> getTasks() {
@@ -245,7 +268,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> implements 
     }
 
     public StatusEnum getStatus() {
-        return status;
+        return componentRelation.getStatus();
     }
 
     public void setThread(int thread) {

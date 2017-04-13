@@ -1,4 +1,4 @@
-package com.cufe.taskProcessor.enums;
+package com.cufe.taskProcessor.task;
 
 /**
  * Created by jal on 2017/2/26.
@@ -9,7 +9,9 @@ public enum StatusEnum {
     STARTED(2),
     STOPPED(3),
     FINISHED(4),
-    DESTROYED(5);
+    DESTROYED(5),
+    DISCONNECTION(6),
+    UNRECOGNIZED(-1),;
 
 
     private int code;
