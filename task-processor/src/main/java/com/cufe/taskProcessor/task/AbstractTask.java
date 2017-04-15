@@ -76,4 +76,9 @@ public abstract class AbstractTask {
     public void persistErrorHook() {
         taskStatistics.getPersistErrorCycle().accumulate(1);
     }
+
+
+    public void setTaskStatistics(TaskStatistics taskStatistics) {
+        this.taskStatistics = taskStatistics;
+    }
 }

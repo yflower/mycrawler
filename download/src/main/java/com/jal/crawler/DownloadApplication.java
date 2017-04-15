@@ -1,8 +1,8 @@
 package com.jal.crawler;
 
-import com.jal.crawler.proto.ComponentStatusServer;
-import com.jal.crawler.proto.DownloadInitServer;
-import com.jal.crawler.proto.DownloadTaskServer;
+import com.jal.crawler.rpc.DownloadStatusServer;
+import com.jal.crawler.rpc.DownloadInitServer;
+import com.jal.crawler.rpc.DownloadTaskServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +23,7 @@ public class DownloadApplication {
         Server server = ServerBuilder.forPort(9001)
                 .addService(context.getBean(DownloadInitServer.class))
                 .addService(context.getBean(DownloadTaskServer.class))
-                .addService(context.getBean(ComponentStatusServer.class))
+                .addService(context.getBean(DownloadStatusServer.class))
                 .build();
         server.start();
         server.awaitTermination();

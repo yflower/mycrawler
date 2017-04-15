@@ -16,6 +16,7 @@ service RpcDownlandConfig {
 
 
 message DownloadConfig {
+
     int32 thread = 1;
     int32 sleep_time = 2;
     enum Persist {
@@ -26,5 +27,16 @@ message DownloadConfig {
     RedisConfig redis_config = 4;
     bool proxy = 5;
     repeated string proxy_address = 6;
+
+    string self_host=7;
+    int32 self_init_port=8;
+    int32 self_status_port=9;
+    int32 self_task_port=10;
+    string leader_host=11;
+    int32 leader_init_port=12;
+    int32 leader_status_port=13;
+    int32 leader_task_port=14;
+
+    int32 relation_type=15;
 }
 

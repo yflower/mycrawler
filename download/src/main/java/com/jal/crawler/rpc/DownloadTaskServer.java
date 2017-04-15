@@ -1,7 +1,6 @@
-package com.jal.crawler.proto;
+package com.jal.crawler.rpc;
 
-import com.cufe.taskProcessor.enums.TaskTypeEnum;
-import com.cufe.taskProcessor.service.AbstractComponentTaskService;
+import com.cufe.taskProcessor.rpc.server.AbstractComponentTaskServer;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.download.DownloadProcessor;
@@ -12,13 +11,15 @@ import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
 import com.jal.crawler.proto.task.OPStatus;
 import com.jal.crawler.task.Task;
 import io.grpc.stub.StreamObserver;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -38,29 +39,8 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
     public void downloadTask(DownloadTask request, StreamObserver<DownloadTaskResponse> responseObserver) {
         ComponentTaskService taskService = new ComponentTaskService(downLoadContext);
 
-        taskService.dynamic = request.getDynamic();
-        taskService.test = request.getTest();
-        taskService.urls = new HashSet<>(request.getStartUrlList());
 
-        taskService.pre = downLoad -> {
-            DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
-            request.getPreList().stream()
-                    .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
-                    .forEach(pro -> processor(pro, dynamicDownload));
-        };
-        taskService.post = downLoad -> {
-            DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
-            request.getPostList().stream()
-                    .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
-                    .forEach(pro -> processor(pro, dynamicDownload));
-        };
-        boolean result = taskService.task(request.getTaskTag(), TaskTypeEnum.numberOf(request.getTaskTypeValue()));
-
-
-        DownloadTaskResponse.Builder responseBuilder = DownloadTaskResponse.newBuilder();
-
-        responseBuilder.setOpStatus(result ? OPStatus.SUCCEED : OPStatus.FAILD);
-        responseObserver.onNext(responseBuilder.build());
+        responseObserver.onNext(taskService.task(request));
         responseObserver.onCompleted();
     }
 
@@ -87,9 +67,9 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
     }
 
 
-    private class ComponentTaskService extends AbstractComponentTaskService {
+    private class ComponentTaskService extends AbstractComponentTaskServer<DownLoadContext, DownloadTask, DownloadTaskResponse> {
         public ComponentTaskService(DownLoadContext context) {
-            super.componentContext=context;
+            super.componentContext = context;
         }
 
         boolean dynamic;
@@ -98,21 +78,54 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
         DownloadProcessor pre;
         DownloadProcessor post;
 
+
         @Override
-        public AbstractTask generateTask(String taskTag) {
+        protected AbstractTask generateTask(String taskTag, Map taskOp) {
             Task task = new Task();
-            task.setTaskTag(taskTag);
-            task.setDynamic(dynamic);
-            task.setTest(test);
-            task.setStartUrls(urls);
+            task.setTaskTag((String) taskOp.get("taskTag"));
+            task.setDynamic((Boolean) taskOp.get("dynamic"));
+            task.setTest((Boolean) taskOp.get("test"));
+            task.setStartUrls((Set<String>) taskOp.get("urls"));
             //目前只有动态的processor
             if (dynamic) {
+                task.setPreProcessor(downLoad -> {
+                    DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
+                    ((List<DownloadTask.Processor>) taskOp.get("pre")).stream()
+                            .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
+                            .forEach(pro -> processor(pro, dynamicDownload));
+                });
+                task.setPostProcessor(
+                        downLoad -> {
+                            DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
+                            ((List<DownloadTask.Processor>) taskOp.get("pre")).stream()
+                                    .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
+                                    .forEach(pro -> processor(pro, dynamicDownload));
+                        });
                 task.setPreProcessor(pre);
                 task.setPostProcessor(post);
             } else {
                 //静态处理器
             }
             return task;
+        }
+
+
+        @Override
+        protected Map<String, Object> rpcResToLocal(DownloadTask rpcRes) {
+            Map<String, Object> ops = new HashedMap();
+            ops.put("taskType", rpcRes.getTaskType().getNumber());
+            ops.put("taskTag", rpcRes.getTaskTag());
+            ops.put("test", rpcRes.getTest());
+            ops.put("dynamic", rpcRes.getDynamic());
+            ops.put("urls", rpcRes.getStartUrlList());
+            ops.put("pre", rpcRes.getPreList());
+            ops.put("post", rpcRes.getPostList());
+            return ops;
+        }
+
+        @Override
+        protected DownloadTaskResponse localToRPC_Q(boolean result) {
+            return DownloadTaskResponse.newBuilder().setOpStatus(result ? OPStatus.SUCCEED : OPStatus.FAILD).build();
         }
     }
 }

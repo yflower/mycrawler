@@ -2,24 +2,26 @@ package com.cufe.taskProcessor.rpc.client;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 
+import java.util.Map;
+
 /**
  * Created by jianganlan on 2017/4/13.
  */
-public abstract class AbstractComponentInitClient<R extends ComponentRelation> {
-     protected R componentRelation;
+public abstract class AbstractComponentInitClient<RPC_S, RPC_Q> {
+    protected ComponentRelation componentRelation;
 
-    public boolean init(int thread) {
-        return rpcResToLocalRes(rpcSend(localReqToRpcReq(thread)));
+    public boolean init(int thread, Map<String, Object> params) {
+        return rpcResToLocalRes(rpcSend(localReqToRpcReq(thread, params)));
 
     }
 
-    abstract <RPC_Q> RPC_Q localReqToRpcReq(int thread);
+    protected abstract <P> RPC_Q localReqToRpcReq(int thread, P params);
 
-    abstract <RPC_S> boolean rpcResToLocalRes(RPC_S rpcRes);
+    protected abstract boolean rpcResToLocalRes(RPC_S rpcRes);
 
-    abstract <RPC_Q, RPC_S> RPC_S rpcSend(RPC_Q rpcReq);
+    protected abstract RPC_S rpcSend(RPC_Q rpcReq);
 
-    public void setComponentRelation(R componentRelation) {
+    public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
     }
 }

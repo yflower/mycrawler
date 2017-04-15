@@ -3,8 +3,10 @@ package com.cufe.taskProcessor.context;
 import com.cufe.taskProcessor.Processor;
 import com.cufe.taskProcessor.Repository;
 import com.cufe.taskProcessor.Sink;
+import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
+import com.cufe.taskProcessor.component.client.ComponentClientHolder;
 import com.cufe.taskProcessor.component.relation.ComponentRelationHolder;
-import com.cufe.taskProcessor.component.ComponentStatus;
+import com.cufe.taskProcessor.component.status.ComponentStatus;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.cufe.taskProcessor.task.CycleEnum;
@@ -32,9 +34,6 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
 
     private static final Logger LOGGER = Logger.getLogger(Processor.class.getSimpleName());
 
-    private ComponentRelation componentRelation;
-
-    private ComponentRelationHolder componentRelationHolder;
 
     protected Sink<S> sink;
 
@@ -55,6 +54,18 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     private ExecutorService executorService;
 
 
+    /**组件rpc相关的信息**/
+
+    private ComponentRelation componentRelation;
+
+    private ComponentRelationHolder componentRelationHolder;
+
+    private ComponentClientHolder componentClientHolder;
+
+    private AbstractComponentClientFactory componentClientFactory;
+
+    /**组件rpc相关的信息**/
+
     private void run() {
         for (int i = 0; i < thread; ++i) {
             execute();
@@ -62,11 +73,9 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
 
     }
 
-    public boolean componentStart(String host, int port) {
-        componentRelation = new ComponentRelation();
-        componentRelation.setStatus(StatusEnum.NO_INIT);
-        componentRelation.setHost(host);
-        componentRelation.setPort(port);
+    public boolean componentStart(ComponentRelation self,ComponentRelation leader) {
+        self.setLeader(leader);
+        componentRelation=self;
         return true;
     }
 
@@ -125,6 +134,11 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
         executorService = Executors.newFixedThreadPool(thread);
         tasks = new ArrayList<>();
         setStatus(StatusEnum.INIT);
+        if(componentRelation==null){
+            throw new IllegalStateException("组件自身的relation必须设置");
+        }
+        componentClientHolder=new ComponentClientHolder();
+        componentRelationHolder=new ComponentRelationHolder();
         internalInit();
 
     }
@@ -246,7 +260,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     }
 
 
-    abstract void internalInit();
+    protected abstract void internalInit();
 
     public ComponentStatus componentStatus(int componentType) {
         ComponentStatus self = new ComponentStatus();
@@ -276,4 +290,24 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     }
 
 
+    public ComponentRelation getComponentRelation() {
+        return componentRelation;
+    }
+
+    public ComponentRelationHolder getComponentRelationHolder() {
+        return componentRelationHolder;
+    }
+
+
+    public ComponentClientHolder getComponentClientHolder() {
+        return componentClientHolder;
+    }
+
+    public AbstractComponentClientFactory getComponentClientFactory() {
+        return componentClientFactory;
+    }
+
+    public void setComponentClientFactory(AbstractComponentClientFactory componentClientFactory) {
+        this.componentClientFactory = componentClientFactory;
+    }
 }

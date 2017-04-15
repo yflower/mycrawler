@@ -9,13 +9,12 @@ import java.util.logging.Logger;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class AbstractComponentInitServer<C extends ComponentContext> {
+public abstract class AbstractComponentInitServer<C extends ComponentContext,RPC_S, RPC_Q> {
     private static final Logger LOGGER = Logger.getLogger(AbstractComponentInitServer.class.getSimpleName());
 
     protected C componentContext;
 
-    public <RPC_S,Config,RPC_Q> RPC_Q init(int thread,RPC_S rpcRes) {
-        componentContext.setThread(thread);
+    public <Config> RPC_Q init(RPC_S rpcRes) {
         try {
             LOGGER.log(Level.INFO, "组件开始初始化");
             Config config=rpcResToLocal(rpcRes);
@@ -30,9 +29,9 @@ public abstract class AbstractComponentInitServer<C extends ComponentContext> {
         }
     }
 
-    abstract <Config> void extraInit(Config config);
+    protected abstract <Config> void extraInit(Config config);
 
-    abstract <RPC_S, Local> Local rpcResToLocal(RPC_S rpcRes);
+    protected abstract <Config> Config rpcResToLocal(RPC_S rpcRes);
 
-    abstract <Result, RPC_Q> RPC_Q localToRPC_Q(Result result);
+    protected abstract  RPC_Q localToRPC_Q(boolean result);
 }

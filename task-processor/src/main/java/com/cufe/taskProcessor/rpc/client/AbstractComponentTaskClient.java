@@ -1,25 +1,25 @@
 package com.cufe.taskProcessor.rpc.client;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
-import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.cufe.taskProcessor.task.TaskTypeEnum;
 
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Created by jianganlan on 2017/4/13.
  */
-public abstract class AbstractComponentTaskClient< R extends ComponentRelation> {
+public abstract class AbstractComponentTaskClient<RPC_S, RPC_Q> {
     private static final Logger LOGGER = Logger.getLogger(AbstractComponentTaskClient.class.getSimpleName());
 
-     R componentRelation;
+    ComponentRelation componentRelation;
 
-    public <T extends AbstractTask> boolean task(String taskTag, TaskTypeEnum taskType) {
+    public <P> boolean task(String taskTag, TaskTypeEnum taskType, P params) {
         boolean result = false;
         if (taskType == TaskTypeEnum.ADD) {
-            T task = generateTask(taskTag);
+            AbstractTask task = generateTask(taskTag, params);
             result = rpcResToLocalRes(rpcSend(localReqToRpcReq(task, taskTag, taskType)));
             LOGGER.log(Level.INFO, "发送一个添加任务 " + task.getTaskTag());
         } else if (taskType == TaskTypeEnum.STOP) {
@@ -37,16 +37,16 @@ public abstract class AbstractComponentTaskClient< R extends ComponentRelation> 
     }
 
 
-    abstract <T extends AbstractTask> T generateTask(String taskTag);
+    protected abstract <P> AbstractTask generateTask(String taskTag, P params);
 
-    abstract <RPC_Q, T extends AbstractTask> RPC_Q localReqToRpcReq(T task, String taskTag, TaskTypeEnum taskType);
+    protected abstract RPC_Q localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType);
 
-    abstract <RPC_S> boolean rpcResToLocalRes(RPC_S rpcRes);
+    protected abstract boolean rpcResToLocalRes(RPC_S rpcRes);
 
-    abstract <RPC_Q, RPC_S> RPC_S rpcSend(RPC_Q rpcReq);
+    protected abstract RPC_S rpcSend(RPC_Q rpcReq);
 
 
-    public void setComponentRelation(R componentRelation) {
+    public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
     }
 

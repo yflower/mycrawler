@@ -111,4 +111,50 @@ public class TaskStatistics {
         return historyStatus;
     }
 
+
+    public void setCyclePerTime(LongAccumulator cyclePerTime) {
+        this.cyclePerTime = cyclePerTime;
+    }
+
+    public void setHistoryStatus(Map<LocalDateTime, StatusEnum> historyStatus) {
+        this.historyStatus = historyStatus;
+    }
+
+    public void setResourceTotalCycle(long resourceTotalCycle) {
+        this.resourceTotalCycle = resourceTotalCycle;
+    }
+
+    public void setProcessorTotalCycle(long processorTotalCycle) {
+        this.processorTotalCycle = processorTotalCycle;
+    }
+
+    public void setPersistTotalCycle(long persistTotalCycle) {
+        this.persistTotalCycle = persistTotalCycle;
+    }
+
+    public void setResourceFountCycle(LongAccumulator resourceFountCycle) {
+        this.resourceFountCycle = resourceFountCycle;
+    }
+
+    public void setResourceNotFoundCycle(LongAccumulator resourceNotFoundCycle) {
+        this.resourceNotFoundCycle = resourceNotFoundCycle;
+    }
+
+    public void setProcessorErrorCycle(LongAccumulator processorErrorCycle) {
+        this.processorErrorCycle = processorErrorCycle;
+    }
+
+    public void setProcessorSuccessCycle(LongAccumulator processorSuccessCycle) {
+        this.processorSuccessCycle = processorSuccessCycle;
+    }
+
+    public void setPersistSuccessCycle(LongAccumulator persistSuccessCycle) {
+        this.persistSuccessCycle = persistSuccessCycle;
+    }
+
+    public void setPersistErrorCycle(LongAccumulator persistErrorCycle) {
+        this.persistErrorCycle = persistErrorCycle;
+    }
+
+
 }

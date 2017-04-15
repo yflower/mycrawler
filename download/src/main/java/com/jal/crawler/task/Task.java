@@ -5,6 +5,7 @@ import com.jal.crawler.download.DownloadProcessor;
 import com.jal.crawler.url.AbstractPageUrlFactory;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,7 +19,13 @@ public class Task extends AbstractTask {
     };
     private DownloadProcessor postProcessor = downLoad -> {
     };
+
+    private List<process> pres;
+
+    private List<process> posts;
+
     private Set<String> startUrls = new HashSet<>();
+
 
 
     public synchronized boolean isUrlInit() {
@@ -58,6 +65,23 @@ public class Task extends AbstractTask {
         return startUrls;
     }
 
+
+    public List<process> getPres() {
+        return pres;
+    }
+
+    public void setPres(List<process> pres) {
+        this.pres = pres;
+    }
+
+    public List<process> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<process> posts) {
+        this.posts = posts;
+    }
+
     public void setStartUrls(Set<String> startUrls) {
         this.startUrls = startUrls;
     }
@@ -69,5 +93,79 @@ public class Task extends AbstractTask {
     @Override
     public void init() {
 
+    }
+
+    public static class process {
+        private int order;
+
+        private type type;
+
+        private String query;
+
+        private String value;
+
+        public int getOrder() {
+            return order;
+        }
+
+        public void setOrder(int order) {
+            this.order = order;
+        }
+
+        public process.type getType() {
+            return type;
+        }
+
+        public void setType(process.type type) {
+            this.type = type;
+        }
+
+        public String getQuery() {
+            return query;
+        }
+
+        public void setQuery(String query) {
+            this.query = query;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public static enum type {
+            CLICK(1),
+            INPUT(2),
+            INPUT_SUBMIT(3),
+            LINK_TO(4),
+            WAIT_UTIL(5),
+            NONE(15);
+
+            private int code;
+
+            type(int code) {
+                this.code = code;
+            }
+
+            public static type numberOf(int code) {
+                switch (code) {
+                    case 1:
+                        return CLICK;
+                    case 2:
+                        return INPUT;
+                    case 3:
+                        return INPUT_SUBMIT;
+                    case 4:
+                        return LINK_TO;
+                    case 5:
+                        return WAIT_UTIL;
+                    default:
+                        return NONE;
+                }
+            }
+        }
     }
 }

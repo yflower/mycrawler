@@ -22,4 +22,14 @@ public enum ComponentRelationTypeEnum {
     public String getMsg() {
         return msg;
     }
+
+
+    public static ComponentRelationTypeEnum numberOf(int type) {
+        for (ComponentRelationTypeEnum typeEnum : ComponentRelationTypeEnum.values()) {
+            if (type == typeEnum.code) {
+                return typeEnum;
+            }
+        }
+        return CLUSTER;
+    }
 }

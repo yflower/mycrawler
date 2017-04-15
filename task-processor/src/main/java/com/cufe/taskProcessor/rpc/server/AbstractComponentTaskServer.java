@@ -12,12 +12,12 @@ import java.util.logging.Logger;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class AbstractComponentTaskServer<C extends ComponentContext> {
+public abstract class AbstractComponentTaskServer<C extends ComponentContext, RPC_S, RPC_Q> {
     private static final Logger LOGGER = Logger.getLogger(AbstractComponentTaskServer.class.getSimpleName());
 
     protected C componentContext;
 
-    public <RPC_S, RPC_Q> RPC_Q task(RPC_S rpc_s) {
+    public RPC_Q task(RPC_S rpc_s) {
         boolean result = false;
         Map<String, Object> taskOp = rpcResToLocal(rpc_s);
         TaskTypeEnum taskType = (TaskTypeEnum) taskOp.get("taskType");
@@ -25,7 +25,7 @@ public abstract class AbstractComponentTaskServer<C extends ComponentContext> {
 
         if (componentContext.getStatus() == StatusEnum.STARTED || componentContext.getStatus() == StatusEnum.INIT) {
             if (taskType == TaskTypeEnum.ADD) {
-                AbstractTask task = generateTask(taskTag);
+                AbstractTask task = generateTask(taskTag,taskOp);
                 task.init();
                 task.setStatus(StatusEnum.INIT);
                 result = componentContext.addTask(task);
@@ -44,9 +44,9 @@ public abstract class AbstractComponentTaskServer<C extends ComponentContext> {
         return localToRPC_Q(result);
     }
 
-    abstract AbstractTask generateTask(String taskTag);
+    protected abstract AbstractTask generateTask(String taskTag,Map<String, Object> taskOp);
 
-    abstract <RPC_S, Local> Local rpcResToLocal(RPC_S rpcRes);
+    protected abstract  Map<String, Object> rpcResToLocal(RPC_S rpcRes);
 
-    abstract <Result, RPC_Q> RPC_Q localToRPC_Q(Result result);
+    protected abstract  RPC_Q localToRPC_Q(boolean result);
 }

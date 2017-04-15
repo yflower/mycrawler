@@ -1,4 +1,4 @@
-package com.cufe.taskProcessor.component;
+package com.cufe.taskProcessor.component.client;
 
 import com.cufe.taskProcessor.rpc.client.AbstractComponentInitClient;
 import com.cufe.taskProcessor.rpc.client.AbstractComponentStatusClient;
@@ -8,11 +8,11 @@ import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskClient;
  * Created by jianganlan on 2017/4/13.
  */
 public class ComponentClient {
-    AbstractComponentTaskClient taskClient;
+    public AbstractComponentTaskClient taskClient;
 
-    AbstractComponentInitClient initClient;
+    public AbstractComponentInitClient initClient;
 
-    AbstractComponentStatusClient statusClient;
+    public AbstractComponentStatusClient statusClient;
 
 
     public boolean tryConnect() {
@@ -23,4 +23,5 @@ public class ComponentClient {
             return false;
         }
     }
+
 }

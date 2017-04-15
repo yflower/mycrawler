@@ -1,4 +1,4 @@
-package com.cufe.taskProcessor.component;
+package com.cufe.taskProcessor.component.status;
 
 import com.cufe.taskProcessor.task.StatusEnum;
 import com.cufe.taskProcessor.task.AbstractTask;
