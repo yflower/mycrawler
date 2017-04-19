@@ -12,13 +12,9 @@ public class ComponentRelation {
 
     private String host;
 
+    private int port;
+
     private StatusEnum status;
-
-    private int statusPort;
-
-    private int initPort;
-
-    private int taskPort;
 
 
 
@@ -59,28 +55,11 @@ public class ComponentRelation {
         return host;
     }
 
-
-    public int getStatusPort() {
-        return statusPort;
+    public int getPort() {
+        return port;
     }
 
-    public void setStatusPort(int statusPort) {
-        this.statusPort = statusPort;
-    }
-
-    public int getInitPort() {
-        return initPort;
-    }
-
-    public void setInitPort(int initPort) {
-        this.initPort = initPort;
-    }
-
-    public int getTaskPort() {
-        return taskPort;
-    }
-
-    public void setTaskPort(int taskPort) {
-        this.taskPort = taskPort;
+    public void setPort(int port) {
+        this.port = port;
     }
 }

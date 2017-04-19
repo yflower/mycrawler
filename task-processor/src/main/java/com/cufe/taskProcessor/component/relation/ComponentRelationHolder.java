@@ -54,9 +54,7 @@ public class ComponentRelationHolder {
     public boolean contains(ComponentRelation componentRelation) {
         return connected.stream()
                 .filter(t -> t.getHost().equals(componentRelation.getHost()))
-                .filter(t -> t.getInitPort() == componentRelation.getInitPort())
-                .filter(t -> t.getStatusPort() == componentRelation.getStatusPort())
-                .filter(t -> t.getTaskPort() == componentRelation.getTaskPort())
+                .filter(t -> t.getPort() == componentRelation.getPort())
                 .count() == 1;
     }
 

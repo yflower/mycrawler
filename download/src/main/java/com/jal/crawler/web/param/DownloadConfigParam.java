@@ -1,18 +1,20 @@
 package com.jal.crawler.web.param;
 
+import com.cufe.taskProcessor.ComponentFacade;
+
 import java.util.List;
 
 /**
  * Created by jianganlan on 2017/4/15.
  */
-public class DownloadConfigParam {
+public class DownloadConfigParam extends ComponentFacade.initParam {
+
     private int sleepTime;
 
     private boolean proxy;
 
     private List<String> proxyAddress;
 
-    private int thread;
 
     private MongoConfigParam mongoConfigParam;
 
@@ -42,14 +44,6 @@ public class DownloadConfigParam {
         this.proxyAddress = proxyAddress;
     }
 
-    public int getThread() {
-        return thread;
-    }
-
-    public void setThread(int thread) {
-        this.thread = thread;
-    }
-
     public MongoConfigParam getMongoConfigParam() {
         return mongoConfigParam;
     }
@@ -65,4 +59,6 @@ public class DownloadConfigParam {
     public void setRedisConfigParam(RedisConfigParam redisConfigParam) {
         this.redisConfigParam = redisConfigParam;
     }
+
+
 }

@@ -70,16 +70,12 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
 
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
-            self.setInitPort(config1.selfInitPort);
-            self.setStatusPort(config1.selfStatusPort);
-            self.setTaskPort(config1.selfTaskPort);
+            self.setPort(config1.selfPort);
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
 
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
-            leader.setInitPort(config1.leaderInitPort);
-            leader.setStatusPort(config1.leaderStatusPort);
-            leader.setTaskPort(config1.leaderTaskPort);
+            leader.setPort(config1.leaderPort);
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
 
             downLoadContext.componentStart(self, leader);
@@ -92,13 +88,9 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             config.proxy = rpcRes.getProxy();
             config.proxyAddress = rpcRes.getProxyAddressList();
             config.selfHost = rpcRes.getSelfHost();
-            config.selfInitPort = rpcRes.getSelfInitPort();
-            config.selfTaskPort = rpcRes.getSelfTaskPort();
-            config.selfStatusPort = rpcRes.getSelfStatusPort();
+            config.selfPort=rpcRes.getSelfPort();
             config.leaderHost = rpcRes.getLeaderHost();
-            config.leaderInitPort = rpcRes.getLeaderInitPort();
-            config.leaderStatusPort = rpcRes.getLeaderStatusPort();
-            config.leaderTaskPort = rpcRes.getLeaderTaskPort();
+            config.leaderPort=rpcRes.getLeaderPort();
             config.relationType = rpcRes.getRelationType();
 
             if (rpcRes.getPersist() == DownloadConfig.Persist.REDIS) {
@@ -128,12 +120,9 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
 
             String selfHost;
             String leaderHost;
-            int selfInitPort;
-            int selfStatusPort;
-            int selfTaskPort;
-            int leaderInitPort;
-            int leaderStatusPort;
-            int leaderTaskPort;
+            int selfPort;
+            int leaderPort;
+
 
             int relationType;
 

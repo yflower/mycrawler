@@ -10,7 +10,7 @@ import java.util.Map;
 public abstract class AbstractComponentInitClient<RPC_S, RPC_Q> {
     protected ComponentRelation componentRelation;
 
-    public boolean init(int thread, Map<String, Object> params) {
+    public <P> boolean init(int thread, P params) {
         return rpcResToLocalRes(rpcSend(localReqToRpcReq(thread, params)));
 
     }

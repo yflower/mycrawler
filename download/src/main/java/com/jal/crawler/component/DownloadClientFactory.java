@@ -22,26 +22,15 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
     public Optional<ComponentClient> create(ComponentRelation componentRelation) {
         ComponentClient componentClient = new ComponentClient();
 
-        ManagedChannel statusChannel = ManagedChannelBuilder
-                .forAddress(componentRelation.getHost(), componentRelation.getStatusPort())
+        ManagedChannel channel = ManagedChannelBuilder
+                .forAddress(componentRelation.getHost(), componentRelation.getPort())
                 .usePlaintext(true)
                 .build();
+        RpcComponentStatusGrpc.RpcComponentStatusBlockingStub statusStub = RpcComponentStatusGrpc.newBlockingStub(channel);
 
-        ManagedChannel initChannel = ManagedChannelBuilder
-                .forAddress(componentRelation.getHost(), componentRelation.getInitPort())
-                .usePlaintext(true)
-                .build();
+        RpcDownlandConfigGrpc.RpcDownlandConfigBlockingStub initStub = RpcDownlandConfigGrpc.newBlockingStub(channel);
 
-        ManagedChannel taskChannel = ManagedChannelBuilder
-                .forAddress(componentRelation.getHost(), componentRelation.getTaskPort())
-                .usePlaintext(true)
-                .build();
-
-        RpcComponentStatusGrpc.RpcComponentStatusBlockingStub statusStub = RpcComponentStatusGrpc.newBlockingStub(statusChannel);
-
-        RpcDownlandConfigGrpc.RpcDownlandConfigBlockingStub initStub = RpcDownlandConfigGrpc.newBlockingStub(initChannel);
-
-        RpcDownloadTaskGrpc.RpcDownloadTaskBlockingStub taskStub = RpcDownloadTaskGrpc.newBlockingStub(taskChannel);
+        RpcDownloadTaskGrpc.RpcDownloadTaskBlockingStub taskStub = RpcDownloadTaskGrpc.newBlockingStub(channel);
 
         DownloadInitClient initClient = new DownloadInitClient();
         DownloadStatusClient statusClient = new DownloadStatusClient();
