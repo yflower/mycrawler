@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import java.util.stream.*;
 
@@ -42,6 +43,8 @@ public class S1_StreamGenerator {
         //Collection中创建stream
         new ArrayList<String>().stream();
         new HashSet<String>().stream();
+
+
 
 
 

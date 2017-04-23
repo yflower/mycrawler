@@ -23,6 +23,18 @@ public class RedisConfigParam {
         return password;
     }
 
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "RedisConfigParam{" +

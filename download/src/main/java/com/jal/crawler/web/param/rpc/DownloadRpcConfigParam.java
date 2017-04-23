@@ -1,30 +1,15 @@
-package com.jal.crawler.web.param;
+package com.jal.crawler.web.param.rpc;
 
 import com.cufe.taskProcessor.ComponentFacade;
+import com.jal.crawler.web.param.MongoConfigParam;
+import com.jal.crawler.web.param.RedisConfigParam;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * Created by jianganlan on 2017/4/15.
+ * Created by jianganlan on 2017/4/23.
  */
-public class DownloadConfigParam {
-
-    @NotNull
-    private String host;
-
-    @Min(1)
-    private int port;
-
-    @Min(1)
-    private int thread;
-
-    @Min(1)@Max(2)
-    private int relationType;
-
-    @Min(0)
+public class DownloadRpcConfigParam extends ComponentFacade.initParam {
     private int sleepTime;
 
     private boolean proxy;
@@ -73,37 +58,5 @@ public class DownloadConfigParam {
 
     public void setRedisConfig(RedisConfigParam redisConfig) {
         this.redisConfig = redisConfig;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public int getThread() {
-        return thread;
-    }
-
-    public void setThread(int thread) {
-        this.thread = thread;
-    }
-
-    public int getRelationType() {
-        return relationType;
-    }
-
-    public void setRelationType(int relationType) {
-        this.relationType = relationType;
     }
 }

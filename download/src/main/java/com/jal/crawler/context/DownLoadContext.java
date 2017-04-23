@@ -1,6 +1,7 @@
 package com.jal.crawler.context;
 
 import com.cufe.taskProcessor.Processor;
+import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.component.DownloadClientFactory;
@@ -40,6 +41,7 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
     private AbstractDownLoad dynamicDownload;
     private RedisTemplate redisTemplate;
     private ThreadLocal<AbstractDownLoad> downLoad = new ThreadLocal<>();
+    private DownloadClientFactory downloadClientFactory = new DownloadClientFactory(this);
 
     public void proxy(String address) {
         String[] args = address.split(":");
@@ -63,6 +65,11 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
 
     }
 
+    @Override
+    public AbstractComponentClientFactory getComponentClientFactory() {
+        return downloadClientFactory;
+    }
+
     {
 
         sink = task -> abstractPageUrlFactory.getUrl(task.getTaskTag());
@@ -82,7 +89,6 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
                 pagePersist = new RedisPagePersist(redisTemplate);
                 staticBuilder = new OkHttpDownLoad.Builder();
                 dynamicBuilder = new SeleniumDownload.Builder();
-                setComponentClientFactory(new DownloadClientFactory());
             }
 
 

@@ -40,6 +40,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
         ComponentInitService initService = new ComponentInitService(downLoadContext);
 
         ConfigStatus configStatus = initService.init(request);
+
         responseObserver.onNext(configStatus);
         responseObserver.onCompleted();
 
@@ -62,24 +63,35 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             config config1 = (ComponentInitService.config) config;
             DownLoadContext downLoadContext = componentContext;
             downLoadContext.sleep(config1.sleep);
+            downLoadContext.setThread(config1.thread);
             if (config1.proxy) {
                 //目前只能设定单代理
                 downLoadContext.proxy(config1.proxyAddress.get(0));
             }
             downLoadContext.redisTemplate(config1.redisTemplate);
+        }
 
+        @Override
+        protected <Config> ComponentRelation self(Config config) {
+            config config1 = (ComponentInitService.config) config;
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
+            return self;
+        }
 
+        @Override
+        protected <Config> ComponentRelation leader(Config config) {
+            config config1 = (ComponentInitService.config) config;
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
-
-            downLoadContext.componentStart(self, leader);
+            return leader;
         }
+
+
 
         @Override
         protected <Config> Config rpcResToLocal(DownloadConfig rpcRes) {
@@ -88,10 +100,11 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             config.proxy = rpcRes.getProxy();
             config.proxyAddress = rpcRes.getProxyAddressList();
             config.selfHost = rpcRes.getSelfHost();
-            config.selfPort=rpcRes.getSelfPort();
+            config.selfPort = rpcRes.getSelfPort();
             config.leaderHost = rpcRes.getLeaderHost();
-            config.leaderPort=rpcRes.getLeaderPort();
+            config.leaderPort = rpcRes.getLeaderPort();
             config.relationType = rpcRes.getRelationType();
+            config.thread = rpcRes.getThread();
 
             if (rpcRes.getPersist() == DownloadConfig.Persist.REDIS) {
                 RedisConfig redisConfig = rpcRes.getRedisConfig();
@@ -113,6 +126,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
         }
 
         public class config {
+            int thread;
             int sleep;
             boolean proxy;
             List<String> proxyAddress;

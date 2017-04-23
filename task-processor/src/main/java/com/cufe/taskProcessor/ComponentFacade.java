@@ -13,6 +13,8 @@ import com.cufe.taskProcessor.task.StatusEnum;
 import com.cufe.taskProcessor.task.TaskTypeEnum;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -28,6 +30,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
     protected ComponentContext componentContext;
 
+
     //组件列表
     public List<ComponentRelation> componentList() {
 
@@ -41,11 +44,15 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         if (componentRelation.getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
             ComponentRelationHolder relationHolder = componentContext.getComponentRelationHolder();
             return relationHolder.connectComponent();
-        }
-        //当前组件为工作组件，此时leader重新选举
-        else {
-            return null;
+        } else {
+            Optional<ComponentRelation> optional = seekLeader();
+            //http请求转发到leader
+            if (optional.isPresent()) {
+                return componentListForward(optional.get());
+            }
+            LOGGER.log(Level.SEVERE, "无法获取到leader，组件列表获取失败");
 
+            return new ArrayList<>();
 
         }
 
@@ -55,55 +62,89 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         ComponentRelation self = componentContext.getComponentRelation();
         ComponentRelationHolder componentRelationHolder = componentContext.getComponentRelationHolder();
         AbstractComponentClientFactory componentClientFactory = componentContext.getComponentClientFactory();
+        ComponentClientHolder componentClientHolder = componentContext.getComponentClientHolder();
 
 
         //创建componentRelation
         ComponentRelation componentRelation = new ComponentRelation();
         componentRelation.setHost(configParam.getHost());
         componentRelation.setPort(configParam.getPort());
-        Optional<ComponentClient> componentClient = Optional.empty();
+        Optional<ComponentClient> componentClient;
+        ComponentRelation leader = null;
 
-
-        if (!componentRelationHolder.contains(componentRelation)) {
-            componentClient = componentClientFactory.create(componentRelation);
-            if (componentClient.isPresent()) {
-                LOGGER.info("添加组件成功 " + componentRelation);
-            } else {
-                LOGGER.warning("添加组件失败 " + componentRelation);
-            }
-        }
 
         //只有leader组件才对添加的组件的进行设置
         if (self.getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
-            componentClient.get().initClient.init(configParam.getThread(), configParam);
+            if (!componentRelationHolder.contains(componentRelation)) {
+                leader = componentContext.getComponentRelation();
+            }
+        } else {
+            Optional<ComponentRelation> optional = seekLeader();
+            //http请求转发到leader
+            if (optional.isPresent()) {
+                leader = optional.get().getLeader();
+            }
+
+            LOGGER.log(Level.SEVERE, "无法获取到leader，组件设置失败");
+
+            return;
         }
-        //当前组件为工作组件，不进行设置操作
+
+        //组件添加
+        componentRelation.setLeader(leader);
+        configParam.setLeaderHost(leader.getHost());
+        configParam.setLeaderPort(leader.getPort());
+
+        componentClient = componentClientFactory.create(componentRelation);
+        if (componentClient.isPresent()) {
+            //client添加
+            componentClientHolder.add(componentRelation, componentClient.get());
+            //组件初始化
+            componentClient.get().initClient.init(configParam);
+
+            LOGGER.info("添加组件成功 " + componentRelation);
+
+        } else {
+            LOGGER.warning("添加组件失败 " + componentRelation);
+        }
+
 
     }
 
     public void componentTask(TASK_OP_PARAM taskOpParam) {
         ComponentRelation self = componentContext.getComponentRelation();
-        ComponentRelationHolder componentRelationHolder = componentContext.getComponentRelationHolder();
+        AbstractComponentClientFactory componentClientFactory = componentContext.getComponentClientFactory();
+
         ComponentClientHolder componentClientHolder = componentContext.getComponentClientHolder();
 
-        if (self.getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
-            //leader为每个组件分配组件
-            componentRelationHolder.connectComponent().forEach(t -> {
-                Optional<ComponentClient> optional = componentClientHolder.from(t);
-                if (optional.isPresent()) {
-                    optional.get().taskClient.task(taskOpParam.getTaskTag()
-                            , TaskTypeEnum.numberOf(taskOpParam.getTaskType())
-                            , taskOpParam);
+        //leader为每个组件分配组件
+        componentList().forEach(t -> {
+            Optional<ComponentClient> optional = componentClientHolder.from(t);
+            ComponentClient componentClient = null;
+            //获取连接client
+            if (optional.isPresent()) {
+                componentClient = optional.get();
+
+            } else {
+                Optional<ComponentClient> clientOptional = componentClientFactory.create(t);
+
+                if (clientOptional.isPresent()) {
+                    componentClientHolder.add(t, clientOptional.get());
+                    componentClient = clientOptional.get();
+
                 }
-            });
-        }
+
+            }
+            componentClient.taskClient.task(taskOpParam.getTaskTag()
+                    , TaskTypeEnum.numberOf(taskOpParam.getTaskType())
+                    , taskOpParam);
+        });
     }
 
 
     //任务详细汇总
     public List<AbstractTask> taskStatus() {
-        ComponentRelationHolder componentRelationHolder = componentContext.getComponentRelationHolder();
-        List<ComponentRelation> componentRelations = componentRelationHolder.connectComponent();
+        List<ComponentRelation> componentRelations = componentList();
         ComponentClientHolder componentClientHolder = componentContext.getComponentClientHolder();
 
         Map<String, AbstractTask> result = new HashMap<>();
@@ -139,15 +180,44 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         });
 
         return new ArrayList<>(result.values());
+
     }
 
 
-    public static class initParam{
+    private Optional<ComponentRelation> seekLeader() {
+        ComponentRelation leader = componentContext.getComponentRelation().getLeader();
+
+        if (leader == null) {
+            //休眠等待leader设置该组件
+            try {
+                TimeUnit.SECONDS.sleep(4);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (leader != null) {
+                return Optional.of(leader);
+            }
+        }
+        return Optional.empty();
+
+    }
+
+
+    protected abstract List<ComponentRelation> componentListForward(ComponentRelation leader);
+
+
+    public static class initParam {
         private String host;
 
         private int port;
 
+        private int relationType;
+
         private int thread;
+
+        private String leaderHost;
+
+        private int leaderPort;
 
         public String getHost() {
             return host;
@@ -172,9 +242,33 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         public void setThread(int thread) {
             this.thread = thread;
         }
+
+        public String getLeaderHost() {
+            return leaderHost;
+        }
+
+        public void setLeaderHost(String leaderHost) {
+            this.leaderHost = leaderHost;
+        }
+
+        public int getLeaderPort() {
+            return leaderPort;
+        }
+
+        public void setLeaderPort(int leaderPort) {
+            this.leaderPort = leaderPort;
+        }
+
+        public int getRelationType() {
+            return relationType;
+        }
+
+        public void setRelationType(int relationType) {
+            this.relationType = relationType;
+        }
     }
 
-    public static class taskOpParam{
+    public static class taskOpParam {
         private String taskTag;
 
         private int taskType;

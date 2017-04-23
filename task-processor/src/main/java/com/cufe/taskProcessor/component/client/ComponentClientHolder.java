@@ -32,4 +32,10 @@ public class ComponentClientHolder {
         }
     }
 
+    public void add(ComponentRelation relation,ComponentClient client){
+        if(client.tryConnect()){
+            clients.put(relation.address(),client);
+        }
+    }
+
 }

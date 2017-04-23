@@ -4,10 +4,12 @@ import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.component.client.ComponentClient;
 import com.cufe.taskProcessor.component.client.ComponentClientHolder;
 import com.cufe.taskProcessor.context.ComponentContext;
+import com.cufe.taskProcessor.task.StatusEnum;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 /**
@@ -24,17 +26,29 @@ public class ComponentRelationHolder {
 
     private volatile boolean heartCheckStart = false;
 
+    public ComponentRelationHolder(ComponentContext componentContext) {
+        this.componentContext = componentContext;
+    }
 
     public boolean addRelation(ComponentRelation componentRelation) {
         ComponentClientHolder componentClientHolder = componentContext.getComponentClientHolder();
 
         Optional<ComponentClient> clientOptional = componentClientHolder.from(componentRelation);
+
+        ComponentClient componentClient;
+
         if (!clientOptional.isPresent()) {
-            LOGGER.warning("必须添加组件的client，才能加入相关的组件");
-            return false;
+            Optional<ComponentClient> optional = componentContext.getComponentClientFactory().create(componentRelation);
+            if (optional.isPresent()) {
+                componentClient = optional.get();
+            }else {
+                LOGGER.warning("必须添加组件的client，才能加入相关的组件");
+                return false;
+            }
+        } else {
+            componentClient = clientOptional.get();
         }
 
-        ComponentClient componentClient = clientOptional.get();
         boolean isConnect = componentClient.tryConnect();
         if (!isConnect) {
             LOGGER.warning("组件尝试连接失败，无法加入组件列表中，" + componentRelation);
@@ -68,9 +82,10 @@ public class ComponentRelationHolder {
         AbstractComponentClientFactory componentClientFactory = componentContext.getComponentClientFactory();
         if (!heartCheckStart &&
                 componentContext.getComponentRelation().getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
+            heartCheckStart=true;
             new Thread(() -> {
                 for (; ; ) {
-                    clusters.forEach(t -> {
+                    clusters.stream().forEach(t -> {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();
@@ -105,9 +120,21 @@ public class ComponentRelationHolder {
                                 LOGGER.warning("获取新的连接client成功 " + t);
 
                             }
+
+                            StatusEnum newStatus = componentClient.statusClient.status().getComponentStatus();
+                            if (newStatus != t.getStatus()) {
+                                t.setStatus(newStatus);
+                            }
                         }
                     });
+                    try {
+                        TimeUnit.SECONDS.sleep(2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                 }
+
 
             }).start();
         }

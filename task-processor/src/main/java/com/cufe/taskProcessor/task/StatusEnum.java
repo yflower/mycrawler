@@ -32,4 +32,13 @@ public enum StatusEnum {
     public static boolean isStart(StatusEnum statusEnum){
         return statusEnum.getCode()>=2;
     }
+
+    public static StatusEnum numberOf(int status){
+        for(StatusEnum statusEnum:StatusEnum.values()){
+            if(statusEnum.getCode()==status){
+                return statusEnum;
+            }
+        }
+        return UNRECOGNIZED;
+    }
 }

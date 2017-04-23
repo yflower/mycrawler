@@ -1,5 +1,8 @@
 package com.cufe.taskProcessor.rpc.server;
 
+import com.cufe.taskProcessor.component.relation.ComponentRelation;
+import com.cufe.taskProcessor.component.relation.ComponentRelationHolder;
+import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
 import com.cufe.taskProcessor.component.status.ComponentStatus;
 import com.cufe.taskProcessor.context.ComponentContext;
 

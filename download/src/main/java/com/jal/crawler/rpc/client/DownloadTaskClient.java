@@ -10,6 +10,7 @@ import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
 import com.jal.crawler.proto.task.TaskType;
 import com.jal.crawler.task.Task;
 import com.jal.crawler.web.param.DownloadTaskOpParam;
+import com.jal.crawler.web.param.rpc.DownloadRpcTaskOpParam;
 
 import java.util.Comparator;
 import java.util.List;
@@ -27,7 +28,7 @@ public class DownloadTaskClient extends AbstractComponentTaskClient<DownloadTask
 
     @Override
     protected <P> AbstractTask generateTask(String taskTag, P params) {
-        DownloadTaskOpParam opParam= (DownloadTaskOpParam) params;
+        DownloadRpcTaskOpParam opParam= (DownloadRpcTaskOpParam) params;
         Task task=new Task();
         task.setDynamic(opParam.isDynamic());
         task.setTest(opParam.isTest());

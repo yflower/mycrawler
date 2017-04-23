@@ -1,20 +1,15 @@
-package com.jal.crawler.web.param;
+package com.jal.crawler.web.param.rpc;
 
 import com.cufe.taskProcessor.ComponentFacade;
-import com.cufe.taskProcessor.task.TaskTypeEnum;
 import com.jal.crawler.task.Task;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * Created by jianganlan on 2017/4/15.
+ * Created by jianganlan on 2017/4/23.
  */
-public class DownloadTaskOpParam{
-    private String taskTag;
-
-    private int taskType;
-
+public class DownloadRpcTaskOpParam extends ComponentFacade.taskOpParam {
     private boolean test;
 
     private boolean dynamic;
@@ -64,22 +59,5 @@ public class DownloadTaskOpParam{
 
     public void setUrls(Set<String> urls) {
         this.urls = urls;
-    }
-
-
-    public String getTaskTag() {
-        return taskTag;
-    }
-
-    public void setTaskTag(String taskTag) {
-        this.taskTag = taskTag;
-    }
-
-    public int getTaskType() {
-        return taskType;
-    }
-
-    public void setTaskType(int taskType) {
-        this.taskType = taskType;
     }
 }

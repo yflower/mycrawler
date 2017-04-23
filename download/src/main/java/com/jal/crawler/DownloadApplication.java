@@ -2,7 +2,9 @@ package com.jal.crawler;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.context.DownLoadContext;
+import com.jal.crawler.rpc.DownloadLeaderServer;
 import com.jal.crawler.rpc.DownloadStatusServer;
 import com.jal.crawler.rpc.DownloadInitServer;
 import com.jal.crawler.rpc.DownloadTaskServer;
@@ -20,22 +22,27 @@ public class DownloadApplication {
 
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
+        Integer type = Integer.valueOf(args[0]);
+        Integer port = Integer.valueOf(args[1]);
+
 //        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
-        Server server = ServerBuilder.forPort(9001)
+        Server server = ServerBuilder.forPort(port)
                 .addService(context.getBean(DownloadInitServer.class))
                 .addService(context.getBean(DownloadTaskServer.class))
                 .addService(context.getBean(DownloadStatusServer.class))
+                .addService(context.getBean(DownloadLeaderServer.class))
                 .build();
 
 
         ComponentRelation self=new ComponentRelation();
 
-        self.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
         self.setHost("127.0.0.1");
         self.setLeader(self);
-        self.setPort(9001);
+        self.setStatus(StatusEnum.NO_INIT);
+        self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
+        self.setPort(port);
 
         DownLoadContext loadContext = context.getBean(DownLoadContext.class);
 

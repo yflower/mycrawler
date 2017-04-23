@@ -14,8 +14,7 @@ public class ComponentRelation {
 
     private int port;
 
-    private StatusEnum status;
-
+    private StatusEnum status = StatusEnum.NO_INIT;
 
 
     public ComponentRelationTypeEnum getRelationTypeEnum() {
@@ -27,6 +26,9 @@ public class ComponentRelation {
     }
 
     public ComponentRelation getLeader() {
+        if (relationTypeEnum == ComponentRelationTypeEnum.LEADER) {
+            return null;
+        }
         return leader;
     }
 
@@ -51,8 +53,8 @@ public class ComponentRelation {
         this.status = status;
     }
 
-    public String address(){
-        return host;
+    public String address() {
+        return host + ":" + port;
     }
 
     public int getPort() {
@@ -61,5 +63,15 @@ public class ComponentRelation {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    @Override
+    public String toString() {
+        return "ComponentRelation{" +
+                "relationTypeEnum=" + relationTypeEnum +
+                ", host='" + host + '\'' +
+                ", port=" + port +
+                ", status=" + status +
+                '}';
     }
 }
