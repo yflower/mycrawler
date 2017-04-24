@@ -24,7 +24,7 @@ public class DownloadApplication {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);
-        String host=args[3];
+        String host=args[2];
 
 //        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
