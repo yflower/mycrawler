@@ -7,6 +7,7 @@ import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.task.StatusEnum;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -20,9 +21,10 @@ public class ComponentRelationHolder {
 
     private ComponentContext componentContext;
 
-    private List<ComponentRelation> clusters = new ArrayList<>();
+    private List<ComponentRelation> clusters = Collections.synchronizedList(new ArrayList<>());
 
-    private List<ComponentRelation> connected = new ArrayList<>();
+    //todo 同步解决
+    private List<ComponentRelation> connected = Collections.synchronizedList(new ArrayList<>());
 
     private volatile boolean heartCheckStart = false;
 
