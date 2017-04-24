@@ -3,11 +3,15 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.jal.crawler.proto.status";
 
-import "configComponent.proto";
+
 
 
 service RpcComponentStatus {
-    rpc rpcComponentStatus (ConfigComponentStatus) returns (ComponentStatus);
+    rpc rpcComponentStatus (ComponentStatus) returns (ComponentStatus);
+}
+
+service RpcComponentLeaderService{
+    rpc rpcComponentNotify(ComponentRelation) returns (ComponentStatus);
 }
 
 message ComponentStatus {
@@ -15,16 +19,20 @@ message ComponentStatus {
     Status component_status = 1;
     int32 taskNum = 2;
     map<string, TaskStatistics> tasks = 3;
+    string host=5;
+    int32 port=6;
 
 }
 
-message TaskStatistics{
-    Status status=1;
-    int32 resourceTotal=2;
-    int32 processorTotal=3;
-    int32 persistTotal=4;
-    int64 startTime=5;
-    int64 endTime=6;
+message TaskStatistics {
+    Status status = 1;
+    int32 resourceTotal = 2;
+    int32 processorTotal = 3;
+    int32 persistTotal = 4;
+    int64 startTime = 5;
+    int64 endTime = 6;
+    bool test=7;
+
 
 }
 enum ComponentType {
@@ -39,4 +47,17 @@ enum Status {
     STOPPED = 3;
     FINISHED = 4;
     DESTROYED = 5;
+}
+
+message ComponentRelation {
+    ComponentRelationType type = 1;
+    ComponentRelation leader=2;
+    string host=3;
+    int32 port=4;
+    Status status=5;
+}
+
+enum ComponentRelationType {
+    LEADER = 0;
+    CLUSTER = 1;
 }

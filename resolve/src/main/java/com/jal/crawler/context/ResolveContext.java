@@ -1,6 +1,8 @@
 package com.jal.crawler.context;
 
+import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.context.ComponentContext;
+import com.jal.crawler.component.ResolveClientFactory;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PageFetch;
 import com.jal.crawler.page.RedisPageFetch;
@@ -18,7 +20,7 @@ import java.util.Map;
  * Created by home on 2017/1/12.
  */
 @Component
-public class ResolveContext extends ComponentContext<Page, Map<String, Object>> {
+public class ResolveContext extends ComponentContext<Page, Map<String, Object>, Task> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResolveContext.class);
 
@@ -27,6 +29,8 @@ public class ResolveContext extends ComponentContext<Page, Map<String, Object>> 
     private Persist persist;
 
     private RedisTemplate redisTemplate;
+
+    private AbstractComponentClientFactory componentClientFactory = new ResolveClientFactory(this);
 
 
     public ResolveContext persist(Persist persist) {
@@ -57,6 +61,11 @@ public class ResolveContext extends ComponentContext<Page, Map<String, Object>> 
         } else {
             throw new NullPointerException("redis必须先设置");
         }
+    }
+
+    @Override
+    public AbstractComponentClientFactory getComponentClientFactory() {
+        return componentClientFactory;
     }
 
 

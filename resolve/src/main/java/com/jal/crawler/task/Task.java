@@ -99,16 +99,24 @@ public class Task extends AbstractTask{
         this.items = items;
     }
 
+    public List<var> getVars() {
+        return vars;
+    }
+
+    public List<item> getItems() {
+        return items;
+    }
+
     @Override
     public void init() {
 
     }
 
     public static class var {
-        String name;
-        String query;
-        String option;
-        String optionValue;
+        private String name;
+        private String query;
+        private String option;
+        private String optionValue;
 
         public var(String name, String query, String option, String optionValue) {
             this.name = name;
@@ -117,15 +125,61 @@ public class Task extends AbstractTask{
             this.optionValue = optionValue;
         }
 
+        public String getName() {
+            return name;
+        }
 
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getQuery() {
+            return query;
+        }
+
+        public void setQuery(String query) {
+            this.query = query;
+        }
+
+        public String getOption() {
+            return option;
+        }
+
+        public void setOption(String option) {
+            this.option = option;
+        }
+
+        public String getOptionValue() {
+            return optionValue;
+        }
+
+        public void setOptionValue(String optionValue) {
+            this.optionValue = optionValue;
+        }
     }
 
     public static class item {
-        String itemName;
-        List<var> itemVar;
+        private String itemName;
+        private List<var> itemVar;
 
         public item(String itemName, List<var> itemVar) {
             this.itemName = itemName;
+            this.itemVar = itemVar;
+        }
+
+        public String getItemName() {
+            return itemName;
+        }
+
+        public void setItemName(String itemName) {
+            this.itemName = itemName;
+        }
+
+        public List<var> getItemVar() {
+            return itemVar;
+        }
+
+        public void setItemVar(List<var> itemVar) {
             this.itemVar = itemVar;
         }
     }

@@ -17,10 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -72,12 +69,6 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
             super.componentContext = context;
         }
 
-        boolean dynamic;
-        boolean test;
-        Set<String> urls;
-        DownloadProcessor pre;
-        DownloadProcessor post;
-
 
         @Override
         protected AbstractTask generateTask(String taskTag, Map taskOp) {
@@ -87,7 +78,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
             task.setTest((Boolean) taskOp.get("test"));
             task.setStartUrls((Set<String>) taskOp.get("urls"));
             //目前只有动态的processor
-            if (dynamic) {
+            if (task.isDynamic()) {
                 task.setPreProcessor(downLoad -> {
                     DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
                     ((List<DownloadTask.Processor>) taskOp.get("pre")).stream()
@@ -101,8 +92,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                                     .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                                     .forEach(pro -> processor(pro, dynamicDownload));
                         });
-                task.setPreProcessor(pre);
-                task.setPostProcessor(post);
+
             } else {
                 //静态处理器
             }
@@ -112,7 +102,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
 
         @Override
         protected Map<String, Object> rpcResToLocal(DownloadTask rpcRes) {
-            Map<String, Object> ops = new HashedMap();
+            Map<String, Object> ops = new HashMap();
             ops.put("taskType", rpcRes.getTaskType().getNumber());
             ops.put("taskTag", rpcRes.getTaskTag());
             ops.put("test", rpcRes.getTest());

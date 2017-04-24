@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="038d4893-88b2-453f-a291-3f2cfd18a7f7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadLeaderClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/convert/WebParamToRpcParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/rpc/DownloadRpcConfigParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/rpc/DownloadRpcTaskOpParam.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentLeaderClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentLeaderServer.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../StreamExam/build/classes/main/DataSpliterator$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../StreamExam/build/classes/main/DataSpliterator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../StreamExam/build/classes/main/StreamFunction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../StreamExam/build/classes/main/StreamGenerator.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/cufe/taskProcessor/context/ComponentContext.class" afterPath="$PROJECT_DIR$/build/classes/main/com/cufe/taskProcessor/context/ComponentContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/task-processor-1.0-SNAPSHOT-sources.jar" afterPath="$PROJECT_DIR$/build/libs/task-processor-1.0-SNAPSHOT-sources.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/task-processor-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/build/libs/task-processor-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StreamExam/.idea/misc.xml" afterPath="$PROJECT_DIR$/../StreamExam/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StreamExam/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../StreamExam/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StreamExam/src/main/java/S1_StreamGenerator.java" afterPath="$PROJECT_DIR$/../StreamExam/src/main/java/S1_StreamGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StreamExam/src/main/java/S4_Pipleline.java" afterPath="$PROJECT_DIR$/../StreamExam/src/main/java/S4_Pipleline.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/DownloadApplication.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/DownloadApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/component/DownloadClientFactory.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/component/DownloadClientFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/context/DownLoadContext.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/context/DownLoadContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/DownloadInitServer.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/DownloadInitServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/DownloadStatusServer.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/DownloadStatusServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadInitClient.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadInitClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadStatusClient.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadStatusClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadTaskClient.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/rpc/client/DownloadTaskClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/controller/DownloadController.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/controller/DownloadController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/DownloadConfigParam.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/DownloadConfigParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/DownloadTaskOpParam.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/DownloadTaskOpParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/RedisConfigParam.java" afterPath="$PROJECT_DIR$/../download/src/main/java/com/jal/crawler/web/param/RedisConfigParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../download/src/main/proto/component.proto" afterPath="$PROJECT_DIR$/../download/src/main/proto/component.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClientHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClientHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelation.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/status/ComponentStatus.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/status/ComponentStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentInitClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentInitClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentInitServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentInitServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentStatusServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentStatusServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/StatusEnum.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/StatusEnum.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -151,8 +110,8 @@
       <file leaf-file-name="AbstractComponentStatusServer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentStatusServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="25" column="81" lean-forward="false" selection-start-line="25" selection-start-column="81" selection-end-line="25" selection-end-column="81" />
+            <state relative-caret-position="189">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1458,16 +1417,15 @@
       <workItem from="1492221425747" duration="20052000" />
       <workItem from="1492580022907" duration="4674000" />
       <workItem from="1492654904603" duration="8000" />
-      <workItem from="1492904364582" duration="20601000" />
+      <workItem from="1492904364582" duration="21408000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58992000" />
+    <option name="totallyTimeSpent" value="59799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1475,17 +1433,17 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37883008" sideWeight="0.5171674" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26740947" sideWeight="0.5114449" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37883008" sideWeight="0.4828326" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37883008" sideWeight="0.4828326" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26740947" sideWeight="0.4914163" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26740947" sideWeight="0.48855507" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3025751" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1883,8 +1841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentStatusServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="25" column="81" lean-forward="false" selection-start-line="25" selection-start-column="81" selection-end-line="25" selection-end-column="81" />
+        <state relative-caret-position="189">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
