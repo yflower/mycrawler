@@ -24,6 +24,7 @@ public class DownloadApplication {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);
+        String host=args[3];
 
 //        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
@@ -38,7 +39,7 @@ public class DownloadApplication {
 
         ComponentRelation self=new ComponentRelation();
 
-        self.setHost("127.0.0.1");
+        self.setHost(host);
         self.setLeader(self);
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
