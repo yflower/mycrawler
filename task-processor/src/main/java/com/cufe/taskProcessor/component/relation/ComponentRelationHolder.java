@@ -41,7 +41,7 @@ public class ComponentRelationHolder {
             Optional<ComponentClient> optional = componentContext.getComponentClientFactory().create(componentRelation);
             if (optional.isPresent()) {
                 componentClient = optional.get();
-            }else {
+            } else {
                 LOGGER.warning("必须添加组件的client，才能加入相关的组件");
                 return false;
             }
@@ -82,15 +82,15 @@ public class ComponentRelationHolder {
         AbstractComponentClientFactory componentClientFactory = componentContext.getComponentClientFactory();
         if (!heartCheckStart &&
                 componentContext.getComponentRelation().getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
-            heartCheckStart=true;
+            heartCheckStart = true;
             new Thread(() -> {
                 for (; ; ) {
-                    clusters.stream().forEach(t -> {
+                    connected.stream().forEach(t -> {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();
                             boolean tryConnect = componentClient.tryConnect();
-                            LOGGER.info("心跳检测 result="+tryConnect);
+                            LOGGER.info("心跳检测 result=" + tryConnect);
                             if (!tryConnect) {
                                 LOGGER.warning("组件心跳检测失败，尝试重新检测 " + t);
 
@@ -128,6 +128,10 @@ public class ComponentRelationHolder {
                             if (newStatus != t.getStatus()) {
                                 t.setStatus(newStatus);
                             }
+                        } else {
+                            LOGGER.info("心跳检测失败，移除" + t);
+                            componentClientHolder.remove(t);
+                            connected.remove(t);
                         }
                     });
                     try {
