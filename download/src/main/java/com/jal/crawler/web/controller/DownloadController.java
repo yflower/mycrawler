@@ -11,7 +11,6 @@ import com.jal.crawler.web.param.DownloadConfigParam;
 import com.jal.crawler.web.param.DownloadTaskOpParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcConfigParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcTaskOpParam;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -68,10 +67,10 @@ public class DownloadController extends ComponentFacade<DownloadRpcConfigParam, 
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = "http://"+leader.getHost() + ":8080/download/list";
-        ResponseEntity<String> string = restTemplate.getForEntity(url, String.class);
+        String url = "http://" + leader.getHost() + ":8080/download/list";
+        String object = restTemplate.getForObject(url, String.class);
 
-        List<ComponentRelation> relations = new Gson().fromJson(string.getBody(),
+        List<ComponentRelation> relations = new Gson().fromJson(object,
                 new TypeToken<List<ComponentRelation>>() {
                 }.getType());
         return relations;

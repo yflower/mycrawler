@@ -13,6 +13,7 @@ import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -22,6 +23,9 @@ public class DownloadApplication {
 
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
+        RestTemplate restTemplate=new RestTemplate();
+        String object = restTemplate.getForObject("http://10.4.224.193:8080/download/list", String.class);
+
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);
         String host=args[2];
