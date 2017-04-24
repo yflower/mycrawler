@@ -21,10 +21,11 @@ public class ComponentRelationHolder {
 
     private ComponentContext componentContext;
 
-    private List<ComponentRelation> clusters = Collections.synchronizedList(new ArrayList<>());
+    private List<ComponentRelation> clusters = new ArrayList<>();
 
     //todo 同步解决
-    private List<ComponentRelation> connected = Collections.synchronizedList(new ArrayList<>());
+    private List<ComponentRelation> connected = new ArrayList<>();
+
 
     private volatile boolean heartCheckStart = false;
 
@@ -87,7 +88,8 @@ public class ComponentRelationHolder {
             heartCheckStart = true;
             new Thread(() -> {
                 for (; ; ) {
-                    connected.stream().forEach(t -> {
+                    List<ComponentRelation> tmpList=new ArrayList<>(connected);
+                    tmpList.stream().forEach(t -> {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();
