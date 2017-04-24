@@ -66,7 +66,10 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
         componentClient.statusClient = statusClient;
         componentClient.leaderClient=leaderClient;
 
-        return Optional.of(componentClient);
+        boolean tryConnect = componentClient.tryConnect();
+
+
+        return tryConnect?Optional.of(componentClient):Optional.empty();
     }
 
 
