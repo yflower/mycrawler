@@ -4,8 +4,8 @@ package com.cufe.taskProcessor.component.relation;
  * Created by jianganlan on 2017/4/13.
  */
 public enum ComponentRelationTypeEnum {
-    LEADER(1, "领导"),
-    CLUSTER(2, "分支组件");
+    LEADER(0, "领导"),
+    CLUSTER(1, "分支组件");
 
     ComponentRelationTypeEnum(int code, String msg) {
         this.code = code;
