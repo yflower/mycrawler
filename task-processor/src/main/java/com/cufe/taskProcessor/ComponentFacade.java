@@ -77,9 +77,11 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         if (self.getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
             if (!componentRelationHolder.contains(componentRelation)) {
                 leader = componentContext.getComponentRelation();
+            }else {
+                LOGGER.warning("组件已经被添加");
+                return;
             }
-            LOGGER.warning("组件已经被添加");
-            return;
+
         } else {
             Optional<ComponentRelation> optional = seekLeader();
             //http请求转发到leader
