@@ -87,8 +87,8 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
             LOGGER.log(Level.SEVERE, "无法获取到leader，组件设置失败");
 
-            return;
         }
+
 
         //组件添加
         componentRelation.setLeader(leader);

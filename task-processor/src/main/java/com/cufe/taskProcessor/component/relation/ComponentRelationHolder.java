@@ -89,7 +89,9 @@ public class ComponentRelationHolder {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();
-                            if (!componentClient.tryConnect()) {
+                            boolean tryConnect = componentClient.tryConnect();
+                            LOGGER.info("心跳检测 result="+tryConnect);
+                            if (!tryConnect) {
                                 LOGGER.warning("组件心跳检测失败，尝试重新检测 " + t);
 
                                 boolean retry = false;
@@ -111,6 +113,7 @@ public class ComponentRelationHolder {
 
                                 Optional<ComponentClient> optional = componentClientFactory.create(t);
 
+                                LOGGER.warning("");
                                 if (!optional.isPresent()) {
                                     LOGGER.warning("获取新的连接client失败，移除组件 " + t);
                                     connected.remove(t);

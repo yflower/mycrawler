@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="038d4893-88b2-453f-a291-3f2cfd18a7f7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/component/ResolveClientFactory.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/component/ResolveClientFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/rpc/ResolveInitServer.java" afterPath="$PROJECT_DIR$/../resolve/src/main/java/com/jal/crawler/rpc/ResolveInitServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../resolve/src/main/proto/resolveConfig.proto" afterPath="$PROJECT_DIR$/../resolve/src/main/proto/resolveConfig.proto" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java" afterPath="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -86,7 +86,70 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ComponentFacade.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComponentRelation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComponentRelationHolder.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-96">
+              <caret line="91" column="53" lean-forward="true" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComponentClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractComponentStatusClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentStatusClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractComponentClientFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/AbstractComponentClientFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -578,10 +641,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/task/StatusEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/context/ComponentContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentInitServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentStatusServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationTypeEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java" />
       </list>
     </option>
   </component>
@@ -1268,12 +1331,12 @@
       <workItem from="1492904364582" duration="21408000" />
       <workItem from="1493024892369" duration="242000" />
       <workItem from="1493026507560" duration="508000" />
-      <workItem from="1493027322440" duration="916000" />
+      <workItem from="1493027322440" duration="1664000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61465000" />
+    <option name="totallyTimeSpent" value="62213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1293,7 +1356,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26626506" sideWeight="0.48855507" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31545064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31545064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1524,20 +1587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="28" column="64" lean-forward="false" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/AbstractComponentClientFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/src.zip!/java/util/logging/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2750">
@@ -1549,25 +1598,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentStatusClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="93" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentTaskClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1633,14 +1667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentStatusServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1665,20 +1691,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentInitServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/ComponentFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="90" column="9" lean-forward="false" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+        <state relative-caret-position="253">
+          <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/server/AbstractComponentInitServer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/AbstractComponentClientFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+        <state relative-caret-position="135">
+          <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/rpc/client/AbstractComponentStatusClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="27" lean-forward="false" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/client/ComponentClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="27" lean-forward="true" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cufe/taskProcessor/component/relation/ComponentRelationHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-96">
+          <caret line="91" column="53" lean-forward="true" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
           <folding />
         </state>
       </provider>
