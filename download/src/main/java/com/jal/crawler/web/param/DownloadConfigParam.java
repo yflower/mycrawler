@@ -21,7 +21,7 @@ public class DownloadConfigParam {
     @Min(1)
     private int thread;
 
-    @Min(1)@Max(2)
+    @Min(0)@Max(1)
     private int relationType;
 
     @Min(0)
