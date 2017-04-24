@@ -1,31 +1,31 @@
 
-config/target/*
+config/target/
 
-download/target/*
+download/target/
 
-resolve/target/*
+resolve/target/
 
-config/.idea/*
+config/.idea/
 
-download/.idea/*
+download/.idea/
 
-resolve/.idea/*
+resolve/.idea/
 
-task-processor/.idea/*
+task-processor/.idea/
 
-task-processor/build/*
+task-processor/build/
 
-web/.idea/*
+web/.idea/
 
-web/node_modules/*
+web/node_modules/
 
-web/app/jspm_packages/*
+web/app/jspm_packages/
 
 *.iml
 
-.gradle/*
+.gradle/
 
-task-processor/.gradle/*
+task-processor/.gradle/
 
 
 
