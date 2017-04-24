@@ -68,7 +68,7 @@ public class DownloadController extends ComponentFacade<DownloadRpcConfigParam, 
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = leader.getHost() + ":8080/download/list";
+        String url = "http://"+leader.getHost() + ":8080/download/list";
         ResponseEntity<String> string = restTemplate.getForEntity(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(string.getBody(),
