@@ -23,7 +23,10 @@ public abstract class AbstractComponentInitServer<C extends ComponentContext, RP
             componentContext.init();
             ComponentRelation self = self(config);
             ComponentRelation leader = leader(config);
+
             self.setLeader(leader);
+            componentContext.getComponentRelation().setLeader(leader);
+
             componentContext.getComponentRelation().setRelationTypeEnum(self.getRelationTypeEnum());
             componentContext.getComponentRelation().setStatus(StatusEnum.INIT);
             //通知leader自己已经添加到leader下

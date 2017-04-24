@@ -23,9 +23,6 @@ public class DownloadApplication {
 
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
-        RestTemplate restTemplate=new RestTemplate();
-        String object = restTemplate.getForObject("http://10.4.224.193:8080/download/list", String.class);
-
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);
         String host=args[2];

@@ -15,12 +15,7 @@ public class ComponentClientHolder {
     public Optional<ComponentClient> from(ComponentRelation relation) {
         //尝试从缓存中获取连接client
         if (clients.containsKey(relation.address())) {
-            ComponentClient client = clients.get(relation.address());
-            //获取之后尝试连接
-            if (client.tryConnect()) {
-                return Optional.of(clients.get(relation.address()));
-            }
-            return Optional.empty();
+            return Optional.of(clients.get(relation.address()));
         }
         return Optional.empty();
     }
@@ -32,9 +27,9 @@ public class ComponentClientHolder {
         }
     }
 
-    public void add(ComponentRelation relation,ComponentClient client){
-        if(client.tryConnect()){
-            clients.put(relation.address(),client);
+    public void add(ComponentRelation relation, ComponentClient client) {
+        if (client.tryConnect()) {
+            clients.put(relation.address(), client);
         }
     }
 
