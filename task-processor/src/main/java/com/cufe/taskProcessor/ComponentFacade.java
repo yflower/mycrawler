@@ -94,6 +94,8 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         componentRelation.setLeader(leader);
         configParam.setLeaderHost(leader.getHost());
         configParam.setLeaderPort(leader.getPort());
+        configParam.setSelfStatus(StatusEnum.INIT.getCode());
+        configParam.setLeaderStatus(leader.getStatus().getCode());
 
         componentClient = componentClientFactory.create(componentRelation);
         if (componentClient.isPresent()) {
@@ -219,6 +221,10 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
         private int leaderPort;
 
+        private int leaderStatus;
+
+        private int selfStatus;
+
         public String getHost() {
             return host;
         }
@@ -265,6 +271,22 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
         public void setRelationType(int relationType) {
             this.relationType = relationType;
+        }
+
+        public int getLeaderStatus() {
+            return leaderStatus;
+        }
+
+        public void setLeaderStatus(int leaderStatus) {
+            this.leaderStatus = leaderStatus;
+        }
+
+        public int getSelfStatus() {
+            return selfStatus;
+        }
+
+        public void setSelfStatus(int selfStatus) {
+            this.selfStatus = selfStatus;
         }
     }
 

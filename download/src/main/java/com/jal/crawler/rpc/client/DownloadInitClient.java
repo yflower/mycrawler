@@ -1,10 +1,12 @@
 package com.jal.crawler.rpc.client;
 
 import com.cufe.taskProcessor.rpc.client.AbstractComponentInitClient;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.download.DownloadConfig;
 import com.jal.crawler.proto.download.RpcDownlandConfigGrpc;
+import com.jal.crawler.proto.status.Status;
 import com.jal.crawler.web.param.DownloadConfigParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcConfigParam;
 
@@ -26,6 +28,8 @@ public class DownloadInitClient extends AbstractComponentInitClient<ConfigStatus
                 .setRelationType(param.getRelationType())
                 .setLeaderHost(param.getLeaderHost())
                 .setLeaderPort(param.getLeaderPort())
+                .setSelfStatus(Status.forNumber(param.getSelfStatus()))
+                .setLeaderStatus(Status.forNumber(param.getLeaderStatus()))
                 .setThread(param.getThread())
                 .setSleepTime(param.getSleepTime())
                 .setProxy(param.isProxy())

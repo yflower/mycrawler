@@ -5,6 +5,7 @@ option java_package = "com.jal.crawler.proto.download";
 
 import "configCommon.proto";
 import "configComponent.proto";
+import "component.proto";
 
 
 package grpc;
@@ -30,6 +31,8 @@ message DownloadConfig {
 
     string self_host=7;
     int32 self_port=8;
+    Status self_status=9;
+    Status leader_status=10;
     string leader_host=11;
     int32 leader_port=12;
 

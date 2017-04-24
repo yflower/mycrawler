@@ -3,6 +3,7 @@ package com.jal.crawler.rpc;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentInitServer;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
@@ -78,6 +79,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
+            self.setStatus(StatusEnum.numberOf(config1.selfStatusgi));
             return self;
         }
 
@@ -87,7 +89,8 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
-            leader.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
+            leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
+            leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
             return leader;
         }
 
@@ -105,6 +108,8 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             config.leaderPort = rpcRes.getLeaderPort();
             config.relationType = rpcRes.getRelationType();
             config.thread = rpcRes.getThread();
+            config.selfStatus=rpcRes.getSelfStatusValue();
+            config.leaderStatus=rpcRes.getLeaderStatusValue();
 
             if (rpcRes.getPersist() == DownloadConfig.Persist.REDIS) {
                 RedisConfig redisConfig = rpcRes.getRedisConfig();
@@ -136,6 +141,8 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             String leaderHost;
             int selfPort;
             int leaderPort;
+            int selfStatus;
+            int leaderStatus;
 
 
             int relationType;
