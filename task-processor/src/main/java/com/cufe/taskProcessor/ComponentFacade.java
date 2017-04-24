@@ -78,6 +78,8 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
             if (!componentRelationHolder.contains(componentRelation)) {
                 leader = componentContext.getComponentRelation();
             }
+            LOGGER.warning("组件已经被添加");
+            return;
         } else {
             Optional<ComponentRelation> optional = seekLeader();
             //http请求转发到leader
@@ -192,7 +194,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         if (leader == null) {
             //休眠等待leader设置该组件
             try {
-                TimeUnit.SECONDS.sleep(4);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -200,7 +202,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
                 return Optional.of(leader);
             }
         }
-        return Optional.empty();
+        return Optional.of(leader);
 
     }
 
