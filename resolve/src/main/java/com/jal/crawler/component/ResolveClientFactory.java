@@ -62,6 +62,8 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
         componentClient.statusClient = statusClient;
         componentClient.leaderClient = leaderClient;
         componentClient.taskClient = taskClient;
-        return Optional.of(componentClient);
+        boolean tryConnect = componentClient.tryConnect();
+
+        return tryConnect?Optional.of(componentClient):Optional.empty();
     }
 }

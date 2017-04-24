@@ -75,6 +75,7 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
+            self.setStatus(StatusEnum.numberOf(config1.selfStatus));
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
             return self;
         }
@@ -85,7 +86,8 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
-            leader.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
+            leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
+            leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
             return leader;
         }
 
@@ -102,6 +104,16 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             redisTemplate.setConnectionFactory(redisConnectionFactory);
             redisTemplate.afterPropertiesSet();
             config.redisTemplate = redisTemplate;
+            config.selfStatus = rpcRes.getSelfStatusValue();
+            config.leaderStatus = rpcRes.getLeaderStatusValue();
+            config.selfHost = rpcRes.getSelfHost();
+            config.selfPort = rpcRes.getSelfPort();
+            config.leaderHost = rpcRes.getLeaderHost();
+            config.leaderPort = rpcRes.getLeaderPort();
+            config.relationType = rpcRes.getRelationType();
+            config.selfStatus = rpcRes.getSelfStatusValue();
+            config.leaderStatus = rpcRes.getLeaderStatusValue();
+
 
             //默认mongo 保存结果
             ResolveConfig.Persist persist = rpcRes.getPersist();
@@ -133,7 +145,8 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             String leaderHost;
             int selfPort;
             int leaderPort;
-
+            int selfStatus;
+            int leaderStatus;
 
             int relationType;
         }
