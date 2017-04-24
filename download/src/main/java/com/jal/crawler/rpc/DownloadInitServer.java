@@ -79,7 +79,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
-            self.setStatus(StatusEnum.numberOf(config1.selfStatusgi));
+            self.setStatus(StatusEnum.numberOf(config1.selfStatus));
             return self;
         }
 
