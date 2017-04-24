@@ -7,10 +7,8 @@ import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.proto.status.*;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.*;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.time.ZoneId;
 import java.util.stream.Collectors;
 

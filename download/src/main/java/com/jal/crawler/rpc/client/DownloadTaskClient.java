@@ -3,33 +3,27 @@ package com.jal.crawler.rpc.client;
 import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskClient;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.cufe.taskProcessor.task.TaskTypeEnum;
-import com.jal.crawler.download.DynamicDownload;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.download.DownloadTaskResponse;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
 import com.jal.crawler.proto.task.TaskType;
 import com.jal.crawler.task.Task;
-import com.jal.crawler.web.param.DownloadTaskOpParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcTaskOpParam;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
  * Created by jianganlan on 2017/4/15.
  */
-public class DownloadTaskClient extends AbstractComponentTaskClient<DownloadTaskResponse,DownloadTask> {
+public class DownloadTaskClient extends AbstractComponentTaskClient<DownloadTaskResponse, DownloadTask> {
 
     private RpcDownloadTaskGrpc.RpcDownloadTaskBlockingStub stub;
 
 
-
     @Override
     protected <P> AbstractTask generateTask(String taskTag, P params) {
-        DownloadRpcTaskOpParam opParam= (DownloadRpcTaskOpParam) params;
-        Task task=new Task();
+        DownloadRpcTaskOpParam opParam = (DownloadRpcTaskOpParam) params;
+        Task task = new Task();
         task.setDynamic(opParam.isDynamic());
         task.setTest(opParam.isTest());
         task.setTaskTag(opParam.getTaskTag());
@@ -40,8 +34,8 @@ public class DownloadTaskClient extends AbstractComponentTaskClient<DownloadTask
     }
 
     @Override
-    protected  DownloadTask localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType) {
-        Task downloadTask= (Task) task;
+    protected DownloadTask localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType) {
+        Task downloadTask = (Task) task;
         return DownloadTask.newBuilder()
                 .setTaskType(TaskType.forNumber(taskType.getCode()))
                 .setTaskTag(taskTag)

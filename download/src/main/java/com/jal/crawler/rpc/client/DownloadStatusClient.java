@@ -1,7 +1,6 @@
 package com.jal.crawler.rpc.client;
 
 import com.cufe.taskProcessor.component.status.ComponentStatus;
-import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.rpc.client.AbstractComponentStatusClient;
 import com.cufe.taskProcessor.task.StatusEnum;
 import com.cufe.taskProcessor.task.TaskStatistics;
@@ -93,7 +92,7 @@ public class DownloadStatusClient extends AbstractComponentStatusClient<DownLoad
         this.stub = stub;
     }
 
-    public void setComponentContext(DownLoadContext downLoadContext){
-        this.componentContext=downLoadContext;
+    public void setComponentContext(DownLoadContext downLoadContext) {
+        this.componentContext = downLoadContext;
     }
 }

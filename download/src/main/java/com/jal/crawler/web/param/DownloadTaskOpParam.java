@@ -1,7 +1,5 @@
 package com.jal.crawler.web.param;
 
-import com.cufe.taskProcessor.ComponentFacade;
-import com.cufe.taskProcessor.task.TaskTypeEnum;
 import com.jal.crawler.task.Task;
 
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.Set;
 /**
  * Created by jianganlan on 2017/4/15.
  */
-public class DownloadTaskOpParam{
+public class DownloadTaskOpParam {
     private String taskTag;
 
     private int taskType;

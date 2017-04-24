@@ -27,7 +27,6 @@ public class Task extends AbstractTask {
     private Set<String> startUrls = new HashSet<>();
 
 
-
     public synchronized boolean isUrlInit() {
         if (urlInit) {
             return true;
@@ -65,6 +64,9 @@ public class Task extends AbstractTask {
         return startUrls;
     }
 
+    public void setStartUrls(Set<String> startUrls) {
+        this.startUrls = startUrls;
+    }
 
     public List<process> getPres() {
         return pres;
@@ -80,10 +82,6 @@ public class Task extends AbstractTask {
 
     public void setPosts(List<process> posts) {
         this.posts = posts;
-    }
-
-    public void setStartUrls(Set<String> startUrls) {
-        this.startUrls = startUrls;
     }
 
     public void urlsInit(AbstractPageUrlFactory abstractPageUrlFactory) {

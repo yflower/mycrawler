@@ -13,11 +13,9 @@ import org.springframework.stereotype.Component;
 public class RedisPagePersist implements PagePersist {
 
 
-    private RedisTemplate<String, String> redisTemplate;
-
-    private ObjectMapper objectMapper = new ObjectMapper();
-
     SetOperations<String, String> stringStringSetOperations;
+    private RedisTemplate<String, String> redisTemplate;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public RedisPagePersist(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;

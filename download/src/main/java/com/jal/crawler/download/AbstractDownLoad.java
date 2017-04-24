@@ -28,17 +28,15 @@ public abstract class AbstractDownLoad implements DownLoad {
         return this;
     }
 
-    public AbstractDownLoad reset(){
+    public AbstractDownLoad reset() {
         internalReset();
         return this;
     }
 
-    public AbstractDownLoad close(){
+    public AbstractDownLoad close() {
         internalClose();
         return this;
     }
-
-
 
 
     @Override

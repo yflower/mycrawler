@@ -28,8 +28,8 @@ public abstract class AbstractPageUrlFactory implements PageUrlFactory {
 
     public Optional<String> getUrl(String taskTag) {
         count.decrementAndGet();
-        String result= fetchUrl(taskTag);
-        if(result==null){
+        String result = fetchUrl(taskTag);
+        if (result == null) {
             return Optional.empty();
         }
         return Optional.of(result);

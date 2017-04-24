@@ -43,33 +43,6 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
     private ThreadLocal<AbstractDownLoad> downLoad = new ThreadLocal<>();
     private DownloadClientFactory downloadClientFactory = new DownloadClientFactory(this);
 
-    public void proxy(String address) {
-        String[] args = address.split(":");
-        isProxy = true;
-        proxyHost = args[0];
-        proxyPort = Integer.parseInt(args[1]);
-    }
-
-    public DownLoadContext sleep(int sleepTime) {
-        this.sleepTime = sleepTime;
-        return this;
-    }
-
-    public DownLoadContext redisTemplate(RedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-        return this;
-    }
-
-    @Override
-    protected void internalInit() {
-
-    }
-
-    @Override
-    public AbstractComponentClientFactory getComponentClientFactory() {
-        return downloadClientFactory;
-    }
-
     {
 
         sink = task -> abstractPageUrlFactory.getUrl(task.getTaskTag());
@@ -125,6 +98,33 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
                 staticDownload.close();
             }
         };
+    }
+
+    public void proxy(String address) {
+        String[] args = address.split(":");
+        isProxy = true;
+        proxyHost = args[0];
+        proxyPort = Integer.parseInt(args[1]);
+    }
+
+    public DownLoadContext sleep(int sleepTime) {
+        this.sleepTime = sleepTime;
+        return this;
+    }
+
+    public DownLoadContext redisTemplate(RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+        return this;
+    }
+
+    @Override
+    protected void internalInit() {
+
+    }
+
+    @Override
+    public AbstractComponentClientFactory getComponentClientFactory() {
+        return downloadClientFactory;
     }
 
 

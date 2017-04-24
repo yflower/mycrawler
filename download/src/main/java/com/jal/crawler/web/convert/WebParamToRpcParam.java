@@ -1,7 +1,6 @@
 package com.jal.crawler.web.convert;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
-import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.web.param.DownloadConfigParam;
 import com.jal.crawler.web.param.DownloadTaskOpParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcConfigParam;

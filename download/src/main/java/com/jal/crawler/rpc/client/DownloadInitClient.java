@@ -1,13 +1,11 @@
 package com.jal.crawler.rpc.client;
 
 import com.cufe.taskProcessor.rpc.client.AbstractComponentInitClient;
-import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.download.DownloadConfig;
 import com.jal.crawler.proto.download.RpcDownlandConfigGrpc;
 import com.jal.crawler.proto.status.Status;
-import com.jal.crawler.web.param.DownloadConfigParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcConfigParam;
 
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class DownloadInitClient extends AbstractComponentInitClient<ConfigStatus
 
     @Override
     protected <P> DownloadConfig localReqToRpcReq(P params) {
-        DownloadRpcConfigParam param= (DownloadRpcConfigParam) params;
+        DownloadRpcConfigParam param = (DownloadRpcConfigParam) params;
         return DownloadConfig.newBuilder()
                 .setSelfHost(param.getHost())
                 .setSelfPort(param.getPort())
@@ -58,4 +56,6 @@ public class DownloadInitClient extends AbstractComponentInitClient<ConfigStatus
     public void setStub(RpcDownlandConfigGrpc.RpcDownlandConfigBlockingStub stub) {
         this.stub = stub;
     }
+
+
 }

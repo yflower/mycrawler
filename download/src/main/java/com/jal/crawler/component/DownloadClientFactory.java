@@ -6,15 +6,12 @@ import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.proto.download.RpcDownlandConfigGrpc;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
+import com.jal.crawler.proto.status.RpcComponentHeartServiceGrpc;
 import com.jal.crawler.proto.status.RpcComponentLeaderServiceGrpc;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
-import com.jal.crawler.rpc.client.DownloadInitClient;
-import com.jal.crawler.rpc.client.DownloadLeaderClient;
-import com.jal.crawler.rpc.client.DownloadStatusClient;
-import com.jal.crawler.rpc.client.DownloadTaskClient;
+import com.jal.crawler.rpc.client.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
@@ -44,12 +41,15 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
 
         RpcDownloadTaskGrpc.RpcDownloadTaskBlockingStub taskStub = RpcDownloadTaskGrpc.newBlockingStub(channel);
 
-        RpcComponentLeaderServiceGrpc.RpcComponentLeaderServiceBlockingStub leaderStub=RpcComponentLeaderServiceGrpc.newBlockingStub(channel);
+        RpcComponentLeaderServiceGrpc.RpcComponentLeaderServiceBlockingStub leaderStub = RpcComponentLeaderServiceGrpc.newBlockingStub(channel);
+
+        RpcComponentHeartServiceGrpc.RpcComponentHeartServiceBlockingStub heartStub = RpcComponentHeartServiceGrpc.newBlockingStub(channel);
 
         DownloadInitClient initClient = new DownloadInitClient();
         DownloadStatusClient statusClient = new DownloadStatusClient();
         DownloadTaskClient taskClient = new DownloadTaskClient();
-        DownloadLeaderClient leaderClient=new DownloadLeaderClient();
+        DownloadLeaderClient leaderClient = new DownloadLeaderClient();
+        DownloadHeartClient heartClient = new DownloadHeartClient();
 
         initClient.setStub(initStub);
         initClient.setComponentRelation(componentRelation);
@@ -59,17 +59,23 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
         taskClient.setStub(taskStub);
         taskClient.setComponentRelation(componentRelation);
         leaderClient.setStub(leaderStub);
+        leaderClient.setComponentRelation(componentRelation);
+        heartClient.setComponentRelation(componentRelation);
+        heartClient.setStub(heartStub);
 
 
         componentClient.initClient = initClient;
         componentClient.taskClient = taskClient;
         componentClient.statusClient = statusClient;
-        componentClient.leaderClient=leaderClient;
+        componentClient.leaderClient = leaderClient;
+        componentClient.heartClient = heartClient;
 
         boolean tryConnect = componentClient.tryConnect();
 
+        componentRelation.setStatus(componentClient.heartClient.heart());
 
-        return tryConnect?Optional.of(componentClient):Optional.empty();
+
+        return tryConnect ? Optional.of(componentClient) : Optional.empty();
     }
 
 

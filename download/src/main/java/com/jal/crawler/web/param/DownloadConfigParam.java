@@ -1,7 +1,5 @@
 package com.jal.crawler.web.param;
 
-import com.cufe.taskProcessor.ComponentFacade;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -21,7 +19,8 @@ public class DownloadConfigParam {
     @Min(1)
     private int thread;
 
-    @Min(0)@Max(1)
+    @Min(0)
+    @Max(1)
     private int relationType;
 
     @Min(0)

@@ -95,7 +95,6 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
         }
 
 
-
         @Override
         protected <Config> Config rpcResToLocal(DownloadConfig rpcRes) {
             config config = new config();
@@ -108,8 +107,8 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             config.leaderPort = rpcRes.getLeaderPort();
             config.relationType = rpcRes.getRelationType();
             config.thread = rpcRes.getThread();
-            config.selfStatus=rpcRes.getSelfStatusValue();
-            config.leaderStatus=rpcRes.getLeaderStatusValue();
+            config.selfStatus = rpcRes.getSelfStatusValue();
+            config.leaderStatus = rpcRes.getLeaderStatusValue();
 
             if (rpcRes.getPersist() == DownloadConfig.Persist.REDIS) {
                 RedisConfig redisConfig = rpcRes.getRedisConfig();

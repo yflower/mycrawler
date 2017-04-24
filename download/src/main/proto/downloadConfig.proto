@@ -29,13 +29,13 @@ message DownloadConfig {
     bool proxy = 5;
     repeated string proxy_address = 6;
 
-    string self_host=7;
-    int32 self_port=8;
-    Status self_status=9;
-    Status leader_status=10;
-    string leader_host=11;
-    int32 leader_port=12;
+    string self_host = 7;
+    int32 self_port = 8;
+    Status self_status = 9;
+    Status leader_status = 10;
+    string leader_host = 11;
+    int32 leader_port = 12;
 
-    int32 relation_type=15;
+    int32 relation_type = 15;
 }
 
