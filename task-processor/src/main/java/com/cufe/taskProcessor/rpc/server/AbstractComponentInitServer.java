@@ -17,7 +17,7 @@ public abstract class AbstractComponentInitServer<C extends ComponentContext, RP
 
     public <Config> RPC_Q init(RPC_S rpcRes) {
         try {
-            LOGGER.log(Level.INFO, "组件开始初始化");
+            LOGGER.log(Level.INFO, "组件开始初始化,");
             Config config = rpcResToLocal(rpcRes);
             extraInit(config);
             componentContext.init();

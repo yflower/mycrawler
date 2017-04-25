@@ -10,7 +10,7 @@ import com.cufe.taskProcessor.context.ComponentContext;
 public abstract class AbstractComponentStatusClient<C extends ComponentContext, RPC_S, RPC_Q> {
     protected C componentContext;
 
-    ComponentRelation componentRelation;
+    protected ComponentRelation componentRelation;
 
     public ComponentStatus status() {
         ComponentStatus componentStatus = componentContext.componentStatus(componentType());
@@ -27,8 +27,11 @@ public abstract class AbstractComponentStatusClient<C extends ComponentContext, 
 
     protected abstract RPC_S rpcSend(RPC_Q rpcReq);
 
+    public void setComponentContext(C componentContext) {
+        this.componentContext = componentContext;
+    }
+
     public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
     }
-
 }

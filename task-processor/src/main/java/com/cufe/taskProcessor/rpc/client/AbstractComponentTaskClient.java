@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public abstract class AbstractComponentTaskClient<RPC_S, RPC_Q> {
     private static final Logger LOGGER = Logger.getLogger(AbstractComponentTaskClient.class.getSimpleName());
 
-    ComponentRelation componentRelation;
+    protected ComponentRelation componentRelation;
 
     public <P> boolean task(String taskTag, TaskTypeEnum taskType, P params) {
         boolean result = false;
@@ -45,9 +45,7 @@ public abstract class AbstractComponentTaskClient<RPC_S, RPC_Q> {
 
     protected abstract RPC_S rpcSend(RPC_Q rpcReq);
 
-
     public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
     }
-
 }

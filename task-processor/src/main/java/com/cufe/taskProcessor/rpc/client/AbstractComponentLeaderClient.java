@@ -8,7 +8,9 @@ import com.cufe.taskProcessor.context.ComponentContext;
  * Created by jianganlan on 2017/4/23.
  */
 public abstract class AbstractComponentLeaderClient<C extends ComponentContext, RPC_S, RPC_Q> {
-    private ComponentContext componentRelation;
+    protected C componentContext;
+
+    protected ComponentRelation componentRelation;
 
     public ComponentStatus notify(ComponentRelation componentRelation) {
         return rpcResToLocalRes(rpcSend(localReqToRpcReq(componentRelation)));
@@ -20,5 +22,11 @@ public abstract class AbstractComponentLeaderClient<C extends ComponentContext, 
 
     protected abstract RPC_S rpcSend(RPC_Q rpcReq);
 
+    public void setComponentContext(C componentContext) {
+        this.componentContext = componentContext;
+    }
 
+    public void setComponentRelation(ComponentRelation componentRelation) {
+        this.componentRelation = componentRelation;
+    }
 }

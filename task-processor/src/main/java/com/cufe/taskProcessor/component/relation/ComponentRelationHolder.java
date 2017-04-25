@@ -23,7 +23,6 @@ public class ComponentRelationHolder {
 
     private List<ComponentRelation> clusters = new ArrayList<>();
 
-    //todo 同步解决
     private List<ComponentRelation> connected = new ArrayList<>();
 
 
@@ -89,7 +88,7 @@ public class ComponentRelationHolder {
             new Thread(() -> {
                 for (; ; ) {
                     List<ComponentRelation> tmpList=new ArrayList<>(connected);
-                    tmpList.stream().forEach(t -> {
+                    tmpList.stream().filter(t->t.getRelationTypeEnum()==ComponentRelationTypeEnum.CLUSTER).forEach(t -> {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();
@@ -128,7 +127,7 @@ public class ComponentRelationHolder {
 
                             }
 
-                            StatusEnum newStatus = componentClient.statusClient.status().getComponentStatus();
+                            StatusEnum newStatus = componentClient.heartClient.heart();
                             if (newStatus != t.getStatus()) {
                                 t.setStatus(newStatus);
                             }

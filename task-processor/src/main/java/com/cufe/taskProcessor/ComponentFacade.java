@@ -19,8 +19,7 @@ import java.util.logging.Logger;
 
 /**
  * 组件暴露给调度平台的接口
- * 注意只有leader组件会收到信息
- * 若cluster收到说明leader组件出异常
+ *
  * Created by jianganlan on 2017/4/15.
  */
 public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initParam, TASK_OP_PARAM extends ComponentFacade.taskOpParam> {
