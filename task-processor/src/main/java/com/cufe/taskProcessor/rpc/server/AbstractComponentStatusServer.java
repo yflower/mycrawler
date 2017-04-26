@@ -1,8 +1,5 @@
 package com.cufe.taskProcessor.rpc.server;
 
-import com.cufe.taskProcessor.component.relation.ComponentRelation;
-import com.cufe.taskProcessor.component.relation.ComponentRelationHolder;
-import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
 import com.cufe.taskProcessor.component.status.ComponentStatus;
 import com.cufe.taskProcessor.context.ComponentContext;
 
@@ -12,11 +9,11 @@ import java.util.logging.Logger;
 /**
  * Created by jianganlan on 2017/4/3.
  */
-public abstract class AbstractComponentStatusServer<C extends ComponentContext, RPC_S, RPC_Q> {
+public abstract class AbstractComponentStatusServer<RPC_S, RPC_Q> {
 
     private final static Logger LOGGER = Logger.getLogger(AbstractComponentStatusServer.class.getSimpleName());
 
-    protected C componentContext;
+    protected ComponentContext componentContext;
 
 
     public RPC_Q componentStatus(RPC_S rpcRes) {
@@ -34,7 +31,7 @@ public abstract class AbstractComponentStatusServer<C extends ComponentContext, 
 
     protected abstract int componentType();
 
-    protected abstract  ComponentStatus rpcResToLocal(RPC_S rpcRes);
+    protected abstract ComponentStatus rpcResToLocal(RPC_S rpcRes);
 
-    protected abstract  RPC_Q localToRPC_Q(ComponentStatus result);
+    protected abstract RPC_Q localToRPC_Q(ComponentStatus result);
 }

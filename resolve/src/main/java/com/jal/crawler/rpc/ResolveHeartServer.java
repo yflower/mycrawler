@@ -3,7 +3,7 @@ package com.jal.crawler.rpc;
 import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentHeartServer;
 import com.cufe.taskProcessor.task.StatusEnum;
-import com.jal.crawler.context.DownLoadContext;
+import com.jal.crawler.context.ResolveContext;
 import com.jal.crawler.proto.status.HeartMessage;
 import com.jal.crawler.proto.status.RpcComponentHeartServiceGrpc;
 import com.jal.crawler.proto.status.Status;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * Created by jal on 2017/4/24.
  */
 @Component
-public class DownloadHeartServer extends RpcComponentHeartServiceGrpc.RpcComponentHeartServiceImplBase {
+public class ResolveHeartServer extends RpcComponentHeartServiceGrpc.RpcComponentHeartServiceImplBase {
 
     @Resource
     private ComponentContext componentContext;
@@ -24,15 +24,15 @@ public class DownloadHeartServer extends RpcComponentHeartServiceGrpc.RpcCompone
 
     @Override
     public void rpcComponentHeart(HeartMessage request, StreamObserver<HeartMessage> responseObserver) {
-        DownloadHeartService heartService = new DownloadHeartService(componentContext);
+        ResolveHeartService heartService = new ResolveHeartService(componentContext);
         HeartMessage heart = heartService.heart(request);
         responseObserver.onNext(heart);
         responseObserver.onCompleted();
     }
 
-    private class DownloadHeartService extends AbstractComponentHeartServer< HeartMessage, HeartMessage> {
-        public DownloadHeartService(ComponentContext componentContext) {
-            this.componentContext = componentContext;
+    private class ResolveHeartService extends AbstractComponentHeartServer<HeartMessage, HeartMessage> {
+        public ResolveHeartService(ComponentContext resolveContext) {
+            this.componentContext = resolveContext;
         }
 
         @Override

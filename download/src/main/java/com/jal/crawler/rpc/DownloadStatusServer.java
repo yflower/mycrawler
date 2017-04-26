@@ -1,5 +1,6 @@
 package com.jal.crawler.rpc;
 
+import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentStatusServer;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.cufe.taskProcessor.task.StatusEnum;
@@ -22,19 +23,19 @@ import java.util.stream.Collectors;
 @Component
 public class DownloadStatusServer extends RpcComponentStatusGrpc.RpcComponentStatusImplBase {
     @Autowired
-    private DownLoadContext downLoadContext;
+    private ComponentContext componentContext;
 
     @Override
     public void rpcComponentStatus(ComponentStatus request, StreamObserver<ComponentStatus> responseObserver) {
-        ComponentStatusService componentStatusService = new ComponentStatusService(downLoadContext);
+        ComponentStatusService componentStatusService = new ComponentStatusService(componentContext);
 
         responseObserver.onNext(componentStatusService.componentStatus(request));
         responseObserver.onCompleted();
     }
 
 
-    private class ComponentStatusService extends AbstractComponentStatusServer<DownLoadContext, ComponentStatus, ComponentStatus> {
-        public ComponentStatusService(DownLoadContext context) {
+    private class ComponentStatusService extends AbstractComponentStatusServer< ComponentStatus, ComponentStatus> {
+        public ComponentStatusService(ComponentContext context) {
             super.componentContext = context;
         }
 

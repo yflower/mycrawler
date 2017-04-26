@@ -1,6 +1,7 @@
 package com.jal.crawler.rpc;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
+import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentLeaderServer;
 import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.context.DownLoadContext;
@@ -19,11 +20,11 @@ import java.util.stream.Collectors;
 public class DownloadLeaderServer extends RpcComponentLeaderServiceGrpc.RpcComponentLeaderServiceImplBase {
 
     @Autowired
-    private DownLoadContext downLoadContext;
+    private ComponentContext componentContext;
 
     @Override
     public void rpcComponentNotify(ComponentRelation request, StreamObserver<ComponentStatus> responseObserver) {
-        DownloadLeaderService downloadLeaderServer = new DownloadLeaderService(downLoadContext);
+        DownloadLeaderService downloadLeaderServer = new DownloadLeaderService(componentContext);
         ComponentStatus status = downloadLeaderServer.receive(request);
 
         responseObserver.onNext(status);
@@ -32,9 +33,9 @@ public class DownloadLeaderServer extends RpcComponentLeaderServiceGrpc.RpcCompo
 
     }
 
-    private class DownloadLeaderService extends AbstractComponentLeaderServer<DownLoadContext, ComponentRelation, ComponentStatus> {
+    private class DownloadLeaderService extends AbstractComponentLeaderServer<ComponentRelation, ComponentStatus> {
 
-        public DownloadLeaderService(DownLoadContext componentContext) {
+        public DownloadLeaderService(ComponentContext componentContext) {
             this.componentContext = componentContext;
         }
 

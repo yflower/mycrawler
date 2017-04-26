@@ -24,7 +24,7 @@ import java.util.List;
  * Created by jianganlan on 2017/4/19.
  */
 @RestController
-@RequestMapping(value = "/download")
+@RequestMapping(value = "/resolve")
 public class ResolveController extends ComponentFacade<ResolveConfigRpcParam, ResolveTaskOpRpcParam> {
 
 

@@ -6,12 +6,10 @@ import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.jal.crawler.context.ResolveContext;
 import com.jal.crawler.proto.resolve.RpcResolveConfigGrpc;
 import com.jal.crawler.proto.resolve.RpcResolveTaskGrpc;
+import com.jal.crawler.proto.status.RpcComponentHeartServiceGrpc;
 import com.jal.crawler.proto.status.RpcComponentLeaderServiceGrpc;
 import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
-import com.jal.crawler.rpc.client.ResolveInitClient;
-import com.jal.crawler.rpc.client.ResolveLeaderClient;
-import com.jal.crawler.rpc.client.ResolveStatusClient;
-import com.jal.crawler.rpc.client.ResolveTaskClient;
+import com.jal.crawler.rpc.client.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -43,11 +41,13 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
 
         RpcResolveTaskGrpc.RpcResolveTaskBlockingStub taskOpStub = RpcResolveTaskGrpc.newBlockingStub(channel);
 
+        RpcComponentHeartServiceGrpc.RpcComponentHeartServiceBlockingStub heartStub = RpcComponentHeartServiceGrpc.newBlockingStub(channel);
 
         ResolveInitClient initClient = new ResolveInitClient();
         ResolveStatusClient statusClient = new ResolveStatusClient();
         ResolveLeaderClient leaderClient = new ResolveLeaderClient();
         ResolveTaskClient taskClient = new ResolveTaskClient();
+        ResolveHeartClient heartClient = new ResolveHeartClient();
 
         initClient.setStub(configStub);
         initClient.setComponentRelation(componentRelation);
@@ -55,13 +55,20 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
         statusClient.setComponentContext(resolveContext);
         statusClient.setComponentRelation(componentRelation);
         leaderClient.setStub(leaderStub);
+        leaderClient.setComponentContext(resolveContext);
+        leaderClient.setComponentRelation(componentRelation);
         taskClient.setStub(taskOpStub);
         taskClient.setComponentRelation(componentRelation);
+        heartClient.setComponentRelation(componentRelation);
+        heartClient.setStub(heartStub);
+
 
         componentClient.initClient = initClient;
         componentClient.statusClient = statusClient;
         componentClient.leaderClient = leaderClient;
         componentClient.taskClient = taskClient;
+        componentClient.heartClient = heartClient;
+
         boolean tryConnect = componentClient.tryConnect();
 
         return tryConnect?Optional.of(componentClient):Optional.empty();

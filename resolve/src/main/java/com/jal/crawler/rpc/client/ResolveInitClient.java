@@ -5,6 +5,7 @@ import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.resolve.ResolveConfig;
 import com.jal.crawler.proto.resolve.RpcResolveConfigGrpc;
+import com.jal.crawler.proto.status.Status;
 import com.jal.crawler.web.param.rpc.ResolveConfigRpcParam;
 
 /**
@@ -17,6 +18,13 @@ public class ResolveInitClient extends AbstractComponentInitClient<ConfigStatus,
     protected <P> ResolveConfig localReqToRpcReq(P params) {
         ResolveConfigRpcParam rpcParam = (ResolveConfigRpcParam) params;
         return ResolveConfig.newBuilder()
+                .setSelfHost(rpcParam.getHost())
+                .setSelfPort(rpcParam.getPort())
+                .setRelationType(rpcParam.getRelationType())
+                .setLeaderHost(rpcParam.getLeaderHost())
+                .setLeaderPort(rpcParam.getLeaderPort())
+                .setSelfStatus(Status.forNumber(rpcParam.getSelfStatus()))
+                .setLeaderStatus(Status.forNumber(rpcParam.getLeaderStatus()))
                 .setPersist(ResolveConfig.Persist.MONGO)
                 .setThread(rpcParam.getThread())
                 .setMongoConfig(

@@ -18,7 +18,7 @@ public class ResolveConfigParam {
     @Min(1)
     private int thread;
 
-    @Min(1)@Max(2)
+    @Min(0)@Max(1)
     private int relationType;
 
     private MongoConfigParam mongoConfig;

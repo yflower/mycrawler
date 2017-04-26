@@ -20,7 +20,7 @@ public abstract class AbstractComponentTaskServer<C extends ComponentContext, RP
     public RPC_Q task(RPC_S rpc_s) {
         boolean result = false;
         Map<String, Object> taskOp = rpcResToLocal(rpc_s);
-        TaskTypeEnum taskType = (TaskTypeEnum) taskOp.get("taskType");
+        TaskTypeEnum taskType = TaskTypeEnum.numberOf((Integer) taskOp.get("taskType"));
         String taskTag = String.valueOf(taskOp.get("taskTag"));
 
         if (componentContext.getStatus() == StatusEnum.STARTED || componentContext.getStatus() == StatusEnum.INIT) {

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * Created by jianganlan on 2017/4/24.
  */
-public class ResolveLeaderClient extends AbstractComponentLeaderClient<ResolveContext, ComponentStatus, ComponentRelation> {
+public class ResolveLeaderClient extends AbstractComponentLeaderClient< ComponentStatus, ComponentRelation> {
     private RpcComponentLeaderServiceGrpc.RpcComponentLeaderServiceBlockingStub stub;
 
     @Override

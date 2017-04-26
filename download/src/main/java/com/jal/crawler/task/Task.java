@@ -135,11 +135,11 @@ public class Task extends AbstractTask {
         }
 
         public static enum type {
-            CLICK(1),
-            INPUT(2),
-            INPUT_SUBMIT(3),
-            LINK_TO(4),
-            WAIT_UTIL(5),
+            CLICK(0),
+            INPUT(1),
+            INPUT_SUBMIT(2),
+            LINK_TO(3),
+            WAIT_UTIL(4),
             NONE(15);
 
             private int code;
@@ -150,15 +150,15 @@ public class Task extends AbstractTask {
 
             public static type numberOf(int code) {
                 switch (code) {
-                    case 1:
+                    case 0:
                         return CLICK;
-                    case 2:
+                    case 1:
                         return INPUT;
-                    case 3:
+                    case 2:
                         return INPUT_SUBMIT;
-                    case 4:
+                    case 3:
                         return LINK_TO;
-                    case 5:
+                    case 4:
                         return WAIT_UTIL;
                     default:
                         return NONE;

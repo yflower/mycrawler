@@ -11,6 +11,7 @@ import com.jal.crawler.download.SeleniumDownload;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PagePersist;
 import com.jal.crawler.page.RedisPagePersist;
+import com.jal.crawler.request.PageRequest;
 import com.jal.crawler.task.Task;
 import com.jal.crawler.url.AbstractPageUrlFactory;
 import com.jal.crawler.url.RedisPageUrlFactory;
@@ -54,14 +55,7 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
         processor = new Processor<String, Page, Task>() {
             @Override
             public Optional<Page> processor(AbstractTask task, String resource) {
-                return null;
-            }
-
-            public void internalInit() {
-                abstractPageUrlFactory = new RedisPageUrlFactory(redisTemplate);
-                pagePersist = new RedisPagePersist(redisTemplate);
-                staticBuilder = new OkHttpDownLoad.Builder();
-                dynamicBuilder = new SeleniumDownload.Builder();
+                return downLoad.get().downLoad(new PageRequest(resource));
             }
 
 
@@ -119,7 +113,10 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
 
     @Override
     protected void internalInit() {
-
+        abstractPageUrlFactory = new RedisPageUrlFactory(redisTemplate);
+        pagePersist = new RedisPagePersist(redisTemplate);
+        staticBuilder = new OkHttpDownLoad.Builder();
+        dynamicBuilder = new SeleniumDownload.Builder();
     }
 
     @Override

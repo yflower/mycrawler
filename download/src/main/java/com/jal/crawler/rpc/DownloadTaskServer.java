@@ -105,9 +105,9 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
             ops.put("taskTag", rpcRes.getTaskTag());
             ops.put("test", rpcRes.getTest());
             ops.put("dynamic", rpcRes.getDynamic());
-            ops.put("urls", rpcRes.getStartUrlList());
-            ops.put("pre", rpcRes.getPreList());
-            ops.put("post", rpcRes.getPostList());
+            ops.put("urls", new HashSet<>(rpcRes.getStartUrlList()));
+            ops.put("pre", new ArrayList<>(rpcRes.getPreList()));
+            ops.put("post", new ArrayList<>(rpcRes.getPostList()));
             return ops;
         }
 

@@ -7,8 +7,8 @@ import com.cufe.taskProcessor.context.ComponentContext;
 /**
  * Created by jianganlan on 2017/4/23.
  */
-public abstract class AbstractComponentLeaderClient<C extends ComponentContext, RPC_S, RPC_Q> {
-    protected C componentContext;
+public abstract class AbstractComponentLeaderClient< RPC_S, RPC_Q> {
+    protected ComponentContext componentContext;
 
     protected ComponentRelation componentRelation;
 
@@ -22,7 +22,7 @@ public abstract class AbstractComponentLeaderClient<C extends ComponentContext, 
 
     protected abstract RPC_S rpcSend(RPC_Q rpcReq);
 
-    public void setComponentContext(C componentContext) {
+    public void setComponentContext(ComponentContext componentContext) {
         this.componentContext = componentContext;
     }
 

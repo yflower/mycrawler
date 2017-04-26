@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * Created by jianganlan on 2017/4/15.
  */
-public class DownloadStatusClient extends AbstractComponentStatusClient<DownLoadContext, com.jal.crawler.proto.status.ComponentStatus, com.jal.crawler.proto.status.ComponentStatus> {
+public class DownloadStatusClient extends AbstractComponentStatusClient<com.jal.crawler.proto.status.ComponentStatus, com.jal.crawler.proto.status.ComponentStatus> {
     private RpcComponentStatusGrpc.RpcComponentStatusBlockingStub stub;
 
     @Override

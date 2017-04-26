@@ -1,5 +1,6 @@
 package com.jal.crawler.rpc;
 
+import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentStatusServer;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.cufe.taskProcessor.task.StatusEnum;
@@ -22,12 +23,12 @@ import java.util.stream.Collectors;
 @Component
 public class ResolveStatusServer extends RpcComponentStatusGrpc.RpcComponentStatusImplBase {
     @Autowired
-    private ResolveContext resolveContext;
+    private ComponentContext componentContext;
 
 
     @Override
     public void rpcComponentStatus(ComponentStatus request, StreamObserver<ComponentStatus> responseObserver) {
-        ComponentStatusService componentStatusService = new ComponentStatusService(resolveContext);
+        ComponentStatusService componentStatusService = new ComponentStatusService(componentContext);
         ComponentStatus componentStatus = componentStatusService.componentStatus(request);
         responseObserver.onNext(componentStatus);
         responseObserver.onCompleted();
@@ -38,9 +39,9 @@ public class ResolveStatusServer extends RpcComponentStatusGrpc.RpcComponentStat
         return context.getStatus() == StatusEnum.STARTED;
     }
 
-    private class ComponentStatusService extends AbstractComponentStatusServer<ResolveContext, ComponentStatus, ComponentStatus> {
-        public ComponentStatusService(ResolveContext resolveContext) {
-            this.componentContext = resolveContext;
+    private class ComponentStatusService extends AbstractComponentStatusServer<ComponentStatus, ComponentStatus> {
+        public ComponentStatusService(ComponentContext componentContext) {
+            this.componentContext = componentContext;
         }
 
         @Override

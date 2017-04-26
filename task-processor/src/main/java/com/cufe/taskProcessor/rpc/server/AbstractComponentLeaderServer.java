@@ -10,10 +10,10 @@ import java.util.logging.Logger;
 /**
  * Created by jianganlan on 2017/4/23.
  */
-public abstract class AbstractComponentLeaderServer<C extends ComponentContext, RPC_S, RPC_Q> {
+public abstract class AbstractComponentLeaderServer< RPC_S, RPC_Q> {
     private final static Logger LOGGER = Logger.getLogger(AbstractComponentLeaderServer.class.getSimpleName());
 
-    protected C componentContext;
+    protected ComponentContext componentContext;
 
     public RPC_Q receive(RPC_S rpcRes) {
         ComponentRelation relation = rpcResToLocal(rpcRes);

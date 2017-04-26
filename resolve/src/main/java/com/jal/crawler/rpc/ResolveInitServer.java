@@ -64,6 +64,7 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
         protected <Config> void extraInit(Config config) {
             ComponentInitService.Config config1 = (ComponentInitService.Config) config;
             ResolveContext context = componentContext;
+            componentContext.setThread(config1.thread);
             context.redisTemplate(config1.redisTemplate);
             context.persist(config1.persist);
 //            context.persist(new ConsolePersist());
@@ -104,6 +105,7 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             redisTemplate.setConnectionFactory(redisConnectionFactory);
             redisTemplate.afterPropertiesSet();
             config.redisTemplate = redisTemplate;
+            config.thread=rpcRes.getThread();
             config.selfStatus = rpcRes.getSelfStatusValue();
             config.leaderStatus = rpcRes.getLeaderStatusValue();
             config.selfHost = rpcRes.getSelfHost();

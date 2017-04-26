@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 /**
  * Created by jianganlan on 2017/4/23.
  */
-public class DownloadLeaderClient extends AbstractComponentLeaderClient<DownLoadContext, ComponentStatus, ComponentRelation> {
+public class DownloadLeaderClient extends AbstractComponentLeaderClient< ComponentStatus, ComponentRelation> {
     private RpcComponentLeaderServiceGrpc.RpcComponentLeaderServiceBlockingStub stub;
 
     @Override

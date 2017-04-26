@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * Created by jianganlan on 2017/4/24.
  */
-public class ResolveStatusClient extends AbstractComponentStatusClient<ResolveContext,ComponentStatus,ComponentStatus> {
+public class ResolveStatusClient extends AbstractComponentStatusClient<ComponentStatus,ComponentStatus> {
     private RpcComponentStatusGrpc.RpcComponentStatusBlockingStub stub;
 
     @Override
