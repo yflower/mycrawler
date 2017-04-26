@@ -6,8 +6,8 @@ import com.jal.crawler.web.data.constants.DefaultConfigModelConstant;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
-import com.jal.crawler.web.data.model.component.ComponentConfigModel;
-import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.web.data.model.component.ComponentConfigRelation;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
@@ -49,18 +49,18 @@ public class ComponentBiz {
 
 
     public Map<String, ComponentVO> status(ComponentParam componentParam) {
-        List<ComponentModel> componentModels = new ArrayList<>();
+        List<ComponentRelation> componentRelations = new ArrayList<>();
 
         //得到组件model
-        if (componentParam != null && !componentModels.isEmpty()) {
-            componentModels = componentParam.getComponents().stream()
+        if (componentParam != null && !componentRelations.isEmpty()) {
+            componentRelations = componentParam.getComponents().stream()
                     .map(ComponentConvert::paramToModel).collect(Collectors.toList());
         } else {
-            componentModels = getCurrentComponentModel();
+            componentRelations = getCurrentComponentModel();
         }
 
         Map<String, ComponentVO> result =
-                componentModels.stream()
+                componentRelations.stream()
                         .collect(Collectors
                                 .toMap(this::address,
                                         entry -> componentStatService.status(entry).orElseGet(ComponentVO::new)));
@@ -72,23 +72,23 @@ public class ComponentBiz {
 
     public void component(ComponentParam componentParam) {
         componentParam.getComponents().forEach(socket -> {
-            ComponentModel componentModel = ComponentConvert.paramToModel(socket);
-            Optional<ComponentEnum> type = componentStatService.type(componentModel);
+            ComponentRelation componentRelation = ComponentConvert.paramToModel(socket);
+            Optional<ComponentEnum> type = componentStatService.type(componentRelation);
             if (!type.isPresent()) {
-                throw new BizException(ExceptionEnum.ADDRESS_NOT_FOUND,socket.toString());
+                throw new BizException(ExceptionEnum.ADDRESS_NOT_FOUND, socket.toString());
             }
-            componentModel.setComponentEnum(type.get());
-            component(componentModel, () -> {
-                if (componentModel.getComponentEnum() == ComponentEnum.DOWNLOAD) {
-                    LOGGER.info("添加下载组件 {}", componentModel);
-                    return DefaultConfigModelConstant.defaultDownloadConfig(componentModel,
+            componentRelation.setComponentType(type.get().getCode());
+            component(componentRelation, () -> {
+                if (componentRelation.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {
+                    LOGGER.info("添加下载组件 {}", componentRelation);
+                    return DefaultConfigModelConstant.defaultDownloadConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
-                } else if (componentModel.getComponentEnum() == ComponentEnum.RESOLVE) {
-                    LOGGER.info("添加解析组件 {}", componentModel);
-                    return DefaultConfigModelConstant.defaultResolveConfig(componentModel,
+                } else if (componentRelation.getComponentType() == ComponentEnum.RESOLVE.getCode()) {
+                    LOGGER.info("添加解析组件 {}", componentRelation);
+                    return DefaultConfigModelConstant.defaultResolveConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 }
-                LOGGER.warn("[警告]添加组件 {}", componentModel);
+                LOGGER.warn("[警告]添加组件 {}", componentRelation);
                 throw new BizException(ExceptionEnum.UNKNOWN);
             });
         });
@@ -99,8 +99,8 @@ public class ComponentBiz {
 
     public void component(DownloadParam downloadParam) {
         downloadParam.getDownloads().forEach(t -> {
-            ComponentModel componentModel = ComponentConvert.paramToModel(t);
-            component(componentModel, () -> ComponentConvert.paramToModel(
+            ComponentRelation componentRelation = ComponentConvert.paramToModel(t);
+            component(componentRelation, () -> ComponentConvert.paramToModel(
                     t,
                     configContext.getRedisConfigModel(),
                     configContext.getMongoConfigModel()));
@@ -109,8 +109,8 @@ public class ComponentBiz {
 
     public void component(ResolveParam resolveParam) {
         resolveParam.getResolves().forEach(t -> {
-            ComponentModel componentModel = ComponentConvert.paramToModel(t);
-            component(componentModel, () -> ComponentConvert.paramToModel(
+            ComponentRelation componentRelation = ComponentConvert.paramToModel(t);
+            component(componentRelation, () -> ComponentConvert.paramToModel(
                     t,
                     configContext.getRedisConfigModel(),
                     configContext.getMongoConfigModel()));
@@ -118,36 +118,36 @@ public class ComponentBiz {
 
     }
 
-    private void component(ComponentModel componentModel, Supplier<ComponentConfigModel> getComponentConfig) {
-        internalComponent(componentModel);
+    private void component(ComponentRelation componentRelation, Supplier<ComponentConfigRelation> getComponentConfig) {
+        internalComponent(componentRelation);
 
         checkDbConfig(configContext);
 
-        ComponentConfigModel componentConfigModel = getComponentConfig.get();
+        ComponentConfigRelation componentConfigModel = getComponentConfig.get();
 
         internalConfig(componentConfigModel);
 
     }
 
 
-    private void internalComponent(ComponentModel componentModel) {
+    private void internalComponent(ComponentRelation componentRelation) {
         boolean result;
-        if (componentModel.getComponentEnum() == ComponentEnum.DOWNLOAD) {
-            result = downloadService.component(componentModel);
+        if (componentRelation.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {
+            result = downloadService.component(componentRelation);
         } else {
-            result = resolveService.component(componentModel);
+            result = resolveService.component(componentRelation);
         }
         if (!result) {
-            LOGGER.warn("[警告] 没有找到组件的地址 {}", componentModel);
+            LOGGER.warn("[警告] 没有找到组件的地址 {}", componentRelation);
             throw new BizException(ExceptionEnum.ADDRESS_NOT_FOUND);
         }
     }
 
 
-    private void internalConfig(ComponentConfigModel componentConfigModel) {
+    private void internalConfig(ComponentConfigRelation componentConfigModel) {
         boolean result;
         //组件设置
-        if (componentConfigModel.getComponentEnum() == ComponentEnum.DOWNLOAD) {
+        if (componentConfigModel.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {
             result = downloadService.config(componentConfigModel);
             LOGGER.info("下载组件设置成功");
         } else {
@@ -169,8 +169,8 @@ public class ComponentBiz {
     }
 
 
-    private String address(ComponentModel componentModel) {
-        return componentModel.getHost() + ":" + componentModel.getPort();
+    private String address(ComponentRelation componentRelation) {
+        return componentRelation.getHost() + ":" + componentRelation.getPort();
     }
 
 
@@ -179,8 +179,8 @@ public class ComponentBiz {
      *
      * @return 返回当前可用所有的组件
      */
-    private List<ComponentModel> getCurrentComponentModel() {
-        List<ComponentModel> result = new ArrayList<>();
+    private List<ComponentRelation> getCurrentComponentModel() {
+        List<ComponentRelation> result = new ArrayList<>();
         result.addAll(configContext.resolveComponent());
         result.addAll(configContext.downloadComponent());
         return result;

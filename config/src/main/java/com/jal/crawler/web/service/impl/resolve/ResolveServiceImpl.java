@@ -1,16 +1,13 @@
 package com.jal.crawler.web.service.impl.resolve;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.proto.config.RedisConfig;
-import com.jal.crawler.proto.resolve.ResolveConfig;
-import com.jal.crawler.rpc.AbstractComponentClient;
+import com.jal.crawler.rpc.AbstractHttpClient;
 import com.jal.crawler.web.data.enums.StatusEnum;
-import com.jal.crawler.web.data.model.component.ComponentConfigModel;
-import com.jal.crawler.web.data.model.component.ComponentModel;
-import com.jal.crawler.web.data.model.component.ResolveConfigModel;
+import com.jal.crawler.web.data.model.component.ComponentConfigRelation;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
+import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
 import com.jal.crawler.web.service.IComponentService;
 import org.springframework.stereotype.Service;
-
 
 import javax.annotation.Resource;
 import java.util.Optional;
@@ -25,45 +22,26 @@ public class ResolveServiceImpl implements IComponentService {
 
 
     @Override
-    public boolean component(ComponentModel componentModel) {
-        return configContext.getRpcClient().getClient(componentModel).isPresent();
+    public boolean component(ComponentRelation componentRelation) {
+        return configContext.getRpcClient().getClient(componentRelation).isPresent();
     }
 
     @Override
-    public boolean config(ComponentConfigModel componentConfigModel) {
+    public boolean config(ComponentConfigRelation componentConfigModel) {
         boolean result = false;
-        Optional<AbstractComponentClient> clientOptional = configContext.getRpcClient().getClient(componentConfigModel);
+        Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentConfigModel);
         if (clientOptional.isPresent()) {
-            result = resolveConfig(clientOptional.get(), (ResolveConfigModel) componentConfigModel);
+            result = resolveConfig(clientOptional.get(), (ResolveConfigRelation) componentConfigModel);
         }
         return result;
     }
 
-    private boolean resolveConfig(AbstractComponentClient componentClient, ResolveConfigModel configModel) {
+    private boolean resolveConfig(AbstractHttpClient componentClient, ResolveConfigRelation configModel) {
+
         //todo  已经设置的情况下 状态获取失败
-        if (componentClient.status().get() != StatusEnum.NO_INIT) {
+        if (((ComponentRelation) componentClient.status().get()).getStatus() != StatusEnum.NO_INIT) {
             return true;
         }
-        return componentClient.setConfig(ResolveConfig.newBuilder()
-                .setMongoConfig(
-                        ResolveConfig.MongoConfig.newBuilder()
-                                .setDatabase(configModel.getMongoConfigModel().getDatabase())
-                                .setHost(configModel.getMongoConfigModel().getHost())
-                                .setPort(configModel.getMongoConfigModel().getPort())
-                                .setUser(configModel.getMongoConfigModel().getUser())
-                                .setPassword(configModel.getMongoConfigModel().getPassword())
-                                .build()
-                )
-                .setPersist(ResolveConfig.Persist.MONGO)
-                .setThread(configModel.getThread())
-                .setRedisConfig(
-                        RedisConfig.newBuilder()
-                                .setHost(configModel.getRedisConfigModel().getHost())
-                                .setPort(configModel.getRedisConfigModel().getPort())
-                                .setPassword(configModel.getRedisConfigModel().getPassword())
-                                .build()
-                )
-                .build()
-        );
+        return componentClient.setConfig(configModel);
     }
 }

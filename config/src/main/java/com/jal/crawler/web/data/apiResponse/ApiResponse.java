@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  * Created by jal on 2017/2/18.
  */
 public class ApiResponse<T> {
-    private static final Logger LOGGER= LoggerFactory.getLogger(ApiResponse.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApiResponse.class);
 
     private String code;
 
@@ -44,7 +44,7 @@ public class ApiResponse<T> {
         if (e instanceof BizException) {
             return failBuild(((BizException) e).getExceptionEnum(), e.getMessage());
         } else {
-            LOGGER.error("error",e);
+            LOGGER.error("error", e);
             return failBuild(ExceptionEnum.UNKNOWN, "");
         }
     }

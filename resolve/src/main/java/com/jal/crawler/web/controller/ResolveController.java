@@ -55,7 +55,7 @@ public class ResolveController extends ComponentFacade<ResolveConfigRpcParam, Re
         if (result.hasErrors()) {
             return "param error";
         }
-        componentTask(WebParamToRpcParam.taskOpConvert(params));
+        componentTask(WebParamToRpcParam.taskOpConvert(params),TaskLoadEnum.ALL);
         return "";
     }
 

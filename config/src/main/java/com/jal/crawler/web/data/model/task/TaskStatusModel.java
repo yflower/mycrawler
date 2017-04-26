@@ -35,44 +35,44 @@ public class TaskStatusModel {
             return status;
         }
 
-        public int getResourceTotal() {
-            return resourceTotal;
-        }
-
-        public int getProcessorTotal() {
-            return processorTotal;
-        }
-
-        public int getPersistTotal() {
-            return persistTotal;
-        }
-
-        public LocalDateTime getStartTime() {
-            return startTime;
-        }
-
-        public LocalDateTime getEndTime() {
-            return endTime;
-        }
-
         public void setStatus(String status) {
             this.status = status;
+        }
+
+        public int getResourceTotal() {
+            return resourceTotal;
         }
 
         public void setResourceTotal(int resourceTotal) {
             this.resourceTotal = resourceTotal;
         }
 
+        public int getProcessorTotal() {
+            return processorTotal;
+        }
+
         public void setProcessorTotal(int processorTotal) {
             this.processorTotal = processorTotal;
+        }
+
+        public int getPersistTotal() {
+            return persistTotal;
         }
 
         public void setPersistTotal(int persistTotal) {
             this.persistTotal = persistTotal;
         }
 
+        public LocalDateTime getStartTime() {
+            return startTime;
+        }
+
         public void setStartTime(LocalDateTime startTime) {
             this.startTime = startTime;
+        }
+
+        public LocalDateTime getEndTime() {
+            return endTime;
         }
 
         public void setEndTime(LocalDateTime endTime) {

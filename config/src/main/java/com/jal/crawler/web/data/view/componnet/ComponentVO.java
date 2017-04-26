@@ -1,9 +1,5 @@
 package com.jal.crawler.web.data.view.componnet;
 
-import com.jal.crawler.rpc.AbstractComponentClient;
-
-import java.util.List;
-
 /**
  * Created by jal on 2017/2/10.
  */
@@ -15,10 +11,6 @@ public class ComponentVO {
 
     private int thread;
 
-    private int taskNum;
-
-
-    private List<AbstractComponentClient.internalTask> tasks;
 
     public int getThread() {
         return thread;
@@ -28,21 +20,6 @@ public class ComponentVO {
         this.thread = thread;
     }
 
-    public int getTaskNum() {
-        return taskNum;
-    }
-
-    public void setTaskNum(int taskNum) {
-        this.taskNum = taskNum;
-    }
-
-    public List<AbstractComponentClient.internalTask> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<AbstractComponentClient.internalTask> tasks) {
-        this.tasks = tasks;
-    }
 
     public String getAddress() {
         return address;
@@ -66,8 +43,6 @@ public class ComponentVO {
                 "status='" + status + '\'' +
                 ", address='" + address + '\'' +
                 ", thread=" + thread +
-                ", taskNum=" + taskNum +
-                ", tasks=" + tasks +
                 '}';
     }
 }

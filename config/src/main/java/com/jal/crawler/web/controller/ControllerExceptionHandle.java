@@ -2,7 +2,6 @@ package com.jal.crawler.web.controller;
 
 import com.jal.crawler.web.data.apiResponse.ApiResponse;
 import com.jal.crawler.web.data.exception.BizException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

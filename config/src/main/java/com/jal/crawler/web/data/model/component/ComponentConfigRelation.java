@@ -6,7 +6,7 @@ import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 /**
  * Created by jal on 2017/2/25.
  */
-public abstract class ComponentConfigModel extends ComponentModel {
+public abstract class ComponentConfigRelation extends ComponentRelation {
     private int thread;
 
     private MongoConfigModel mongoConfigModel;

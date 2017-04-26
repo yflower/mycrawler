@@ -1,7 +1,7 @@
 package com.jal.crawler.web.service.impl.download;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.service.ITaskLoadService;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class DownloadTaskLoadServiceImpl implements ITaskLoadService {
 
     //默认只实现了全速下载
     @Override
-    public List<ComponentModel> balanceComponent() {
+    public List<ComponentRelation> balanceComponent() {
 
         return configContext.downloadComponent();
 

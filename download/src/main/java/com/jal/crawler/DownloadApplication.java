@@ -42,6 +42,7 @@ public class DownloadApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
+        self.setComponentType(0);
 
         DownLoadContext loadContext = context.getBean(DownLoadContext.class);
 

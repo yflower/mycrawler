@@ -4,11 +4,12 @@ package com.jal.crawler.web.data.enums;
  * Created by jal on 2017/2/25.
  */
 public enum TaskOperationEnum {
-    ADD(1),
-    STOP(2),
-    UPDATE(3),
-    FINISH(4),
-    DESTROY(5);
+    ADD(0),
+    STOP(1),
+    UPDATE(2),
+    FINISH(3),
+    DESTROY(4),
+    UNRECOGNIZED(-1),;
 
 
     private int code;
@@ -32,5 +33,9 @@ public enum TaskOperationEnum {
             default:
                 return null;
         }
+    }
+
+    public int getCode() {
+        return code;
     }
 }

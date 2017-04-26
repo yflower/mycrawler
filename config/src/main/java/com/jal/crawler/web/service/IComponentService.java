@@ -1,15 +1,15 @@
 package com.jal.crawler.web.service;
 
-import com.jal.crawler.web.data.model.component.ComponentConfigModel;
-import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.web.data.model.component.ComponentConfigRelation;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
 
 /**
  * Created by jal on 2017/2/25.
  */
 public interface IComponentService {
-    boolean component(ComponentModel componentModel);
+    boolean component(ComponentRelation componentRelation);
 
-    boolean config(ComponentConfigModel componentConfigModel);
+    boolean config(ComponentConfigRelation componentConfigModel);
 
 
 }

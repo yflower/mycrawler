@@ -11,7 +11,7 @@ public class TaskOperationModel {
 
     private ComponentEnum componentType;
 
-    private TaskOperationEnum type;
+    private TaskOperationEnum taskType;
 
     private String taskTag;
 
@@ -23,12 +23,12 @@ public class TaskOperationModel {
         this.taskTag = taskTag;
     }
 
-    public TaskOperationEnum getType() {
-        return type;
+    public TaskOperationEnum getTaskType() {
+        return taskType;
     }
 
-    public void setType(TaskOperationEnum type) {
-        this.type = type;
+    public void setTaskType(TaskOperationEnum taskType) {
+        this.taskType = taskType;
     }
 
     public ComponentEnum getComponentType() {

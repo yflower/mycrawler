@@ -1,7 +1,7 @@
 package com.jal.crawler.context;
 
-import com.jal.crawler.rpc.RpcClient;
-import com.jal.crawler.web.data.model.component.ComponentModel;
+import com.jal.crawler.rpc.HttpClientHolder;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
 import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 import org.slf4j.Logger;
@@ -20,21 +20,21 @@ public class ConfigContext {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigContext.class);
 
     @Resource
-    private RpcClient rpcClient;
+    private HttpClientHolder rpcClient;
 
     private MongoConfigModel mongoConfigModel;
 
     private RedisConfigModel redisConfigModel;
 
-    public RpcClient getRpcClient() {
+    public HttpClientHolder getRpcClient() {
         return rpcClient;
     }
 
-    public List<ComponentModel> resolveComponent() {
+    public List<ComponentRelation> resolveComponent() {
         return rpcClient.resolveModel();
     }
 
-    public List<ComponentModel> downloadComponent() {
+    public List<ComponentRelation> downloadComponent() {
         return rpcClient.downloadModel();
     }
 

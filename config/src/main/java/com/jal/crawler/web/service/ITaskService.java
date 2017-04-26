@@ -1,7 +1,6 @@
 package com.jal.crawler.web.service;
 
 import com.jal.crawler.web.data.model.task.TaskOperationModel;
-import com.jal.crawler.web.data.model.task.TaskStatusModel;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
 
 /**

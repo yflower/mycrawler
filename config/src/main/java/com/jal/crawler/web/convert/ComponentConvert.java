@@ -1,9 +1,9 @@
 package com.jal.crawler.web.convert;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.model.component.ComponentModel;
-import com.jal.crawler.web.data.model.component.DownloadConfigModel;
-import com.jal.crawler.web.data.model.component.ResolveConfigModel;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
+import com.jal.crawler.web.data.model.component.DownloadConfigRelation;
+import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
 import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
 import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 import com.jal.crawler.web.data.param.ComponentParam;
@@ -16,8 +16,8 @@ import com.jal.crawler.web.data.param.ResolveParam;
 public class ComponentConvert {
 
 
-    public static DownloadConfigModel paramToModel(DownloadParam.downloadSocket param, RedisConfigModel redisConfigModel, MongoConfigModel mongoConfigModel) {
-        DownloadConfigModel downloadConfigModel = new DownloadConfigModel();
+    public static DownloadConfigRelation paramToModel(DownloadParam.downloadSocket param, RedisConfigModel redisConfigModel, MongoConfigModel mongoConfigModel) {
+        DownloadConfigRelation downloadConfigModel = new DownloadConfigRelation();
         downloadConfigModel.setThread(param.getThread());
         downloadConfigModel.setPort(param.getPort());
         downloadConfigModel.setHost(param.getHost());
@@ -26,34 +26,34 @@ public class ComponentConvert {
         downloadConfigModel.setProxyAddress(param.getProxyAddress());
         downloadConfigModel.setRedisConfigModel(redisConfigModel);
         downloadConfigModel.setMongoConfigModel(mongoConfigModel);
-        downloadConfigModel.setComponentEnum(ComponentEnum.DOWNLOAD);
+        downloadConfigModel.setComponentType(ComponentEnum.DOWNLOAD.getCode());
         return downloadConfigModel;
 
     }
 
-    public static ResolveConfigModel paramToModel(ResolveParam.resolveSocket param, RedisConfigModel redisConfigModel, MongoConfigModel mongoConfigModel) {
-        ResolveConfigModel resolveConfigModel = new ResolveConfigModel();
+    public static ResolveConfigRelation paramToModel(ResolveParam.resolveSocket param, RedisConfigModel redisConfigModel, MongoConfigModel mongoConfigModel) {
+        ResolveConfigRelation resolveConfigModel = new ResolveConfigRelation();
         resolveConfigModel.setThread(param.getThread());
         resolveConfigModel.setPort(param.getPort());
         resolveConfigModel.setHost(param.getHost());
         resolveConfigModel.setRedisConfigModel(redisConfigModel);
         resolveConfigModel.setMongoConfigModel(mongoConfigModel);
-        resolveConfigModel.setComponentEnum(ComponentEnum.RESOLVE);
+        resolveConfigModel.setComponentType(ComponentEnum.RESOLVE.getCode());
         return resolveConfigModel;
 
     }
 
 
-    public static ComponentModel paramToModel(ComponentParam.socket componentParam) {
-        return new ComponentModel(componentParam.getHost(), componentParam.getPort());
+    public static ComponentRelation paramToModel(ComponentParam.socket componentParam) {
+        return new ComponentRelation(componentParam.getHost(), componentParam.getPort());
     }
 
-    public static ComponentModel paramToModel(DownloadParam.downloadSocket downloadSocket) {
-        return new ComponentModel(downloadSocket.getHost(), downloadSocket.getPort());
+    public static ComponentRelation paramToModel(DownloadParam.downloadSocket downloadSocket) {
+        return new ComponentRelation(downloadSocket.getHost(), downloadSocket.getPort());
 
     }
 
-    public static ComponentModel paramToModel(ResolveParam.resolveSocket resolveSocket) {
-        return new ComponentModel(resolveSocket.getHost(), resolveSocket.getPort());
+    public static ComponentRelation paramToModel(ResolveParam.resolveSocket resolveSocket) {
+        return new ComponentRelation(resolveSocket.getHost(), resolveSocket.getPort());
     }
 }

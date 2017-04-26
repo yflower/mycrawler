@@ -13,13 +13,14 @@ import com.cufe.taskProcessor.task.StatusEnum;
 import com.cufe.taskProcessor.task.TaskTypeEnum;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * 组件暴露给调度平台的接口
- *
+ * <p>
  * Created by jianganlan on 2017/4/15.
  */
 public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initParam, TASK_OP_PARAM extends ComponentFacade.taskOpParam> {
@@ -57,6 +58,10 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
     }
 
+    public ComponentRelation self(){
+        return componentContext.getComponentRelation();
+    }
+
     public void componentInit(CONFIG_PARAM configParam) {
         ComponentRelation self = componentContext.getComponentRelation();
         ComponentRelationHolder componentRelationHolder = componentContext.getComponentRelationHolder();
@@ -76,7 +81,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         if (self.getRelationTypeEnum() == ComponentRelationTypeEnum.LEADER) {
             if (!componentRelationHolder.contains(componentRelation)) {
                 leader = componentContext.getComponentRelation();
-            }else {
+            } else {
                 LOGGER.warning("组件已经被添加");
                 return;
             }
@@ -116,14 +121,19 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
     }
 
-    public void componentTask(TASK_OP_PARAM taskOpParam) {
+    public void componentTask(TASK_OP_PARAM taskOpParam, TaskLoadEnum taskLoadEnum) {
         ComponentRelation self = componentContext.getComponentRelation();
         AbstractComponentClientFactory componentClientFactory = componentContext.getComponentClientFactory();
 
         ComponentClientHolder componentClientHolder = componentContext.getComponentClientHolder();
 
+        List<ComponentRelation> relations = componentList();
+
+        if (relations == null) {
+            throw new IllegalStateException("组件还没有初始化");
+        }
         //leader为每个组件分配组件
-        componentList().forEach(t -> {
+        taskLoadEnum.get(relations,self).forEach(t -> {
             Optional<ComponentClient> optional = componentClientHolder.from(t);
             ComponentClient componentClient = null;
             //获取连接client
@@ -313,6 +323,35 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         public void setTaskType(int taskType) {
             this.taskType = taskType;
         }
+    }
+
+    public enum TaskLoadEnum {
+        ALL("所有") {
+            @Override
+            public List<ComponentRelation> get(List<ComponentRelation> all, ComponentRelation self) {
+                return all;
+            }
+        },
+        RANDOM_ONE("随机一个") {
+            @Override
+            public List<ComponentRelation> get(List<ComponentRelation> all, ComponentRelation self) {
+                return Arrays.asList(all.get(Math.abs(ThreadLocalRandom.current().nextInt() % all.size())));
+            }
+        },
+        SELF("自己") {
+            @Override
+            public List<ComponentRelation> get(List<ComponentRelation> all, ComponentRelation self) {
+                return Arrays.asList(self);
+            }
+        };
+
+        private String desc;
+
+        TaskLoadEnum(String desc) {
+            this.desc = desc;
+        }
+
+        public abstract List<ComponentRelation> get(List<ComponentRelation> all, ComponentRelation self);
     }
 
 }

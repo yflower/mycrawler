@@ -54,7 +54,7 @@ public class DownloadController extends ComponentFacade<DownloadRpcConfigParam, 
         if (result.hasErrors()) {
             return "param error";
         }
-        componentTask(WebParamToRpcParam.taskOpConvert(params));
+        componentTask(WebParamToRpcParam.taskOpConvert(params),TaskLoadEnum.ALL);
         return "";
     }
 

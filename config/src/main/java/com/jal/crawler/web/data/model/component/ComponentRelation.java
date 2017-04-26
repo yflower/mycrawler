@@ -1,9 +1,10 @@
-package com.cufe.taskProcessor.component.relation;
+package com.jal.crawler.web.data.model.component;
 
-import com.cufe.taskProcessor.task.StatusEnum;
+import com.jal.crawler.web.data.enums.ComponentRelationTypeEnum;
+import com.jal.crawler.web.data.enums.StatusEnum;
 
 /**
- * Created by jianganlan on 2017/4/13.
+ * Created by jal on 2017/2/19.
  */
 public class ComponentRelation {
     private int componentType;
@@ -18,6 +19,21 @@ public class ComponentRelation {
 
     private StatusEnum status = StatusEnum.NO_INIT;
 
+    public ComponentRelation() {
+    }
+
+    public ComponentRelation(String host, int port) {
+        this.host = host;
+        this.port = port;
+    }
+
+    public int getComponentType() {
+        return componentType;
+    }
+
+    public void setComponentType(int componentType) {
+        this.componentType = componentType;
+    }
 
     public ComponentRelationTypeEnum getRelationTypeEnum() {
         return relationTypeEnum;
@@ -28,9 +44,6 @@ public class ComponentRelation {
     }
 
     public ComponentRelation getLeader() {
-        if (relationTypeEnum == ComponentRelationTypeEnum.LEADER) {
-            return null;
-        }
         return leader;
     }
 
@@ -46,19 +59,6 @@ public class ComponentRelation {
         this.host = host;
     }
 
-
-    public StatusEnum getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
-    public String address() {
-        return host + ":" + port;
-    }
-
     public int getPort() {
         return port;
     }
@@ -67,12 +67,12 @@ public class ComponentRelation {
         this.port = port;
     }
 
-    public int getComponentType() {
-        return componentType;
+    public StatusEnum getStatus() {
+        return status;
     }
 
-    public void setComponentType(int componentType) {
-        this.componentType = componentType;
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by jal on 2017/2/19.
  */
-public class DownloadConfigModel extends ComponentConfigModel {
+public class DownloadConfigRelation extends ComponentConfigRelation {
 
     private int sleepTime;
 

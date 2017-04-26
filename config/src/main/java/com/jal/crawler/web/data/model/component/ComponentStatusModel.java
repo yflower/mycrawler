@@ -3,7 +3,6 @@ package com.jal.crawler.web.data.model.component;
 import com.jal.crawler.web.data.model.task.TaskStatusModel;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by jianganlan on 2017/4/10.

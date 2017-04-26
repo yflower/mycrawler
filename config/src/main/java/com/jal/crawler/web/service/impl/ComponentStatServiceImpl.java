@@ -1,12 +1,10 @@
 package com.jal.crawler.web.service.impl;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.rpc.AbstractComponentClient;
-import com.jal.crawler.rpc.RpcClient;
+import com.jal.crawler.rpc.AbstractHttpClient;
+import com.jal.crawler.rpc.HttpClientHolder;
 import com.jal.crawler.web.data.enums.ComponentEnum;
-import com.jal.crawler.web.data.enums.StatusEnum;
-import com.jal.crawler.web.data.model.component.ComponentModel;
-import com.jal.crawler.web.data.model.task.TaskStatusModel;
+import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.view.componnet.ComponentVO;
 import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.IComponentStatService;
@@ -27,21 +25,19 @@ public class ComponentStatServiceImpl implements IComponentStatService {
 
 
     @Override
-    public Optional<ComponentEnum> type(ComponentModel componentModel) {
-        return RpcClient.tryConnect(componentModel);
+    public Optional<ComponentEnum> type(ComponentRelation componentRelation) {
+        return HttpClientHolder.tryConnect(componentRelation);
     }
 
     @Override
-    public Optional<ComponentVO> status(ComponentModel componentModel) {
+    public Optional<ComponentVO> status(ComponentRelation componentRelation) {
         ComponentVO componentVO = new ComponentVO();
-        Optional<AbstractComponentClient> optional = configContext.getRpcClient().getClient(componentModel);
+        Optional<AbstractHttpClient> optional = configContext.getRpcClient().getClient(componentRelation);
         if (optional.isPresent()) {
-            AbstractComponentClient client = optional.get();
-            Optional<StatusEnum> status = client.status();
-            componentVO.setStatus(status.get().name());
-            componentVO.setAddress(client.address());
-            componentVO.setTaskNum(client.showTask().size());
-            componentVO.setTasks(client.showTask());
+            AbstractHttpClient client = optional.get();
+            Optional<ComponentRelation> status = client.status();
+            componentVO.setStatus(status.get().getStatus().name());
+            componentVO.setAddress(client.getComponentRelation().getHost());
             //todo thread
             return Optional.of(componentVO);
         }
@@ -50,9 +46,9 @@ public class ComponentStatServiceImpl implements IComponentStatService {
 
     @Override
     public Optional<TaskStatusVO> taskStatus(String taskTag) {
-        List<ComponentModel> componentModels = configContext.resolveComponent();
-        RpcClient rpcClient = configContext.getRpcClient();
-        TaskStatusVO statusVO=new TaskStatusVO();
+        List<ComponentRelation> componentRelations = configContext.resolveComponent();
+        HttpClientHolder rpcClient = configContext.getRpcClient();
+        TaskStatusVO statusVO = new TaskStatusVO();
 
         return null;
     }

@@ -7,7 +7,6 @@ import com.jal.crawler.web.data.model.task.DownloadOperationModel;
 import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import com.jal.crawler.web.data.param.TaskPushParam;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
-import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,11 +48,11 @@ public class TaskBiz {
 
     public TaskOperationVO taskPause(String taskTag) {
         ResolveOperationModel resolveOperationModel = new ResolveOperationModel(taskTag);
-        resolveOperationModel.setType(TaskOperationEnum.STOP);
+        resolveOperationModel.setTaskType(TaskOperationEnum.STOP);
         resolveTaskService.pause(resolveOperationModel);
 
         DownloadOperationModel downloadOperationModel = new DownloadOperationModel();
-        downloadOperationModel.setType(TaskOperationEnum.STOP);
+        downloadOperationModel.setTaskType(TaskOperationEnum.STOP);
         downloadTaskService.pause(downloadOperationModel);
 
         return new TaskOperationVO() {{
@@ -63,11 +62,11 @@ public class TaskBiz {
 
     public TaskOperationVO taskStop(String taskTag) {
         ResolveOperationModel resolveOperationModel = new ResolveOperationModel(taskTag);
-        resolveOperationModel.setType(TaskOperationEnum.FINISH);
+        resolveOperationModel.setTaskType(TaskOperationEnum.FINISH);
         resolveTaskService.stop(resolveOperationModel);
 
         DownloadOperationModel downloadOperationModel = new DownloadOperationModel();
-        downloadOperationModel.setType(TaskOperationEnum.FINISH);
+        downloadOperationModel.setTaskType(TaskOperationEnum.FINISH);
         downloadTaskService.stop(downloadOperationModel);
 
         return new TaskOperationVO() {{
@@ -77,34 +76,17 @@ public class TaskBiz {
 
     public TaskOperationVO taskDestroy(String taskTag) {
         ResolveOperationModel resolveOperationModel = new ResolveOperationModel(taskTag);
-        resolveOperationModel.setType(TaskOperationEnum.DESTROY);
+        resolveOperationModel.setTaskType(TaskOperationEnum.DESTROY);
         resolveTaskService.destroy(resolveOperationModel);
 
         DownloadOperationModel downloadOperationModel = new DownloadOperationModel();
-        downloadOperationModel.setType(TaskOperationEnum.DESTROY);
+        downloadOperationModel.setTaskType(TaskOperationEnum.DESTROY);
         downloadTaskService.destroy(downloadOperationModel);
 
         return new TaskOperationVO() {{
             setResult(1);
         }};
     }
-
-    public TaskStatusVO status(String taskTag){
-        configContext.resolveComponent().forEach(t->configContext.getRpcClient().getClient(t));
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private String generateTaskTag() {
@@ -117,14 +99,14 @@ public class TaskBiz {
     private void taskPush(TaskPushParam.resolve param, String taskTag) {
         ResolveOperationModel resolveOperationModel = TaskOperationConvert.paramToModel(param, taskTag);
         fillTaskOpModel(resolveOperationModel);
-        resolveOperationModel.setType(TaskOperationEnum.ADD);
+        resolveOperationModel.setTaskType(TaskOperationEnum.ADD);
         resolveTaskService.push(resolveOperationModel);
     }
 
     private void taskPush(TaskPushParam.download param, String taskTag) {
         DownloadOperationModel downloadOperationModel = TaskOperationConvert.paramToModel(param, taskTag);
         fillTaskOpModel(downloadOperationModel);
-        downloadOperationModel.setType(TaskOperationEnum.ADD);
+        downloadOperationModel.setTaskType(TaskOperationEnum.ADD);
         downloadTaskService.push(downloadOperationModel);
     }
 

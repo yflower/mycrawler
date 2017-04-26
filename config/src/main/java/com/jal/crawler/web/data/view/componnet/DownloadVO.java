@@ -1,7 +1,5 @@
 package com.jal.crawler.web.data.view.componnet;
 
-import com.jal.crawler.web.data.view.componnet.ComponentVO;
-
 import java.util.List;
 
 /**

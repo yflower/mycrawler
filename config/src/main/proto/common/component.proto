@@ -18,13 +18,13 @@ message ComponentStatus {
 
 }
 
-message TaskStatistics{
-    Status status=1;
-    int32 resourceTotal=2;
-    int32 processorTotal=3;
-    int32 persistTotal=4;
-    int64 startTime=5;
-    int64 endTime=6;
+message TaskStatistics {
+    Status status = 1;
+    int32 resourceTotal = 2;
+    int32 processorTotal = 3;
+    int32 persistTotal = 4;
+    int64 startTime = 5;
+    int64 endTime = 6;
 
 }
 enum ComponentType {
