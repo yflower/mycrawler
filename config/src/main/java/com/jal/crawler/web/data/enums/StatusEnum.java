@@ -17,6 +17,11 @@ public enum StatusEnum {
         this.code = code;
     }
 
+    public int getCode() {
+        return code;
+    }
+
+
     public static StatusEnum numberOf(int code) {
         switch (code) {
             case 0:

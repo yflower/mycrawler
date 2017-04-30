@@ -1,6 +1,7 @@
 package com.jal.crawler.web.biz;
 
 import com.jal.crawler.context.ConfigContext;
+import com.jal.crawler.rpc.AbstractHttpClient;
 import com.jal.crawler.web.convert.ComponentConvert;
 import com.jal.crawler.web.data.constants.DefaultConfigModelConstant;
 import com.jal.crawler.web.data.enums.ComponentEnum;
@@ -12,6 +13,7 @@ import com.jal.crawler.web.data.param.ComponentParam;
 import com.jal.crawler.web.data.param.DownloadParam;
 import com.jal.crawler.web.data.param.ResolveParam;
 import com.jal.crawler.web.data.view.componnet.ComponentVO;
+import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.IComponentService;
 import com.jal.crawler.web.service.IComponentStatService;
 import org.slf4j.Logger;
@@ -47,12 +49,15 @@ public class ComponentBiz {
     @Resource
     private ConfigContext configContext;
 
+    @Resource
+    private IComponentSelectService selectService;
+
 
     public Map<String, ComponentVO> status(ComponentParam componentParam) {
         List<ComponentRelation> componentRelations = new ArrayList<>();
 
         //得到组件model
-        if (componentParam != null && !componentRelations.isEmpty()) {
+        if (componentParam != null) {
             componentRelations = componentParam.getComponents().stream()
                     .map(ComponentConvert::paramToModel).collect(Collectors.toList());
         } else {

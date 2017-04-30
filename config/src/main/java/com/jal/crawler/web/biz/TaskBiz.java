@@ -5,14 +5,18 @@ import com.jal.crawler.web.convert.TaskOperationConvert;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;
 import com.jal.crawler.web.data.model.task.DownloadOperationModel;
 import com.jal.crawler.web.data.model.task.ResolveOperationModel;
+import com.jal.crawler.web.data.model.task.TaskStatusModel;
 import com.jal.crawler.web.data.param.TaskPushParam;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
+import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.UUID;
 import java.util.function.Consumer;
 
@@ -32,6 +36,31 @@ public class TaskBiz {
 
     @Resource
     private ITaskService downloadTaskService;
+
+
+    public TaskStatusVO status(String taskTag) {
+        TaskStatusModel downTaskStatus = downloadTaskService.status(taskTag);
+
+        TaskStatusModel resolveTaskStatus = resolveTaskService.status(taskTag);
+
+        TaskStatusVO taskStatusVO = new TaskStatusVO();
+
+        taskStatusVO.setStatus(downTaskStatus.getStatus().getCode());
+        taskStatusVO.setBeginTime(downTaskStatus.getTaskStatistics().getBeginTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+        taskStatusVO.setEndTime(downTaskStatus.getTaskStatistics().getEndTime() == null ? 0 :
+                downTaskStatus.getTaskStatistics().getEndTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        );
+
+        taskStatusVO.setCurTime(new Date().getTime());
+        taskStatusVO.setTaskTag(downTaskStatus.getTaskTag());
+        taskStatusVO.setPageTimes((int) resolveTaskStatus.getTaskStatistics().getPersistSuccessCycle());
+        taskStatusVO.setErrorTimes((int) (downTaskStatus.getTaskStatistics().getProcessorErrorCycle()
+                + downTaskStatus.getTaskStatistics().getPersistErrorCycle() +
+                resolveTaskStatus.getTaskStatistics().getProcessorErrorCycle() +
+                resolveTaskStatus.getTaskStatistics().getPersistErrorCycle()));
+
+        return taskStatusVO;
+    }
 
 
     public TaskOperationVO taskPush(TaskPushParam param) {

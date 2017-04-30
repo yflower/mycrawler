@@ -50,9 +50,9 @@ public class TaskController {
         return ApiResponse.successBuild(taskBiz.taskDestroy(taskTag));
     }
 
-//    @GetMapping("/status")
-//    public ApiResponse status(String taskTag) {
-//        return ApiResponse.successBuild(taskBiz.status(taskTag));
-//    }
+    @GetMapping("/status")
+    public ApiResponse status(String taskTag) {
+        return ApiResponse.successBuild(taskBiz.status(taskTag));
+    }
 
 }

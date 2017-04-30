@@ -1,12 +1,18 @@
 package com.jal.crawler.rpc;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
+import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -19,6 +25,8 @@ public abstract class AbstractHttpClient<C, T> {
     protected RestTemplate restTemplate;
 
     protected ComponentRelation componentRelation;
+
+    ObjectMapper objectMapper = new ObjectMapper();
 
     public Optional<ComponentRelation> status() {
         String url = "http://" + this.componentRelation.getHost() + ":8080/component/status";
@@ -39,6 +47,46 @@ public abstract class AbstractHttpClient<C, T> {
 
     }
 
+    public Optional<TaskStatusVO> taskStatus(String taskTag) {
+        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus?taskTag={taskTag}";
+        ResponseEntity<TaskStatusVO> entity;
+        try {
+            entity = restTemplate.getForEntity(url, TaskStatusVO.class, taskTag);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+
+        if (entity.getStatusCode() == HttpStatus.OK) {
+            TaskStatusVO taskStatusVO = entity.getBody();
+            return Optional.of(taskStatusVO);
+        } else {
+            return Optional.empty();
+        }
+
+    }
+
+    public Optional<List<TaskStatusVO>> taskStatus() {
+        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus";
+        List<TaskStatusVO> taskStatusVOS = null;
+        ResponseEntity<String> entity;
+        try {
+            entity = restTemplate.getForEntity(url, String.class);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+        if (entity.getStatusCode() == HttpStatus.OK) {
+            try {
+                taskStatusVOS = objectMapper.readValue(entity.getBody(), new TypeReference<List<TaskStatusVO>>() {
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (taskStatusVOS == null) {
+            return Optional.empty();
+        }
+        return Optional.of(taskStatusVOS);
+    }
 
     public boolean setConfig(C config) {
         if (validConfig(config) && internalConfigSet(config)) {

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class HttpClientHolder {
 
     private static Map<String, ResolveHttpClient> resolves = new HashMap<>();
 
-    private static Map<String, DownloadHttpClient> downs = new HashMap<>();
+    private static Map<String, DownloadHttpClient> downs = new ConcurrentHashMap<>();
 
     private static RestTemplate restTemplate = new RestTemplate();
 

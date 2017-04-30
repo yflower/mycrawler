@@ -3,6 +3,7 @@ package com.jal.crawler.web.controller;
 import com.cufe.taskProcessor.ComponentFacade;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.context.ComponentContext;
+import com.cufe.taskProcessor.task.AbstractTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DownLoadContext;
@@ -54,15 +55,10 @@ public class DownloadController extends ComponentFacade<DownloadRpcConfigParam, 
         if (result.hasErrors()) {
             return "param error";
         }
-        componentTask(WebParamToRpcParam.taskOpConvert(params),TaskLoadEnum.ALL);
+        componentTask(WebParamToRpcParam.taskOpConvert(params), TaskLoadEnum.ALL);
         return "";
     }
 
-    @GetMapping(value = "/taskStatus")
-    public Object status() {
-        return taskStatus();
-
-    }
 
 
     @Override
