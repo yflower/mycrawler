@@ -35,7 +35,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
 
     @Override
     public TaskOperationVO push(TaskOperationModel taskOperationModel) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
         if (relationOptional.isPresent()) {
             componentOp(relationOptional.get(), taskOperationModel);
 
@@ -59,7 +59,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
 
     @Override
     public TaskOperationVO stop(TaskOperationModel taskOperationModel) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
         if (relationOptional.isPresent()) {
             componentOp(relationOptional.get(), taskOperationModel);
 
@@ -71,7 +71,7 @@ public class ResolveTaskServiceImpl implements ITaskService {
 
     @Override
     public TaskOperationVO destroy(TaskOperationModel taskOperationModel) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
         if (relationOptional.isPresent()) {
             componentOp(relationOptional.get(), taskOperationModel);
 

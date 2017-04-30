@@ -33,7 +33,7 @@ public class ComponentController extends ComponentFacade<DownloadRpcConfigParam,
 
 
     @GetMapping("/status")
-    public Object status(){
+    public Object status() {
         return self();
     }
 
@@ -41,12 +41,11 @@ public class ComponentController extends ComponentFacade<DownloadRpcConfigParam,
     public Object status(@RequestParam(required = false) String taskTag) {
         List<AbstractTask> abstractTasks = taskStatus();
         if (taskTag != null) {
-            return abstractTasks.stream().filter(t -> t.getTaskTag() == taskTag).findAny().orElseGet(() -> null);
+            return abstractTasks.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny().orElseGet(() -> null);
         }
         return taskStatus();
 
     }
-
 
 
     @Override

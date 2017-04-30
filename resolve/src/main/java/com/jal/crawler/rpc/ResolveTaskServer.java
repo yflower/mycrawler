@@ -33,7 +33,7 @@ public class ResolveTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase
 
     @Override
     public void resolveTask(ResolveTask request, StreamObserver<ResolveTaskResponse> responseObserver) {
-        ComponentTaskService taskService = new ComponentTaskService();
+        ComponentTaskService taskService = new ComponentTaskService(resolveContext);
         responseObserver.onNext(taskService.task(request));
         responseObserver.onCompleted();
     }
@@ -42,6 +42,9 @@ public class ResolveTaskServer extends RpcResolveTaskGrpc.RpcResolveTaskImplBase
     private class ComponentTaskService extends AbstractComponentTaskServer<ResolveContext, ResolveTask, ResolveTaskResponse> {
 
 
+        public ComponentTaskService(ResolveContext resolveContext) {
+            this.componentContext=resolveContext;
+        }
 
         @Override
         protected AbstractTask generateTask(String taskTag, Map<String, Object> taskOp) {

@@ -6,6 +6,8 @@ import com.jal.crawler.parse.tag.HtmlTag;
 import com.jal.crawler.parse.tag.Tag;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
  * Created by home on 2017/1/20.
  */
 public class Task extends AbstractTask{
+    private final static Logger LOGGER= LoggerFactory.getLogger(Task.class);
 
 
     private List<var> vars;
@@ -31,6 +34,7 @@ public class Task extends AbstractTask{
         stringMap.putAll(itemResult);
         stringMap.put("url", page.getUrl());
         helpGC(page, htmlTag);
+        LOGGER.info("成功解析页面 {}",page.getUrl());
         return Optional.of(stringMap);
     }
 
@@ -125,6 +129,9 @@ public class Task extends AbstractTask{
             this.optionValue = optionValue;
         }
 
+        public var() {
+        }
+
         public String getName() {
             return name;
         }
@@ -156,6 +163,8 @@ public class Task extends AbstractTask{
         public void setOptionValue(String optionValue) {
             this.optionValue = optionValue;
         }
+
+
     }
 
     public static class item {
@@ -165,6 +174,9 @@ public class Task extends AbstractTask{
         public item(String itemName, List<var> itemVar) {
             this.itemName = itemName;
             this.itemVar = itemVar;
+        }
+
+        public item() {
         }
 
         public String getItemName() {

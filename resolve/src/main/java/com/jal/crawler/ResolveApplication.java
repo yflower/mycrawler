@@ -40,14 +40,14 @@ public class ResolveApplication {
         ComponentRelation self = new ComponentRelation();
 
         self.setHost(host);
-        self.setLeader(self);
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
+        self.setComponentType(1);
 
         ResolveContext loadContext = run.getBean(ResolveContext.class);
 
-        loadContext.componentStart(self, self);
+        loadContext.componentStart(self, type==0?self:null);
 
         server.start();
         try {

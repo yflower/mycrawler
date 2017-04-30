@@ -41,7 +41,7 @@ public class ComponentController extends ComponentFacade<ResolveConfigRpcParam, 
     public Object status(@RequestParam(required = false) String taskTag) {
         List<AbstractTask> abstractTasks = taskStatus();
         if (taskTag != null) {
-            return abstractTasks.stream().filter(t -> t.getTaskTag() == taskTag).findAny().orElseGet(() -> null);
+            return abstractTasks.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny().orElseGet(() -> null);
         }
         return taskStatus();
 

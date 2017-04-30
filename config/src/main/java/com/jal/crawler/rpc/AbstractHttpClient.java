@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
+import com.jal.crawler.web.data.model.task.TaskStatusModel;
 import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,18 +48,23 @@ public abstract class AbstractHttpClient<C, T> {
 
     }
 
-    public Optional<TaskStatusVO> taskStatus(String taskTag) {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus?taskTag={taskTag}";
-        ResponseEntity<TaskStatusVO> entity;
+    public Optional<TaskStatusModel> taskStatus(String taskTag) {
+        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus?taskTag=" + taskTag;
+        ResponseEntity<String> entity;
         try {
-            entity = restTemplate.getForEntity(url, TaskStatusVO.class, taskTag);
+            entity = restTemplate.getForEntity(url, String.class);
         } catch (Exception e) {
             return Optional.empty();
         }
+        TaskStatusModel taskStatusModel = null;
 
         if (entity.getStatusCode() == HttpStatus.OK) {
-            TaskStatusVO taskStatusVO = entity.getBody();
-            return Optional.of(taskStatusVO);
+            try {
+                taskStatusModel = objectMapper.readValue(entity.getBody(), TaskStatusModel.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return Optional.of(taskStatusModel);
         } else {
             return Optional.empty();
         }

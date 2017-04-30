@@ -25,6 +25,7 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
         body.put("taskType", taskOperation.getTaskType().getCode());
         body.put("test", taskOperation.isTest());
         body.put("dynamic", taskOperation.isDynamic());
+        body.put("urls",taskOperation.getUrls());
         body.put("preProcess", taskOperation.getPreProcess());
         body.put("postProcess", taskOperation.getPostProcess());
 

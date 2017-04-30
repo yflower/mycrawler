@@ -12,6 +12,7 @@ import com.cufe.taskProcessor.task.AbstractTask;
 import com.cufe.taskProcessor.task.CycleEnum;
 import com.cufe.taskProcessor.task.StatusEnum;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -227,13 +228,21 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     }
 
     private void taskCycleCheck(AbstractTask task) {
-        if (task.isTest() && task.getTaskStatistics().getResourceTotalCycle() > CycleEnum.RESOURCE_TEST_LIMIT.getCycle()) {
+        LocalDateTime now=LocalDateTime.now();
+        LocalDateTime start=task.getTaskStatistics().getBeginTime();
+        if (task.isTest() && task.getTaskStatistics().getResourceTotalCycle() > CycleEnum.RESOURCE_TEST_LIMIT.getCycle()
+                &&start.plusMinutes(CycleEnum.RESOURCE_TEST_LIMIT.getTime()).isBefore(now)) {
+            LOGGER.info("任务被摧毁 " + task.getTaskTag());
             destroyTask(task.getTaskTag());
         }
-        if (task.getTaskStatistics().getResourceNotFoundCycle().get() > CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getCycle()) {
+        if (task.getTaskStatistics().getResourceNotFoundCycle().get() > CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getCycle()
+                &&start.plusMinutes(CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getTime()).isBefore(now)) {
+            LOGGER.info("任务完成 " + task.getTaskTag());
             finishTask(task.getTaskTag());
         }
-        if (task.getTaskStatistics().getPersistErrorCycle().get() > CycleEnum.PROCESSOR_ERROR_LIMIT.getCycle()) {
+        if (task.getTaskStatistics().getPersistErrorCycle().get() > CycleEnum.PROCESSOR_ERROR_LIMIT.getCycle()
+                &&start.plusMinutes(CycleEnum.PROCESSOR_ERROR_LIMIT.getTime()).isBefore(now)) {
+            LOGGER.info("任务停止 " + task.getTaskTag());
             stopTask(task.getTaskTag());
         }
     }
@@ -243,7 +252,9 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     private void lockTasks() {
         taskLock.lock();
         try {
+//            LOGGER.info(Thread.currentThread().getName() + " 进入等待");
             taskCondition.await();
+//            LOGGER.info(Thread.currentThread().getName() + " 被唤醒");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -254,6 +265,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     private void releaseTasks() {
         taskLock.lock();
         try {
+//            LOGGER.info(Thread.currentThread().getName() + " 发起唤醒信号");
             taskCondition.signalAll();
         } finally {
             taskLock.unlock();

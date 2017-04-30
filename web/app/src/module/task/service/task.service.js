@@ -7,7 +7,7 @@ let service = ['$q', '$http', function ($q, $http) {
     var taskPush = function (param,data) {
         return $http({
             method: 'post',
-            url: 'http://127.0.0.1:8080/tasks/push',
+            url: 'http://127.0.0.1:8081/tasks/push',
             param: param,
             data:data
         })
