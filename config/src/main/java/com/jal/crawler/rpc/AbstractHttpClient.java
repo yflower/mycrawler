@@ -29,6 +29,10 @@ public abstract class AbstractHttpClient<C, T> {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
+    {
+        objectMapper.findAndRegisterModules();
+    }
+
     public Optional<ComponentRelation> status() {
         String url = "http://" + this.componentRelation.getHost() + ":8080/component/status";
         ResponseEntity<ComponentRelation> entity;

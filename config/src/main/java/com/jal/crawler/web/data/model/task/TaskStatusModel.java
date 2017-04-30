@@ -1,5 +1,6 @@
 package com.jal.crawler.web.data.model.task;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jal.crawler.web.data.enums.StatusEnum;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.util.concurrent.atomic.LongAccumulator;
 /**
  * Created by jianganlan on 2017/4/10.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskStatusModel {
     private boolean test;
     private String taskTag;

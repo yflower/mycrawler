@@ -76,6 +76,7 @@ public class DownloadStatusClient extends AbstractComponentStatusClient<com.jal.
                     task.setTaskTag(t.getKey());
                     task.setTaskStatistics(taskStatistics);
                     task.setTest(t.getValue().getTest());
+                    task.setStatus(StatusEnum.numberOf(t.getValue().getStatusValue()));
                     return task;
                 }).collect(Collectors.toList()));
 

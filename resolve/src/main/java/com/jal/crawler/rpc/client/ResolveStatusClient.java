@@ -74,6 +74,7 @@ public class ResolveStatusClient extends AbstractComponentStatusClient<Component
                     task.setTaskTag(t.getKey());
                     task.setTaskStatistics(taskStatistics);
                     task.setTest(t.getValue().getTest());
+                    task.setStatus(StatusEnum.numberOf(t.getValue().getStatus().getNumber()));
                     return task;
                 }).collect(Collectors.toList()));
 

@@ -39,9 +39,10 @@ public class TaskBiz {
 
 
     public TaskStatusVO status(String taskTag) {
+        TaskStatusModel resolveTaskStatus = resolveTaskService.status(taskTag);
+
         TaskStatusModel downTaskStatus = downloadTaskService.status(taskTag);
 
-        TaskStatusModel resolveTaskStatus = resolveTaskService.status(taskTag);
 
         TaskStatusVO taskStatusVO = new TaskStatusVO();
 
