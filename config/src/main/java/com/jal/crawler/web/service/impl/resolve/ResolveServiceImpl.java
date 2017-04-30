@@ -2,22 +2,28 @@ package com.jal.crawler.web.service.impl.resolve;
 
 import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.rpc.AbstractHttpClient;
+import com.jal.crawler.web.data.enums.ComponentRelationTypeEnum;
+import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.enums.StatusEnum;
+import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.model.component.ComponentConfigRelation;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
 import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.IComponentService;
+import com.jal.crawler.web.service.impl.download.DownloadServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * Created by jal on 2017/3/19.
  */
 @Service("resolveService")
 public class ResolveServiceImpl implements IComponentService {
+    private static final Logger LOGGER = Logger.getLogger(DownloadServiceImpl.class.getSimpleName());
     @Resource
     private ConfigContext configContext;
 
@@ -44,6 +50,8 @@ public class ResolveServiceImpl implements IComponentService {
         }
         //尝试自身来创建
         else {
+            LOGGER.warning("注意此时 必须是leader才走这条通道");
+            componentConfigModel.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentConfigModel);
             if (clientOptional.isPresent()) {
                 result = resolveConfig(clientOptional.get(), (ResolveConfigRelation) componentConfigModel);
@@ -52,10 +60,22 @@ public class ResolveServiceImpl implements IComponentService {
         return result;
     }
 
-    private boolean resolveConfig(AbstractHttpClient componentClient, ResolveConfigRelation configModel) {
 
-        //todo  已经设置的情况下 状态获取失败
-        if (((ComponentRelation) componentClient.status().get()).getStatus() != StatusEnum.NO_INIT) {
+    private boolean resolveConfig(AbstractHttpClient componentClient, ResolveConfigRelation configModel) {
+        Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(configModel);
+        if (!clientOptional.isPresent()) {
+            LOGGER.warning("SERVER:设置组件时，组件不可连接");
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "设置组件时，组件不可连接");
+        }
+        Optional<ComponentRelation> optional = clientOptional.get().status();
+        if (!optional.isPresent()) {
+            LOGGER.warning("SERVER:设置组件时，组件不可连接");
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "SERVER:设置组件时，组件不可连接");
+        }
+        StatusEnum status = optional.get().getStatus();
+        //todo 状态获取失败
+        if (status != StatusEnum.NO_INIT) {
+            //todo 已经设置
             return true;
         }
         return componentClient.setConfig(configModel);

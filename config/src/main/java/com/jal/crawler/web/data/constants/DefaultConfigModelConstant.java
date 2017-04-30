@@ -1,5 +1,6 @@
 package com.jal.crawler.web.data.constants;
 
+import com.jal.crawler.web.data.enums.ComponentRelationTypeEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.model.component.DownloadConfigRelation;
 import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
@@ -26,6 +27,7 @@ public class DefaultConfigModelConstant {
         downloadConfigModel.setSleepTime(100);
         downloadConfigModel.setRedisConfigModel(redisConfigModel);
         downloadConfigModel.setMongoConfigModel(mongoConfigModel);
+        downloadConfigModel.setRelationTypeEnum(ComponentRelationTypeEnum.CLUSTER);
         return downloadConfigModel;
     }
 
@@ -44,6 +46,7 @@ public class DefaultConfigModelConstant {
         resolveConfigModel.setThread(2);
         resolveConfigModel.setRedisConfigModel(redisConfigModel);
         resolveConfigModel.setMongoConfigModel(mongoConfigModel);
+        resolveConfigModel.setRelationTypeEnum(ComponentRelationTypeEnum.CLUSTER);
         return resolveConfigModel;
     }
 

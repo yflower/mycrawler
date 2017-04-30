@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * Created by jal on 2017/4/9.
  * 全局的controller异常捕获
- * 反倒是反倒是发的
+ *
  */
 @RestControllerAdvice
 public class ControllerExceptionHandle {

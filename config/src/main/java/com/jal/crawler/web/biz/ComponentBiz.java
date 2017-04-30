@@ -130,6 +130,7 @@ public class ComponentBiz {
     }
 
 
+
     private void internalComponent(ComponentRelation componentRelation) {
         boolean result;
         if (componentRelation.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {

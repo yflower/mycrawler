@@ -38,7 +38,6 @@ public class DownloadApplication {
         ComponentRelation self = new ComponentRelation();
 
         self.setHost(host);
-        self.setLeader(self);
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
@@ -46,7 +45,7 @@ public class DownloadApplication {
 
         DownLoadContext loadContext = context.getBean(DownLoadContext.class);
 
-        loadContext.componentStart(self, self);
+        loadContext.componentStart(self, type==0?self:null);
 
 
         server.start();

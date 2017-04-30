@@ -43,7 +43,7 @@ public class ComponentSelectServiceImpl implements IComponentSelectService {
 
 
     private boolean ableStatus(StatusEnum statusEnum) {
-        return statusEnum == StatusEnum.INIT && statusEnum == StatusEnum.STARTED;
+        return statusEnum == StatusEnum.INIT || statusEnum == StatusEnum.STARTED;
     }
 
 

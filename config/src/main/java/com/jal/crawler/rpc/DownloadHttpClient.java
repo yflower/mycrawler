@@ -39,10 +39,10 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
 
         String url = "http://" + this.componentRelation.getHost() + ":8080/download/init";
         Map<String, Object> body = new HashMap();
-        body.put("host", componentRelation.getHost());
-        body.put("port", componentRelation.getPort());
+        body.put("host", config.getHost());
+        body.put("port", config.getPort());
         body.put("thread", config.getThread());
-        body.put("relationType", ComponentRelationTypeEnum.LEADER.getCode());
+        body.put("relationType", config.getRelationTypeEnum().getCode());
         body.put("sleepTime", config.getSleepTime());
         body.put("proxy", config.isProxy());
         body.put("proxyAddress", config.getProxyAddress());

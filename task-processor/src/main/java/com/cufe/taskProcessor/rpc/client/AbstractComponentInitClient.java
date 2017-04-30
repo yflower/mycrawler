@@ -1,6 +1,7 @@
 package com.cufe.taskProcessor.rpc.client;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
+import com.cufe.taskProcessor.task.StatusEnum;
 
 /**
  * Created by jianganlan on 2017/4/13.
@@ -9,7 +10,11 @@ public abstract class AbstractComponentInitClient<RPC_S, RPC_Q> {
     protected ComponentRelation componentRelation;
 
     public <P> boolean init(P params) {
-        return rpcResToLocalRes(rpcSend(localReqToRpcReq(params)));
+        boolean result = rpcResToLocalRes(rpcSend(localReqToRpcReq(params)));
+        if (result) {
+            componentRelation.setStatus(StatusEnum.INIT);
+        }
+        return result;
 
     }
 
