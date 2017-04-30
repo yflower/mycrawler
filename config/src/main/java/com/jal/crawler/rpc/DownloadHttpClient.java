@@ -31,7 +31,7 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
         ResponseEntity<String> entity = restTemplate.postForEntity(url, body, String.class);
 
 
-        return OPStatus.SUCCEED;
+        return entity.getStatusCode()==HttpStatus.OK?OPStatus.SUCCEED:OPStatus.FAILD;
     }
 
     @Override

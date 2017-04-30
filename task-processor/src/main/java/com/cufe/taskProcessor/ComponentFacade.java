@@ -35,7 +35,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
     public List<ComponentRelation> componentList() {
 
         if (componentContext.getStatus() == StatusEnum.NO_INIT) {
-            LOGGER.warning("组件还没有初始化，无法获取列表 ");
+            LOGGER.warning("CLIENT:组件还没有初始化，无法获取列表 ");
             return null;
         }
 
@@ -50,7 +50,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
             if (optional.isPresent()) {
                 return componentListForward(optional.get());
             }
-            LOGGER.log(Level.SEVERE, "无法获取到leader，组件列表获取失败");
+            LOGGER.log(Level.SEVERE, "CLIENT:无法获取到leader，组件列表获取失败");
 
             return new ArrayList<>();
 
@@ -82,7 +82,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
             if (!componentRelationHolder.contains(componentRelation)) {
                 leader = componentContext.getComponentRelation();
             } else {
-                LOGGER.warning("组件已经被添加");
+                LOGGER.warning("CLIENT:组件已经被添加");
                 return;
             }
 
@@ -93,7 +93,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
                 leader = optional.get().getLeader();
             }
 
-            LOGGER.log(Level.SEVERE, "无法获取到leader，组件设置失败");
+            LOGGER.log(Level.SEVERE, "CLIENT:无法获取到leader，组件设置失败");
 
         }
 
@@ -112,10 +112,10 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
             //组件初始化
             componentClient.get().initClient.init(configParam);
 
-            LOGGER.info("添加组件成功 " + componentRelation);
+            LOGGER.info("CLIENT:添加组件成功 " + componentRelation);
 
         } else {
-            LOGGER.warning("添加组件失败 " + componentRelation);
+            LOGGER.warning("CLIENT:添加组件失败 " + componentRelation);
         }
 
 
@@ -130,7 +130,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         List<ComponentRelation> relations = componentList();
 
         if (relations == null) {
-            throw new IllegalStateException("组件还没有初始化");
+            throw new IllegalStateException("CLIENT:组件还没有初始化");
         }
         //leader为每个组件分配组件
         taskLoadEnum.get(relations,self).forEach(t -> {

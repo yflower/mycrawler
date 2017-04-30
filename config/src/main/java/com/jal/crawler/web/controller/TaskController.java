@@ -35,7 +35,6 @@ public class TaskController {
 
     }
 
-
     @PostMapping("/pause")
     public ApiResponse pause(@RequestBody String taskTag) {
         return ApiResponse.successBuild(taskBiz.taskPause(taskTag));

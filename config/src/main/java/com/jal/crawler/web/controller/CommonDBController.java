@@ -50,11 +50,7 @@ public class CommonDBController {
         if (bindingResult.hasErrors()) {
             return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
         }
-        try {
-            dbBiz.dbConfig(redisConfigParam);
-        } catch (Exception ex) {
-            return ApiResponse.failBuild(ex);
-        }
+        dbBiz.dbConfig(redisConfigParam);
         return ApiResponse.successBuild("");
     }
 
@@ -71,11 +67,7 @@ public class CommonDBController {
         if (bindingResult.hasErrors()) {
             return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
         }
-        try {
-            dbBiz.dbConfig(mongoConfigParam);
-        } catch (Exception ex) {
-            return ApiResponse.failBuild(ex);
-        }
+        dbBiz.dbConfig(mongoConfigParam);
         return ApiResponse.successBuild("");
     }
 
@@ -84,11 +76,7 @@ public class CommonDBController {
         if (bindingResult.hasErrors()) {
             return ApiResponse.failBuild(ExceptionEnum.PARAM_ERROR);
         }
-        try {
-            return ApiResponse.successBuild(dbBiz.dbConfig(param));
-        } catch (Exception ex) {
-            return ApiResponse.failBuild(ex);
-        }
+        return ApiResponse.successBuild(dbBiz.dbConfig(param));
     }
 
 

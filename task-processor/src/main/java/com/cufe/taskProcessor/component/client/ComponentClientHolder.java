@@ -28,7 +28,7 @@ public class ComponentClientHolder {
     }
 
     public void add(ComponentRelation relation, ComponentClient client) {
-        if (client.tryConnect()) {
+        if (client.tryConnect().isPresent()) {
             clients.put(relation.address(), client);
         }
     }

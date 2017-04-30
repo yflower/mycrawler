@@ -21,16 +21,16 @@ public abstract class AbstractComponentTaskClient<RPC_S, RPC_Q> {
         if (taskType == TaskTypeEnum.ADD) {
             AbstractTask task = generateTask(taskTag, params);
             result = rpcResToLocalRes(rpcSend(localReqToRpcReq(task, taskTag, taskType)));
-            LOGGER.log(Level.INFO, "发送一个添加任务 " + task.getTaskTag());
+            LOGGER.log(Level.INFO, "CLIENT:发送一个添加任务 " + task.getTaskTag());
         } else if (taskType == TaskTypeEnum.STOP) {
             result = rpcResToLocalRes(rpcSend(localReqToRpcReq(null, taskTag, taskType)));
-            LOGGER.log(Level.INFO, "停止一个任务 " + taskTag);
+            LOGGER.log(Level.INFO, "CLIENT:停止一个任务 " + taskTag);
         } else if (taskType == TaskTypeEnum.FINISH) {
             result = rpcResToLocalRes(rpcSend(localReqToRpcReq(null, taskTag, taskType)));
-            LOGGER.log(Level.INFO, "完成一个任务 " + taskTag);
+            LOGGER.log(Level.INFO, "CLIENT:完成一个任务 " + taskTag);
         } else if (taskType == TaskTypeEnum.DESTROY) {
             result = rpcResToLocalRes(rpcSend(localReqToRpcReq(null, taskTag, taskType)));
-            LOGGER.log(Level.INFO, "销毁一个任务 " + taskTag);
+            LOGGER.log(Level.INFO, "CLIENT:销毁一个任务 " + taskTag);
         }
 
         return result;

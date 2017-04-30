@@ -3,6 +3,7 @@ package com.jal.crawler.component;
 import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.component.client.ComponentClient;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.proto.download.RpcDownlandConfigGrpc;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
@@ -70,9 +71,12 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
         componentClient.leaderClient = leaderClient;
         componentClient.heartClient = heartClient;
 
-        boolean tryConnect = componentClient.tryConnect();
+        Optional<StatusEnum> enumOptional = componentClient.tryConnect();
+        boolean tryConnect = enumOptional.isPresent();
 
-        componentRelation.setStatus(componentClient.heartClient.heart());
+        if (tryConnect) {
+            componentRelation.setStatus(enumOptional.get());
+        }
 
 
         return tryConnect ? Optional.of(componentClient) : Optional.empty();

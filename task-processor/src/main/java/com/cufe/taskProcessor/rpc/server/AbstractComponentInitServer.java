@@ -17,7 +17,7 @@ public abstract class AbstractComponentInitServer<C extends ComponentContext, RP
 
     public <Config> RPC_Q init(RPC_S rpcRes) {
         try {
-            LOGGER.log(Level.INFO, "组件开始初始化,");
+            LOGGER.log(Level.INFO, "SERVER:组件开始初始化,");
             Config config = rpcResToLocal(rpcRes);
             extraInit(config);
             componentContext.init();
@@ -31,10 +31,10 @@ public abstract class AbstractComponentInitServer<C extends ComponentContext, RP
             componentContext.getComponentRelation().setStatus(StatusEnum.INIT);
             //通知leader自己已经添加到leader下
             componentContext.getComponentClientFactory().create(leader).get().leaderClient.notify(self);
-            LOGGER.log(Level.INFO, "组件初始化成功");
+            LOGGER.log(Level.INFO, "SERVER:组件初始化成功");
             return localToRPC_Q(true);
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "组件初始化失败", e);
+            LOGGER.log(Level.SEVERE, "SERVER:组件初始化失败", e);
             return localToRPC_Q(false);
         }
     }

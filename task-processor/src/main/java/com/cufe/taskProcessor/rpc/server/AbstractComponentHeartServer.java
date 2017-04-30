@@ -16,7 +16,7 @@ public abstract class AbstractComponentHeartServer<RPC_S, RPC_Q> {
     public RPC_Q heart(RPC_S rpcRes) {
         StatusEnum fromStatus = rpcResToLocal(rpcRes);
         StatusEnum toStatus = componentContext.getStatus();
-        LOGGER.info("heart from:" + fromStatus + "--> to " + toStatus);
+        LOGGER.info("SERVER:心跳:" + fromStatus + "--> to " + toStatus);
         return localToRPC_Q(toStatus);
     }
 

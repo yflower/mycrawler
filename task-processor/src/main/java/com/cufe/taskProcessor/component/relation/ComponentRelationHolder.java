@@ -7,7 +7,6 @@ import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.task.StatusEnum;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -44,23 +43,23 @@ public class ComponentRelationHolder {
             if (optional.isPresent()) {
                 componentClient = optional.get();
             } else {
-                LOGGER.warning("必须添加组件的client，才能加入相关的组件");
+                LOGGER.warning("SERVER:必须添加组件的client，才能加入相关的组件");
                 return false;
             }
         } else {
             componentClient = clientOptional.get();
         }
 
-        boolean isConnect = componentClient.tryConnect();
-        if (!isConnect) {
-            LOGGER.warning("组件尝试连接失败，无法加入组件列表中，" + componentRelation);
+        Optional<StatusEnum> enumOptional = componentClient.tryConnect();
+        if (!enumOptional.isPresent()) {
+            LOGGER.warning("SERVER:组件尝试连接失败，无法加入组件列表中，" + componentRelation);
             return false;
         }
 
         boolean result = clusters.add(componentRelation);
         connected.add(componentRelation);
 
-        LOGGER.info("成功将组件添加到组件列表 " + componentRelation);
+        LOGGER.info("SERVER:成功将组件添加到组件列表 " + componentRelation);
 
         //开启心跳检测
         componentHeartCheck();
@@ -87,13 +86,16 @@ public class ComponentRelationHolder {
             heartCheckStart = true;
             new Thread(() -> {
                 for (; ; ) {
-                    List<ComponentRelation> tmpList=new ArrayList<>(connected);
-                    tmpList.stream().filter(t->t.getRelationTypeEnum()==ComponentRelationTypeEnum.CLUSTER).forEach(t -> {
+                    List<ComponentRelation> tmpList = new ArrayList<>(connected);
+                    tmpList.stream().filter(t -> t.getRelationTypeEnum() == ComponentRelationTypeEnum.CLUSTER).forEach(t -> {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();
-                            boolean tryConnect = componentClient.tryConnect();
+                            StatusEnum newStatus;
+                            Optional<StatusEnum> enumOptional = componentClient.tryConnect();
+                            boolean tryConnect = enumOptional.isPresent();
                             LOGGER.info("心跳检测 result=" + tryConnect);
+
                             if (!tryConnect) {
                                 LOGGER.warning("组件心跳检测失败，尝试重新检测 " + t);
 
@@ -103,7 +105,7 @@ public class ComponentRelationHolder {
                                     if (retry) {
                                         break;
                                     }
-                                    retry = componentClient.tryConnect();
+                                    retry = componentClient.tryConnect().isPresent();
                                 }
 
                                 if (!retry) {
@@ -127,7 +129,7 @@ public class ComponentRelationHolder {
 
                             }
 
-                            StatusEnum newStatus = componentClient.heartClient.heart();
+                            newStatus = enumOptional.get();
                             if (newStatus != t.getStatus()) {
                                 t.setStatus(newStatus);
                             }
@@ -149,5 +151,7 @@ public class ComponentRelationHolder {
             }).start();
         }
     }
+
+
 
 }

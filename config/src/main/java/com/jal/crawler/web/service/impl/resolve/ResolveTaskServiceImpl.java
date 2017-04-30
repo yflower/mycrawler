@@ -5,17 +5,15 @@ import com.jal.crawler.rpc.AbstractHttpClient;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
-import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import com.jal.crawler.web.data.model.task.TaskOperationModel;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
-import com.jal.crawler.web.service.ITaskLoadService;
+import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -29,51 +27,67 @@ public class ResolveTaskServiceImpl implements ITaskService {
     private ConfigContext configContext;
 
     @Resource
-    private ITaskLoadService resolveTaskLoadService;
+    private IComponentSelectService componentSelectService;
 
 
     @Override
     public TaskOperationVO push(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = resolveTaskLoadService.balanceComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if (relationOptional.isPresent()) {
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
         return null;
     }
 
     @Override
     public TaskOperationVO pause(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = configContext.resolveComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
+        if (relationOptional.isPresent()) {
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
         return null;
     }
 
     @Override
     public TaskOperationVO stop(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = configContext.resolveComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if (relationOptional.isPresent()) {
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
         return null;
     }
 
     @Override
     public TaskOperationVO destroy(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = configContext.resolveComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if (relationOptional.isPresent()) {
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
         return null;
     }
 
 
-    private void componentOp(List<ComponentRelation> componentRelations, TaskOperationModel taskOperationModel) {
-        componentRelations.forEach(componentModel -> {
-            Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentModel);
-            AbstractHttpClient abstractComponentClient = clientOptional
-                    .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
-            resolve(abstractComponentClient, taskOperationModel);
-        });
+    private void componentOp(ComponentRelation componentRelations, TaskOperationModel taskOperationModel) {
+        Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentRelations);
+        AbstractHttpClient abstractComponentClient = clientOptional
+                .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
+        resolve(abstractComponentClient, taskOperationModel);
     }
 
     private void resolve(AbstractHttpClient abstractComponentClient, TaskOperationModel taskOperationModel) {
-        ResolveOperationModel model = (ResolveOperationModel) taskOperationModel;
         abstractComponentClient.pushTask(taskOperationModel);
-
 
     }
 

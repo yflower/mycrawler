@@ -5,15 +5,13 @@ import com.jal.crawler.rpc.AbstractHttpClient;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
-import com.jal.crawler.web.data.model.task.DownloadOperationModel;
 import com.jal.crawler.web.data.model.task.TaskOperationModel;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
-import com.jal.crawler.web.service.ITaskLoadService;
+import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.ITaskService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -25,50 +23,67 @@ public class DownloadTaskServiceImpl implements ITaskService {
     private ConfigContext configContext;
 
     @Resource
-    private ITaskLoadService downloadTaskLoadService;
+    private IComponentSelectService componentSelectService;
 
 
     @Override
     public TaskOperationVO push(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = downloadTaskLoadService.balanceComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if(relationOptional.isPresent()){
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        }else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND,"没有找到可以执行任务的组件");
+        }
         return null;
     }
 
     @Override
     public TaskOperationVO pause(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = configContext.downloadComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if(relationOptional.isPresent()){
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        }else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND,"没有找到可以执行任务的组件");
+        }
         return null;
     }
 
     @Override
     public TaskOperationVO stop(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = configContext.downloadComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if(relationOptional.isPresent()){
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        }else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND,"没有找到可以执行任务的组件");
+        }
         return null;
     }
 
     @Override
     public TaskOperationVO destroy(TaskOperationModel taskOperationModel) {
-        List<ComponentRelation> componentRelations = configContext.downloadComponent();
-        componentOp(componentRelations, taskOperationModel);
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if(relationOptional.isPresent()){
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        }else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND,"没有找到可以执行任务的组件");
+        }
         return null;
     }
 
 
-    private void componentOp(List<ComponentRelation> componentRelations, TaskOperationModel taskOperationModel) {
-        componentRelations.forEach(componentModel -> {
-            Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentModel);
-            AbstractHttpClient abstractComponentClient = clientOptional
-                    .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
-            download(abstractComponentClient, taskOperationModel);
-        });
+    private void componentOp(ComponentRelation componentRelation, TaskOperationModel taskOperationModel) {
+        Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentRelation);
+        AbstractHttpClient abstractComponentClient = clientOptional
+                .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
+        download(abstractComponentClient, taskOperationModel);
+
     }
 
     private void download(AbstractHttpClient abstractComponentClient, TaskOperationModel taskOperationModel) {
-        DownloadOperationModel model = (DownloadOperationModel) taskOperationModel;
-
         abstractComponentClient.pushTask(taskOperationModel);
     }
 

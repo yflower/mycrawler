@@ -80,11 +80,11 @@ public class ComponentBiz {
             componentRelation.setComponentType(type.get().getCode());
             component(componentRelation, () -> {
                 if (componentRelation.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {
-                    LOGGER.info("添加下载组件 {}", componentRelation);
+                    LOGGER.info("添加 download 组件 {}", componentRelation);
                     return DefaultConfigModelConstant.defaultDownloadConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 } else if (componentRelation.getComponentType() == ComponentEnum.RESOLVE.getCode()) {
-                    LOGGER.info("添加解析组件 {}", componentRelation);
+                    LOGGER.info("添加 resolve 组件 {}", componentRelation);
                     return DefaultConfigModelConstant.defaultResolveConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 }

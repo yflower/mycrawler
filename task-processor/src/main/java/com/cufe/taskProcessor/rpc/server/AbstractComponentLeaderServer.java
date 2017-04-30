@@ -22,7 +22,7 @@ public abstract class AbstractComponentLeaderServer< RPC_S, RPC_Q> {
 
         relationHolder.addRelation(relation);
 
-        LOGGER.info("leader列表添加组件" + relation);
+        LOGGER.info("SERVER:leader列表添加组件" + relation);
 
         return localToRPC_Q(componentContext.componentStatus(componentType()));
     }

@@ -1,10 +1,9 @@
 package com.cufe.taskProcessor.component.client;
 
-import com.cufe.taskProcessor.rpc.client.AbstractComponentInitClient;
-import com.cufe.taskProcessor.rpc.client.AbstractComponentLeaderClient;
-import com.cufe.taskProcessor.rpc.client.AbstractComponentStatusClient;
-import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskClient;
-import com.cufe.taskProcessor.rpc.client.AbstractComponentHeartClient;
+import com.cufe.taskProcessor.rpc.client.*;
+import com.cufe.taskProcessor.task.StatusEnum;
+
+import java.util.Optional;
 
 /**
  * Created by jianganlan on 2017/4/13.
@@ -21,12 +20,12 @@ public class ComponentClient {
     public AbstractComponentHeartClient heartClient;
 
 
-    public boolean tryConnect() {
+    public Optional<StatusEnum> tryConnect() {
         try {
-            heartClient.heart();
-            return true;
+            StatusEnum statusEnum = heartClient.heart();
+            return Optional.of(statusEnum);
         } catch (Exception e) {
-            return false;
+            return Optional.empty();
         }
     }
 

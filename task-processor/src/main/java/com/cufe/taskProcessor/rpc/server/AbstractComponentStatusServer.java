@@ -22,7 +22,7 @@ public abstract class AbstractComponentStatusServer<RPC_S, RPC_Q> {
 
         ComponentStatus result = componentContext.componentStatus(componentType);
 
-        LOGGER.log(Level.INFO, "获取组件状态");
+        LOGGER.log(Level.INFO, "SERVER:获取组件状态成功");
 
         return localToRPC_Q(result);
 
