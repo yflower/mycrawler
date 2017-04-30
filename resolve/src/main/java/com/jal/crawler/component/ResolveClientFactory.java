@@ -3,6 +3,7 @@ package com.jal.crawler.component;
 import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.component.client.ComponentClient;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.context.ResolveContext;
 import com.jal.crawler.proto.resolve.RpcResolveConfigGrpc;
 import com.jal.crawler.proto.resolve.RpcResolveTaskGrpc;
@@ -69,8 +70,14 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
         componentClient.taskClient = taskClient;
         componentClient.heartClient = heartClient;
 
-        boolean tryConnect = componentClient.tryConnect();
+        Optional<StatusEnum> enumOptional = componentClient.tryConnect();
+        boolean tryConnect = enumOptional.isPresent();
 
-        return tryConnect?Optional.of(componentClient):Optional.empty();
+        if (tryConnect) {
+            componentRelation.setStatus(enumOptional.get());
+        }
+
+
+        return tryConnect ? Optional.of(componentClient) : Optional.empty();
     }
 }
