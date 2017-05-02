@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.data";
+import "common_task.proto";
+
+package rpc;
+
+service RpcDataTask {
+    rpc dataTask (DataTask) returns (DataTaskResponse);
+}
+
+message DataTask {
+    TaskType task_type = 1;
+    string task_tag = 2;
+    bool test = 4;
+    DataType data_type=3;
+
+
+}
+enum DataType{
+    JSON_STRING=0;
+    TXT_STRING=1;
+    EXCEL=2;
+}
+
+message DataTaskResponse {
+    OPStatus op_status = 1;
+    string task_tag = 2;
+}

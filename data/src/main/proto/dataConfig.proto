@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.data";
+
+import "common_component.proto";
+import "common_config.proto";
+
+
+package grpc;
+
+service RpcDataConfig {
+    rpc dataConfig (DataConfig) returns (ConfigStatus);
+    rpc dataConfigShow (ComponentStatus) returns (DataConfig);
+}
+
+
+message DataConfig {
+
+    int32 thread = 1;
+    RedisConfig redis_config = 4;
+    MongoConfig mongo_config=2;
+
+    string self_host = 7;
+    int32 self_port = 8;
+    Status self_status = 9;
+    Status leader_status = 10;
+    string leader_host = 11;
+    int32 leader_port = 12;
+
+    int32 relation_type = 15;
+}
+
