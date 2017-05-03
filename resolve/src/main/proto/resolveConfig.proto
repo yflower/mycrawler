@@ -3,9 +3,8 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.jal.crawler.proto.resolve";
 
-import "configCommon.proto";
-import "configComponent.proto";
-import "component.proto";
+import "common_config.proto";
+import "common_component.proto";
 
 
 
@@ -13,7 +12,7 @@ package grpc;
 
 service RpcResolveConfig {
     rpc resolveConfig (ResolveConfig) returns (ConfigStatus);
-    rpc resolveConfigShow (ConfigComponentStatus) returns (ResolveConfig);
+    rpc resolveConfigShow (ComponentStatus) returns (ResolveConfig);
 }
 
 service RpcResolveConfigShow {
@@ -40,12 +39,5 @@ message ResolveConfig {
     int32 relation_type=15;
 
 
-    message MongoConfig {
-        string host = 1;
-        int32 port = 2;
-        string user = 3;
-        string password = 4;
-        string database = 5;
-    }
 }
 

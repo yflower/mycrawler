@@ -3,6 +3,7 @@ package com.jal.crawler.context;
 import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.context.ComponentContext;
 import com.jal.crawler.component.ResolveClientFactory;
+import com.jal.crawler.enums.ComponentTypeEnum;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PageFetch;
 import com.jal.crawler.page.RedisPageFetch;
@@ -61,6 +62,11 @@ public class ResolveContext extends ComponentContext<Page, Map<String, Object>, 
         } else {
             throw new NullPointerException("redis必须先设置");
         }
+    }
+
+    @Override
+    public int componentType() {
+        return ComponentTypeEnum.RESOLVE.getCode();
     }
 
     @Override

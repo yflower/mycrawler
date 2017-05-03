@@ -3,8 +3,11 @@ package com.jal.crawler;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
 import com.cufe.taskProcessor.task.StatusEnum;
+import com.cufe.taskRpc.RpcUtils;
 import com.jal.crawler.context.DownLoadContext;
-import com.jal.crawler.rpc.*;
+import com.jal.crawler.enums.ComponentTypeEnum;
+import com.jal.crawler.rpc.DownloadInitServer;
+import com.jal.crawler.rpc.DownloadTaskServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
@@ -26,13 +29,14 @@ public class DownloadApplication {
 //        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
-        Server server = ServerBuilder.forPort(port)
+
+        DownLoadContext loadContext = context.getBean(DownLoadContext.class);
+        ServerBuilder<?> serverBuilder = ServerBuilder.forPort(port)
                 .addService(context.getBean(DownloadInitServer.class))
-                .addService(context.getBean(DownloadTaskServer.class))
-                .addService(context.getBean(DownloadStatusServer.class))
-                .addService(context.getBean(DownloadLeaderServer.class))
-                .addService(context.getBean(DownloadHeartServer.class))
-                .build();
+                .addService(context.getBean(DownloadTaskServer.class));
+
+
+        Server server = RpcUtils.registServer(serverBuilder, loadContext).build();
 
 
         ComponentRelation self = new ComponentRelation();
@@ -41,11 +45,10 @@ public class DownloadApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
-        self.setComponentType(0);
+        self.setComponentType(ComponentTypeEnum.DOWNLOAD.getCode());
 
-        DownLoadContext loadContext = context.getBean(DownLoadContext.class);
 
-        loadContext.componentStart(self, type==0?self:null);
+        loadContext.componentStart(self, type == 0 ? self : null);
 
 
         server.start();

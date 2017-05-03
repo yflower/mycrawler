@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
@@ -46,6 +47,8 @@ public abstract class AbstractHttpClient<C, T> {
 
         return Optional.of(componentRelation);
     }
+
+    public abstract Optional<ResponseEntity> result(Map<String,Object> param);
 
 
     public void close() {
@@ -154,6 +157,8 @@ public abstract class AbstractHttpClient<C, T> {
     protected abstract boolean validConfig(C config);
 
 
+
+
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
@@ -171,4 +176,28 @@ public abstract class AbstractHttpClient<C, T> {
         SUCCEED,
         FAILD
     }
+
+    public static class CommonHttpClient extends AbstractHttpClient{
+
+        @Override
+        public Optional<ResponseEntity> result(Map param) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        protected OPStatus internalTask(Object taskOperation) throws InterruptedException, ExecutionException {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        protected boolean internalConfigSet(Object config) {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        protected boolean validConfig(Object config) {
+            throw new UnsupportedOperationException();
+        }
+    }
+
 }

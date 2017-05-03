@@ -5,7 +5,8 @@ package com.jal.crawler.web.data.enums;
  */
 public enum ComponentEnum {
     DOWNLOAD(0),
-    RESOLVE(1);
+    RESOLVE(1),
+    DATA(2);
 
     private int code;
 

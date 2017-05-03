@@ -42,7 +42,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
 
     protected Processor<S, R, T> processor;
 
-    private int thread;
+    protected int thread;
 
     private List<T> tasks;
 
@@ -275,10 +275,12 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
 
     protected abstract void internalInit();
 
+    public abstract int componentType();
 
-    public ComponentStatus componentStatus(int componentType) {
+
+    public ComponentStatus componentStatus() {
         ComponentStatus self = new ComponentStatus();
-        self.setComponentType(componentType);
+        self.setComponentType(this.componentType());
         self.setHost(componentRelation.getHost());
         self.setPort(componentRelation.getPort());
         self.setComponentStatus(getStatus());
@@ -304,7 +306,6 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     public void setThread(int thread) {
         this.thread = thread;
     }
-
 
     public ComponentRelation getComponentRelation() {
         return componentRelation;

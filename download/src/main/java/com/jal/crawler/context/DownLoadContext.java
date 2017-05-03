@@ -8,6 +8,7 @@ import com.jal.crawler.component.DownloadClientFactory;
 import com.jal.crawler.download.AbstractDownLoad;
 import com.jal.crawler.download.OkHttpDownLoad;
 import com.jal.crawler.download.SeleniumDownload;
+import com.jal.crawler.enums.ComponentTypeEnum;
 import com.jal.crawler.page.Page;
 import com.jal.crawler.page.PagePersist;
 import com.jal.crawler.page.RedisPagePersist;
@@ -117,6 +118,11 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
         pagePersist = new RedisPagePersist(redisTemplate);
         staticBuilder = new OkHttpDownLoad.Builder();
         dynamicBuilder = new SeleniumDownload.Builder();
+    }
+
+    @Override
+    public int componentType() {
+        return ComponentTypeEnum.DOWNLOAD.getCode();
     }
 
     @Override

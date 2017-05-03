@@ -2,7 +2,10 @@ package com.jal.crawler.web.biz;
 
 import com.jal.crawler.context.ConfigContext;
 import com.jal.crawler.web.convert.TaskOperationConvert;
+import com.jal.crawler.web.data.enums.ComponentEnum;
+import com.jal.crawler.web.data.enums.DataTypeEnum;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;
+import com.jal.crawler.web.data.model.task.DataOperationModel;
 import com.jal.crawler.web.data.model.task.DownloadOperationModel;
 import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import com.jal.crawler.web.data.model.task.TaskStatusModel;
@@ -12,12 +15,12 @@ import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -36,6 +39,9 @@ public class TaskBiz {
 
     @Resource
     private ITaskService downloadTaskService;
+
+    @Resource
+    private ITaskService dataTaskService;
 
 
     public TaskStatusVO status(String taskTag) {
@@ -63,6 +69,28 @@ public class TaskBiz {
         return taskStatusVO;
     }
 
+
+    public ResponseEntity taskResult(String taskTag, DataTypeEnum dataType, boolean isTest) {
+        DataOperationModel dataOperationModel = new DataOperationModel();
+        dataOperationModel.setTest(isTest);
+        dataOperationModel.setComponentType(ComponentEnum.DATA);
+        dataOperationModel.setTaskTag(taskTag);
+        dataOperationModel.setTaskType(TaskOperationEnum.ADD);
+        dataOperationModel.setDataTypeEnum(dataType);
+
+        //task组件推送任务
+        dataTaskService.push(dataOperationModel);
+        //task组件获取结果
+        Map<String, Object> param = new HashMap();
+        param.put("taskTag", taskTag);
+        param.put("dataType", dataType.getType());
+        Optional<ResponseEntity> entityOptional = dataTaskService.result(param);
+
+        if (entityOptional.isPresent()) {
+            return entityOptional.get();
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     public TaskOperationVO taskPush(TaskPushParam param) {
         taskOpParamCheck(param);

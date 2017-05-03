@@ -4,8 +4,11 @@ package com.jal.crawler;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.component.relation.ComponentRelationTypeEnum;
 import com.cufe.taskProcessor.task.StatusEnum;
+import com.cufe.taskRpc.RpcUtils;
 import com.jal.crawler.context.ResolveContext;
-import com.jal.crawler.rpc.*;
+import com.jal.crawler.enums.ComponentTypeEnum;
+import com.jal.crawler.rpc.ResolveInitServer;
+import com.jal.crawler.rpc.ResolveTaskServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
@@ -24,18 +27,17 @@ public class ResolveApplication {
     public static void main(String[] args) throws IOException {
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);
-        String host=args[2];
+        String host = args[2];
 
         ConfigurableApplicationContext run = SpringApplication.run(ResolveApplication.class, args);
+        ResolveContext loadContext = run.getBean(ResolveContext.class);
 
-        Server server = ServerBuilder
+        ServerBuilder<?> serverBuilder = ServerBuilder
                 .forPort(port)
                 .addService(run.getBean(ResolveInitServer.class))
-                .addService(run.getBean(ResolveTaskServer.class))
-                .addService(run.getBean(ResolveStatusServer.class))
-                .addService(run.getBean(ResolveLeaderServer.class))
-                .addService(run.getBean(ResolveHeartServer.class))
-                .build();
+                .addService(run.getBean(ResolveTaskServer.class));
+
+        Server server = RpcUtils.registServer(serverBuilder, loadContext).build();
 
         ComponentRelation self = new ComponentRelation();
 
@@ -43,11 +45,10 @@ public class ResolveApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
-        self.setComponentType(1);
+        self.setComponentType(ComponentTypeEnum.RESOLVE.getCode());
 
-        ResolveContext loadContext = run.getBean(ResolveContext.class);
 
-        loadContext.componentStart(self, type==0?self:null);
+        loadContext.componentStart(self, type == 0 ? self : null);
 
         server.start();
         try {

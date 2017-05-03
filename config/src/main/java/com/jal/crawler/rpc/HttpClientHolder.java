@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -27,7 +26,9 @@ public class HttpClientHolder {
 
     private static Map<String, ResolveHttpClient> resolves = new HashMap<>();
 
-    private static Map<String, DownloadHttpClient> downs = new ConcurrentHashMap<>();
+    private static Map<String, DownloadHttpClient> downs = new HashMap<>();
+
+    private static Map<String ,DataHttpClient> datas=new HashMap<>();
 
     private static RestTemplate restTemplate = new RestTemplate();
 
@@ -38,23 +39,7 @@ public class HttpClientHolder {
      * @return
      */
     public static Optional<ComponentEnum> tryConnect(ComponentRelation componentRelation) {
-        AbstractHttpClient httpClient = new AbstractHttpClient() {
-
-            @Override
-            protected OPStatus internalTask(Object taskOperation) throws InterruptedException, ExecutionException {
-                return null;
-            }
-
-            @Override
-            protected boolean internalConfigSet(Object config) {
-                return false;
-            }
-
-            @Override
-            protected boolean validConfig(Object config) {
-                return false;
-            }
-        };
+        AbstractHttpClient httpClient = new AbstractHttpClient.CommonHttpClient();
         httpClient.setComponentRelation(componentRelation);
         httpClient.setRestTemplate(restTemplate);
         try {
@@ -101,7 +86,7 @@ public class HttpClientHolder {
                 .collect(Collectors.toList());
     }
 
-    public List<ComponentRelation> downloadModel() {
+       public List<ComponentRelation> downloadModel() {
         Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
             Optional<ComponentRelation> status = t.status();
             if (status.isPresent()) {
@@ -116,6 +101,23 @@ public class HttpClientHolder {
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
+
+    public List<ComponentRelation> dataModel() {
+        Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
+            Optional<ComponentRelation> status = t.status();
+            if (status.isPresent()) {
+                return Optional.of(status.get());
+            }
+            remove(t);
+            return Optional.empty();
+        };
+        return datas.values().stream()
+                .map(function)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+    }
+
 
     private Optional<AbstractHttpClient> cacheClient(ComponentRelation componentRelation) {
         Optional<ComponentEnum> componentEnum = tryConnect(componentRelation);
@@ -157,6 +159,15 @@ public class HttpClientHolder {
         return resolveClient;
     }
 
+    private AbstractHttpClient dataClient(String host, int port) {
+        DataHttpClient dataHttpClient = new DataHttpClient();
+        dataHttpClient.setComponentRelation(new ComponentRelation(host, port));
+        dataHttpClient.setRestTemplate(restTemplate);
+        dataAdd(dataHttpClient);
+        logger.info("data rpc客户端");
+        return dataHttpClient;
+    }
+
     private void resolveAdd(ResolveHttpClient resolveClient) {
         resolves.put(resolveClient.componentRelation.getHost(), resolveClient);
         clients.put(resolveClient.componentRelation.getHost(), resolveClient);
@@ -165,6 +176,11 @@ public class HttpClientHolder {
     private void downAdd(DownloadHttpClient downloadClient) {
         downs.put(downloadClient.componentRelation.getHost(), downloadClient);
         clients.put(downloadClient.componentRelation.getHost(), downloadClient);
+    }
+
+    private void dataAdd(DataHttpClient dataHttpClient) {
+        datas.put(dataHttpClient.componentRelation.getHost(), dataHttpClient);
+        clients.put(dataHttpClient.componentRelation.getHost(), dataHttpClient);
     }
 
     private void remove(String address) {

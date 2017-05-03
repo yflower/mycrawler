@@ -27,6 +27,6 @@ web/app/jspm_packages/
 
 task-processor/.gradle/
 
-
+taskRpc/target/
 
 

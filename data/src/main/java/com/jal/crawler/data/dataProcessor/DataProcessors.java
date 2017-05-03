@@ -8,14 +8,17 @@ import com.jal.crawler.data.DataTypeEnum;
 public class DataProcessors {
     public static DataProcessor of(DataTypeEnum dataTypeEnum) {
         switch (dataTypeEnum) {
-            case EXCEL:
-                return new ExcelDataProcessor();
-            case TXT_STRING:
-                return new TXTDataProcessor();
-            case JSON_STRING:
-                return new JSONDataProcessor();
+            case EXCEL_FILE:
+                return new ExcelFileDataProcessor();
+            case TXT_STRING_FILE:
+                return new TXTFileDataProcessor();
+            case JSON_STRING_FILE:
+                return new JSONFileDataProcessor();
+            case JSON:
             default:
-                return new TXTDataProcessor();
+                return new TXTFileDataProcessor();
+
+
         }
     }
 }

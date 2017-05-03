@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.jal.crawler.proto.resolve";
-import "task.proto";
+import "common_task.proto";
 
 package rpc;
 

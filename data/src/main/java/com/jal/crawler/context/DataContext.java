@@ -3,6 +3,7 @@ package com.jal.crawler.context;
 
 import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.context.ComponentContext;
+import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.component.DataClientFactory;
 import com.jal.crawler.data.Data;
 import com.jal.crawler.data.dataProcessor.DataProcessors;
@@ -37,7 +38,10 @@ public class DataContext extends ComponentContext<List<Map<String, Object>>,Data
 
         processor = (t, data) -> DataProcessors.of(((Task)t).getDataType()).processor(data);
 
-        repository = (t, dataModel) -> finishResult.put(t.getTaskTag(),dataModel);
+        repository = (t, dataModel) -> {
+            finishResult.put(t.getTaskTag(),dataModel);
+            t.setStatus(StatusEnum.FINISHED);
+        };
     }
     @Override
     protected void internalInit() {

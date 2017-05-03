@@ -100,7 +100,7 @@
         </dependency>
         <dependency>
             <groupId>com.cufe</groupId>
-            <artifactId>task-processor</artifactId>
+            <artifactId>taskRpc</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

@@ -2,6 +2,7 @@ package com.jal.crawler.rpc.client;
 
 import com.cufe.taskProcessor.rpc.client.AbstractComponentInitClient;
 import com.jal.crawler.proto.config.ConfigStatus;
+import com.jal.crawler.proto.config.MongoConfig;
 import com.jal.crawler.proto.config.RedisConfig;
 import com.jal.crawler.proto.resolve.ResolveConfig;
 import com.jal.crawler.proto.resolve.RpcResolveConfigGrpc;
@@ -28,7 +29,7 @@ public class ResolveInitClient extends AbstractComponentInitClient<ConfigStatus,
                 .setPersist(ResolveConfig.Persist.MONGO)
                 .setThread(rpcParam.getThread())
                 .setMongoConfig(
-                        ResolveConfig.MongoConfig.newBuilder()
+                        MongoConfig.newBuilder()
                                 .setHost(rpcParam.getMongoConfig().getHost())
                                 .setPort(rpcParam.getMongoConfig().getPort())
                                 .setDatabase(rpcParam.getMongoConfig().getDatabase())

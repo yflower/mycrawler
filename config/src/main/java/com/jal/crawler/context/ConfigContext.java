@@ -38,6 +38,8 @@ public class ConfigContext {
         return rpcClient.downloadModel();
     }
 
+    public List<ComponentRelation> dataComponent(){return rpcClient.dataModel();}
+
     public MongoConfigModel getMongoConfigModel() {
         return mongoConfigModel;
     }

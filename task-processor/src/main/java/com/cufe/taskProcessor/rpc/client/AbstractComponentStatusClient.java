@@ -13,13 +13,11 @@ public abstract class AbstractComponentStatusClient< RPC_S, RPC_Q> {
     protected ComponentRelation componentRelation;
 
     public ComponentStatus status() {
-        ComponentStatus componentStatus = componentContext.componentStatus(componentType());
+        ComponentStatus componentStatus = componentContext.componentStatus();
         ComponentStatus toStatus = rpcResToLocalRes(rpcSend(localReqToRpcReq(componentStatus)));
         return toStatus;
     }
 
-
-    protected abstract int componentType();
 
     protected abstract RPC_Q localReqToRpcReq(ComponentStatus componentStatus);
 

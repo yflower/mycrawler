@@ -7,9 +7,9 @@ import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
-import com.jal.crawler.proto.configComponnet.ConfigComponentStatus;
 import com.jal.crawler.proto.download.DownloadConfig;
 import com.jal.crawler.proto.download.RpcDownlandConfigGrpc;
+import com.jal.crawler.proto.status.ComponentStatus;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,10 +48,11 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
     }
 
     @Override
-    public void downloadConfigShow(ConfigComponentStatus request, StreamObserver<DownloadConfig> responseObserver) {
+    public void downloadConfigShow(ComponentStatus request, StreamObserver<DownloadConfig> responseObserver) {
         responseObserver.onNext(config);
         responseObserver.onCompleted();
     }
+
 
     private class ComponentInitService extends AbstractComponentInitServer<DownLoadContext, DownloadConfig, ConfigStatus> {
         public ComponentInitService(DownLoadContext context) {
@@ -78,6 +79,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
+            self.setComponentType(downLoadContext.componentType());
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
             self.setStatus(StatusEnum.numberOf(config1.selfStatus));
             return self;
@@ -89,6 +91,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
+            leader.setComponentType(downLoadContext.componentType());
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
             return leader;

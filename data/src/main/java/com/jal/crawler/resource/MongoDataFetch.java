@@ -27,7 +27,7 @@ public class MongoDataFetch implements DataFetch {
         if (mongoClient == null || mongoDatabase == null) {
             throw new IllegalStateException("mongo数据库连接信息没有初始化");
         }
-        MongoCollection<Document> collection = mongoDatabase.getCollection(taskTag);
+        MongoCollection<Document> collection = mongoDatabase.getCollection(taskTag+"_vars");
         List<Map<String, Object>> result = new ArrayList<>();
         collection.find().forEach(new Block<Document>() {
             @Override
@@ -36,6 +36,7 @@ public class MongoDataFetch implements DataFetch {
             }
         });
 
+        result.forEach(t->t.remove("_id"));
         return Optional.of(result);
     }
 

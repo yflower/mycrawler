@@ -1,12 +1,14 @@
 package com.jal.crawler.data;
 
+import org.springframework.http.ResponseEntity;
+
 /**
  * Created by jianganlan on 2017/5/2.
  */
 public class Data {
     private DataTypeEnum dataTypeEnum;
 
-    private Object data;
+    private ResponseEntity response;
 
     public DataTypeEnum getDataTypeEnum() {
         return dataTypeEnum;
@@ -16,11 +18,11 @@ public class Data {
         this.dataTypeEnum = dataTypeEnum;
     }
 
-    public Object getData() {
-        return data;
+    public ResponseEntity getResponse() {
+        return response;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public void setResponse(ResponseEntity response) {
+        this.response = response;
     }
 }

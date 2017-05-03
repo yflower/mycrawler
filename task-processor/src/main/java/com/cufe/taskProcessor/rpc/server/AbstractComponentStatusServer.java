@@ -17,10 +17,8 @@ public abstract class AbstractComponentStatusServer<RPC_S, RPC_Q> {
 
 
     public RPC_Q componentStatus(RPC_S rpcRes) {
-        int componentType = componentType();
 
-
-        ComponentStatus result = componentContext.componentStatus(componentType);
+        ComponentStatus result = componentContext.componentStatus();
 
         LOGGER.log(Level.INFO, "SERVER:获取组件状态成功");
 
@@ -29,7 +27,6 @@ public abstract class AbstractComponentStatusServer<RPC_S, RPC_Q> {
     }
 
 
-    protected abstract int componentType();
 
     protected abstract ComponentStatus rpcResToLocal(RPC_S rpcRes);
 

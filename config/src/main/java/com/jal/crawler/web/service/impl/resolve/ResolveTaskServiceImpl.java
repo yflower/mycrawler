@@ -13,10 +13,12 @@ import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -121,6 +123,11 @@ public class ResolveTaskServiceImpl implements ITaskService {
             throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
         }
         return result;
+    }
+
+    @Override
+    public Optional<ResponseEntity> result(Map<String, Object> param) {
+        throw new UnsupportedOperationException();
     }
 
 

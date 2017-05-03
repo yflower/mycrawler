@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -14,6 +15,11 @@ import java.util.concurrent.ExecutionException;
  */
 public class ResolveHttpClient extends AbstractHttpClient<ResolveConfigRelation, ResolveOperationModel> {
 
+
+    @Override
+    public Optional<ResponseEntity> result(Map<String, Object> param) {
+        throw new UnsupportedOperationException();
+    }
 
     @Override
     protected OPStatus internalTask(ResolveOperationModel taskOperation) throws InterruptedException, ExecutionException {

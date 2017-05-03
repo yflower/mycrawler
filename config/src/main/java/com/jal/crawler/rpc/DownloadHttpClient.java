@@ -1,14 +1,13 @@
 package com.jal.crawler.rpc;
 
-import com.jal.crawler.web.data.enums.ComponentRelationTypeEnum;
 import com.jal.crawler.web.data.model.component.DownloadConfigRelation;
 import com.jal.crawler.web.data.model.task.DownloadOperationModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import javax.management.relation.RelationType;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -16,6 +15,11 @@ import java.util.concurrent.ExecutionException;
  */
 public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelation, DownloadOperationModel> {
 
+
+    @Override
+    public Optional<ResponseEntity> result(Map<String, Object> param) {
+        throw new UnsupportedOperationException();
+    }
 
     @Override
     protected OPStatus internalTask(DownloadOperationModel taskOperation) throws InterruptedException, ExecutionException {

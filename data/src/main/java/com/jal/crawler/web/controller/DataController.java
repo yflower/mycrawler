@@ -6,6 +6,7 @@ import com.cufe.taskProcessor.context.ComponentContext;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DataContext;
+import com.jal.crawler.data.Data;
 import com.jal.crawler.web.convert.WebParamToRpcParam;
 import com.jal.crawler.web.param.DataConfigParam;
 import com.jal.crawler.web.param.DataTaskOpParam;
@@ -18,7 +19,10 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jianganlan on 2017/4/19.
@@ -55,9 +59,30 @@ public class DataController extends ComponentFacade<DataConfigRpcParam, DataTask
         if (result.hasErrors()) {
             return "param error";
         }
-        componentTask(WebParamToRpcParam.taskOpConvert(params),TaskLoadEnum.ALL);
+        componentTask(WebParamToRpcParam.taskOpConvert(params), TaskLoadEnum.ALL);
 
-        return ((DataContext)componentContext).getFinishResult().getOrDefault(params.getTaskTag(),null);
+        return "";
+    }
+
+    @GetMapping(value = "/result")
+    public ResponseEntity result(@RequestParam("taskTag") String taskTag, @RequestParam("type") int type) throws IOException {
+
+        DataContext dataContext = (DataContext) componentContext;
+        Map<String, Data> finishResult = dataContext.getFinishResult();
+
+        if (finishResult.containsKey(taskTag) && finishResult.get(taskTag).getDataTypeEnum().getType() == type) {
+            Data data = finishResult.get(taskTag);
+            finishResult.remove(taskTag);
+            return data.getResponse();
+        } else {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return result(taskTag, type);
+        }
+
     }
 
     @GetMapping(value = "/taskStatus")

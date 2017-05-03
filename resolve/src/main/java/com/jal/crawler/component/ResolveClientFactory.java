@@ -4,6 +4,7 @@ import com.cufe.taskProcessor.component.client.AbstractComponentClientFactory;
 import com.cufe.taskProcessor.component.client.ComponentClient;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.task.StatusEnum;
+import com.cufe.taskRpc.RpcUtils;
 import com.jal.crawler.context.ResolveContext;
 import com.jal.crawler.proto.resolve.RpcResolveConfigGrpc;
 import com.jal.crawler.proto.resolve.RpcResolveTaskGrpc;
@@ -28,7 +29,6 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
 
     @Override
     public Optional<ComponentClient> create(ComponentRelation componentRelation) {
-        ComponentClient componentClient = new ComponentClient();
 
         ManagedChannel channel = ManagedChannelBuilder
                 .forAddress(componentRelation.getHost(), componentRelation.getPort())
@@ -45,39 +45,14 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
         RpcComponentHeartServiceGrpc.RpcComponentHeartServiceBlockingStub heartStub = RpcComponentHeartServiceGrpc.newBlockingStub(channel);
 
         ResolveInitClient initClient = new ResolveInitClient();
-        ResolveStatusClient statusClient = new ResolveStatusClient();
-        ResolveLeaderClient leaderClient = new ResolveLeaderClient();
+
         ResolveTaskClient taskClient = new ResolveTaskClient();
-        ResolveHeartClient heartClient = new ResolveHeartClient();
 
         initClient.setStub(configStub);
         initClient.setComponentRelation(componentRelation);
-        statusClient.setStub(statusStub);
-        statusClient.setComponentContext(resolveContext);
-        statusClient.setComponentRelation(componentRelation);
-        leaderClient.setStub(leaderStub);
-        leaderClient.setComponentContext(resolveContext);
-        leaderClient.setComponentRelation(componentRelation);
         taskClient.setStub(taskOpStub);
         taskClient.setComponentRelation(componentRelation);
-        heartClient.setComponentRelation(componentRelation);
-        heartClient.setStub(heartStub);
 
-
-        componentClient.initClient = initClient;
-        componentClient.statusClient = statusClient;
-        componentClient.leaderClient = leaderClient;
-        componentClient.taskClient = taskClient;
-        componentClient.heartClient = heartClient;
-
-        Optional<StatusEnum> enumOptional = componentClient.tryConnect();
-        boolean tryConnect = enumOptional.isPresent();
-
-        if (tryConnect) {
-            componentRelation.setStatus(enumOptional.get());
-        }
-
-
-        return tryConnect ? Optional.of(componentClient) : Optional.empty();
+        return RpcUtils.componentClient(initClient,taskClient,channel,componentRelation,resolveContext);
     }
 }

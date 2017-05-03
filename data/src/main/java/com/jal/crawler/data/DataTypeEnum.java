@@ -4,9 +4,10 @@ package com.jal.crawler.data;
  * Created by jianganlan on 2017/5/2.
  */
 public enum DataTypeEnum {
-    JSON_STRING     (0,"json格式字符串"),
-    TXT_STRING      (1,"将json格式参开的按照空格分开的行字符串"),
-    EXCEL           (2,"将json格式参开")
+    JSON_STRING_FILE            (0,"json格式字符串"),
+    TXT_STRING_FILE             (1,"将json格式参开的按照空格分开的行字符串"),
+    EXCEL_FILE                  (2,"将json格式参开"),
+    JSON                        (3,"JSON数据")
     ;
     private int type;
     private String msg;

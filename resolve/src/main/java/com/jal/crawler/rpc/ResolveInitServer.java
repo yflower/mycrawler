@@ -9,9 +9,9 @@ import com.jal.crawler.persist.MongoPersist;
 import com.jal.crawler.persist.Persist;
 import com.jal.crawler.proto.config.ConfigStatus;
 import com.jal.crawler.proto.config.RedisConfig;
-import com.jal.crawler.proto.configComponnet.ConfigComponentStatus;
 import com.jal.crawler.proto.resolve.ResolveConfig;
 import com.jal.crawler.proto.resolve.RpcResolveConfigGrpc;
+import com.jal.crawler.proto.status.ComponentStatus;
 import com.mongodb.MongoCredential;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
@@ -43,8 +43,9 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
         responseObserver.onCompleted();
     }
 
+
     @Override
-    public void resolveConfigShow(ConfigComponentStatus request, StreamObserver<ResolveConfig> responseObserver) {
+    public void resolveConfigShow(ComponentStatus request, StreamObserver<ResolveConfig> responseObserver) {
         responseObserver.onNext(config);
         responseObserver.onCompleted();
     }
@@ -76,6 +77,7 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
+            self.setComponentType(componentContext.componentType());
             self.setStatus(StatusEnum.numberOf(config1.selfStatus));
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
             return self;
@@ -87,6 +89,7 @@ public class ResolveInitServer extends RpcResolveConfigGrpc.RpcResolveConfigImpl
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
+            leader.setComponentType(componentContext.componentType());
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
             return leader;
