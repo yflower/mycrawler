@@ -1,7 +1,6 @@
 package com.jal.crawler.web.biz;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.rpc.AbstractHttpClient;
 import com.jal.crawler.web.convert.ComponentConvert;
 import com.jal.crawler.web.data.constants.DefaultConfigModelConstant;
 import com.jal.crawler.web.data.enums.ComponentEnum;
@@ -42,6 +41,9 @@ public class ComponentBiz {
 
     @Resource
     private IComponentService resolveService;
+
+    @Resource
+    private IComponentService dataService;
 
     @Resource
     private IComponentStatService componentStatService;
@@ -92,8 +94,12 @@ public class ComponentBiz {
                     LOGGER.info("添加 resolve 组件 {}", componentRelation);
                     return DefaultConfigModelConstant.defaultResolveConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
+                } else if (componentRelation.getComponentType() == ComponentEnum.DATA.getCode()) {
+                    return DefaultConfigModelConstant.defaultDataConfig(componentRelation,
+                            configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 }
-                LOGGER.warn("[警告]添加组件 {}", componentRelation);
+
+                LOGGER.warn("[警告]添加组件,未知的组件类型{}", componentRelation);
                 throw new BizException(ExceptionEnum.UNKNOWN);
             });
         });
@@ -135,13 +141,16 @@ public class ComponentBiz {
     }
 
 
-
     private void internalComponent(ComponentRelation componentRelation) {
         boolean result;
         if (componentRelation.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {
             result = downloadService.component(componentRelation);
-        } else {
+        } else if (componentRelation.getComponentType() == ComponentEnum.RESOLVE.getCode()) {
             result = resolveService.component(componentRelation);
+        } else if (componentRelation.getComponentType() == ComponentEnum.DATA.getCode()) {
+            result = dataService.component(componentRelation);
+        } else {
+            throw new IllegalStateException("无法解析组件类型");
         }
         if (!result) {
             LOGGER.warn("[警告] 没有找到组件的地址 {}", componentRelation);
@@ -156,9 +165,13 @@ public class ComponentBiz {
         if (componentConfigModel.getComponentType() == ComponentEnum.DOWNLOAD.getCode()) {
             result = downloadService.config(componentConfigModel);
             LOGGER.info("下载组件设置成功");
-        } else {
+        } else if (componentConfigModel.getComponentType() == ComponentEnum.RESOLVE.getCode()) {
             result = resolveService.config(componentConfigModel);
             LOGGER.info("解析组件设置成功");
+        } else if (componentConfigModel.getComponentType() == ComponentEnum.DATA.getCode()) {
+            result = dataService.config(componentConfigModel);
+        } else {
+            throw new IllegalStateException("无法解析组件类型");
         }
         if (!result) {
             LOGGER.warn("[警告] 组件设置失败 {}", componentConfigModel);

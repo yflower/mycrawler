@@ -38,7 +38,7 @@ public class DataServiceImpl implements IComponentService {
     @Override
     public boolean config(ComponentConfigRelation componentConfigModel) {
         boolean result = false;
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.dataComponent());
         //通过其他组件来创建
         if (relationOptional.isPresent()) {
             Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(relationOptional.get());

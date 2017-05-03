@@ -16,12 +16,12 @@ import java.util.concurrent.ExecutionException;
 public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataOperationModel> {
     @Override
     public Optional<ResponseEntity> result(Map<String, Object> param) {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/data/result";
+        String url = "http://" + this.componentRelation.getHost() + ":8080/data/result?taskTag={taskTag}&type={type}";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", param.get("taskTag"));
         body.put("type", param.get("type"));
 
-        ResponseEntity<String> entity = restTemplate.postForEntity(url, body, String.class);
+        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class,body);
         if (entity.getStatusCode() == HttpStatus.OK) {
             return Optional.of(
                     ResponseEntity.ok()

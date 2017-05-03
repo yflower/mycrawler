@@ -20,11 +20,11 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     self.tempResolve = {};
     self.taskTag='';
 
-    self.test=test;
-    test={
+    self.testState={
         notWait:true,
         datas:[]
-    }
+    };
+
 
     self.addLink = function () {
         if (!self.urls.includes(self.tempUrl)) {
@@ -93,20 +93,38 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     }
 
     self.test=function(ev){
-        self.test=true;
-        self.pushRequest(ev);
-        taskService.taskResult({
-            taskTag:self.taskTag,
-            dataType:3
-        },null).then(function (result) {
-            console.log(result);
-        })
+
         $mdDialog.show({
                     contentElement: '#task-test-dialog',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose: true
                   });
+        self.test=true;
+        taskService.taskPush(null,
+            {
+                download: {
+                    dynamic: true,
+                    test:self.test,
+                    urls: self.urls,
+                    preProcess: self.findPre(),
+                    postProcess: self.findPost(),
+                },
+                resolve: {
+                    test:self.test,
+                    vars: self.resolveData,
+                    items: []
+                }
+            }
+        ).then(function (result) {
+            self.taskTag=result.data.data.taskTag;
+            taskService.taskResult({
+                taskTag:self.taskTag,
+                dataType:3
+            },null).then(function (result) {
+                console.log(result);
+            })
+        });
 
     }
 

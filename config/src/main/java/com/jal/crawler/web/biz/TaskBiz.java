@@ -83,7 +83,7 @@ public class TaskBiz {
         //task组件获取结果
         Map<String, Object> param = new HashMap();
         param.put("taskTag", taskTag);
-        param.put("dataType", dataType.getType());
+        param.put("type", dataType.getType());
         Optional<ResponseEntity> entityOptional = dataTaskService.result(param);
 
         if (entityOptional.isPresent()) {

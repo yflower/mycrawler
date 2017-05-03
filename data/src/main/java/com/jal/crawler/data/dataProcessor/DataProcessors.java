@@ -15,9 +15,9 @@ public class DataProcessors {
             case JSON_STRING_FILE:
                 return new JSONFileDataProcessor();
             case JSON:
+                return new JSONDataProcessor();
             default:
-                return new TXTFileDataProcessor();
-
+                throw new IllegalStateException("未知的数据处理类型");
 
         }
     }

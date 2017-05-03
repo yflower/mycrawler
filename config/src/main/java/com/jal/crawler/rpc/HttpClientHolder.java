@@ -130,8 +130,11 @@ public class HttpClientHolder {
                 case RESOLVE:
                     client = resolveClient(componentRelation.getHost(), componentRelation.getPort());
                     break;
+                case DATA:
+                    client=dataClient(componentRelation.getHost(),componentRelation.getPort());
+                    break;
                 default:
-                    return Optional.empty();
+                   throw new IllegalStateException("未知的组件类型");
             }
             return Optional.of(client);
         }
@@ -164,7 +167,7 @@ public class HttpClientHolder {
         dataHttpClient.setComponentRelation(new ComponentRelation(host, port));
         dataHttpClient.setRestTemplate(restTemplate);
         dataAdd(dataHttpClient);
-        logger.info("data rpc客户端");
+        logger.info("添加data rpc客户端");
         return dataHttpClient;
     }
 

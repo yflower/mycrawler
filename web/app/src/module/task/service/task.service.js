@@ -4,20 +4,20 @@
 let name = 'taskService';
 
 let service = ['$q', '$http', function ($q, $http) {
-    var taskPush = function (param,data) {
+    var taskPush = function (params,data) {
         return $http({
             method: 'post',
             url: 'http://127.0.0.1:8081/tasks/push',
-            param: param,
+            params: params,
             data:data
         })
     }
 
-    var taskResult=function(param,data){
+    var taskResult=function(params,data){
         return $http({
             method:'get',
             url:'http://127.0.0.1:8081/tasks/result',
-            param:param,
+            params:params,
             data:data
         })
     }
@@ -52,7 +52,8 @@ let service = ['$q', '$http', function ($q, $http) {
     return {
         processorType: processorType,
         resolveOptionType:resolveOptionType,
-        taskPush:taskPush
+        taskPush:taskPush,
+        taskResult:taskResult
     }
 }]
 
