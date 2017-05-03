@@ -37,6 +37,10 @@ public class MongoDataFetch implements DataFetch {
         });
 
         result.forEach(t->t.remove("_id"));
+        if(result.isEmpty()){
+            return Optional.empty();
+
+        }
         return Optional.of(result);
     }
 

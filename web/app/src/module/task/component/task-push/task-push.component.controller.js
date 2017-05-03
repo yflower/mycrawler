@@ -92,7 +92,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
 
     }
 
-    self.test=function(ev){
+    self.taskTest=function(ev){
 
         $mdDialog.show({
                     contentElement: '#task-test-dialog',
