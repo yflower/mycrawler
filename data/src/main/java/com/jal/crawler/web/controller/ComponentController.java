@@ -7,6 +7,7 @@ import com.cufe.taskProcessor.task.AbstractTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DataContext;
+import com.jal.crawler.web.convert.TaskStatusVOConvert;
 import com.jal.crawler.web.param.rpc.DataConfigRpcParam;
 import com.jal.crawler.web.param.rpc.DataTaskOpRpcParam;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,9 +42,9 @@ public class ComponentController extends ComponentFacade<DataConfigRpcParam, Dat
     public Object status(@RequestParam(required = false) String taskTag) {
         List<AbstractTask> abstractTasks = taskStatus();
         if (taskTag != null) {
-            return abstractTasks.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny().orElseGet(() -> null);
+            return TaskStatusVOConvert.convert(abstractTasks.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny().orElseGet(() -> null));
         }
-        return taskStatus();
+        return TaskStatusVOConvert.convert(abstractTasks);
 
     }
 
