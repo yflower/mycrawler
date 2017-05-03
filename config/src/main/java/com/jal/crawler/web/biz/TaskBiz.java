@@ -44,7 +44,7 @@ public class TaskBiz {
     private ITaskService dataTaskService;
 
 
-    public TaskStatusVO status(String taskTag) {
+    public Optional<TaskStatusVO> status(String taskTag) {
         TaskStatusModel resolveTaskStatus = resolveTaskService.status(taskTag);
 
         TaskStatusModel downTaskStatus = downloadTaskService.status(taskTag);
@@ -52,6 +52,9 @@ public class TaskBiz {
 
         TaskStatusVO taskStatusVO = new TaskStatusVO();
 
+        if(resolveTaskStatus==null||downTaskStatus==null){
+            return Optional.empty();
+        }
         taskStatusVO.setStatus(downTaskStatus.getStatus().getCode());
         taskStatusVO.setBeginTime(downTaskStatus.getTaskStatistics().getBeginTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
         taskStatusVO.setEndTime(downTaskStatus.getTaskStatistics().getEndTime() == null ? 0 :
@@ -66,7 +69,20 @@ public class TaskBiz {
                 resolveTaskStatus.getTaskStatistics().getProcessorErrorCycle() +
                 resolveTaskStatus.getTaskStatistics().getPersistErrorCycle()));
 
-        return taskStatusVO;
+        return Optional.of(taskStatusVO);
+    }
+
+    public List<TaskStatusVO> statusList(){
+        List<TaskStatusModel> status = downloadTaskService.status();
+        List<TaskStatusVO> statusVOS=new ArrayList<>();
+        status.parallelStream().forEach(t->{
+            Optional<TaskStatusVO> voOptional = this.status(t.getTaskTag());
+            if(voOptional.isPresent()){
+                statusVOS.add(voOptional.get());
+            }
+        });
+
+        return statusVOS;
     }
 
 

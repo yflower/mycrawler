@@ -21,7 +21,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     self.taskTag='';
 
     self.testState={
-        notWait:true,
+        notWait:false,
         datas:[]
     };
 
@@ -93,7 +93,8 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     }
 
     self.taskTest=function(ev){
-
+        self.testState.dates=[];
+        self.testState.notWait=false;
         $mdDialog.show({
                     contentElement: '#task-test-dialog',
                     parent: angular.element(document.body),
@@ -122,8 +123,11 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
                 taskTag:self.taskTag,
                 dataType:3
             },null).then(function (result) {
-                console.log(result);
+                self.testState.dates=result.data;
+                self.testState.notWait=true;
             })
+
+
         });
 
     }

@@ -28,17 +28,12 @@
                 <md-progress-circular ng-disabled="$ctrl.testState.notWait"></md-progress-circular>
             </div>
             <md-list ng-cloak>
-                <md-list-item class="secondary-button-padding">
+                <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.testState.dates">
                     <div class="md-list-item-text" flex="80">
                         <h3>{</h3>
-                        <div layout="row">
+                        <div layout="row" ng-repeat="(k,v) in item">
                             <span flex="5"></span>
-                            <h4>name:name</h4>
-                        </div>
-
-                        <div layout="row">
-                            <span flex="5"></span>
-                            <h4>value:fdsfd</h4>
+                            <h4>{{k}}:{{v}}</h4>
                         </div>
                         <h3>}</h3>
                     </div>

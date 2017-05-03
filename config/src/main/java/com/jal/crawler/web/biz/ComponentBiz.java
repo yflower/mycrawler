@@ -202,6 +202,7 @@ public class ComponentBiz {
         List<ComponentRelation> result = new ArrayList<>();
         result.addAll(configContext.resolveComponent());
         result.addAll(configContext.downloadComponent());
+        result.addAll(configContext.dataComponent());
         return result;
 
     }

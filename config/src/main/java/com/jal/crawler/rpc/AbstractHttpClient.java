@@ -48,7 +48,7 @@ public abstract class AbstractHttpClient<C, T> {
         return Optional.of(componentRelation);
     }
 
-    public abstract Optional<ResponseEntity> result(Map<String,Object> param);
+    public abstract Optional<ResponseEntity> result(Map<String, Object> param);
 
 
     public void close() {
@@ -61,6 +61,9 @@ public abstract class AbstractHttpClient<C, T> {
         try {
             entity = restTemplate.getForEntity(url, String.class);
         } catch (Exception e) {
+            return Optional.empty();
+        }
+        if (entity.getBody() == null) {
             return Optional.empty();
         }
         TaskStatusModel taskStatusModel = null;
@@ -78,9 +81,9 @@ public abstract class AbstractHttpClient<C, T> {
 
     }
 
-    public Optional<List<TaskStatusVO>> taskStatus() {
+    public Optional<List<TaskStatusModel>> taskStatus() {
         String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus";
-        List<TaskStatusVO> taskStatusVOS = null;
+        List<TaskStatusModel> taskStatusVOS = null;
         ResponseEntity<String> entity;
         try {
             entity = restTemplate.getForEntity(url, String.class);
@@ -89,7 +92,7 @@ public abstract class AbstractHttpClient<C, T> {
         }
         if (entity.getStatusCode() == HttpStatus.OK) {
             try {
-                taskStatusVOS = objectMapper.readValue(entity.getBody(), new TypeReference<List<TaskStatusVO>>() {
+                taskStatusVOS = objectMapper.readValue(entity.getBody(), new TypeReference<List<TaskStatusModel>>() {
                 });
             } catch (IOException e) {
                 e.printStackTrace();
@@ -157,8 +160,6 @@ public abstract class AbstractHttpClient<C, T> {
     protected abstract boolean validConfig(C config);
 
 
-
-
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
@@ -177,7 +178,7 @@ public abstract class AbstractHttpClient<C, T> {
         FAILD
     }
 
-    public static class CommonHttpClient extends AbstractHttpClient{
+    public static class CommonHttpClient extends AbstractHttpClient {
 
         @Override
         public Optional<ResponseEntity> result(Map param) {
