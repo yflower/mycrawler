@@ -99,7 +99,7 @@ public class TaskBiz {
         taskPush(param.getResolve(), taskTag);
         LOGGER.info("任务添加成功");
         return new TaskOperationVO() {{
-            setResult(1);
+            setTaskTag(taskTag);
         }};
     }
 
@@ -114,7 +114,7 @@ public class TaskBiz {
         downloadTaskService.pause(downloadOperationModel);
 
         return new TaskOperationVO() {{
-            setResult(1);
+            setTaskTag(taskTag);
         }};
     }
 
@@ -128,7 +128,7 @@ public class TaskBiz {
         downloadTaskService.stop(downloadOperationModel);
 
         return new TaskOperationVO() {{
-            setResult(1);
+            setTaskTag(taskTag);
         }};
     }
 
@@ -142,7 +142,7 @@ public class TaskBiz {
         downloadTaskService.destroy(downloadOperationModel);
 
         return new TaskOperationVO() {{
-            setResult(1);
+            setTaskTag(taskTag);
         }};
     }
 

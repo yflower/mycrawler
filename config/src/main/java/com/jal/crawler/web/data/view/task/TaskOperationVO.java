@@ -4,13 +4,13 @@ package com.jal.crawler.web.data.view.task;
  * Created by jal on 2017/2/25.
  */
 public class TaskOperationVO {
-    private int result;
+    private String taskTag;
 
-    public int getResult() {
-        return result;
+    public String getTaskTag() {
+        return taskTag;
     }
 
-    public void setResult(int result) {
-        this.result = result;
+    public void setTaskTag(String taskTag) {
+        this.taskTag = taskTag;
     }
 }

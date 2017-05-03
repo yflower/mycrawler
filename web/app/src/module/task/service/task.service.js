@@ -13,6 +13,15 @@ let service = ['$q', '$http', function ($q, $http) {
         })
     }
 
+    var taskResult=function(param,data){
+        return $http({
+            method:'get',
+            url:'http://127.0.0.1:8081/tasks/result',
+            param:param,
+            data:data
+        })
+    }
+
     var processorType = [
         {
             value: 1,

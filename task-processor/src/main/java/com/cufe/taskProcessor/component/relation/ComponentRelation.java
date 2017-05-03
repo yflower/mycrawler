@@ -80,7 +80,6 @@ public class ComponentRelation {
         return "ComponentRelation{" +
                 "componentType=" + componentType +
                 ", relationTypeEnum=" + relationTypeEnum +
-                ", leader=" + leader +
                 ", host='" + host + '\'' +
                 ", port=" + port +
                 ", status=" + status +

@@ -18,6 +18,13 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     self.tempUrl = "";
     self.tempProcessor = {};
     self.tempResolve = {};
+    self.taskTag='';
+
+    self.test=test;
+    test={
+        notWait:true,
+        datas:[]
+    }
 
     self.addLink = function () {
         if (!self.urls.includes(self.tempUrl)) {
@@ -86,6 +93,14 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     }
 
     self.test=function(ev){
+        self.test=true;
+        self.pushRequest(ev);
+        taskService.taskResult({
+            taskTag:self.taskTag,
+            dataType:3
+        },null).then(function (result) {
+            console.log(result);
+        })
         $mdDialog.show({
                     contentElement: '#task-test-dialog',
                     parent: angular.element(document.body),
@@ -112,7 +127,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
                         }
                     }
                 ).then(function (result) {
-                    console.log(result)
+                    self.taskTag=result.data.data.taskTag;
                 });
     }
 

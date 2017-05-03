@@ -3,9 +3,9 @@ package com.jal.crawler.web.data.model.component;
 import java.util.List;
 
 /**
- * Created by jal on 2017/2/19.
+ * Created by jianganlan on 2017/5/3.
  */
-public class DataConfigRelation extends ComponentConfigRelation {
+public class DownloadConfigRelation extends ComponentConfigRelation {
 
     private int sleepTime;
 
