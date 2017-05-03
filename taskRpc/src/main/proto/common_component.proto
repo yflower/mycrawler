@@ -28,12 +28,17 @@ message ComponentStatus {
 
 message TaskStatistics {
     Status status = 1;
-    int32 resourceTotal = 2;
-    int32 processorTotal = 3;
-    int32 persistTotal = 4;
-    int64 startTime = 5;
-    int64 endTime = 6;
-    bool test = 7;
+    int64 resourceFountCycle = 2;
+    int64 resourceNotFoundCycle = 3;
+    int64 processorErrorCycle = 4;
+    int64 processorSuccessCycle = 5;
+    int64 persistSuccessCycle = 6;
+    int64 persistErrorCycle = 7;
+    int64 cyclePerTime = 8;
+    int64 startTime = 9;
+    int64 endTime = 10;
+    bool test = 11;
+    map<int64,Status> historyStatus=12;
 
 
 }

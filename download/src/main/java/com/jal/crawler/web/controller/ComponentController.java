@@ -4,12 +4,9 @@ import com.cufe.taskProcessor.ComponentFacade;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.task.AbstractTask;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DownLoadContext;
-import com.jal.crawler.web.convert.TaskStatusVOConvert;
 import com.jal.crawler.web.param.rpc.DownloadRpcConfigParam;
 import com.jal.crawler.web.param.rpc.DownloadRpcTaskOpParam;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,9 +41,9 @@ public class ComponentController extends ComponentFacade<DownloadRpcConfigParam,
     public Object status(@RequestParam(required = false) String taskTag) {
         List<AbstractTask> abstractTasks = taskStatus();
         if (taskTag != null) {
-            return TaskStatusVOConvert.convert(abstractTasks.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny().orElseGet(() -> null));
+            return abstractTasks.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny().orElseGet(() -> null);
         }
-        return TaskStatusVOConvert.convert(abstractTasks);
+        return abstractTasks;
 
     }
 

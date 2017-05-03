@@ -7,6 +7,7 @@ import com.cufe.taskProcessor.task.StatusEnum;
 import com.jal.crawler.proto.status.*;
 import io.grpc.stub.StreamObserver;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.stream.Collectors;
 
@@ -66,25 +67,36 @@ public class RpcLeaderServer extends RpcComponentLeaderServiceGrpc.RpcComponentL
 
         @Override
         protected ComponentStatus localToRPC_Q(com.cufe.taskProcessor.component.status.ComponentStatus result) {
-            com.cufe.taskProcessor.component.status.ComponentStatus componentStatus = result;
-            ComponentStatus.Builder builder = ComponentStatus.newBuilder();
-            builder.setComponentStatus(Status.forNumber(componentStatus.getComponentStatus().getCode()));
-            builder.setComponentType(ComponentType.forNumber(componentStatus.getComponentType()));
-            if (componentStatus.getComponentStatus() == StatusEnum.STARTED) {
-                builder.setTaskNum(componentStatus.getTasks().size());
-                builder.putAllTasks(componentStatus.getTasks().stream()
-                        .collect(Collectors.toMap(t -> t.getTaskTag(), t -> TaskStatistics.newBuilder()
+            com.jal.crawler.proto.status.ComponentStatus.Builder builder = com.jal.crawler.proto.status.ComponentStatus.newBuilder();
+            builder.setComponentStatus(Status.forNumber(result.getComponentStatus().getCode()));
+            builder.setHost(result.getHost());
+            builder.setPort(result.getPort());
+            builder.setComponentType(ComponentType.forNumber(result.getComponentType()));
+            if (result.getComponentStatus() == StatusEnum.STARTED) {
+                builder.setTaskNum(result.getTasks().size());
+                builder.putAllTasks(result.getTasks().stream()
+                        .collect(Collectors.toMap(t -> t.getTaskTag(), t -> com.jal.crawler.proto.status.TaskStatistics.newBuilder()
                                 .setStatus(Status.forNumber(t.getStatus().getCode()))
                                 .setStartTime(t.getTaskStatistics().getBeginTime()
                                         .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                                 .setEndTime(t.getTaskStatistics().getEndTime() == null ? 0 :
                                         t.getTaskStatistics().getEndTime()
                                                 .atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
-                                .setResourceTotal((int) t.getTaskStatistics().getResourceTotalCycle())
-                                .setProcessorTotal((int) t.getTaskStatistics().getProcessorTotalCycle())
-                                .setPersistTotal((int) t.getTaskStatistics().getPersistTotalCycle())
+                                .setCyclePerTime(t.getTaskStatistics().getCyclePerTime().longValue())
+                                .setResourceFountCycle(t.getTaskStatistics().getResourceFountCycle().longValue())
+                                .setResourceNotFoundCycle(t.getTaskStatistics().getResourceNotFoundCycle().longValue())
+                                .setProcessorErrorCycle(t.getTaskStatistics().getProcessorErrorCycle().longValue())
+                                .setProcessorSuccessCycle(t.getTaskStatistics().getProcessorSuccessCycle().longValue())
+                                .setPersistErrorCycle(t.getTaskStatistics().getPersistErrorCycle().longValue())
+                                .setPersistSuccessCycle(t.getTaskStatistics().getPersistSuccessCycle().longValue())
+                                .putAllHistoryStatus(t.getTaskStatistics().getHistoryStatus()
+                                        .<LocalDateTime, StatusEnum>entrySet().stream()
+                                        .collect(Collectors.toMap(k -> k.getKey().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+                                                , k -> Status.forNumber(k.getValue().getCode()))))
+                                .setTest(t.isTest())
 
                                 .build())));
+
             }
             return builder.build();
         }

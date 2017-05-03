@@ -1,12 +1,15 @@
 package com.cufe.taskRpc.rpc.client;
 
 import com.cufe.taskProcessor.rpc.client.AbstractComponentLeaderClient;
-import com.cufe.taskProcessor.task.AbstractTask;
-import com.cufe.taskProcessor.task.StatusEnum;
+import com.cufe.taskProcessor.task.*;
 import com.jal.crawler.proto.status.*;
+import com.jal.crawler.proto.status.TaskStatistics;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.concurrent.atomic.LongAccumulator;
+import java.util.function.LongBinaryOperator;
 import java.util.stream.Collectors;
 
 /**
@@ -41,22 +44,28 @@ public class RpcLeaderClient extends AbstractComponentLeaderClient<ComponentStat
 
     @Override
     protected com.cufe.taskProcessor.component.status.ComponentStatus rpcResToLocalRes(ComponentStatus rpcRes) {
-        com.cufe.taskProcessor.component.status.ComponentStatus status = new com.cufe.taskProcessor.component.status.ComponentStatus();
-
-        status.setHost(rpcRes.getHost());
-        status.setPort(rpcRes.getPort());
-        status.setComponentStatus(StatusEnum.numberOf(rpcRes.getComponentStatusValue()));
-        status.setComponentType(rpcRes.getComponentTypeValue());
-        status.setTasks(
+        com.cufe.taskProcessor.component.status.ComponentStatus componentStatus = new com.cufe.taskProcessor.component.status.ComponentStatus();
+        componentStatus.setComponentStatus(StatusEnum.valueOf(rpcRes.getComponentStatus().name()));
+        componentStatus.setPort(rpcRes.getPort());
+        componentStatus.setHost(rpcRes.getHost());
+        componentStatus.setTasks(
                 rpcRes.getTasksMap().entrySet()
                         .stream().map(t -> {
-                    //todo 数据没有取完整
+                    LongBinaryOperator function = (l, r) -> l + r;
                     com.cufe.taskProcessor.task.TaskStatistics taskStatistics = new com.cufe.taskProcessor.task.TaskStatistics();
-                    taskStatistics.setResourceTotalCycle(t.getValue().getResourceTotal());
-                    taskStatistics.setProcessorTotalCycle(t.getValue().getProcessorTotal());
-                    taskStatistics.setPersistTotalCycle(t.getValue().getPersistTotal());
+                    taskStatistics.setCyclePerTime(new LongAccumulator(function, t.getValue().getCyclePerTime()));
+                    taskStatistics.setResourceFountCycle(new LongAccumulator(function, t.getValue().getResourceFountCycle()));
+                    taskStatistics.setResourceNotFoundCycle(new LongAccumulator(function, t.getValue().getResourceNotFoundCycle()));
+                    taskStatistics.setProcessorErrorCycle(new LongAccumulator(function, t.getValue().getProcessorErrorCycle()));
+                    taskStatistics.setProcessorSuccessCycle(new LongAccumulator(function, t.getValue().getProcessorSuccessCycle()));
+                    taskStatistics.setPersistErrorCycle(new LongAccumulator(function, t.getValue().getPersistErrorCycle()));
+                    taskStatistics.setPersistSuccessCycle(new LongAccumulator(function, t.getValue().getPersistSuccessCycle()));
                     taskStatistics.setBeginTime(LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getStartTime()), ZoneOffset.systemDefault()));
                     taskStatistics.setEndTime(LocalDateTime.ofInstant(Instant.ofEpochMilli(t.getValue().getEndTime()), ZoneOffset.systemDefault()));
+                    taskStatistics.setHistoryStatus(t.getValue().getHistoryStatusMap().<Long, Status>entrySet().stream()
+                            .collect(Collectors.toMap(
+                                    k -> LocalDateTime.ofInstant(Instant.ofEpochMilli(k.getKey()), ZoneOffset.systemDefault()),
+                                    k -> StatusEnum.numberOf(k.getValue().getNumber()))));
                     AbstractTask task = new AbstractTask() {
                         @Override
                         public void init() {
@@ -65,11 +74,14 @@ public class RpcLeaderClient extends AbstractComponentLeaderClient<ComponentStat
                     };
                     task.setTaskTag(t.getKey());
                     task.setTaskStatistics(taskStatistics);
+                    task.setTest(t.getValue().getTest());
+                    task.setStatus(StatusEnum.numberOf(t.getValue().getStatus().getNumber()));
                     return task;
                 }).collect(Collectors.toList()));
 
+        return componentStatus;
 
-        return status;
+
     }
 
     @Override
