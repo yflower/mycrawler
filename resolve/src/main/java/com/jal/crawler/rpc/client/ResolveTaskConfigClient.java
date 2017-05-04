@@ -4,9 +4,12 @@ import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskConfigClient;
 import com.jal.crawler.proto.resolve.ResolveTask;
 import com.jal.crawler.proto.resolve.RpcResolveTaskGrpc;
 import com.jal.crawler.proto.resolve.TaskTag;
+import com.jal.crawler.task.Task;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by jianganlan on 2017/5/4.
@@ -23,8 +26,22 @@ public class ResolveTaskConfigClient extends AbstractComponentTaskConfigClient<R
     @Override
     protected Map<String, Object> rpcResToLocalRes(ResolveTask rpcRes) {
         Map<String, Object> result = new HashMap();
-        result.put("vars", rpcRes.getVarList());
-        result.put("items", rpcRes.getItemList());
+        List<Task.var> vars = rpcRes.getVarList().stream()
+                .map(t -> new Task.var(t.getName(), t.getQuery(), t.getOption(), t.getOptionValue()))
+                .collect(Collectors.toList());
+        List<Task.item> items = rpcRes.getItemList().stream()
+                .map(k -> {
+                    Task.item item = new Task.item();
+                    item.setItemName(k.getItemName());
+                    item.setItemVar(k.getVarList().stream()
+                            .map(t -> new Task.var(t.getName(), t.getQuery(), t.getOption(), t.getOptionValue()))
+                            .collect(Collectors.toList()));
+                    return item;
+                }).collect(Collectors.toList());
+
+
+        result.put("vars", vars);
+        result.put("items", items);
         return result;
     }
 
