@@ -5,6 +5,7 @@ import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.rpc.client.AbstractComponentInitClient;
 import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskClient;
+import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskConfigClient;
 import com.cufe.taskProcessor.task.StatusEnum;
 import com.cufe.taskRpc.rpc.client.RpcHeartClient;
 import com.cufe.taskRpc.rpc.client.RpcLeaderClient;
@@ -34,6 +35,7 @@ public class RpcUtils {
     }
 
     public static Optional<ComponentClient> componentClient(AbstractComponentInitClient initClient,AbstractComponentTaskClient taskClient,
+            AbstractComponentTaskConfigClient taskConfigClient,
             ManagedChannel channel, ComponentRelation componentRelation, ComponentContext componentContext){
         ComponentClient componentClient = new ComponentClient();
 
@@ -60,6 +62,7 @@ public class RpcUtils {
         componentClient.heartClient = heartClient;
         componentClient.initClient=initClient;
         componentClient.taskClient=taskClient;
+        componentClient.taskConfigClient=taskConfigClient;
 
         Optional<StatusEnum> enumOptional = componentClient.tryConnect();
         boolean tryConnect = enumOptional.isPresent();
