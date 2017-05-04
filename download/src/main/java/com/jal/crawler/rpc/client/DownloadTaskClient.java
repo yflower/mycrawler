@@ -35,34 +35,42 @@ public class DownloadTaskClient extends AbstractComponentTaskClient<DownloadTask
 
     @Override
     protected DownloadTask localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType) {
-        Task downloadTask = (Task) task;
-        return DownloadTask.newBuilder()
-                .setTaskType(TaskType.forNumber(taskType.getCode()))
-                .setTaskTag(taskTag)
-                .setDynamic(downloadTask.isDynamic())
-                .setTest(downloadTask.isTest())
-                .addAllStartUrl(downloadTask.getStartUrls())
-                .addAllPre(
-                        downloadTask.getPres().stream()
-                                .map(t -> DownloadTask.Processor.newBuilder()
-                                        .setOrder(t.getOrder())
-                                        .setType(this.downloadOperationTypeToRPCDownloadProcessType(t.getType()))
-                                        .setQuery(t.getQuery())
-                                        .setValue(t.getValue()==null?"":t.getValue())
-                                        .build()
-                                ).collect(Collectors.toList())
-                )
-                .addAllPost(
-                        downloadTask.getPosts().stream()
-                                .map(t -> DownloadTask.Processor.newBuilder()
-                                        .setOrder(t.getOrder())
-                                        .setType(this.downloadOperationTypeToRPCDownloadProcessType(t.getType()))
-                                        .setQuery(t.getQuery())
-                                        .setValue(t.getValue()==null?"":t.getValue())
-                                        .build()
-                                ).collect(Collectors.toList())
-                )
-                .build();
+        if(taskType==TaskTypeEnum.ADD){
+            Task downloadTask = (Task) task;
+            return DownloadTask.newBuilder()
+                    .setTaskType(TaskType.forNumber(taskType.getCode()))
+                    .setTaskTag(taskTag)
+                    .setDynamic(downloadTask.isDynamic())
+                    .setTest(downloadTask.isTest())
+                    .addAllStartUrl(downloadTask.getStartUrls())
+                    .addAllPre(
+                            downloadTask.getPres().stream()
+                                    .map(t -> DownloadTask.Processor.newBuilder()
+                                            .setOrder(t.getOrder())
+                                            .setType(this.downloadOperationTypeToRPCDownloadProcessType(t.getType()))
+                                            .setQuery(t.getQuery())
+                                            .setValue(t.getValue()==null?"":t.getValue())
+                                            .build()
+                                    ).collect(Collectors.toList())
+                    )
+                    .addAllPost(
+                            downloadTask.getPosts().stream()
+                                    .map(t -> DownloadTask.Processor.newBuilder()
+                                            .setOrder(t.getOrder())
+                                            .setType(this.downloadOperationTypeToRPCDownloadProcessType(t.getType()))
+                                            .setQuery(t.getQuery())
+                                            .setValue(t.getValue()==null?"":t.getValue())
+                                            .build()
+                                    ).collect(Collectors.toList())
+                    )
+                    .build();
+        }else {
+            return DownloadTask.newBuilder()
+                    .setTaskTag(taskTag)
+                    .setTaskType(TaskType.forNumber(taskType.getCode()))
+                    .build();
+        }
+
     }
 
     @Override

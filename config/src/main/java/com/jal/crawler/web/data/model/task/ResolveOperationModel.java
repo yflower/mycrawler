@@ -13,6 +13,7 @@ public class ResolveOperationModel extends TaskOperationModel {
     private List<item> items;
 
     public ResolveOperationModel(String taskTag) {
+        this.setTaskTag(taskTag);
         this.setComponentType(ComponentEnum.RESOLVE);
     }
 

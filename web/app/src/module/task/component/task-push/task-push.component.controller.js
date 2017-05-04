@@ -59,6 +59,10 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
         })
     }
     self.submit  = function(ev) {
+        if(paramCheck()){
+            alert("配置参数不能为空");
+            return;
+        }
        $mdDialog.show({
                 contentElement: '#task-push-dialog',
                 parent: angular.element(document.body),
@@ -83,7 +87,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
               self.urls = [];
               self.processors = [];
               self.resolveData = [];
-              self.tempUrl = "http://www.baidu.com";
+              self.tempUrl = '';
               self.tempProcessor = {};
               self.tempResolve = {};
         }, function() {
@@ -93,13 +97,17 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     }
 
     self.taskTest=function(ev){
+        if(paramCheck()){
+            alert("配置参数不能为空");
+            return;
+        }
         self.testState.dates=[];
         self.testState.notWait=false;
         $mdDialog.show({
                     contentElement: '#task-test-dialog',
                     parent: angular.element(document.body),
                     targetEvent: ev,
-                    clickOutsideToClose: true
+                    clickOutsideToClose: false
                   });
         self.test=true;
         taskService.taskPush(null,
@@ -125,9 +133,13 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
             },null).then(function (result) {
                 self.testState.dates=result.data;
                 self.testState.notWait=true;
+            },function (error) {
+                alert("获取结果出错")
             })
 
 
+        },function (error) {
+            alert("配置测试出错")
         });
 
     }
@@ -150,7 +162,21 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
                     }
                 ).then(function (result) {
                     self.taskTag=result.data.data.taskTag;
+                    $mdDialog.hide();
+                    var alter = $mdDialog.alert()
+                        .title('添加成功')
+                        .textContent('任务添加成功')
+                        .clickOutsideToClose(true)
+                        .targetEvent(ev)
+                        .ok('确认');
+                    $mdDialog.show(alter)
                 });
+
+    }
+
+    function paramCheck(){
+        return self.urls.length==0||vars.length==0;
+
     }
 
 

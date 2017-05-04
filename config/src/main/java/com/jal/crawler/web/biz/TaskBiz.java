@@ -125,7 +125,7 @@ public class TaskBiz {
         resolveOperationModel.setTaskType(TaskOperationEnum.STOP);
         resolveTaskService.pause(resolveOperationModel);
 
-        DownloadOperationModel downloadOperationModel = new DownloadOperationModel();
+        DownloadOperationModel downloadOperationModel = new DownloadOperationModel(taskTag);
         downloadOperationModel.setTaskType(TaskOperationEnum.STOP);
         downloadTaskService.pause(downloadOperationModel);
 
@@ -139,7 +139,7 @@ public class TaskBiz {
         resolveOperationModel.setTaskType(TaskOperationEnum.FINISH);
         resolveTaskService.stop(resolveOperationModel);
 
-        DownloadOperationModel downloadOperationModel = new DownloadOperationModel();
+        DownloadOperationModel downloadOperationModel = new DownloadOperationModel(taskTag);
         downloadOperationModel.setTaskType(TaskOperationEnum.FINISH);
         downloadTaskService.stop(downloadOperationModel);
 
@@ -153,7 +153,7 @@ public class TaskBiz {
         resolveOperationModel.setTaskType(TaskOperationEnum.DESTROY);
         resolveTaskService.destroy(resolveOperationModel);
 
-        DownloadOperationModel downloadOperationModel = new DownloadOperationModel();
+        DownloadOperationModel downloadOperationModel = new DownloadOperationModel(taskTag);
         downloadOperationModel.setTaskType(TaskOperationEnum.DESTROY);
         downloadTaskService.destroy(downloadOperationModel);
 

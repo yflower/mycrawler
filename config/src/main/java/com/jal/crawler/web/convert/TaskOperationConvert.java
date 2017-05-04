@@ -37,7 +37,7 @@ public class TaskOperationConvert {
     }
 
     public static DownloadOperationModel paramToModel(TaskPushParam.download param, String taskTag) {
-        DownloadOperationModel model = new DownloadOperationModel();
+        DownloadOperationModel model = new DownloadOperationModel(taskTag);
         model.setTaskTag(taskTag);
         model.setComponentType(ComponentEnum.DOWNLOAD);
         model.setDynamic(param.isDynamic());

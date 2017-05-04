@@ -13,10 +13,46 @@ let service = ['$q', '$http', function ($q, $http) {
         })
     }
 
+    var taskPause = function (params,data) {
+        return $http({
+            method: 'put',
+            url: 'http://127.0.0.1:8081/tasks/pause',
+            params: params,
+            data:data
+        })
+    }
+    var taskStop = function (params,data) {
+        return $http({
+            method: 'put',
+            url: 'http://127.0.0.1:8081/tasks/stop',
+            params: params,
+            data:data
+        })
+    }
+
+    var taskDestroy = function (params,data) {
+        return $http({
+            method: 'put',
+            url: 'http://127.0.0.1:8081/tasks/destroy',
+            params: params,
+            data:data
+        })
+    }
+
+
     var taskResult=function(params,data){
         return $http({
             method:'get',
             url:'http://127.0.0.1:8081/tasks/result',
+            params:params,
+            data:data
+        })
+    }
+
+    var taskStatus=function (params,data) {
+        return $http({
+            method:'get',
+            url:'http://127.0.0.1:8081/tasks/status',
             params:params,
             data:data
         })
@@ -53,7 +89,11 @@ let service = ['$q', '$http', function ($q, $http) {
         processorType: processorType,
         resolveOptionType:resolveOptionType,
         taskPush:taskPush,
-        taskResult:taskResult
+        taskPause:taskPause,
+        taskStop:taskStop,
+        taskDestroy:taskDestroy,
+        taskResult:taskResult,
+        taskStatus:taskStatus
     }
 }]
 

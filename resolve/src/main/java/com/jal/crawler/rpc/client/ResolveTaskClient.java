@@ -31,43 +31,51 @@ public class ResolveTaskClient extends AbstractComponentTaskClient<ResolveTaskRe
 
     @Override
     protected ResolveTask localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType) {
-        Task resolveTask = (Task) task;
-        return ResolveTask.newBuilder()
-                .setTaskTag(taskTag)
-                .setTest(resolveTask.isTest())
-                .setTaskType(TaskType.forNumber(taskType.getCode()))
-                .addAllVar(
-                        resolveTask.getVars().stream()
-                                .map(t -> ResolveTask.Var.newBuilder()
-                                        .setName(t.getName())
-                                        .setQuery(t.getQuery())
-                                        .setOption(t.getOption())
-                                        .setOptionValue(t.getOptionValue())
-                                        .build()
-                                )
-                                .collect(Collectors.toList())
-                )
-                .addAllItem(
-                        resolveTask.getItems().stream()
-                                .map(t -> ResolveTask.Item.newBuilder()
-                                        .setItemName(t.getItemName())
-                                        .addAllVar(
-                                                t.getItemVar().stream()
-                                                        .map(tx -> ResolveTask.Var.newBuilder()
-                                                                .setName(tx.getName())
-                                                                .setQuery(tx.getQuery())
-                                                                .setOption(tx.getOptionValue())
-                                                                .setOptionValue(tx.getOptionValue())
-                                                                .build()
-                                                        )
-                                                        .collect(Collectors.toList())
-                                        )
-                                        .build()
-                                )
-                                .collect(Collectors.toList())
+        if(taskType==TaskTypeEnum.ADD){
+            Task resolveTask = (Task) task;
+            return ResolveTask.newBuilder()
+                    .setTaskTag(taskTag)
+                    .setTest(resolveTask.isTest())
+                    .setTaskType(TaskType.forNumber(taskType.getCode()))
+                    .addAllVar(
+                            resolveTask.getVars().stream()
+                                    .map(t -> ResolveTask.Var.newBuilder()
+                                            .setName(t.getName())
+                                            .setQuery(t.getQuery())
+                                            .setOption(t.getOption())
+                                            .setOptionValue(t.getOptionValue())
+                                            .build()
+                                    )
+                                    .collect(Collectors.toList())
+                    )
+                    .addAllItem(
+                            resolveTask.getItems().stream()
+                                    .map(t -> ResolveTask.Item.newBuilder()
+                                            .setItemName(t.getItemName())
+                                            .addAllVar(
+                                                    t.getItemVar().stream()
+                                                            .map(tx -> ResolveTask.Var.newBuilder()
+                                                                    .setName(tx.getName())
+                                                                    .setQuery(tx.getQuery())
+                                                                    .setOption(tx.getOptionValue())
+                                                                    .setOptionValue(tx.getOptionValue())
+                                                                    .build()
+                                                            )
+                                                            .collect(Collectors.toList())
+                                            )
+                                            .build()
+                                    )
+                                    .collect(Collectors.toList())
 
-                )
-                .build();
+                    )
+                    .build();
+        }else {
+            return ResolveTask.newBuilder()
+                    .setTaskTag(taskTag)
+                    .setTaskType(TaskType.forNumber(taskType.getCode()))
+                    .build();
+        }
+
     }
 
     @Override

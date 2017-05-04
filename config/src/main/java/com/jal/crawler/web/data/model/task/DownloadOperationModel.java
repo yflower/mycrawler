@@ -1,5 +1,7 @@
 package com.jal.crawler.web.data.model.task;
 
+import com.jal.crawler.web.data.enums.ComponentEnum;
+
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +17,10 @@ public class DownloadOperationModel extends TaskOperationModel {
 
     private Set<String> urls;
 
+    public DownloadOperationModel(String taskTag) {
+        this.setTaskTag(taskTag);
+        this.setComponentType(ComponentEnum.DOWNLOAD);
+    }
 
     public boolean isDynamic() {
         return dynamic;

@@ -29,13 +29,21 @@ public class DataTaskClient extends AbstractComponentTaskClient<DataTaskResponse
 
     @Override
     protected DataTask localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType) {
-        Task dataTask = (Task) task;
-        return DataTask.newBuilder()
-                .setTaskTag(taskTag)
-                .setTest(dataTask.isTest())
-                .setTaskType(TaskType.forNumber(taskType.getCode()))
-                .setDataTypeValue(dataTask.getDataType().getType())
-                .build();
+        if (taskType == TaskTypeEnum.ADD) {
+            Task dataTask = (Task) task;
+            return DataTask.newBuilder()
+                    .setTaskTag(taskTag)
+                    .setTest(dataTask.isTest())
+                    .setTaskType(TaskType.forNumber(taskType.getCode()))
+                    .setDataTypeValue(dataTask.getDataType().getType())
+                    .build();
+        } else {
+            return DataTask.newBuilder()
+                    .setTaskTag(taskTag)
+                    .setTaskType(TaskType.forNumber(taskType.getCode()))
+                    .build();
+        }
+
     }
 
     @Override
