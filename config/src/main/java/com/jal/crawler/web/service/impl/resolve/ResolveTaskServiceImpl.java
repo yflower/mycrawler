@@ -8,7 +8,6 @@ import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.model.task.TaskOperationModel;
 import com.jal.crawler.web.data.model.task.TaskStatusModel;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
-import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
@@ -143,8 +142,20 @@ public class ResolveTaskServiceImpl implements ITaskService {
     }
 
     @Override
-    public Optional<Map<String, Object>> config() {
-        return null;
+    public Optional<Map<String, Object>> config(String taskTag) {
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
+        if (relationOptional.isPresent()) {
+            Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(relationOptional.get());
+            AbstractHttpClient abstractComponentClient = clientOptional
+                    .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
+
+            Optional optional = abstractComponentClient.taskConfig(taskTag);
+
+            return optional;
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
     }
 
 

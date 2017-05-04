@@ -53,7 +53,7 @@ public class DataClientFactory extends AbstractComponentClientFactory {
         taskConfigClient.setStub(taskStub);
         taskConfigClient.setComponentRelation(componentRelation);
 
-        return RpcUtils.componentClient(initClient, taskClient, channel, componentRelation, dataContext);
+        return RpcUtils.componentClient(initClient, taskClient,taskConfigClient, channel, componentRelation, dataContext);
 
     }
 

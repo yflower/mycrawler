@@ -1,5 +1,6 @@
 package com.jal.crawler.rpc;
 
+import com.cufe.taskProcessor.rpc.server.AbstractComponentTaskConfigServer;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentTaskServer;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.context.DownLoadContext;
@@ -7,6 +8,7 @@ import com.jal.crawler.download.DynamicDownload;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.download.DownloadTaskResponse;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
+import com.jal.crawler.proto.download.TaskTag;
 import com.jal.crawler.proto.task.OPStatus;
 import com.jal.crawler.task.Task;
 import io.grpc.stub.StreamObserver;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 
 /**
@@ -38,6 +41,12 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
         responseObserver.onNext(taskService.task(request));
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void downloadTaskConfig(TaskTag request, StreamObserver<DownloadTask> responseObserver) {
+        ComponentTaskConfigService componentTaskService = new ComponentTaskConfigService(downLoadContext);
+        responseObserver.onNext(componentTaskService.taskConfig(request));
+        responseObserver.onCompleted();    }
 
     private void processor(DownloadTask.Processor action, DynamicDownload dynamicDownload) {
         switch (action.getType()) {
@@ -115,5 +124,80 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
         protected DownloadTaskResponse localToRPC_Q(boolean result) {
             return DownloadTaskResponse.newBuilder().setOpStatus(result ? OPStatus.SUCCEED : OPStatus.FAILD).build();
         }
+    }
+
+    private class ComponentTaskConfigService extends AbstractComponentTaskConfigServer<DownLoadContext, TaskTag, DownloadTask> {
+
+        public ComponentTaskConfigService(DownLoadContext downLoadContext) {
+            this.componentContext = downLoadContext;
+        }
+
+        @Override
+        protected <T extends AbstractTask> T internalTaskConfig(String taskTag) {
+            AbstractTask abstractTask = componentContext.componentStatus().getTasks()
+                    .stream().filter(t -> t.getTaskTag().equals(taskTag)).findFirst()
+                    .get();
+            return (T) abstractTask;
+        }
+
+        @Override
+        protected String rpcResToLocal(TaskTag rpcRes) {
+            return rpcRes.getTaskTag();
+        }
+
+        @Override
+        protected <T extends AbstractTask> DownloadTask localToRPC_Q(T config) {
+            Task task = (Task) config;
+            if(task.getPres()==null){
+                task.setPres(new ArrayList<>());
+            }
+            if(task.getPosts()==null){
+                task.setPosts(new ArrayList<>());
+            }
+            return DownloadTask.newBuilder()
+                    .setTaskTag(task.getTaskTag())
+                    .setDynamic(task.isDynamic())
+                    .setTest(task.isTest())
+                    .addAllStartUrl(task.getStartUrls())
+                    .addAllPre(
+                            task.getPres().stream()
+                                    .map(t -> DownloadTask.Processor.newBuilder()
+                                            .setOrder(t.getOrder())
+                                            .setType(this.downloadOperationTypeToRPCDownloadProcessType(t.getType()))
+                                            .setQuery(t.getQuery())
+                                            .setValue(t.getValue() == null ? "" : t.getValue())
+                                            .build()
+                                    ).collect(Collectors.toList())
+                    )
+                    .addAllPost(
+                            task.getPosts().stream()
+                                    .map(t -> DownloadTask.Processor.newBuilder()
+                                            .setOrder(t.getOrder())
+                                            .setType(this.downloadOperationTypeToRPCDownloadProcessType(t.getType()))
+                                            .setQuery(t.getQuery())
+                                            .setValue(t.getValue() == null ? "" : t.getValue())
+                                            .build()
+                                    ).collect(Collectors.toList())
+                    )
+                    .build();
+        }
+
+        private DownloadTask.Processor.Type downloadOperationTypeToRPCDownloadProcessType(Task.process.type type) {
+            switch (type) {
+                case CLICK:
+                    return DownloadTask.Processor.Type.CLICK;
+                case INPUT:
+                    return DownloadTask.Processor.Type.INPUT;
+                case INPUT_SUBMIT:
+                    return DownloadTask.Processor.Type.INPUT_SUBMIT;
+                case LINK_TO:
+                    return DownloadTask.Processor.Type.LINK_TO;
+                case WAIT_UTIL:
+                    return DownloadTask.Processor.Type.WAIT_UTIL;
+                default:
+                    return null;
+            }
+        }
+
     }
 }

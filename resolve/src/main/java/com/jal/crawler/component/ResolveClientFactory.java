@@ -54,6 +54,6 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
         taskConfigClient.setStub(taskOpStub);
         taskConfigClient.setComponentRelation(componentRelation);
 
-        return RpcUtils.componentClient(initClient,taskClient,channel,componentRelation,resolveContext);
+        return RpcUtils.componentClient(initClient,taskClient,taskConfigClient,channel,componentRelation,resolveContext);
     }
 }

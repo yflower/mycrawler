@@ -1,5 +1,6 @@
 package com.jal.crawler.rpc;
 
+import com.cufe.taskProcessor.rpc.server.AbstractComponentTaskConfigServer;
 import com.cufe.taskProcessor.rpc.server.AbstractComponentTaskServer;
 import com.cufe.taskProcessor.task.AbstractTask;
 import com.jal.crawler.context.DataContext;
@@ -7,6 +8,7 @@ import com.jal.crawler.data.DataTypeEnum;
 import com.jal.crawler.proto.data.DataTask;
 import com.jal.crawler.proto.data.DataTaskResponse;
 import com.jal.crawler.proto.data.RpcDataTaskGrpc;
+import com.jal.crawler.proto.data.TaskTag;
 import com.jal.crawler.proto.task.OPStatus;
 import com.jal.crawler.task.Task;
 import io.grpc.stub.StreamObserver;
@@ -35,6 +37,14 @@ public class DataTaskServer extends RpcDataTaskGrpc.RpcDataTaskImplBase {
         responseObserver.onNext(taskService.task(request));
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void dataTaskConfig(TaskTag request, StreamObserver<DataTask> responseObserver) {
+        ComponentTaskConfigService componentTaskService = new ComponentTaskConfigService(dataContext);
+        responseObserver.onNext(componentTaskService.taskConfig(request));
+        responseObserver.onCompleted();
+    }
+
 
 
     private class ComponentTaskService extends AbstractComponentTaskServer<DataContext, DataTask, DataTaskResponse> {
@@ -70,5 +80,37 @@ public class DataTaskServer extends RpcDataTaskGrpc.RpcDataTaskImplBase {
                     .build();
 
         }
+    }
+    private class ComponentTaskConfigService extends AbstractComponentTaskConfigServer<DataContext, TaskTag, DataTask> {
+
+        public ComponentTaskConfigService(DataContext dataContext) {
+            this.componentContext = dataContext;
+        }
+
+        @Override
+        protected <T extends AbstractTask> T internalTaskConfig(String taskTag) {
+            AbstractTask abstractTask = componentContext.componentStatus().getTasks()
+                    .stream().filter(t -> t.getTaskTag().equals(taskTag)).findFirst()
+                    .get();
+            return (T) abstractTask;
+        }
+
+        @Override
+        protected String rpcResToLocal(TaskTag rpcRes) {
+            return rpcRes.getTaskTag();
+        }
+
+        @Override
+        protected <T extends AbstractTask> DataTask localToRPC_Q(T config) {
+            Task dataTask = (Task) config;
+            return DataTask.newBuilder()
+                    .setTaskTag(dataTask.getTaskTag())
+                    .setTest(dataTask.isTest())
+                    .setDataTypeValue(dataTask.getDataType().getType())
+                    .build();
+        }
+
+
+
     }
 }

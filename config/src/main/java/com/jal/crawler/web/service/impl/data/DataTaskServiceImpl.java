@@ -149,6 +149,23 @@ public class DataTaskServiceImpl implements ITaskService {
         return optional;
     }
 
+    @Override
+    public Optional<Map<String, Object>> config(String taskTag) {
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.dataComponent());
+        if (relationOptional.isPresent()) {
+            Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(relationOptional.get());
+            AbstractHttpClient abstractComponentClient = clientOptional
+                    .orElseThrow(() -> new BizException(ExceptionEnum.ADDRESS_NOT_FOUND));
+
+            Optional optional = abstractComponentClient.taskConfig(taskTag);
+
+            return optional;
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
+    }
+
 
     private void componentOp(ComponentRelation componentRelation, TaskOperationModel taskOperationModel) {
         Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentRelation);

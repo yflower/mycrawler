@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.model.task.TaskStatusModel;
-import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -49,8 +48,6 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public abstract Optional<ResponseEntity> result(Map<String, Object> param);
-
-    public abstract Optional<Map<String, Object>> taskConfig(String taskTag);
 
 
     public void close() {
@@ -106,7 +103,28 @@ public abstract class AbstractHttpClient<C, T> {
         return Optional.of(taskStatusVOS);
     }
 
-
+    public Optional<Map<String, Object>> taskConfig(String taskTag) {
+        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskConfig?taskTag=" + taskTag;
+        Map<String, Object> taskConfig = null;
+        ResponseEntity<String> entity;
+        try {
+            entity = restTemplate.getForEntity(url, String.class);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+        if (entity.getStatusCode() == HttpStatus.OK) {
+            try {
+                taskConfig = objectMapper.readValue(entity.getBody(), new TypeReference<Map<String, Object>>() {
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (taskConfig == null || taskConfig.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(taskConfig);
+    }
 
     public boolean setConfig(C config) {
         if (validConfig(config) && internalConfigSet(config)) {

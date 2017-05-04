@@ -50,7 +50,7 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
         taskConfigClient.setComponentRelation(componentRelation);
         taskConfigClient.setStub(taskStub);
 
-        return RpcUtils.componentClient(initClient, taskClient, channel, componentRelation, downLoadContext);
+        return RpcUtils.componentClient(initClient, taskClient, taskConfigClient,channel, componentRelation, downLoadContext);
     }
 
 

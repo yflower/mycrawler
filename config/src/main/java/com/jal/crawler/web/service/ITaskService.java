@@ -30,5 +30,5 @@ public interface ITaskService {
 
     Optional<ResponseEntity> result(Map<String, Object> param);
 
-    Optional<Map<String,Object>> config();
+    Optional<Map<String,Object>> config(String taskTag);
 }

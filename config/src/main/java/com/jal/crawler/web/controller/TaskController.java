@@ -55,25 +55,29 @@ public class TaskController {
     }
 
     @PutMapping("/restart")
-    public ApiResponse restart(@RequestParam String taskTag){
+    public ApiResponse restart(@RequestParam String taskTag) {
         return ApiResponse.successBuild(taskBiz.taskRestart(taskTag));
     }
 
     @GetMapping("/status")
     public Object status(String taskTag) {
-        if(taskTag!=null){
+        if (taskTag != null) {
             Optional<TaskStatusVO> statusVOOptional = taskBiz.status(taskTag);
-            if(statusVOOptional.isPresent()){
+            if (statusVOOptional.isPresent()) {
                 return ApiResponse.successBuild(taskBiz.status(taskTag));
-            }else {
+            } else {
                 return ResponseEntity.notFound().build();
             }
-        }else {
+        } else {
             return ApiResponse.successBuild(taskBiz.statusList());
         }
 
     }
 
+    @GetMapping("/config")
+    public Object config(String taskTag) {
+        return taskBiz.taskConfig(taskTag);
+    }
 
 
     @GetMapping("/result")

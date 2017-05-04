@@ -15,6 +15,7 @@ import com.jal.crawler.web.data.view.task.TaskStatusVO;
 import com.jal.crawler.web.service.ITaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -52,7 +53,7 @@ public class TaskBiz {
 
         TaskStatusVO taskStatusVO = new TaskStatusVO();
 
-        if(resolveTaskStatus==null||downTaskStatus==null){
+        if (resolveTaskStatus == null || downTaskStatus == null) {
             return Optional.empty();
         }
         taskStatusVO.setStatus(downTaskStatus.getStatus().getCode());
@@ -72,12 +73,12 @@ public class TaskBiz {
         return Optional.of(taskStatusVO);
     }
 
-    public List<TaskStatusVO> statusList(){
+    public List<TaskStatusVO> statusList() {
         List<TaskStatusModel> status = downloadTaskService.status();
-        List<TaskStatusVO> statusVOS=new ArrayList<>();
-        status.parallelStream().forEach(t->{
+        List<TaskStatusVO> statusVOS = new ArrayList<>();
+        status.parallelStream().forEach(t -> {
             Optional<TaskStatusVO> voOptional = this.status(t.getTaskTag());
-            if(voOptional.isPresent()){
+            if (voOptional.isPresent()) {
                 statusVOS.add(voOptional.get());
             }
         });
@@ -161,6 +162,7 @@ public class TaskBiz {
             setTaskTag(taskTag);
         }};
     }
+
     public TaskOperationVO taskRestart(String taskTag) {
         ResolveOperationModel resolveOperationModel = new ResolveOperationModel(taskTag);
         resolveOperationModel.setTaskType(TaskOperationEnum.RESTART);
@@ -175,6 +177,23 @@ public class TaskBiz {
         }};
     }
 
+    public ResponseEntity taskConfig(String taskTag) {
+        Optional<Map<String, Object>> optional1 = downloadTaskService.config(taskTag);
+
+        Optional<Map<String, Object>> optional2 = resolveTaskService.config(taskTag);
+
+        if (optional1.isPresent() && optional2.isPresent()) {
+            Map<String, Object> result = new HashMap<>();
+            result.putAll(optional1.get());
+            result.putAll(optional2.get());
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .body(result);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
 
 
     private String generateTaskTag() {
