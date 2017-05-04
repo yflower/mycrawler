@@ -1,6 +1,7 @@
 package com.jal.crawler.task;
 
 import com.cufe.taskProcessor.task.AbstractTask;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jal.crawler.download.DownloadProcessor;
 import com.jal.crawler.url.AbstractPageUrlFactory;
 

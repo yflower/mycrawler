@@ -39,6 +39,7 @@ public abstract class AbstractComponentTaskClient<RPC_S, RPC_Q> {
     }
 
 
+
     protected abstract <P> AbstractTask generateTask(String taskTag, P params);
 
     protected abstract RPC_Q localReqToRpcReq(AbstractTask task, String taskTag, TaskTypeEnum taskType);

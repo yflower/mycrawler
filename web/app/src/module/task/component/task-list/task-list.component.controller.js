@@ -15,7 +15,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     self.finish = [];
 
-    self.destory = []
+    self.destroy = []
 
     fresh();
 
@@ -32,7 +32,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
             self.finish = self.tasks.filter(function (value) {
                 return value.status == 4;
             })
-            self.destory = self.tasks.filter(function (value) {
+            self.destroy = self.tasks.filter(function (value) {
                 return value.status == 5;
             })
 

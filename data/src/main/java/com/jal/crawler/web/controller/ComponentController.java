@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jianganlan on 2017/4/26.
@@ -58,5 +59,10 @@ public class ComponentController extends ComponentFacade<DataConfigRpcParam, Dat
                 new TypeToken<List<ComponentRelation>>() {
                 }.getType());
         return relations;
+    }
+
+    @GetMapping(value = "/taskConfig")
+    public Object config(String taskTag) {
+        return taskConfig(taskTag);
     }
 }

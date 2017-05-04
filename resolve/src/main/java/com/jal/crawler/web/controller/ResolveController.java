@@ -3,9 +3,11 @@ package com.jal.crawler.web.controller;
 import com.cufe.taskProcessor.ComponentFacade;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.context.ComponentContext;
+import com.cufe.taskProcessor.task.AbstractTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.ResolveContext;
+import com.jal.crawler.task.Task;
 import com.jal.crawler.web.convert.WebParamToRpcParam;
 import com.jal.crawler.web.param.ResolveConfigParam;
 import com.jal.crawler.web.param.ResolveTaskOpParam;
@@ -18,7 +20,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jianganlan on 2017/4/19.
@@ -76,4 +80,6 @@ public class ResolveController extends ComponentFacade<ResolveConfigRpcParam, Re
                 }.getType());
         return relations;
     }
+
+
 }

@@ -7,6 +7,7 @@ import com.cufe.taskProcessor.task.AbstractTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DownLoadContext;
+import com.jal.crawler.task.Task;
 import com.jal.crawler.web.convert.WebParamToRpcParam;
 import com.jal.crawler.web.param.DownloadConfigParam;
 import com.jal.crawler.web.param.DownloadTaskOpParam;
@@ -18,7 +19,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jianganlan on 2017/4/19.
@@ -60,7 +63,6 @@ public class DownloadController extends ComponentFacade<DownloadRpcConfigParam, 
     }
 
 
-
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
         String url = "http://" + leader.getHost() + ":8080/download/list";
@@ -71,4 +73,6 @@ public class DownloadController extends ComponentFacade<DownloadRpcConfigParam, 
                 }.getType());
         return relations;
     }
+
+
 }

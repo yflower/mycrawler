@@ -50,6 +50,8 @@ public abstract class AbstractHttpClient<C, T> {
 
     public abstract Optional<ResponseEntity> result(Map<String, Object> param);
 
+    public abstract Optional<Map<String, Object>> taskConfig(String taskTag);
+
 
     public void close() {
 
@@ -103,6 +105,8 @@ public abstract class AbstractHttpClient<C, T> {
         }
         return Optional.of(taskStatusVOS);
     }
+
+
 
     public boolean setConfig(C config) {
         if (validConfig(config) && internalConfigSet(config)) {

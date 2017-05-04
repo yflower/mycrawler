@@ -89,7 +89,7 @@ public class DownloadTaskClient extends AbstractComponentTaskClient<DownloadTask
     }
 
 
-    private DownloadTask.Processor.Type downloadOperationTypeToRPCDownloadProcessType(Task.process.type type) {
+    private static DownloadTask.Processor.Type downloadOperationTypeToRPCDownloadProcessType(Task.process.type type) {
         switch (type) {
             case CLICK:
                 return DownloadTask.Processor.Type.CLICK;

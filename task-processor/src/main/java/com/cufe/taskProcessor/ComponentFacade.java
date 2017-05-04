@@ -58,7 +58,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
     }
 
-    public ComponentRelation self(){
+    public ComponentRelation self() {
         return componentContext.getComponentRelation();
     }
 
@@ -133,7 +133,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
             throw new IllegalStateException("CLIENT:组件还没有初始化");
         }
         //leader为每个组件分配组件
-        taskLoadEnum.get(relations,self).forEach(t -> {
+        taskLoadEnum.get(relations, self).forEach(t -> {
             Optional<ComponentClient> optional = componentClientHolder.from(t);
             ComponentClient componentClient = null;
             //获取连接client
@@ -198,6 +198,31 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
     }
 
+    public Map<String, Object> taskConfig(String taskTag) {
+        List<ComponentRelation> componentRelations = componentList();
+        ComponentClientHolder componentClientHolder = componentContext.getComponentClientHolder();
+
+
+        for (ComponentRelation componentRelation : componentRelations) {
+            Optional<ComponentClient> client = componentClientHolder.from(componentRelation);
+
+            if (client.isPresent()) {
+                ComponentClient componentClient = client.get();
+                ComponentStatus componentStatus = componentClient.statusClient.status();
+                List<AbstractTask> taskList = componentStatus.getTasks();
+                Optional<AbstractTask> optional = taskList.stream().filter(t -> t.getTaskTag().equals(taskTag)).findAny();
+                if (optional.isPresent()) {
+                    return componentClient.taskConfigClient.taskConfig(taskTag);
+                }
+                continue;
+            }
+
+        }
+
+        return new HashMap<String, Object>();
+
+    }
+
 
     private Optional<ComponentRelation> seekLeader() {
         ComponentRelation leader = componentContext.getComponentRelation().getLeader();
@@ -219,7 +244,6 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
 
     protected abstract List<ComponentRelation> componentListForward(ComponentRelation leader);
-
 
     public static class initParam {
         private String host;
@@ -352,6 +376,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         }
 
         public abstract List<ComponentRelation> get(List<ComponentRelation> all, ComponentRelation self);
+
     }
 
 }

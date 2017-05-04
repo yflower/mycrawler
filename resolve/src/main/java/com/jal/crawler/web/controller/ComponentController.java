@@ -47,10 +47,15 @@ public class ComponentController extends ComponentFacade<ResolveConfigRpcParam, 
 
     }
 
+    @GetMapping(value = "/taskConfig")
+    public Object config(String taskTag) {
+        return taskConfig(taskTag);
+    }
+
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = "http://" + leader.getHost() + ":8080/download/list";
+        String url = "http://" + leader.getHost() + ":8080/resolve/list";
         String object = restTemplate.getForObject(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(object,
@@ -58,4 +63,6 @@ public class ComponentController extends ComponentFacade<ResolveConfigRpcParam, 
                 }.getType());
         return relations;
     }
+
+
 }

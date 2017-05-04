@@ -29,4 +29,6 @@ public interface ITaskService {
     List<TaskStatusModel> status();
 
     Optional<ResponseEntity> result(Map<String, Object> param);
+
+    Optional<Map<String,Object>> config();
 }

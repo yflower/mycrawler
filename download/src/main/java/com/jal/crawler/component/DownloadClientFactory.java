@@ -7,11 +7,9 @@ import com.cufe.taskRpc.RpcUtils;
 import com.jal.crawler.context.DownLoadContext;
 import com.jal.crawler.proto.download.RpcDownlandConfigGrpc;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
-import com.jal.crawler.proto.status.RpcComponentHeartServiceGrpc;
-import com.jal.crawler.proto.status.RpcComponentLeaderServiceGrpc;
-import com.jal.crawler.proto.status.RpcComponentStatusGrpc;
 import com.jal.crawler.rpc.client.DownloadInitClient;
 import com.jal.crawler.rpc.client.DownloadTaskClient;
+import com.jal.crawler.rpc.client.DownloadTaskConfigClient;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -43,11 +41,14 @@ public class DownloadClientFactory extends AbstractComponentClientFactory {
 
         DownloadInitClient initClient = new DownloadInitClient();
         DownloadTaskClient taskClient = new DownloadTaskClient();
+        DownloadTaskConfigClient taskConfigClient = new DownloadTaskConfigClient();
 
         initClient.setStub(initStub);
         initClient.setComponentRelation(componentRelation);
         taskClient.setStub(taskStub);
         taskClient.setComponentRelation(componentRelation);
+        taskConfigClient.setComponentRelation(componentRelation);
+        taskConfigClient.setStub(taskStub);
 
         return RpcUtils.componentClient(initClient, taskClient, channel, componentRelation, downLoadContext);
     }

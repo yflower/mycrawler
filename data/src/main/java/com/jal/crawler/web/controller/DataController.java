@@ -3,10 +3,12 @@ package com.jal.crawler.web.controller;
 import com.cufe.taskProcessor.ComponentFacade;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.context.ComponentContext;
+import com.cufe.taskProcessor.task.AbstractTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DataContext;
 import com.jal.crawler.data.Data;
+import com.jal.crawler.task.Task;
 import com.jal.crawler.web.convert.WebParamToRpcParam;
 import com.jal.crawler.web.param.DataConfigParam;
 import com.jal.crawler.web.param.DataTaskOpParam;
@@ -20,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -102,4 +105,6 @@ public class DataController extends ComponentFacade<DataConfigRpcParam, DataTask
                 }.getType());
         return relations;
     }
+
+
 }

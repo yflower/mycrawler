@@ -142,6 +142,11 @@ public class ResolveTaskServiceImpl implements ITaskService {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public Optional<Map<String, Object>> config() {
+        return null;
+    }
+
 
     private void componentOp(ComponentRelation componentRelations, TaskOperationModel taskOperationModel) {
         Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentRelations);

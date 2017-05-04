@@ -34,24 +34,25 @@ public class ResolveClientFactory extends AbstractComponentClientFactory {
                 .forAddress(componentRelation.getHost(), componentRelation.getPort())
                 .usePlaintext(true)
                 .build();
-        RpcComponentStatusGrpc.RpcComponentStatusBlockingStub statusStub = RpcComponentStatusGrpc.newBlockingStub(channel);
-
-        RpcComponentLeaderServiceGrpc.RpcComponentLeaderServiceBlockingStub leaderStub = RpcComponentLeaderServiceGrpc.newBlockingStub(channel);
 
         RpcResolveConfigGrpc.RpcResolveConfigBlockingStub configStub = RpcResolveConfigGrpc.newBlockingStub(channel);
 
         RpcResolveTaskGrpc.RpcResolveTaskBlockingStub taskOpStub = RpcResolveTaskGrpc.newBlockingStub(channel);
 
-        RpcComponentHeartServiceGrpc.RpcComponentHeartServiceBlockingStub heartStub = RpcComponentHeartServiceGrpc.newBlockingStub(channel);
+
 
         ResolveInitClient initClient = new ResolveInitClient();
 
         ResolveTaskClient taskClient = new ResolveTaskClient();
 
+        ResolveTaskConfigClient taskConfigClient=new ResolveTaskConfigClient();
+
         initClient.setStub(configStub);
         initClient.setComponentRelation(componentRelation);
         taskClient.setStub(taskOpStub);
         taskClient.setComponentRelation(componentRelation);
+        taskConfigClient.setStub(taskOpStub);
+        taskConfigClient.setComponentRelation(componentRelation);
 
         return RpcUtils.componentClient(initClient,taskClient,channel,componentRelation,resolveContext);
     }

@@ -9,6 +9,7 @@ import com.jal.crawler.proto.data.RpcDataConfigGrpc;
 import com.jal.crawler.proto.data.RpcDataTaskGrpc;
 import com.jal.crawler.rpc.client.DataInitClient;
 import com.jal.crawler.rpc.client.DataTaskClient;
+import com.jal.crawler.rpc.client.DataTaskConfigClient;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -41,12 +42,16 @@ public class DataClientFactory extends AbstractComponentClientFactory {
 
         DataInitClient initClient = new DataInitClient();
         DataTaskClient taskClient = new DataTaskClient();
+        DataTaskConfigClient taskConfigClient=new DataTaskConfigClient();
+
 
         initClient.setStub(initStub);
         initClient.setComponentRelation(componentRelation);
 
         taskClient.setStub(taskStub);
         taskClient.setComponentRelation(componentRelation);
+        taskConfigClient.setStub(taskStub);
+        taskConfigClient.setComponentRelation(componentRelation);
 
         return RpcUtils.componentClient(initClient, taskClient, channel, componentRelation, dataContext);
 

@@ -8,6 +8,7 @@ package rpc;
 
 service RpcDownloadTask {
     rpc downloadTask (DownloadTask) returns (DownloadTaskResponse);
+    rpc downloadTaskConfig (TaskTag) returns (DownloadTask);
 }
 
 message DownloadTask {
@@ -38,4 +39,8 @@ message DownloadTask {
 message DownloadTaskResponse {
     OPStatus op_status = 1;
     string task_tag = 2;
+}
+
+message TaskTag{
+    string task_tag=1;
 }

@@ -8,6 +8,8 @@ package rpc;
 
 service RpcDataTask {
     rpc dataTask (DataTask) returns (DataTaskResponse);
+    rpc dataTaskConfig (TaskTag) returns (DataTask);
+
 }
 
 message DataTask {
@@ -27,4 +29,8 @@ enum DataType{
 message DataTaskResponse {
     OPStatus op_status = 1;
     string task_tag = 2;
+}
+
+message TaskTag{
+    string task_tag=1;
 }

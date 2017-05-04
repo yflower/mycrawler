@@ -8,6 +8,8 @@ package rpc;
 
 service RpcResolveTask {
     rpc resolveTask (ResolveTask) returns (ResolveTaskResponse);
+    rpc resolveTaskConfig (TaskTag) returns (ResolveTask);
+
 
 }
 
@@ -33,5 +35,9 @@ message ResolveTask {
 message ResolveTaskResponse {
     OPStatus op_status = 1;
     string taskTag = 2;
+}
+
+message TaskTag{
+    string task_tag=1;
 }
 

@@ -19,6 +19,8 @@ public class ComponentClient {
 
     public AbstractComponentHeartClient heartClient;
 
+    public AbstractComponentTaskConfigClient taskConfigClient;
+
 
     public Optional<StatusEnum> tryConnect() {
         try {
