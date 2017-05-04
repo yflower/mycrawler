@@ -7,9 +7,14 @@ let name = 'taskPushController'
 let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
 
     var self = this;
-    self.urls = [];
+    self.urls = ["https://item.jd.com/12123414.html"];
     self.processors = [];
-    self.resolveData = [];
+    self.resolveData = [{
+        name:'title',
+        query:"#name > h1",
+        option:"",
+        optionValue:""
+    }];
     self.test=false;
 
     self.processorType = taskService.processorType;
@@ -107,7 +112,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
                     contentElement: '#task-test-dialog',
                     parent: angular.element(document.body),
                     targetEvent: ev,
-                    clickOutsideToClose: false
+                    clickOutsideToClose: self.testState.notWait
                   });
         self.test=true;
         taskService.taskPush(null,
@@ -175,7 +180,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
     }
 
     function paramCheck(){
-        return self.urls.length==0||vars.length==0;
+        return self.urls.length==0||self.resolveData.length==0;
 
     }
 

@@ -80,6 +80,18 @@ public class DownloadTaskServiceImpl implements ITaskService {
     }
 
     @Override
+    public TaskOperationVO restart(TaskOperationModel taskOperationModel) {
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());
+        if (relationOptional.isPresent()) {
+            componentOp(relationOptional.get(), taskOperationModel);
+
+        } else {
+            throw new BizException(ExceptionEnum.COMPONENT_NOT_FOUND, "没有找到可以执行任务的组件");
+        }
+        return null;
+    }
+
+    @Override
     public TaskStatusModel status(String taskTag) {
         TaskStatusModel result = null;
         Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.downloadComponent());

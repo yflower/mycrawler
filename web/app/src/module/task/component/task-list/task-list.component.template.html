@@ -23,14 +23,14 @@
                     get data-----{{item.pageTimes}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="$ctrl.pause($event,item.taskTag)">
+                           ng-click="$ctrl.pauseTask($event,item.taskTag)">
                     <md-icon md-svg-icon="pause"></md-icon>
                     <md-tooltip md-direction="bottom">暂停</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.stopTask($event,item.taskTag)">
                     <md-icon md-svg-icon="stop"></md-icon>
-                    <md-tooltip md-direction="bottom">停止</md-tooltip>
+                    <md-tooltip md-direction="bottom">完成</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="doSecondaryAction($event)">
@@ -58,12 +58,12 @@
                     get data-----{{item.pageTimes}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.restartTask($event,item.taskTag)">
                     <md-icon md-svg-icon="start"></md-icon>
                     <md-tooltip md-direction="bottom">开始</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.destroyTask($event,item.taskTag)">
                     <md-icon md-svg-icon="delete"></md-icon>
                     <md-tooltip md-direction="bottom">清除</md-tooltip>
                 </md-button>
@@ -79,7 +79,7 @@
 
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">finish</md-subheader>
-            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.stop" layout="row">
+            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.finish" layout="row">
                 <div class="md-list-item-text" flex="40">
                     {{item.taskTag}}
                 </div>
@@ -91,12 +91,12 @@
                     get data-----{{item.pageTimes}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.restartTask($event,item.taskTag)">
                     <md-icon md-svg-icon="start"></md-icon>
                     <md-tooltip md-direction="bottom">开始</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.destroyTask($event,item.taskTag)">
                     <md-icon md-svg-icon="delete"></md-icon>
                     <md-tooltip md-direction="bottom">清除</md-tooltip>
                 </md-button>
@@ -112,7 +112,7 @@
 
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">destroy</md-subheader>
-            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.stop" layout="row">
+            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.destroy" layout="row">
                 <div class="md-list-item-text" flex="40">
                     {{item.taskTag}}
                 </div>
@@ -123,16 +123,16 @@
                 <div class="md-list-item-text" flex="30">
                     get data-----{{item.pageTimes}}
                 </div>
-                <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
-                    <md-icon md-svg-icon="start"></md-icon>
-                    <md-tooltip md-direction="bottom">开始</md-tooltip>
-                </md-button>
-                <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
-                    <md-icon md-svg-icon="delete"></md-icon>
-                    <md-tooltip md-direction="bottom">清除</md-tooltip>
-                </md-button>
+                <!--<md-button class="md-secondary md-icon-button"-->
+                           <!--ng-click="doSecondaryAction($event)">-->
+                    <!--<md-icon md-svg-icon="start"></md-icon>-->
+                    <!--<md-tooltip md-direction="bottom">开始</md-tooltip>-->
+                <!--</md-button>-->
+                <!--<md-button class="md-secondary md-icon-button"-->
+                           <!--ng-click="doSecondaryAction($event)">-->
+                    <!--<md-icon md-svg-icon="delete"></md-icon>-->
+                    <!--<md-tooltip md-direction="bottom">清除</md-tooltip>-->
+                <!--</md-button>-->
                 <md-button class="md-secondary md-icon-button"
                            ng-click="doSecondaryAction($event)">
                     <md-icon md-svg-icon="info"></md-icon>

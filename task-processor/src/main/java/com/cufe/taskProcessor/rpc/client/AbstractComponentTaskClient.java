@@ -31,8 +31,10 @@ public abstract class AbstractComponentTaskClient<RPC_S, RPC_Q> {
         } else if (taskType == TaskTypeEnum.DESTROY) {
             result = rpcResToLocalRes(rpcSend(localReqToRpcReq(null, taskTag, taskType)));
             LOGGER.log(Level.INFO, "CLIENT:销毁一个任务 " + taskTag);
+        } else if (taskType == TaskTypeEnum.RESTART) {
+            result = rpcResToLocalRes(rpcSend(localReqToRpcReq(null, taskTag, taskType)));
+            LOGGER.log(Level.INFO, "CLIENT:重新开始一个任务 " + taskTag);
         }
-
         return result;
     }
 

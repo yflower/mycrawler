@@ -9,6 +9,7 @@ public enum TaskTypeEnum {
     UPDATE(2),
     FINISH(3),
     DESTROY(4),
+    RESTART(5),
     UNRECOGNIZED(-1),;
     private int code;
 

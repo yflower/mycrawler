@@ -22,6 +22,8 @@ public interface ITaskService {
 
     TaskOperationVO destroy(TaskOperationModel taskOperationModel);
 
+    TaskOperationVO restart(TaskOperationModel taskOperationModel);
+
     TaskStatusModel status(String taskTag);
 
     List<TaskStatusModel> status();

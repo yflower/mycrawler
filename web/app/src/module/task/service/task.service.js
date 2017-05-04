@@ -39,6 +39,15 @@ let service = ['$q', '$http', function ($q, $http) {
         })
     }
 
+    var taskRestart= function (params,data) {
+        return $http({
+            method: 'put',
+            url: 'http://127.0.0.1:8081/tasks/restart',
+            params: params,
+            data:data
+        })
+    }
+
 
     var taskResult=function(params,data){
         return $http({
@@ -92,6 +101,7 @@ let service = ['$q', '$http', function ($q, $http) {
         taskPause:taskPause,
         taskStop:taskStop,
         taskDestroy:taskDestroy,
+        taskRestart:taskRestart,
         taskResult:taskResult,
         taskStatus:taskStatus
     }

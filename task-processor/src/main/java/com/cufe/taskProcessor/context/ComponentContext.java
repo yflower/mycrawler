@@ -130,6 +130,19 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
         }
     }
 
+    public boolean restartTask(String taskTag) {
+        Optional<T> optional = getTaskByTag(taskTag);
+        T innerTask;
+        if (optional.isPresent()&&(optional.get().getStatus()==StatusEnum.STOPPED)) {
+            innerTask = optional.get();
+            innerTask.setStatus(StatusEnum.STARTED);
+            releaseTasks();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void init() {
         if (sink == null || repository == null || processor == null) {
             throw new IllegalStateException("sink,repository,processor必须设置");

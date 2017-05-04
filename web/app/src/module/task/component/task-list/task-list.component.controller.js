@@ -41,13 +41,36 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
     }
 
 
-    self.pause=function ($ev,taskTag) {
+    self.pauseTask=function ($ev,taskTag) {
         taskService.taskPause({
             taskTag:taskTag
         }).then(function (result) {
             fresh();
         })
+    }
 
+    self.stopTask=function ($ev,taskTag) {
+        taskService.taskStop({
+            taskTag:taskTag
+        }).then(function (result) {
+            fresh();
+        })
+    }
+
+    self.destroyTask=function ($ev,taskTag) {
+        taskService.taskDestroy({
+            taskTag:taskTag
+        }).then(function (result) {
+            fresh();
+        })
+    }
+
+    self.restartTask=function ($ev,taskTag) {
+        taskService.taskRestart({
+            taskTag:taskTag
+        }).then(function (result) {
+            fresh();
+        })
     }
 
 }]

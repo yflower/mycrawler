@@ -44,14 +44,19 @@ public class TaskController {
         return ApiResponse.successBuild(taskBiz.taskPause(taskTag));
     }
 
-    @PostMapping("/stop")
+    @PutMapping("/stop")
     public ApiResponse stop(@RequestParam String taskTag) {
         return ApiResponse.successBuild(taskBiz.taskStop(taskTag));
     }
 
-    @PostMapping("/destroy")
+    @PutMapping("/destroy")
     public ApiResponse destroy(@RequestParam String taskTag) {
         return ApiResponse.successBuild(taskBiz.taskDestroy(taskTag));
+    }
+
+    @PutMapping("/restart")
+    public ApiResponse restart(@RequestParam String taskTag){
+        return ApiResponse.successBuild(taskBiz.taskRestart(taskTag));
     }
 
     @GetMapping("/status")

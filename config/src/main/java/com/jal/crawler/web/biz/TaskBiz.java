@@ -161,6 +161,20 @@ public class TaskBiz {
             setTaskTag(taskTag);
         }};
     }
+    public TaskOperationVO taskRestart(String taskTag) {
+        ResolveOperationModel resolveOperationModel = new ResolveOperationModel(taskTag);
+        resolveOperationModel.setTaskType(TaskOperationEnum.RESTART);
+        resolveTaskService.restart(resolveOperationModel);
+
+        DownloadOperationModel downloadOperationModel = new DownloadOperationModel(taskTag);
+        downloadOperationModel.setTaskType(TaskOperationEnum.RESTART);
+        downloadTaskService.restart(downloadOperationModel);
+
+        return new TaskOperationVO() {{
+            setTaskTag(taskTag);
+        }};
+    }
+
 
 
     private String generateTaskTag() {

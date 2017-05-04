@@ -39,6 +39,9 @@ public abstract class AbstractComponentTaskServer<C extends ComponentContext, RP
             } else if (taskType == TaskTypeEnum.DESTROY) {
                 result = componentContext.destroyTask(taskTag);
                 LOGGER.log(Level.INFO, "SERVER:销毁一个任务 " + taskTag);
+            }else if (taskType == TaskTypeEnum.RESTART) {
+                result = componentContext.restartTask(taskTag);
+                LOGGER.log(Level.INFO, "SERVER:重新开始一个任务 " + taskTag);
             }
         }
         return localToRPC_Q(result);

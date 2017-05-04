@@ -9,6 +9,7 @@ public enum TaskOperationEnum {
     UPDATE(2),
     FINISH(3),
     DESTROY(4),
+    RESTART(5),
     UNRECOGNIZED(-1),;
 
 
