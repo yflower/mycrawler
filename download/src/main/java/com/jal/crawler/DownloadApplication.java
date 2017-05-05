@@ -34,7 +34,7 @@ public class DownloadApplication {
 
 
 
-        System.setProperty("phantomjs.binary.path", phantomjs);
+        System.setProperty("phantomjs.binary.path", "/tmp/phatnomjs");
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
 
         DownLoadContext loadContext = context.getBean(DownLoadContext.class);
