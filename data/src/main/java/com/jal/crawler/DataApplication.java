@@ -42,7 +42,7 @@ public class DataApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
-        self.setComponentType(ComponentTypeEnum.DATA.getCode());
+        self.setComponentType(loadContext.componentType());
 
 
         loadContext.componentStart(self, type == 0 ? self : null);

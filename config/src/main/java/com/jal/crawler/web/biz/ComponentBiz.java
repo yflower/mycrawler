@@ -98,9 +98,11 @@ public class ComponentBiz {
                     return DefaultConfigModelConstant.defaultResolveConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 } else if (componentRelation.getComponentType() == ComponentEnum.DATA.getCode()) {
+                    LOGGER.info("添加 data 组件 {}", componentRelation);
                     return DefaultConfigModelConstant.defaultDataConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 } else if (componentRelation.getComponentType() == ComponentEnum.LINK.getCode()) {
+                    LOGGER.info("添加 link 组件 {}", componentRelation);
                     return DefaultConfigModelConstant.defaultLinkConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 }

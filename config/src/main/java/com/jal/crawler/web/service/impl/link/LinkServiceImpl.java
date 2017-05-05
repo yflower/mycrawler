@@ -8,6 +8,7 @@ import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.model.component.ComponentConfigRelation;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
+import com.jal.crawler.web.data.model.component.LinkConfigRelation;
 import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
 import com.jal.crawler.web.service.IComponentSelectService;
 import com.jal.crawler.web.service.IComponentService;
@@ -44,7 +45,7 @@ public class LinkServiceImpl implements IComponentService {
         if (relationOptional.isPresent()) {
             Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(relationOptional.get());
             if (clientOptional.isPresent()) {
-                result = linkConfig(clientOptional.get(), (ResolveConfigRelation) componentConfigModel);
+                result = linkConfig(clientOptional.get(), (LinkConfigRelation) componentConfigModel);
             }
 
         }
@@ -54,13 +55,13 @@ public class LinkServiceImpl implements IComponentService {
             componentConfigModel.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(componentConfigModel);
             if (clientOptional.isPresent()) {
-                result = linkConfig(clientOptional.get(), (ResolveConfigRelation) componentConfigModel);
+                result = linkConfig(clientOptional.get(), (LinkConfigRelation) componentConfigModel);
             }
         }
         return result;
     }
 
-    private boolean linkConfig(AbstractHttpClient componentClient, ResolveConfigRelation configModel) {
+    private boolean linkConfig(AbstractHttpClient componentClient, LinkConfigRelation configModel) {
         Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(configModel);
         if (!clientOptional.isPresent()) {
             LOGGER.warning("SERVER:设置组件时，组件不可连接");

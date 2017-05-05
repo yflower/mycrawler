@@ -42,7 +42,7 @@ public class TaskBiz {
     private ITaskService dataTaskService;
 
     @Resource
-    private ITaskService linkService;
+    private ITaskService linkTaskService;
 
 
     public Optional<TaskStatusVO> status(String taskTag) {
@@ -221,7 +221,7 @@ public class TaskBiz {
     private void taskPush(TaskPushParam.link param, String taskTag) {
         LinkOperationModel linkOperationModel = TaskOperationConvert.paramToModel(param, taskTag);
         linkOperationModel.setTaskType(TaskOperationEnum.ADD);
-        linkService.push(linkOperationModel);
+        linkTaskService.push(linkOperationModel);
     }
 
 

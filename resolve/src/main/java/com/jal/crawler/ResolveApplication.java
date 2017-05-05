@@ -45,7 +45,7 @@ public class ResolveApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
-        self.setComponentType(ComponentTypeEnum.RESOLVE.getCode());
+        self.setComponentType(loadContext.componentType());
 
 
         loadContext.componentStart(self, type == 0 ? self : null);

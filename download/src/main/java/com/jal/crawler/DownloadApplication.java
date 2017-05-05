@@ -52,7 +52,7 @@ public class DownloadApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
-        self.setComponentType(ComponentTypeEnum.DOWNLOAD.getCode());
+        self.setComponentType(loadContext.componentType());
 
 
         loadContext.componentStart(self, type == 0 ? self : null);
