@@ -37,6 +37,7 @@ public class LinkHttpClient extends AbstractHttpClient<LinkConfigRelation, LinkO
 
     @Override
     protected boolean internalConfigSet(LinkConfigRelation config) {
+        //todo not found
         String url = "http://" + this.componentRelation.getHost() + ":8080/link/init";
         Map<String, Object> body = new HashMap();
         body.put("host", config.getHost());

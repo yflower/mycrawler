@@ -46,6 +46,7 @@ enum ComponentType {
     DOWNLOAD = 0;
     RESOLVE = 1;
     DATA=2;
+    LINK=3;
 }
 
 enum Status {

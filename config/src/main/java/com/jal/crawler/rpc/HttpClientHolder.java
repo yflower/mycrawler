@@ -128,7 +128,7 @@ public class HttpClientHolder {
             remove(t);
             return Optional.empty();
         };
-        return datas.values().stream()
+        return links.values().stream()
                 .map(function)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
@@ -149,6 +149,9 @@ public class HttpClientHolder {
                     break;
                 case DATA:
                     client = dataClient(componentRelation.getHost(), componentRelation.getPort());
+                    break;
+                case LINK:
+                    client=linkClient(componentRelation.getHost(),componentRelation.getPort());
                     break;
                 default:
                     throw new IllegalStateException("未知的组件类型");
