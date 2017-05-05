@@ -3,7 +3,11 @@ config/target/
 
 download/target/
 
-resolve/target/
+resolve/target
+/
+data/target/
+
+link/target/
 
 config/.idea/
 
@@ -14,6 +18,10 @@ resolve/.idea/
 task-processor/.idea/
 
 taskRpc/.idea/
+
+data/.idea/
+
+link/.idea/
 
 task-processor/build/
 
