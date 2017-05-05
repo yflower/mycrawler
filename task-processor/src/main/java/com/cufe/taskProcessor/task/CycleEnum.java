@@ -12,6 +12,8 @@ public enum CycleEnum {
 
     RESOURCE_NOT_FOUND_LIMIT(10000,1,TimeUnit.MINUTES),
 
+    PERSIST_ERROR_LIMIT(10,1,TimeUnit.MINUTES),
+
     SINGLETON_CYCLE_LIMIT(30,1,TimeUnit.MINUTES);
 
 

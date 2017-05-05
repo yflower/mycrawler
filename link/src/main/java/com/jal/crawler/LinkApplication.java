@@ -17,12 +17,17 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class})
 public class LinkApplication {
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        String s="https://item.jd.com/11294134208.html";
+
+        boolean matches = Pattern.matches("https://item.jd.com/.*html", s);
+        System.out.println(matches);
 
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);

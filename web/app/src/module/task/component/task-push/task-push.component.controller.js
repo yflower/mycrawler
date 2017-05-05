@@ -17,7 +17,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
     }];
     self.test = false;
 
-    self.linkPattern = ["https://item.jd.com/*.html"];
+    self.linkPattern = ["https://item.jd.com/.*html"];
 
     self.processorType = taskService.processorType;
     self.resolveOptionType = taskService.resolveOptionType;

@@ -43,9 +43,9 @@ public class Task extends AbstractTask{
                 .filter(t->t.startsWith("//"))
                 .collect(Collectors.toList());
         String[] split = page.getUrl().split("/");
-        String baseUrl = Arrays.stream(Arrays.copyOf(split,split.length-1)).collect(Collectors.joining("/"));
+        String baseUrl =split[0];
 
-        List<String> finalLinks = validLinks.parallelStream().map(t -> baseUrl+t.substring(2, t.length() - 1)).collect(Collectors.toList());
+        List<String> finalLinks = validLinks.parallelStream().map(t -> baseUrl+t).collect(Collectors.toList());
         stringMap.put("links",finalLinks);
         helpGC(page, htmlTag);
         LOGGER.info("成功解析页面 {}",page.getUrl());

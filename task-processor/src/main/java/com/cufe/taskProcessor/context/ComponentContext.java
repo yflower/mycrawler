@@ -133,7 +133,7 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     public boolean restartTask(String taskTag) {
         Optional<T> optional = getTaskByTag(taskTag);
         T innerTask;
-        if (optional.isPresent()&&(optional.get().getStatus()==StatusEnum.STOPPED)) {
+        if (optional.isPresent() && (optional.get().getStatus() == StatusEnum.STOPPED)) {
             innerTask = optional.get();
             innerTask.setStatus(StatusEnum.STARTED);
             releaseTasks();
@@ -241,21 +241,29 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
     }
 
     private void taskCycleCheck(AbstractTask task) {
-        LocalDateTime now=LocalDateTime.now();
-        LocalDateTime start=task.getTaskStatistics().getBeginTime();
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime start = task.getTaskStatistics().getBeginTime();
         if (task.isTest() && task.getTaskStatistics().getResourceTotalCycle() > CycleEnum.RESOURCE_TEST_LIMIT.getCycle()
-                &&start.plusMinutes(CycleEnum.RESOURCE_TEST_LIMIT.getTime()).isBefore(now)) {
+                ) {
             LOGGER.info("任务被摧毁 " + task.getTaskTag());
             destroyTask(task.getTaskTag());
         }
         if (task.getTaskStatistics().getResourceNotFoundCycle().get() > CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getCycle()
-                &&start.plusMinutes(CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getTime()).isBefore(now)) {
+                && task.getLimit().getLastResourceNotFound().isPresent()
+                && task.getLimit().getLastResourceNotFound().get().plusMinutes(CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getTime()).isBefore(now)) {
             LOGGER.info("任务完成 " + task.getTaskTag());
             finishTask(task.getTaskTag());
         }
         if (task.getTaskStatistics().getPersistErrorCycle().get() > CycleEnum.PROCESSOR_ERROR_LIMIT.getCycle()
-                &&start.plusMinutes(CycleEnum.PROCESSOR_ERROR_LIMIT.getTime()).isBefore(now)) {
-            LOGGER.info("任务停止 " + task.getTaskTag());
+                && task.getLimit().getLastProcessorError().isPresent()
+                && task.getLimit().getLastProcessorError().get().plusMinutes(CycleEnum.PROCESSOR_ERROR_LIMIT.getTime()).isBefore(now)) {
+            LOGGER.info("任务停止:任务数据处理错误达到上限 " + task.getTaskTag());
+            stopTask(task.getTaskTag());
+        }
+        if (task.getTaskStatistics().getPersistErrorCycle().get() > CycleEnum.PERSIST_ERROR_LIMIT.getCycle()
+                && task.getLimit().getLastPersistEoor().isPresent()
+                && task.getLimit().getLastPersistEoor().get().plusMinutes(CycleEnum.PERSIST_ERROR_LIMIT.getTime()).isBefore(now)) {
+            LOGGER.info("任务停止:任务数据保存错误达到上限 " + task.getTaskTag());
             stopTask(task.getTaskTag());
         }
     }
