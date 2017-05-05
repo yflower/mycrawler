@@ -27,6 +27,7 @@ web/app/jspm_packages/
 
 .gradle/
 
+*.log
 task-processor/.gradle/
 
 taskRpc/target/
