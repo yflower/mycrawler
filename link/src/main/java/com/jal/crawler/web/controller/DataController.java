@@ -25,7 +25,7 @@ import java.util.List;
  * Created by jianganlan on 2017/4/19.
  */
 @RestController
-@RequestMapping(value = "/data")
+@RequestMapping(value = "/link")
 public class DataController extends ComponentFacade<LinkConfigRpcParam, LinkTaskOpRpcParam> {
 
 
