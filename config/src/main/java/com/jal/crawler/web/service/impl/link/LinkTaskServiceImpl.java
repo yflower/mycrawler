@@ -37,7 +37,7 @@ public class LinkTaskServiceImpl implements ITaskService {
 
     @Override
     public TaskOperationVO push(TaskOperationModel taskOperationModel) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.linkComponent());
         if (relationOptional.isPresent()) {
             componentOp(relationOptional.get(), taskOperationModel);
 
@@ -119,7 +119,7 @@ public class LinkTaskServiceImpl implements ITaskService {
     @Override
     public List<TaskStatusModel> status() {
         List<TaskStatusModel> result = null;
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.linkComponent());
         if (relationOptional.isPresent()) {
             Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(relationOptional.get());
             AbstractHttpClient abstractComponentClient = clientOptional
@@ -144,7 +144,7 @@ public class LinkTaskServiceImpl implements ITaskService {
 
     @Override
     public Optional<Map<String, Object>> config(String taskTag) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.resolveComponent());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(configContext.linkComponent());
         if (relationOptional.isPresent()) {
             Optional<AbstractHttpClient> clientOptional = configContext.getRpcClient().getClient(relationOptional.get());
             AbstractHttpClient abstractComponentClient = clientOptional
