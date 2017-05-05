@@ -28,7 +28,6 @@ public class MongoLinkFetch implements LinkFetch {
             throw new IllegalStateException("mongo数据库连接信息没有初始化");
         }
         MongoCollection<Document> collection = mongoDatabase.getCollection(taskTag + "_links");
-        List<Map<String, Object>> result = new ArrayList<>();
         Document document = collection.findOneAndDelete(new BsonDocument());
 
         if (document == null) {

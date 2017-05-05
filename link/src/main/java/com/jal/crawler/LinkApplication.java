@@ -11,12 +11,15 @@ import com.jal.crawler.rpc.LinkTaskServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.IOException;
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class})
 public class LinkApplication {
 
     public static void main(String[] args) throws IOException, InterruptedException {

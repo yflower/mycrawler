@@ -62,9 +62,6 @@ public class LinkContext extends ComponentContext<List<String>, List<String>, Ta
         this.linkFetch = linkFetch;
     }
 
-    public void setPersist(Persist persist) {
-        this.persist = persist;
-    }
 
     public void setRedisTemplate(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
