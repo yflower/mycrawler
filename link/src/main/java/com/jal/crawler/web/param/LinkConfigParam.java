@@ -24,6 +24,8 @@ public class LinkConfigParam {
 
     private MongoConfigParam mongoConfig;
 
+    private RedisConfigParam redisConfigParam;
+
 
     public String getHost() {
         return host;
@@ -65,5 +67,11 @@ public class LinkConfigParam {
         this.mongoConfig = mongoConfig;
     }
 
+    public RedisConfigParam getRedisConfigParam() {
+        return redisConfigParam;
+    }
 
+    public void setRedisConfigParam(RedisConfigParam redisConfigParam) {
+        this.redisConfigParam = redisConfigParam;
+    }
 }
