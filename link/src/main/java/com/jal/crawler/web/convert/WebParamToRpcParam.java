@@ -22,7 +22,7 @@ public class WebParamToRpcParam {
         }
         rpcConfigParam.setMongoConfig(configParam.getMongoConfig());
         rpcConfigParam.setThread(configParam.getThread());
-        rpcConfigParam.setRedisConfig(configParam.getRedisConfigParam());
+        rpcConfigParam.setRedisConfig(configParam.getRedisConfig());
 
         return rpcConfigParam;
     }
