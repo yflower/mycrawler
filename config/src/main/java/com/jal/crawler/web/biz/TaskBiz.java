@@ -5,10 +5,7 @@ import com.jal.crawler.web.convert.TaskOperationConvert;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.enums.DataTypeEnum;
 import com.jal.crawler.web.data.enums.TaskOperationEnum;
-import com.jal.crawler.web.data.model.task.DataOperationModel;
-import com.jal.crawler.web.data.model.task.DownloadOperationModel;
-import com.jal.crawler.web.data.model.task.ResolveOperationModel;
-import com.jal.crawler.web.data.model.task.TaskStatusModel;
+import com.jal.crawler.web.data.model.task.*;
 import com.jal.crawler.web.data.param.TaskPushParam;
 import com.jal.crawler.web.data.view.task.TaskOperationVO;
 import com.jal.crawler.web.data.view.task.TaskStatusVO;
@@ -43,6 +40,9 @@ public class TaskBiz {
 
     @Resource
     private ITaskService dataTaskService;
+
+    @Resource
+    private ITaskService linkService;
 
 
     public Optional<TaskStatusVO> status(String taskTag) {
@@ -114,6 +114,7 @@ public class TaskBiz {
         String taskTag = generateTaskTag();
         taskPush(param.getDownload(), taskTag);
         taskPush(param.getResolve(), taskTag);
+        taskPush(param.getLink(),taskTag);
         LOGGER.info("任务添加成功");
         return new TaskOperationVO() {{
             setTaskTag(taskTag);
@@ -215,6 +216,12 @@ public class TaskBiz {
         fillTaskOpModel(downloadOperationModel);
         downloadOperationModel.setTaskType(TaskOperationEnum.ADD);
         downloadTaskService.push(downloadOperationModel);
+    }
+
+    private void taskPush(TaskPushParam.link param, String taskTag) {
+        LinkOperationModel linkOperationModel = TaskOperationConvert.paramToModel(param, taskTag);
+        linkOperationModel.setTaskType(TaskOperationEnum.ADD);
+        linkService.push(linkOperationModel);
     }
 
 

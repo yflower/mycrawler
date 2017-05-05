@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -28,7 +27,9 @@ public class HttpClientHolder {
 
     private static Map<String, DownloadHttpClient> downs = new HashMap<>();
 
-    private static Map<String ,DataHttpClient> datas=new HashMap<>();
+    private static Map<String, DataHttpClient> datas = new HashMap<>();
+
+    private static Map<String, LinkHttpClient> links = new HashMap<>();
 
     private static RestTemplate restTemplate = new RestTemplate();
 
@@ -86,7 +87,7 @@ public class HttpClientHolder {
                 .collect(Collectors.toList());
     }
 
-       public List<ComponentRelation> downloadModel() {
+    public List<ComponentRelation> downloadModel() {
         Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
             Optional<ComponentRelation> status = t.status();
             if (status.isPresent()) {
@@ -118,6 +119,22 @@ public class HttpClientHolder {
                 .collect(Collectors.toList());
     }
 
+    public List<ComponentRelation> linkModel() {
+        Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
+            Optional<ComponentRelation> status = t.status();
+            if (status.isPresent()) {
+                return Optional.of(status.get());
+            }
+            remove(t);
+            return Optional.empty();
+        };
+        return datas.values().stream()
+                .map(function)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+    }
+
 
     private Optional<AbstractHttpClient> cacheClient(ComponentRelation componentRelation) {
         Optional<ComponentEnum> componentEnum = tryConnect(componentRelation);
@@ -131,10 +148,10 @@ public class HttpClientHolder {
                     client = resolveClient(componentRelation.getHost(), componentRelation.getPort());
                     break;
                 case DATA:
-                    client=dataClient(componentRelation.getHost(),componentRelation.getPort());
+                    client = dataClient(componentRelation.getHost(), componentRelation.getPort());
                     break;
                 default:
-                   throw new IllegalStateException("未知的组件类型");
+                    throw new IllegalStateException("未知的组件类型");
             }
             return Optional.of(client);
         }
@@ -171,6 +188,15 @@ public class HttpClientHolder {
         return dataHttpClient;
     }
 
+    private AbstractHttpClient linkClient(String host, int port) {
+        LinkHttpClient linkHttpClient = new LinkHttpClient();
+        linkHttpClient.setComponentRelation(new ComponentRelation(host, port));
+        linkHttpClient.setRestTemplate(restTemplate);
+        linkAdd(linkHttpClient);
+        logger.info("添加data rpc客户端");
+        return linkHttpClient;
+    }
+
     private void resolveAdd(ResolveHttpClient resolveClient) {
         resolves.put(resolveClient.componentRelation.getHost(), resolveClient);
         clients.put(resolveClient.componentRelation.getHost(), resolveClient);
@@ -184,6 +210,11 @@ public class HttpClientHolder {
     private void dataAdd(DataHttpClient dataHttpClient) {
         datas.put(dataHttpClient.componentRelation.getHost(), dataHttpClient);
         clients.put(dataHttpClient.componentRelation.getHost(), dataHttpClient);
+    }
+
+    private void linkAdd(LinkHttpClient linkHttpClient) {
+        links.put(linkHttpClient.componentRelation.getHost(), linkHttpClient);
+        clients.put(linkHttpClient.componentRelation.getHost(), linkHttpClient);
     }
 
     private void remove(String address) {

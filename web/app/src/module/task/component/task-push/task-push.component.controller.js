@@ -112,7 +112,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
                     contentElement: '#task-test-dialog',
                     parent: angular.element(document.body),
                     targetEvent: ev,
-                    clickOutsideToClose: self.testState.notWait
+                    clickOutsideToClose: false
                   });
         self.test=true;
         taskService.taskPush(null,
@@ -138,6 +138,7 @@ let controller = ['taskService','$mdDialog', function (taskService,$mdDialog) {
             },null).then(function (result) {
                 self.testState.dates=result.data;
                 self.testState.notWait=true;
+
             },function (error) {
                 alert("获取结果出错")
             })

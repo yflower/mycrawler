@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jal.crawler.proto.link";
+import "common_task.proto";
+
+package rpc;
+
+service RpcLinkTask {
+    rpc linkTask (LinkTask) returns (LinkTaskResponse);
+    rpc linkTaskConfig (TaskTag) returns (LinkTask);
+
+
+}
+
+message LinkTask {
+
+    TaskType task_type = 1;
+    string taskTag = 2;
+    bool test = 3;
+    repeated string linkPattern = 4;
+}
+
+message LinkTaskResponse {
+    OPStatus op_status = 1;
+    string taskTag = 2;
+}
+
+message TaskTag {
+    string task_tag = 1;
+}
+

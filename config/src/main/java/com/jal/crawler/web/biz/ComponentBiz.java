@@ -46,6 +46,9 @@ public class ComponentBiz {
     private IComponentService dataService;
 
     @Resource
+    private IComponentService linkService;
+
+    @Resource
     private IComponentStatService componentStatService;
 
     @Resource
@@ -96,6 +99,9 @@ public class ComponentBiz {
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 } else if (componentRelation.getComponentType() == ComponentEnum.DATA.getCode()) {
                     return DefaultConfigModelConstant.defaultDataConfig(componentRelation,
+                            configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
+                } else if (componentRelation.getComponentType() == ComponentEnum.LINK.getCode()) {
+                    return DefaultConfigModelConstant.defaultLinkConfig(componentRelation,
                             configContext.getRedisConfigModel(), configContext.getMongoConfigModel());
                 }
 
@@ -149,6 +155,8 @@ public class ComponentBiz {
             result = resolveService.component(componentRelation);
         } else if (componentRelation.getComponentType() == ComponentEnum.DATA.getCode()) {
             result = dataService.component(componentRelation);
+        } else if (componentRelation.getComponentType() == ComponentEnum.LINK.getCode()) {
+            result = linkService.component(componentRelation);
         } else {
             throw new IllegalStateException("无法解析组件类型");
         }
@@ -170,6 +178,8 @@ public class ComponentBiz {
             LOGGER.info("解析组件设置成功");
         } else if (componentConfigModel.getComponentType() == ComponentEnum.DATA.getCode()) {
             result = dataService.config(componentConfigModel);
+        } else if (componentConfigModel.getComponentType() == ComponentEnum.LINK.getCode()) {
+            result = linkService.config(componentConfigModel);
         } else {
             throw new IllegalStateException("无法解析组件类型");
         }
@@ -203,6 +213,7 @@ public class ComponentBiz {
         result.addAll(configContext.resolveComponent());
         result.addAll(configContext.downloadComponent());
         result.addAll(configContext.dataComponent());
+        result.addAll(configContext.linkComponent());
         return result;
 
     }

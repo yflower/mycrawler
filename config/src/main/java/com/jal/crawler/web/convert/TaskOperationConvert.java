@@ -2,6 +2,7 @@ package com.jal.crawler.web.convert;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.model.task.DownloadOperationModel;
+import com.jal.crawler.web.data.model.task.LinkOperationModel;
 import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import com.jal.crawler.web.data.param.TaskPushParam;
 
@@ -45,6 +46,15 @@ public class TaskOperationConvert {
         model.setTest(param.isTest());
         model.setPreProcess(param.getPreProcess().stream().map(TaskOperationConvert::toProcess).collect(Collectors.toList()));
         model.setPostProcess(param.getPostProcess().stream().map(TaskOperationConvert::toProcess).collect(Collectors.toList()));
+        return model;
+    }
+
+    public static LinkOperationModel paramToModel(TaskPushParam.link param, String taskTag) {
+        LinkOperationModel model = new LinkOperationModel(taskTag);
+        model.setTaskTag(taskTag);
+        model.setComponentType(ComponentEnum.LINK);
+        model.setTest(param.isTest());
+        model.setLinkPattern(param.getLinkPattern());
         return model;
     }
 

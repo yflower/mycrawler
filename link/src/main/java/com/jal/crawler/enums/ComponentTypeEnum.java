@@ -1,9 +1,9 @@
-package com.jal.crawler.web.data.enums;
+package com.jal.crawler.enums;
 
 /**
- * Created by jal on 2017/2/25.
+ * Created by jianganlan on 2017/5/2.
  */
-public enum ComponentEnum {
+public enum ComponentTypeEnum {
     DOWNLOAD(0),
     RESOLVE(1),
     DATA(2),
@@ -11,12 +11,12 @@ public enum ComponentEnum {
 
     private int code;
 
-    ComponentEnum(int code) {
+    ComponentTypeEnum(int code) {
         this.code = code;
     }
 
-    public static ComponentEnum numberOf(int value) {
-        for (ComponentEnum componentEnum : ComponentEnum.values()) {
+    public static ComponentTypeEnum numberOf(int value) {
+        for (ComponentTypeEnum componentEnum : ComponentTypeEnum.values()) {
             if (value == componentEnum.getCode()) {
                 return componentEnum;
             }

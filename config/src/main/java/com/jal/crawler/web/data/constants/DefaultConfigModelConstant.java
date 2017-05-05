@@ -1,10 +1,7 @@
 package com.jal.crawler.web.data.constants;
 
 import com.jal.crawler.web.data.enums.ComponentRelationTypeEnum;
-import com.jal.crawler.web.data.model.component.ComponentRelation;
-import com.jal.crawler.web.data.model.component.DataConfigRelation;
-import com.jal.crawler.web.data.model.component.DownloadConfigRelation;
-import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
+import com.jal.crawler.web.data.model.component.*;
 import com.jal.crawler.web.data.model.dbModel.MongoConfigModel;
 import com.jal.crawler.web.data.model.dbModel.RedisConfigModel;
 
@@ -65,4 +62,15 @@ public class DefaultConfigModelConstant {
     }
 
 
+    public static ComponentConfigRelation defaultLinkConfig(ComponentRelation componentRelation, RedisConfigModel redisConfigModel, MongoConfigModel mongoConfigModel) {
+        LinkConfigRelation linkConfigRelation = new LinkConfigRelation();
+        linkConfigRelation.setComponentType(componentRelation.getComponentType());
+        linkConfigRelation.setHost(componentRelation.getHost());
+        linkConfigRelation.setPort(componentRelation.getPort());
+        linkConfigRelation.setThread(2);
+        linkConfigRelation.setRedisConfigModel(redisConfigModel);
+        linkConfigRelation.setMongoConfigModel(mongoConfigModel);
+        linkConfigRelation.setRelationTypeEnum(ComponentRelationTypeEnum.CLUSTER);
+        return linkConfigRelation;
+    }
 }

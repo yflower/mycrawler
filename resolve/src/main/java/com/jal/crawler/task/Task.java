@@ -36,7 +36,17 @@ public class Task extends AbstractTask{
         List<Tag> tags = htmlTag.cssList("a");
         List<String> links = tags.stream().filter(t -> t != null).map(t -> t.attr("href")).filter(t -> t != null && !t.isEmpty()).collect(Collectors.toList());
 
-        stringMap.put("links",links);
+        List<String> validLinks = links.parallelStream()
+                .filter(t -> !t.startsWith("javascript"))
+                .filter(t -> !t.equals("#none"))
+                .filter(t -> !t.equals("#comment"))
+                .filter(t->t.startsWith("//"))
+                .collect(Collectors.toList());
+        String[] split = page.getUrl().split("/");
+        String baseUrl = Arrays.stream(Arrays.copyOf(split,split.length-1)).collect(Collectors.joining("/"));
+
+        List<String> finalLinks = validLinks.parallelStream().map(t -> baseUrl+t.substring(2, t.length() - 1)).collect(Collectors.toList());
+        stringMap.put("links",finalLinks);
         helpGC(page, htmlTag);
         LOGGER.info("成功解析页面 {}",page.getUrl());
         return Optional.of(stringMap);

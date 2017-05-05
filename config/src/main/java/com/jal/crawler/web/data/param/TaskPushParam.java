@@ -12,6 +12,8 @@ public class TaskPushParam {
 
     private resolve resolve;
 
+    private link link;
+
     public TaskPushParam.download getDownload() {
         return download;
     }
@@ -235,5 +237,45 @@ public class TaskPushParam {
                 this.query = query;
             }
         }
+    }
+
+    public static class link{
+        private boolean test;
+
+        private int type;
+
+        private List<String> linkPattern;
+
+        public boolean isTest() {
+            return test;
+        }
+
+        public void setTest(boolean test) {
+            this.test = test;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
+        public List<String> getLinkPattern() {
+            return linkPattern;
+        }
+
+        public void setLinkPattern(List<String> linkPattern) {
+            this.linkPattern = linkPattern;
+        }
+    }
+
+    public TaskPushParam.link getLink() {
+        return link;
+    }
+
+    public void setLink(TaskPushParam.link link) {
+        this.link = link;
     }
 }

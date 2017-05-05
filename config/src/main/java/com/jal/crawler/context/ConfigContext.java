@@ -40,6 +40,10 @@ public class ConfigContext {
 
     public List<ComponentRelation> dataComponent(){return rpcClient.dataModel();}
 
+    public List<ComponentRelation> linkComponent(){
+        return rpcClient.linkModel();
+    }
+
     public MongoConfigModel getMongoConfigModel() {
         return mongoConfigModel;
     }
