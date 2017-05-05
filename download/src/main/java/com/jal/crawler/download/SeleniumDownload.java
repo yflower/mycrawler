@@ -2,7 +2,7 @@ package com.jal.crawler.download;
 
 import com.jal.crawler.request.PageRequest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -28,8 +28,22 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     protected void internalDown(PageRequest pageRequest) throws IOException {
-        webDriver.get(pageRequest.getUrl());
-    }
+        webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
+        int tryTimes = 5;
+        boolean isSuccess = false;
+        for (int i = 0; i <= tryTimes; ++i) {
+            try {
+                link(pageRequest.getUrl());
+                isSuccess = true;
+                break;
+            } catch (Exception e) {
+                continue;
+            }
+        }
+        if (!isSuccess) {
+            isSkip = true;
+        }
+          }
 
     @Override
     protected void internalClose() {
@@ -113,17 +127,44 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload linkTo(String url) {
-        webDriver.get(url);
+        webDriver.manage().timeouts().setScriptTimeout(3, TimeUnit.SECONDS);
+        int tryTimes = 5;
+        boolean isSuccess = false;
+        for (int i = 0; i <= tryTimes; ++i) {
+            try {
+                link(url);
+                isSuccess = true;
+                break;
+            } catch (Exception e) {
+                continue;
+            }
+        }
+        if (!isSuccess) {
+            isSkip = true;
+        }
         return this;
+    }
+
+    private void link(String url) {
+        webDriver.get(url);
     }
 
     public static class Builder extends AbstractBuilder {
         private DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
 
+
         @Override
         protected AbstractDownLoad internalBuild() {
-            return new SeleniumDownload(new ChromeDriver(desiredCapabilities));
+            try {
+                desiredCapabilities.setJavascriptEnabled(true);
+                PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
+                SeleniumDownload seleniumDownload = new SeleniumDownload(phantomJSDriver);
+                return seleniumDownload;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
         @Override

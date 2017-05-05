@@ -64,7 +64,7 @@ public class TaskController {
         if (taskTag != null) {
             Optional<TaskStatusVO> statusVOOptional = taskBiz.status(taskTag);
             if (statusVOOptional.isPresent()) {
-                return ApiResponse.successBuild(taskBiz.status(taskTag));
+                return ApiResponse.successBuild(statusVOOptional.get());
             } else {
                 return ResponseEntity.notFound().build();
             }

@@ -124,11 +124,11 @@ public abstract class AbstractDownLoad implements DownLoad {
         }
 
         public AbstractDownLoad build() {
-            logger.info("success create download ");
             if (isProxy) {
                 internalProxy(proxyHost, proxyPort);
             }
             AbstractDownLoad downLoad = internalBuild();
+            logger.info("success create download ");
             return downLoad;
         }
 

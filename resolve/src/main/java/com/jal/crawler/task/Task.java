@@ -34,7 +34,8 @@ public class Task extends AbstractTask{
         stringMap.putAll(itemResult);
         stringMap.put("url", page.getUrl());
         List<Tag> tags = htmlTag.cssList("a");
-        List<String> links = tags.stream().map(t -> t.attr("href")).filter(t -> t != null && !t.isEmpty()).collect(Collectors.toList());
+        List<String> links = tags.stream().filter(t -> t != null).map(t -> t.attr("href")).filter(t -> t != null && !t.isEmpty()).collect(Collectors.toList());
+
         stringMap.put("links",links);
         helpGC(page, htmlTag);
         LOGGER.info("成功解析页面 {}",page.getUrl());

@@ -16,7 +16,7 @@
                    {{item.taskTag}}
                 </div>
                 <div class="md-list-item-text" flex="50">
-                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss Z'}}
+                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss'}}
                 </div>
 
                 <div class="md-list-item-text" flex="30">
@@ -33,8 +33,10 @@
                     <md-tooltip md-direction="bottom">完成</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
-                    <md-icon md-svg-icon="info"></md-icon>
+                           ui-sref="taskInfo({ taskTag: item.taskTag })">
+                    <md-icon md-svg-icon="info">
+                    </md-icon>
+                    <a ></a>
                     <md-tooltip md-direction="bottom">详细</md-tooltip>
                 </md-button>
                 <md-divider></md-divider>
@@ -51,7 +53,7 @@
                     {{item.taskTag}}
                 </div>
                 <div class="md-list-item-text" flex="50">
-                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss Z'}}
+                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss'}}
                 </div>
 
                 <div class="md-list-item-text" flex="30">
@@ -68,7 +70,7 @@
                     <md-tooltip md-direction="bottom">清除</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ui-sref="taskInfo({ taskTag: item.taskTag })">
                     <md-icon md-svg-icon="info"></md-icon>
                     <md-tooltip md-direction="bottom">详细</md-tooltip>
                 </md-button>
@@ -84,7 +86,7 @@
                     {{item.taskTag}}
                 </div>
                 <div class="md-list-item-text" flex="50">
-                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss Z'}}
+                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss'}}
                 </div>
 
                 <div class="md-list-item-text" flex="30">
@@ -101,7 +103,7 @@
                     <md-tooltip md-direction="bottom">清除</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ui-sref="taskInfo({ taskTag: item.taskTag })">
                     <md-icon md-svg-icon="info"></md-icon>
                     <md-tooltip md-direction="bottom">详细</md-tooltip>
                 </md-button>
@@ -117,7 +119,7 @@
                     {{item.taskTag}}
                 </div>
                 <div class="md-list-item-text" flex="50">
-                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss Z'}}
+                    start at-----{{item.beginTime| date:'yyyy-MM-dd HH:mm:ss'}}
                 </div>
 
                 <div class="md-list-item-text" flex="30">
@@ -134,7 +136,7 @@
                     <!--<md-tooltip md-direction="bottom">清除</md-tooltip>-->
                 <!--</md-button>-->
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ui-sref="taskInfo({ taskTag: item.taskTag })">
                     <md-icon md-svg-icon="info"></md-icon>
                     <md-tooltip md-direction="bottom">详细</md-tooltip>
                 </md-button>

@@ -7,7 +7,11 @@ let name = 'taskList';
 
 let config = {
     templateUrl: 'src/module/task/component/task-list/task-list.component.template.html',
+    require:{
+        parent:'^taskView'
+    },
     controller:taskListController.controller
+
 }
 
 export default {

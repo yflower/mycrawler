@@ -17,6 +17,8 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     self.destroy = []
 
+    console.log(this.parent)
+
     fresh();
 
     function fresh(){

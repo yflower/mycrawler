@@ -26,8 +26,15 @@ public class DownloadApplication {
         Integer port = Integer.valueOf(args[1]);
         String host = args[2];
 
-//        System.setProperty("webdriver.chrome.driver", "C:\\webdriver\\chromedriver.exe");
-        System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
+        String os = System.getProperty("os.name");
+
+        String baseUrl = DownloadApplication.class.getResource("/webdriver/").getPath();
+
+        String phantomjs=baseUrl+"phantomjs_"+os;
+
+
+
+        System.setProperty("phantomjs_Linux.binary.path", phantomjs);
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
 
         DownLoadContext loadContext = context.getBean(DownLoadContext.class);

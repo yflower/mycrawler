@@ -1,10 +1,15 @@
 /**
  * Created by jal on 2017/3/12.
  */
+import taskInfoController from 'src/module/task/component/task-info/task-info.component.controller';
+
 let name = 'taskInfo';
 
 let config = {
-    templateUrl: 'src/module/task/component/task-info/task-info.component.template.html'
+    templateUrl: 'src/module/task/component/task-info/task-info.component.template.html',
+    controller:taskInfoController.controller
+
+
 //     controller: ['echartService', function(echartService){
 //     var self = this;
 //     var myChart = echartService.echarts.init(document.getElementById('main'))

@@ -67,6 +67,15 @@ let service = ['$q', '$http', function ($q, $http) {
         })
     }
 
+    var taskConfig=function (params,data) {
+        return $http({
+            method:'get',
+            url:'http://127.0.0.1:8081/tasks/config',
+            params:params,
+            data:data
+        })
+    }
+
     var processorType = [
         {
             value: 1,
@@ -93,6 +102,16 @@ let service = ['$q', '$http', function ($q, $http) {
         }
     ]
 
+    var taskTag='';
+
+    var currentTask=function () {
+        return taskTag;
+    }
+
+    var setTask=function (tag) {
+        taskTag=tag;
+    }
+
 
     return {
         processorType: processorType,
@@ -103,7 +122,8 @@ let service = ['$q', '$http', function ($q, $http) {
         taskDestroy:taskDestroy,
         taskRestart:taskRestart,
         taskResult:taskResult,
-        taskStatus:taskStatus
+        taskStatus:taskStatus,
+        taskConfig:taskConfig
     }
 }]
 

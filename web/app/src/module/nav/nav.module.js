@@ -18,7 +18,7 @@ angular
                 name: "taskView",
                 views:{
                     "v1":{
-                        name:'taskView',
+                        name:'view',
                         template:'<task-view></task-view>'
 
                     }
