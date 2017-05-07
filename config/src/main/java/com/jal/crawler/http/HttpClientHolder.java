@@ -1,4 +1,4 @@
-package com.jal.crawler.rpc;
+package com.jal.crawler.http;
 
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
@@ -57,13 +57,12 @@ public class HttpClientHolder {
     }
 
     public Optional<AbstractHttpClient> getClient(ComponentRelation componentRelation) {
-        String address = componentRelation.getHost() + ":" + componentRelation.getPort();
-        if (clients.containsKey(address)) {
-            AbstractHttpClient client = clients.get(address);
+        if (clients.containsKey(componentRelation.tag())) {
+            AbstractHttpClient client = clients.get(componentRelation.tag());
             if (client.status().isPresent()) {
                 return Optional.of(client);
             } else {
-                remove(address);
+                remove(componentRelation.tag());
             }
 
         }
@@ -71,70 +70,51 @@ public class HttpClientHolder {
     }
 
     public List<ComponentRelation> resolveModel() {
-        Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
-            Optional<ComponentRelation> status = t.status();
-            if (status.isPresent()) {
-                return Optional.of(status.get());
-            }
-            remove(t);
-            return Optional.empty();
-        };
 
         return resolves.values().stream()
-                .map(function)
+                .map(freshComponent())
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
     public List<ComponentRelation> downloadModel() {
-        Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
-            Optional<ComponentRelation> status = t.status();
-            if (status.isPresent()) {
-                return Optional.of(status.get());
-            }
-            remove(t);
-            return Optional.empty();
-        };
         return downs.values().stream()
-                .map(function)
+                .map(freshComponent())
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
     public List<ComponentRelation> dataModel() {
-        Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
-            Optional<ComponentRelation> status = t.status();
-            if (status.isPresent()) {
-                return Optional.of(status.get());
-            }
-            remove(t);
-            return Optional.empty();
-        };
         return datas.values().stream()
-                .map(function)
+                .map(freshComponent())
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
     public List<ComponentRelation> linkModel() {
-        Function<AbstractHttpClient, Optional<ComponentRelation>> function = t -> {
-            Optional<ComponentRelation> status = t.status();
-            if (status.isPresent()) {
-                return Optional.of(status.get());
-            }
-            remove(t);
-            return Optional.empty();
-        };
+
         return links.values().stream()
-                .map(function)
+                .map(freshComponent())
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
     }
 
+    private Function<AbstractHttpClient, Optional<ComponentRelation>> freshComponent(){
+        return   t -> {
+            Optional<ComponentRelation> status = t.status();
+            if (status.isPresent()) {
+                ComponentRelation componentRelation = status.get();
+                componentRelation.setServerPort(t.getComponentRelation().getServerPort());
+                return Optional.of(componentRelation);
+            }
+            remove(t);
+            return Optional.empty();
+        };
+    }
 
     private Optional<AbstractHttpClient> cacheClient(ComponentRelation componentRelation) {
         Optional<ComponentEnum> componentEnum = tryConnect(componentRelation);
@@ -142,16 +122,16 @@ public class HttpClientHolder {
         if (componentEnum.isPresent()) {
             switch (componentEnum.get()) {
                 case DOWNLOAD:
-                    client = downloadClient(componentRelation.getHost(), componentRelation.getPort());
+                    client = downloadClient(componentRelation.getHost(), componentRelation.getPort(),componentRelation.getServerPort());
                     break;
                 case RESOLVE:
-                    client = resolveClient(componentRelation.getHost(), componentRelation.getPort());
+                    client = resolveClient(componentRelation.getHost(), componentRelation.getPort(),componentRelation.getServerPort());
                     break;
                 case DATA:
-                    client = dataClient(componentRelation.getHost(), componentRelation.getPort());
+                    client = dataClient(componentRelation.getHost(), componentRelation.getPort(),componentRelation.getServerPort());
                     break;
                 case LINK:
-                    client=linkClient(componentRelation.getHost(),componentRelation.getPort());
+                    client=linkClient(componentRelation.getHost(),componentRelation.getPort(),componentRelation.getServerPort());
                     break;
                 default:
                     throw new IllegalStateException("未知的组件类型");
@@ -163,37 +143,37 @@ public class HttpClientHolder {
 
     }
 
-    private AbstractHttpClient downloadClient(String host, int port) {
+    private AbstractHttpClient downloadClient(String host, int port,int serverPort) {
         DownloadHttpClient downloadClient = new DownloadHttpClient();
         downloadClient.setRestTemplate(restTemplate);
-        downloadClient.setComponentRelation(new ComponentRelation(host, port));
+        downloadClient.setComponentRelation(new ComponentRelation(host, port,serverPort));
         downAdd(downloadClient);
         logger.info("添加download rpc客户端");
         return downloadClient;
 
     }
 
-    private AbstractHttpClient resolveClient(String host, int port) {
+    private AbstractHttpClient resolveClient(String host, int port,int serverPort) {
         ResolveHttpClient resolveClient = new ResolveHttpClient();
-        resolveClient.setComponentRelation(new ComponentRelation(host, port));
+        resolveClient.setComponentRelation(new ComponentRelation(host, port,serverPort));
         resolveClient.setRestTemplate(restTemplate);
         resolveAdd(resolveClient);
         logger.info("添加resolve rpc客户端");
         return resolveClient;
     }
 
-    private AbstractHttpClient dataClient(String host, int port) {
+    private AbstractHttpClient dataClient(String host, int port,int serverPort) {
         DataHttpClient dataHttpClient = new DataHttpClient();
-        dataHttpClient.setComponentRelation(new ComponentRelation(host, port));
+        dataHttpClient.setComponentRelation(new ComponentRelation(host, port,serverPort));
         dataHttpClient.setRestTemplate(restTemplate);
         dataAdd(dataHttpClient);
         logger.info("添加data rpc客户端");
         return dataHttpClient;
     }
 
-    private AbstractHttpClient linkClient(String host, int port) {
+    private AbstractHttpClient linkClient(String host, int port,int serverPort) {
         LinkHttpClient linkHttpClient = new LinkHttpClient();
-        linkHttpClient.setComponentRelation(new ComponentRelation(host, port));
+        linkHttpClient.setComponentRelation(new ComponentRelation(host, port,serverPort));
         linkHttpClient.setRestTemplate(restTemplate);
         linkAdd(linkHttpClient);
         logger.info("添加data rpc客户端");
@@ -201,37 +181,37 @@ public class HttpClientHolder {
     }
 
     private void resolveAdd(ResolveHttpClient resolveClient) {
-        resolves.put(resolveClient.componentRelation.getHost(), resolveClient);
-        clients.put(resolveClient.componentRelation.getHost(), resolveClient);
+        resolves.put(resolveClient.componentRelation.tag(), resolveClient);
+        clients.put(resolveClient.componentRelation.tag(), resolveClient);
     }
 
     private void downAdd(DownloadHttpClient downloadClient) {
-        downs.put(downloadClient.componentRelation.getHost(), downloadClient);
-        clients.put(downloadClient.componentRelation.getHost(), downloadClient);
+        downs.put(downloadClient.componentRelation.tag(), downloadClient);
+        clients.put(downloadClient.componentRelation.tag(), downloadClient);
     }
 
     private void dataAdd(DataHttpClient dataHttpClient) {
-        datas.put(dataHttpClient.componentRelation.getHost(), dataHttpClient);
-        clients.put(dataHttpClient.componentRelation.getHost(), dataHttpClient);
+        datas.put(dataHttpClient.componentRelation.tag(), dataHttpClient);
+        clients.put(dataHttpClient.componentRelation.tag(), dataHttpClient);
     }
 
     private void linkAdd(LinkHttpClient linkHttpClient) {
-        links.put(linkHttpClient.componentRelation.getHost(), linkHttpClient);
-        clients.put(linkHttpClient.componentRelation.getHost(), linkHttpClient);
+        links.put(linkHttpClient.componentRelation.tag(), linkHttpClient);
+        clients.put(linkHttpClient.componentRelation.tag(), linkHttpClient);
     }
 
     private void remove(String address) {
         clients.get(address).close();
-        clients.remove(address);
-        downs.remove(address);
-        resolves.remove(address);
+        clients.remove(address).close();
+        downs.remove(address).close();
+        resolves.remove(address).close();
     }
 
     private void remove(AbstractHttpClient client) {
         client.close();
-        clients.remove(client.componentRelation.getHost());
-        downs.remove(client.componentRelation.getHost());
-        resolves.remove(client.componentRelation.getHost());
+        clients.remove(client.componentRelation.tag());
+        downs.remove(client.componentRelation.tag());
+        resolves.remove(client.componentRelation.tag());
     }
 
 

@@ -26,6 +26,9 @@ public class ResolveParam {
         private int port;
 
         @Min(1)
+        private int serverPort;
+
+        @Min(1)
         private int thread;
 
         public int getThread() {
@@ -50,6 +53,14 @@ public class ResolveParam {
 
         public void setPort(int port) {
             this.port = port;
+        }
+
+        public int getServerPort() {
+            return serverPort;
+        }
+
+        public void setServerPort(int serverPort) {
+            this.serverPort = serverPort;
         }
     }
 

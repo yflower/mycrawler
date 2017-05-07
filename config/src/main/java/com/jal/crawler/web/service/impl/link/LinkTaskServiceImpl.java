@@ -1,7 +1,7 @@
 package com.jal.crawler.web.service.impl.link;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.rpc.AbstractHttpClient;
+import com.jal.crawler.http.AbstractHttpClient;
 import com.jal.crawler.web.data.enums.ExceptionEnum;
 import com.jal.crawler.web.data.exception.BizException;
 import com.jal.crawler.web.data.model.component.ComponentRelation;

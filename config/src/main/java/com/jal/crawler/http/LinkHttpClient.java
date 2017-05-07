@@ -1,4 +1,4 @@
-package com.jal.crawler.rpc;
+package com.jal.crawler.http;
 
 import com.jal.crawler.web.data.model.component.LinkConfigRelation;
 import com.jal.crawler.web.data.model.task.LinkOperationModel;
@@ -22,7 +22,7 @@ public class LinkHttpClient extends AbstractHttpClient<LinkConfigRelation, LinkO
 
     @Override
     protected OPStatus internalTask(LinkOperationModel taskOperation) throws InterruptedException, ExecutionException {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/link/task";
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/link/task";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", taskOperation.getTaskTag());
         body.put("taskType", taskOperation.getTaskType().getCode());
@@ -38,7 +38,7 @@ public class LinkHttpClient extends AbstractHttpClient<LinkConfigRelation, LinkO
     @Override
     protected boolean internalConfigSet(LinkConfigRelation config) {
         //todo not found
-        String url = "http://" + this.componentRelation.getHost() + ":8080/link/init";
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/link/init";
         Map<String, Object> body = new HashMap();
         body.put("host", config.getHost());
         body.put("port", config.getPort());
@@ -55,5 +55,10 @@ public class LinkHttpClient extends AbstractHttpClient<LinkConfigRelation, LinkO
     @Override
     protected boolean validConfig(LinkConfigRelation config) {
         return true;
+    }
+
+    @Override
+    protected int port() {
+        return componentRelation.getServerPort();
     }
 }

@@ -1,4 +1,4 @@
-package com.jal.crawler.rpc;
+package com.jal.crawler.http;
 
 import com.jal.crawler.web.data.model.component.DataConfigRelation;
 import com.jal.crawler.web.data.model.task.DataOperationModel;
@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataOperationModel> {
     @Override
     public Optional<ResponseEntity> result(Map<String, Object> param) {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/data/result?taskTag={taskTag}&type={type}";
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/data/result?taskTag={taskTag}&type={type}";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", param.get("taskTag"));
         body.put("type", param.get("type"));
@@ -36,7 +36,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
 
     @Override
     protected OPStatus internalTask(DataOperationModel taskOperation) throws InterruptedException, ExecutionException {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/data/task";
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/data/task";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", taskOperation.getTaskTag());
         body.put("taskType", taskOperation.getTaskType().getCode());
@@ -52,7 +52,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
 
     @Override
     protected boolean internalConfigSet(DataConfigRelation config) {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/data/init";
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/data/init";
         Map<String, Object> body = new HashMap();
         body.put("host", config.getHost());
         body.put("port", config.getPort());
@@ -66,5 +66,10 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
     @Override
     protected boolean validConfig(DataConfigRelation config) {
         return true;
+    }
+
+    @Override
+    protected int port() {
+        return componentRelation.getServerPort();
     }
 }

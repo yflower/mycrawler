@@ -20,6 +20,7 @@ public class DefaultConfigModelConstant {
         DownloadConfigRelation downloadConfigModel = new DownloadConfigRelation();
         downloadConfigModel.setHost(componentRelation.getHost());
         downloadConfigModel.setPort(componentRelation.getPort());
+        downloadConfigModel.setServerPort(componentRelation.getServerPort());
         downloadConfigModel.setComponentType(componentRelation.getComponentType());
         downloadConfigModel.setThread(2);
         downloadConfigModel.setSleepTime(100);
@@ -41,6 +42,7 @@ public class DefaultConfigModelConstant {
         resolveConfigModel.setComponentType(componentRelation.getComponentType());
         resolveConfigModel.setHost(componentRelation.getHost());
         resolveConfigModel.setPort(componentRelation.getPort());
+        resolveConfigModel.setServerPort(componentRelation.getServerPort());
         resolveConfigModel.setThread(2);
         resolveConfigModel.setRedisConfigModel(redisConfigModel);
         resolveConfigModel.setMongoConfigModel(mongoConfigModel);
@@ -54,6 +56,7 @@ public class DefaultConfigModelConstant {
         dataConfigRelation.setComponentType(componentRelation.getComponentType());
         dataConfigRelation.setHost(componentRelation.getHost());
         dataConfigRelation.setPort(componentRelation.getPort());
+        dataConfigRelation.setServerPort(componentRelation.getServerPort());
         dataConfigRelation.setThread(2);
         dataConfigRelation.setRedisConfigModel(redisConfigModel);
         dataConfigRelation.setMongoConfigModel(mongoConfigModel);
@@ -67,9 +70,11 @@ public class DefaultConfigModelConstant {
         linkConfigRelation.setComponentType(componentRelation.getComponentType());
         linkConfigRelation.setHost(componentRelation.getHost());
         linkConfigRelation.setPort(componentRelation.getPort());
+        linkConfigRelation.setServerPort(componentRelation.getServerPort());
         linkConfigRelation.setThread(2);
         linkConfigRelation.setRedisConfigModel(redisConfigModel);
         linkConfigRelation.setMongoConfigModel(mongoConfigModel);
+
         linkConfigRelation.setRelationTypeEnum(ComponentRelationTypeEnum.CLUSTER);
         return linkConfigRelation;
     }

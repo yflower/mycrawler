@@ -1,4 +1,4 @@
-package com.jal.crawler.rpc;
+package com.jal.crawler.http;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,7 +34,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<ComponentRelation> status() {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/component/status";
+        String url = "http://" + this.componentRelation.getHost() + ":"+componentRelation.getServerPort()+"/component/status";
         ResponseEntity<ComponentRelation> entity;
         try {
             entity = restTemplate.getForEntity(url, ComponentRelation.class);
@@ -55,7 +55,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<TaskStatusModel> taskStatus(String taskTag) {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus?taskTag=" + taskTag;
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/component/taskStatus?taskTag=" + taskTag;
         ResponseEntity<String> entity;
         try {
             entity = restTemplate.getForEntity(url, String.class);
@@ -81,7 +81,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<List<TaskStatusModel>> taskStatus() {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskStatus";
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/component/taskStatus";
         List<TaskStatusModel> taskStatusVOS = null;
         ResponseEntity<String> entity;
         try {
@@ -104,7 +104,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<Map<String, Object>> taskConfig(String taskTag) {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/component/taskConfig?taskTag=" + taskTag;
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/component/taskConfig?taskTag=" + taskTag;
         Map<String, Object> taskConfig = null;
         ResponseEntity<String> entity;
         try {
@@ -181,6 +181,8 @@ public abstract class AbstractHttpClient<C, T> {
 
     protected abstract boolean validConfig(C config);
 
+    protected abstract int port();
+
 
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -193,6 +195,7 @@ public abstract class AbstractHttpClient<C, T> {
     public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
     }
+
 
 
     public enum OPStatus {
@@ -220,6 +223,11 @@ public abstract class AbstractHttpClient<C, T> {
         @Override
         protected boolean validConfig(Object config) {
             throw new UnsupportedOperationException();
+        }
+
+        @Override
+        protected int port() {
+            return componentRelation.getServerPort();
         }
     }
 

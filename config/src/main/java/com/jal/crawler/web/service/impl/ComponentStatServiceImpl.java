@@ -1,8 +1,8 @@
 package com.jal.crawler.web.service.impl;
 
 import com.jal.crawler.context.ConfigContext;
-import com.jal.crawler.rpc.AbstractHttpClient;
-import com.jal.crawler.rpc.HttpClientHolder;
+import com.jal.crawler.http.AbstractHttpClient;
+import com.jal.crawler.http.HttpClientHolder;
 import com.jal.crawler.web.data.enums.ComponentEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.view.componnet.ComponentVO;

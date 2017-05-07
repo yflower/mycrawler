@@ -17,14 +17,21 @@ public class ComponentRelation {
 
     private int port;
 
+    private int serverPort;
+
     private StatusEnum status = StatusEnum.NO_INIT;
 
     public ComponentRelation() {
     }
 
-    public ComponentRelation(String host, int port) {
+    public ComponentRelation(String host, int port,int serverPort) {
         this.host = host;
         this.port = port;
+        this.serverPort=serverPort;
+    }
+
+    public String tag(){
+        return host+"_"+port+"_"+serverPort;
     }
 
     public int getComponentType() {
@@ -73,6 +80,14 @@ public class ComponentRelation {
 
     public void setStatus(StatusEnum status) {
         this.status = status;
+    }
+
+    public int getServerPort() {
+        return serverPort;
+    }
+
+    public void setServerPort(int serverPort) {
+        this.serverPort = serverPort;
     }
 
     @Override

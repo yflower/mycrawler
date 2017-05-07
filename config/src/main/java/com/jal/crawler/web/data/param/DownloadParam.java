@@ -27,6 +27,9 @@ public class DownloadParam {
         private int port;
 
         @Min(1)
+        private int serverPort;
+
+        @Min(1)
         private int thread;
 
         @Min(0)
@@ -83,6 +86,14 @@ public class DownloadParam {
 
         public void setHost(String host) {
             this.host = host;
+        }
+
+        public int getServerPort() {
+            return serverPort;
+        }
+
+        public void setServerPort(int serverPort) {
+            this.serverPort = serverPort;
         }
     }
 

@@ -1,7 +1,7 @@
-package com.jal.crawler.rpc;
+package com.jal.crawler.http;
 
-import com.jal.crawler.web.data.model.component.DownloadConfigRelation;
-import com.jal.crawler.web.data.model.task.DownloadOperationModel;
+import com.jal.crawler.web.data.model.component.ResolveConfigRelation;
+import com.jal.crawler.web.data.model.task.ResolveOperationModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by jianganlan on 2017/4/26.
  */
-public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelation, DownloadOperationModel> {
+public class ResolveHttpClient extends AbstractHttpClient<ResolveConfigRelation, ResolveOperationModel> {
 
 
     @Override
@@ -22,16 +22,14 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
     }
 
     @Override
-    protected OPStatus internalTask(DownloadOperationModel taskOperation) throws InterruptedException, ExecutionException {
-        String url = "http://" + this.componentRelation.getHost() + ":8080/download/task";
+    protected OPStatus internalTask(ResolveOperationModel taskOperation) throws InterruptedException, ExecutionException {
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/resolve/task";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", taskOperation.getTaskTag());
         body.put("taskType", taskOperation.getTaskType().getCode());
         body.put("test", taskOperation.isTest());
-        body.put("dynamic", taskOperation.isDynamic());
-        body.put("urls",taskOperation.getUrls());
-        body.put("preProcess", taskOperation.getPreProcess());
-        body.put("postProcess", taskOperation.getPostProcess());
+        body.put("vars",taskOperation.getVars());
+        body.put("items",taskOperation.getItems());
 
         ResponseEntity<String> entity = restTemplate.postForEntity(url, body, String.class);
 
@@ -40,17 +38,13 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
     }
 
     @Override
-    protected boolean internalConfigSet(DownloadConfigRelation config) {
-
-        String url = "http://" + this.componentRelation.getHost() + ":8080/download/init";
+    protected boolean internalConfigSet(ResolveConfigRelation config) {
+        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/resolve/init";
         Map<String, Object> body = new HashMap();
         body.put("host", config.getHost());
         body.put("port", config.getPort());
         body.put("thread", config.getThread());
         body.put("relationType", config.getRelationTypeEnum().getCode());
-        body.put("sleepTime", config.getSleepTime());
-        body.put("proxy", config.isProxy());
-        body.put("proxyAddress", config.getProxyAddress());
         body.put("mongoConfig", config.getMongoConfigModel());
         body.put("redisConfig", config.getRedisConfigModel());
 
@@ -60,8 +54,12 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
     }
 
     @Override
-    protected boolean validConfig(DownloadConfigRelation config) {
+    protected boolean validConfig(ResolveConfigRelation config) {
         return true;
     }
 
+    @Override
+    protected int port() {
+        return componentRelation.getServerPort();
+    }
 }

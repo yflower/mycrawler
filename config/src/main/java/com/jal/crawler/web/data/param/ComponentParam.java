@@ -27,6 +27,9 @@ public class ComponentParam {
         @Min(1)
         private int port;
 
+        @Min(1)
+        private int serverPort;
+
         public String getHost() {
             return host;
         }
@@ -43,11 +46,20 @@ public class ComponentParam {
             this.port = port;
         }
 
+        public int getServerPort() {
+            return serverPort;
+        }
+
+        public void setServerPort(int serverPort) {
+            this.serverPort = serverPort;
+        }
+
         @Override
         public String toString() {
             return "socket{" +
                     "host='" + host + '\'' +
                     ", port=" + port +
+                    ", serverPort=" + serverPort +
                     '}';
         }
     }

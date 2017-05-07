@@ -51,7 +51,7 @@ public class ComponentController extends ComponentFacade<LinkConfigRpcParam, Lin
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = "http://" + leader.getHost() + ":8080/link/list";
+        String url = "http://" + leader.getHost() + ":8085/link/list";
         String object = restTemplate.getForObject(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(object,

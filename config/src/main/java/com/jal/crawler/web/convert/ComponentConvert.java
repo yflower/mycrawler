@@ -45,15 +45,15 @@ public class ComponentConvert {
 
 
     public static ComponentRelation paramToModel(ComponentParam.socket componentParam) {
-        return new ComponentRelation(componentParam.getHost(), componentParam.getPort());
+        return new ComponentRelation(componentParam.getHost(), componentParam.getPort(),componentParam.getServerPort());
     }
 
     public static ComponentRelation paramToModel(DownloadParam.downloadSocket downloadSocket) {
-        return new ComponentRelation(downloadSocket.getHost(), downloadSocket.getPort());
+        return new ComponentRelation(downloadSocket.getHost(), downloadSocket.getPort(),downloadSocket.getServerPort());
 
     }
 
     public static ComponentRelation paramToModel(ResolveParam.resolveSocket resolveSocket) {
-        return new ComponentRelation(resolveSocket.getHost(), resolveSocket.getPort());
+        return new ComponentRelation(resolveSocket.getHost(), resolveSocket.getPort(),resolveSocket.getServerPort());
     }
 }

@@ -72,7 +72,7 @@ public class ResolveController extends ComponentFacade<ResolveConfigRpcParam, Re
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = leader.getHost() + ":8080/resolve/list";
+        String url = leader.getHost() + ":8083/resolve/list";
         ResponseEntity<String> string = restTemplate.getForEntity(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(string.getBody(),

@@ -52,7 +52,7 @@ public class ComponentController extends ComponentFacade<DataConfigRpcParam, Dat
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = "http://" + leader.getHost() + ":8080/data/list";
+        String url = "http://" + leader.getHost() + ":8084/data/list";
         String object = restTemplate.getForObject(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(object,
