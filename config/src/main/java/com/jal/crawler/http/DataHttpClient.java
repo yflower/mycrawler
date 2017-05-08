@@ -47,7 +47,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
         ResponseEntity<String> entity = restTemplate.postForEntity(url, body, String.class);
 
 
-        return entity.getStatusCode() == HttpStatus.OK ? OPStatus.SUCCEED : OPStatus.FAILD;
+        return entity.getStatusCode() == HttpStatus.OK ? OPStatus.SUCCEED : OPStatus.FAILED;
     }
 
     @Override

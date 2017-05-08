@@ -56,7 +56,10 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
         processor = new Processor<String, Page, Task>() {
             @Override
             public Optional<Page> processor(AbstractTask task, String resource) {
-                return downLoad.get().downLoad(new PageRequest(resource));
+                long start = System.currentTimeMillis();
+                Optional<Page> result = downLoad.get().downLoad(new PageRequest(resource));
+                logger.info("下载消耗时间 {}", System.currentTimeMillis() - start);
+                return result;
             }
 
 

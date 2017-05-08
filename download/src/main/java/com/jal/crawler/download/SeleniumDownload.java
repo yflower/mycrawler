@@ -2,9 +2,11 @@ package com.jal.crawler.download;
 
 import com.jal.crawler.request.PageRequest;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.touch.DownAction;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,8 +30,8 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     protected void internalDown(PageRequest pageRequest) throws IOException {
-        webDriver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS);
-        int tryTimes = 5;
+        webDriver.manage().timeouts().setScriptTimeout(1,TimeUnit.SECONDS);
+        int tryTimes = 2;
         boolean isSuccess = false;
         for (int i = 0; i <= tryTimes; ++i) {
             try {
@@ -40,6 +42,7 @@ public class SeleniumDownload extends DynamicDownload {
                 continue;
             }
         }
+        ((RemoteWebDriver)webDriver).executeScript("window.scrollTo(0,document.body.scrollHeight);");
         if (!isSuccess) {
             isSkip = true;
         }
@@ -94,7 +97,7 @@ public class SeleniumDownload extends DynamicDownload {
             return this;
         }
         boolean clicked = false;
-        for (int retryTime = 0; retryTime < 5; ++retryTime) {
+        for (int retryTime = 0; retryTime < 2; ++retryTime) {
             List<WebElement> elements = webDriver.findElements(By.cssSelector(enableClickElementQuery));
             if (!elements.isEmpty()) {
                 elements.get(0).click();
@@ -127,8 +130,8 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload linkTo(String url) {
-        webDriver.manage().timeouts().setScriptTimeout(3, TimeUnit.SECONDS);
-        int tryTimes = 5;
+        webDriver.manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
+        int tryTimes = 2;
         boolean isSuccess = false;
         for (int i = 0; i <= tryTimes; ++i) {
             try {

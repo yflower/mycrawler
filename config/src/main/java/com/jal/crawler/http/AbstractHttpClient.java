@@ -149,7 +149,7 @@ public abstract class AbstractHttpClient<C, T> {
             OPStatus status = taskOperationRequest(taskOperation);
             if (status == OPStatus.SUCCEED) {
                 logger.info("组件添加一个任务{},{}\n{}", componentRelation.getHost(), taskOperation.getClass().getSimpleName(), taskOperation);
-            } else if (status == OPStatus.FAILD) {
+            } else if (status == OPStatus.FAILED) {
                 logger.info("组件添加一个任务{},{}\n{}", componentRelation.getHost(), taskOperation.getClass().getSimpleName(), taskOperation);
             } else {
                 logger.info("任务已经被添加{},{}\n{}", componentRelation.getHost(), taskOperation.getClass().getSimpleName(), taskOperation);
@@ -162,7 +162,7 @@ public abstract class AbstractHttpClient<C, T> {
 
     //rpc执行任务操作，返回结果
     private OPStatus taskOperationRequest(T taskOperation) {
-        OPStatus result = OPStatus.FAILD;
+        OPStatus result = OPStatus.FAILED;
         try {
             result = internalTask(taskOperation);
         } catch (InterruptedException e) {
@@ -200,7 +200,7 @@ public abstract class AbstractHttpClient<C, T> {
 
     public enum OPStatus {
         SUCCEED,
-        FAILD
+        FAILED
     }
 
     public static class CommonHttpClient extends AbstractHttpClient {

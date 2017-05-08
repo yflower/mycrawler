@@ -29,8 +29,6 @@ public class TaskBiz {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskBiz.class);
 
-    @Resource
-    private ConfigContext configContext;
 
     @Resource
     private ITaskService resolveTaskService;

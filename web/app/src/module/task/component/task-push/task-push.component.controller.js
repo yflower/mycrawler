@@ -7,17 +7,17 @@ let name = 'taskPushController'
 let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) {
 
     var self = this;
-    self.urls = ["https://item.jd.com/12123414.html"];
+    self.urls = ["https://detail.tmall.com/item.htm?spm=a1z10.5-b-s.w4011-15281952275.74.JwRwU4&id=548454301452&rn=e6fcf1b954b94da65ab5b5dd768b1f96&abbucket=12"];
     self.processors = [];
     self.resolveData = [{
         name: 'title',
-        query: "#name > h1",
+        query: "#J_DetailMeta > div.tm-clear > div.tb-property > div > div.tb-detail-hd > h1",
         option: "",
         optionValue: ""
     }];
     self.test = false;
 
-    self.linkPattern = ["https://item.jd.com/.*html"];
+    self.linkPattern = ["https://detail.tmall.com/.*htm.*"];
 
     self.processorType = taskService.processorType;
     self.resolveOptionType = taskService.resolveOptionType;
