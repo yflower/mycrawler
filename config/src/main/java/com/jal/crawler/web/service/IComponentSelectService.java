@@ -1,6 +1,5 @@
 package com.jal.crawler.web.service;
 
-import com.jal.crawler.proto.status.Component;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
 
 import java.util.List;
