@@ -242,8 +242,9 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
 
     private void taskCycleCheck(AbstractTask task) {
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime start = task.getTaskStatistics().getBeginTime();
         if (task.isTest() && task.getTaskStatistics().getResourceTotalCycle() > CycleEnum.RESOURCE_TEST_LIMIT.getCycle()
+                && task.getLimit().getLastResourceNotFound().isPresent()
+                && task.getLimit().getLastResourceNotFound().get().plusMinutes(CycleEnum.RESOURCE_NOT_FOUND_LIMIT.getTime()).isBefore(now)
                 ) {
             LOGGER.info("任务被摧毁 " + task.getTaskTag());
             destroyTask(task.getTaskTag());
