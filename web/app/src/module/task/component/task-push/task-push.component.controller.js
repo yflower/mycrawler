@@ -7,11 +7,11 @@ let name = 'taskPushController'
 let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) {
 
     var self = this;
-    self.urls = ["https://item.jd.com/11926995.html"];
+    self.urls = ["http://www.cufe.edu.cn/xyxx/zbgg/index.htm"];
     self.processors = [];
     self.resolveData = [{
         name: 'title',
-        query: "#name > h1",
+        query: "#warp > div.main > div > div > div.con03_right > div.list05 > ul > li:nth-child(4) > a",
         option: "",
         optionValue: ""
     }];

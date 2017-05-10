@@ -58,7 +58,10 @@ public abstract class AbstractTask {
 
     public void resourceNotFoundHook() {
         taskStatistics.getResourceNotFoundCycle().accumulate(1);
-        this.limit.lastResourceNotFound=Optional.of(LocalDateTime.now());
+        Optional<LocalDateTime> notFound = this.limit.lastResourceNotFound;
+        if(notFound==null||!notFound.isPresent()){
+            this.limit.lastResourceNotFound=Optional.of(LocalDateTime.now());
+        }
     }
 
     public void resourceFoundHook() {
@@ -76,7 +79,10 @@ public abstract class AbstractTask {
 
     public void processorErrorHook() {
         taskStatistics.getProcessorErrorCycle().accumulate(1);
-        this.limit.lastProcessorError=Optional.of(LocalDateTime.now());
+        Optional<LocalDateTime> processorError = this.limit.lastProcessorError;
+        if(processorError==null||!processorError.isPresent()){
+            this.limit.lastProcessorError=Optional.of(LocalDateTime.now());
+        }
 
 
     }
@@ -90,7 +96,10 @@ public abstract class AbstractTask {
 
     public void persistErrorHook() {
         taskStatistics.getPersistErrorCycle().accumulate(1);
-        this.limit.lastPersistEoor=Optional.of(LocalDateTime.now());
+        Optional<LocalDateTime> persistEoor = this.limit.lastPersistEoor;
+        if(persistEoor==null||!persistEoor.isPresent()){
+            this.limit.lastPersistEoor=Optional.of(LocalDateTime.now());
+        }
 
     }
 
