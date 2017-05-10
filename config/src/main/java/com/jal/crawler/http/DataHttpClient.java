@@ -2,7 +2,6 @@ package com.jal.crawler.http;
 
 import com.jal.crawler.web.data.model.component.DataConfigRelation;
 import com.jal.crawler.web.data.model.task.DataOperationModel;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
         SimpleClientHttpRequestFactory clientHttpRequestFactory = new SimpleClientHttpRequestFactory();
         ResponseEntity entity;
         //文件下载特殊处理
-        if (!body.get("type").equals("3")) {
+        if (((Integer) param.get("type")) != 3) {
             clientHttpRequestFactory.setBufferRequestBody(false);
             restTemplate.setRequestFactory(clientHttpRequestFactory);
             entity = restTemplate.getForEntity(url, InputStreamResource.class, body);
