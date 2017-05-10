@@ -37,7 +37,7 @@ public class PatternLinkProcessor implements LinkProcessor {
         //去重操作
         List<String> afterDuplicateCheck = duplicateProcessor.duplicateCheck(result, task);
 
-        LOGGER.info("连接处理成功，{}->{}", afterDuplicateCheck.size(), afterDuplicateCheck.size());
+        LOGGER.info("连接处理成功，{}->{}", links.size(), afterDuplicateCheck.size());
 
         if (afterDuplicateCheck.isEmpty()) {
             return Optional.empty();
