@@ -29,6 +29,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
             restTemplate.setRequestFactory(clientHttpRequestFactory);
         }else {
             clientHttpRequestFactory.setBufferRequestBody(true);
+            restTemplate.setRequestFactory(clientHttpRequestFactory);
         }
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class,body);
         if (entity.getStatusCode() == HttpStatus.OK) {
