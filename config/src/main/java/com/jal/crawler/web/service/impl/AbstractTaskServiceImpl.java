@@ -94,6 +94,7 @@ public abstract class AbstractTaskServiceImpl implements ITaskService {
                 if (optional.isPresent()) {
                     result.add((TaskStatusModel) optional.get());
                 }
+                return result;
             }
 
         } else {
