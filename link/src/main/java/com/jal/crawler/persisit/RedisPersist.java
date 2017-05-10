@@ -21,7 +21,6 @@ public class RedisPersist implements Persist {
 
     private RedisTemplate<String, String> redisTemplate;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     private SetOperations<String, String> stringStringSetOperations;
 

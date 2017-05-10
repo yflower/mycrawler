@@ -8,7 +8,7 @@ import com.jal.crawler.fetch.LinkFetch;
 import com.jal.crawler.persisit.Persist;
 import com.jal.crawler.persisit.RedisPersist;
 import com.jal.crawler.processor.LinkProcessor;
-import com.jal.crawler.processor.PatternProcessor;
+import com.jal.crawler.processor.PatternLinkProcessor;
 import com.jal.crawler.task.Task;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -39,12 +39,13 @@ public class LinkContext extends ComponentContext<List<String>, List<String>, Ta
         processor = (task, resource) -> linkProcessor.processor(resource, (Task) task);
 
         repository = (task, links) -> persist.persist(task.getTaskTag(), links);
+
     }
 
     @Override
     protected void internalInit() {
         persist = new RedisPersist(redisTemplate);
-        linkProcessor = new PatternProcessor();
+        linkProcessor = new PatternLinkProcessor(redisTemplate);
     }
 
     @Override
