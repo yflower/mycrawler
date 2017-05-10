@@ -24,11 +24,6 @@ import java.util.regex.Pattern;
 public class LinkApplication {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String s="https://item.jd.com/11294134208.html";
-
-        boolean matches = Pattern.matches("https://item.jd.com/.*html", s);
-        System.out.println(matches);
-
         Integer type = Integer.valueOf(args[0]);
         Integer port = Integer.valueOf(args[1]);
         String host = args[2];

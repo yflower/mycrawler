@@ -91,7 +91,7 @@ public class LinkInitServer extends RpcLinkConfigGrpc.RpcLinkConfigImplBase {
             JedisShardInfo shardInfo = new JedisShardInfo(redisConfig.getHost(), redisConfig.getPort());
             shardInfo.setPassword(redisConfig.getPassword());
             RedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory(shardInfo);
-            RedisTemplate redisTemplate = new StringRedisTemplate();
+            RedisTemplate redisTemplate = new RedisTemplate();
             redisTemplate.setConnectionFactory(redisConnectionFactory);
             redisTemplate.afterPropertiesSet();
             config.redisTemplate = redisTemplate;
