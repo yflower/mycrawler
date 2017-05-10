@@ -84,7 +84,13 @@ public class Task extends AbstractTask{
 
     //目前的推测方法
     private String itemQueryInfer(String query, int row) {
-        return query.replaceFirst("tr:nth-child\\(.\\)", "tr:nth-child\\(" + row + "\\)");
+        if(query.contains("tr:nth-child")){
+            return query.replaceFirst("tr:nth-child\\(.\\)", "tr:nth-child\\(" + row + "\\)");
+        }
+        if(query.contains("li:nth-child")){
+            return query.replaceFirst("li:nth-child\\(.\\)", "li:nth-child\\(" + row + "\\)");
+        }
+        throw new IllegalStateException("自动解析列表数据css失败");
     }
 
     private String evaluate(var query, Tag tag) {
