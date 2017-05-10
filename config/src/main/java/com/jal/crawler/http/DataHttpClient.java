@@ -4,6 +4,7 @@ import com.jal.crawler.web.data.model.component.DataConfigRelation;
 import com.jal.crawler.web.data.model.task.DataOperationModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,14 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
         body.put("taskTag", param.get("taskTag"));
         body.put("type", param.get("type"));
 
+        SimpleClientHttpRequestFactory clientHttpRequestFactory=new SimpleClientHttpRequestFactory();
+        //文件下载特殊处理
+        if(!body.get("type").equals("3")){
+            clientHttpRequestFactory.setBufferRequestBody(false);
+            restTemplate.setRequestFactory(clientHttpRequestFactory);
+        }else {
+            clientHttpRequestFactory.setBufferRequestBody(true);
+        }
         ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class,body);
         if (entity.getStatusCode() == HttpStatus.OK) {
             return Optional.of(
