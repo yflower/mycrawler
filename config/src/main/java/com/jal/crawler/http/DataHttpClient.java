@@ -25,7 +25,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
         if (entity.getStatusCode() == HttpStatus.OK) {
             return Optional.of(
                     ResponseEntity.ok()
-                            .contentType(entity.getHeaders().getContentType())
+                            .headers(entity.getHeaders())
                             .body(entity.getBody())
             );
         } else {
