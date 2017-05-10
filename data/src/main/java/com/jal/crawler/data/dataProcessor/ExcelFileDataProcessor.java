@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by jianganlan on 2017/5/2.
@@ -31,7 +32,7 @@ public class ExcelFileDataProcessor implements DataProcessor {
         Map<String, Integer> titleMap = titleRowSet(sheet, data);
 
         if (!data.isEmpty()) {
-            int rowIndex = 0;
+            int rowIndex = 1;
             //excel内容
             for (Map<String, Object> line : data) {
                 Row contentRow = sheet.createRow(rowIndex++);
@@ -102,7 +103,7 @@ public class ExcelFileDataProcessor implements DataProcessor {
                 Object o = data.stream().max(Comparator.comparingInt(t -> ((List) (t.get(k))).size())).get().get(k);
                 List<Object> objects = (List<Object>) o;
                 int size = objects.size();
-                for (int i = 1; i <= size; ++i) {
+                for (int i = 0; i < size; ++i) {
                     String t = k + "_" + i;
                     titleSet.add(t);
                 }
@@ -112,7 +113,8 @@ public class ExcelFileDataProcessor implements DataProcessor {
                 titleSet.add(k);
             }
         });
-        for (String s : titleSet) {
+        ;
+        for (String s : titleSet.stream().sorted().collect(Collectors.toList())) {
             result.put(s, columnIndex);
             row.createCell(columnIndex++).setCellValue(s);
         }

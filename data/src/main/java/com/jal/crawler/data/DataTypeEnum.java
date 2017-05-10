@@ -6,7 +6,7 @@ package com.jal.crawler.data;
 public enum DataTypeEnum {
     JSON_STRING_FILE            (0,"json格式字符串"),
     TXT_STRING_FILE             (1,"将json格式参开的按照空格分开的行字符串"),
-    EXCEL_FILE                  (2,"将json格式参开"),
+    EXCEL_FILE                  (2,"excel文件"),
     JSON                        (3,"JSON数据")
     ;
     private int type;
