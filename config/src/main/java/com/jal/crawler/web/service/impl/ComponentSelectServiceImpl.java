@@ -42,6 +42,9 @@ public class ComponentSelectServiceImpl implements IComponentSelectService {
 
     @Override
     public Optional<ComponentRelation> selectComponent(List<ComponentRelation> componentRelations, String taskTag) {
+        if(taskTag==null){
+            return selectComponent(componentRelations);
+        }
         List<ComponentRelation> ableComponents = componentRelations.stream()
                 .filter(t -> ableStatus(t.getStatus())).collect(Collectors.toList());
         threadLocalRandom = ThreadLocalRandom.current();
