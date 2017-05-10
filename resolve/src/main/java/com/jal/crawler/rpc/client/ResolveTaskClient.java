@@ -53,7 +53,7 @@ public class ResolveTaskClient extends AbstractComponentTaskClient<ResolveTaskRe
                                     .map(t -> ResolveTask.Item.newBuilder()
                                             .setItemName(t.getItemName())
                                             .addAllVar(
-                                                    t.getItemVar().stream()
+                                                    t.getVars().stream()
                                                             .map(tx -> ResolveTask.Var.newBuilder()
                                                                     .setName(tx.getName())
                                                                     .setQuery(tx.getQuery())

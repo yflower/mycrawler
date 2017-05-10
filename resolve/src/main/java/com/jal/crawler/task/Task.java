@@ -63,7 +63,7 @@ public class Task extends AbstractTask{
         List<Map<String, Object>> itemList = new ArrayList<>();
         while (true) {
             Map<String, Object> map = new HashMap<>();
-            for (var var : item.itemVar) {
+            for (var var : item.vars) {
                 String name = var.name;
                 String query = itemQueryInfer(var.query, row);
                 String option = var.option;
@@ -183,11 +183,11 @@ public class Task extends AbstractTask{
 
     public static class item {
         private String itemName;
-        private List<var> itemVar;
+        private List<var> vars;
 
         public item(String itemName, List<var> itemVar) {
             this.itemName = itemName;
-            this.itemVar = itemVar;
+            this.vars = itemVar;
         }
 
         public item() {
@@ -201,12 +201,12 @@ public class Task extends AbstractTask{
             this.itemName = itemName;
         }
 
-        public List<var> getItemVar() {
-            return itemVar;
+        public List<var> getVars() {
+            return vars;
         }
 
-        public void setItemVar(List<var> itemVar) {
-            this.itemVar = itemVar;
+        public void setVars(List<var> vars) {
+            this.vars = vars;
         }
     }
 

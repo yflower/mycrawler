@@ -9,12 +9,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
     var self = this;
     self.urls = ["http://www.cufe.edu.cn/xyxx/zbgg/index.htm"];
     self.processors = [];
-    self.resolveData = [{
-        name: 'title',
-        query: "#warp > div.main > div > div > div.con03_right > div.list05 > ul > li:nth-child(4) > a",
-        option: "",
-        optionValue: ""
-    }];
+    self.resolveData = [];
     self.test = false;
 
     self.linkPattern = ["https://item.jd.com/11926995.html/.*htm.*"];
@@ -66,10 +61,10 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
         })
     }
     self.submit = function (ev) {
-        if (paramCheck()) {
-            alert("配置参数不能为空");
-            return;
-        }
+        // if (paramCheck()) {
+        //     alert("配置参数不能为空");
+        //     return;
+        // }
         $mdDialog.show({
             contentElement: '#task-push-dialog',
             parent: angular.element(document.body),
@@ -169,7 +164,17 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
                 resolve: {
                     test: self.test,
                     vars: self.resolveData,
-                    items: []
+                    items: [{
+                        itemName: 'testItem',
+                        vars: [
+                            {
+                                name: 'title',
+                                query: "#warp > div.main > div > div > div.con03_right > div.list05 > ul > li:nth-child(4) > a",
+                                option: "",
+                                optionValue: ""
+                            }
+                        ]
+                    }]
                 },
                 link: {
                     test: self.test,

@@ -33,7 +33,7 @@ public class ResolveTaskConfigClient extends AbstractComponentTaskConfigClient<R
                 .map(k -> {
                     Task.item item = new Task.item();
                     item.setItemName(k.getItemName());
-                    item.setItemVar(k.getVarList().stream()
+                    item.setVars(k.getVarList().stream()
                             .map(t -> new Task.var(t.getName(), t.getQuery(), t.getOption(), t.getOptionValue()))
                             .collect(Collectors.toList()));
                     return item;
