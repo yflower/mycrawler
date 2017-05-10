@@ -2,6 +2,8 @@ package com.jal.crawler.http;
 
 import com.jal.crawler.web.data.model.component.DataConfigRelation;
 import com.jal.crawler.web.data.model.task.DataOperationModel;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
@@ -17,21 +19,24 @@ import java.util.concurrent.ExecutionException;
 public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataOperationModel> {
     @Override
     public Optional<ResponseEntity> result(Map<String, Object> param) {
-        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/data/result?taskTag={taskTag}&type={type}";
+        String url = "http://" + this.componentRelation.getHost() + ":" + port() + "/data/result?taskTag={taskTag}&type={type}";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", param.get("taskTag"));
         body.put("type", param.get("type"));
 
-        SimpleClientHttpRequestFactory clientHttpRequestFactory=new SimpleClientHttpRequestFactory();
+        SimpleClientHttpRequestFactory clientHttpRequestFactory = new SimpleClientHttpRequestFactory();
+        ResponseEntity entity;
         //文件下载特殊处理
-        if(!body.get("type").equals("3")){
+        if (!body.get("type").equals("3")) {
             clientHttpRequestFactory.setBufferRequestBody(false);
             restTemplate.setRequestFactory(clientHttpRequestFactory);
-        }else {
+            entity = restTemplate.getForEntity(url, InputStreamResource.class, body);
+        } else {
             clientHttpRequestFactory.setBufferRequestBody(true);
             restTemplate.setRequestFactory(clientHttpRequestFactory);
+            entity = restTemplate.getForEntity(url, String.class, body);
         }
-        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class,body);
+
         if (entity.getStatusCode() == HttpStatus.OK) {
             return Optional.of(
                     ResponseEntity.ok()
@@ -46,7 +51,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
 
     @Override
     protected OPStatus internalTask(DataOperationModel taskOperation) throws InterruptedException, ExecutionException {
-        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/data/task";
+        String url = "http://" + this.componentRelation.getHost() + ":" + port() + "/data/task";
         Map<String, Object> body = new HashMap();
         body.put("taskTag", taskOperation.getTaskTag());
         body.put("taskType", taskOperation.getTaskType().getCode());
@@ -62,7 +67,7 @@ public class DataHttpClient extends AbstractHttpClient<DataConfigRelation, DataO
 
     @Override
     protected boolean internalConfigSet(DataConfigRelation config) {
-        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/data/init";
+        String url = "http://" + this.componentRelation.getHost() + ":" + port() + "/data/init";
         Map<String, Object> body = new HashMap();
         body.put("host", config.getHost());
         body.put("port", config.getPort());
