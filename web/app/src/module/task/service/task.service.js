@@ -4,75 +4,76 @@
 let name = 'taskService';
 
 let service = ['$q', '$http', function ($q, $http) {
-    var taskPush = function (params,data) {
+    var address = "http://192.168.1.58:8081";
+    var taskPush = function (params, data) {
         return $http({
             method: 'post',
-            url: 'http://127.0.0.1:8081/tasks/push',
+            url: address + '/tasks/push',
             params: params,
-            data:data
+            data: data
         })
     }
 
-    var taskPause = function (params,data) {
+    var taskPause = function (params, data) {
         return $http({
             method: 'put',
-            url: 'http://127.0.0.1:8081/tasks/pause',
+            url: address + '/tasks/pause',
             params: params,
-            data:data
+            data: data
         })
     }
-    var taskStop = function (params,data) {
+    var taskStop = function (params, data) {
         return $http({
             method: 'put',
-            url: 'http://127.0.0.1:8081/tasks/stop',
+            url: address + '/tasks/stop',
             params: params,
-            data:data
+            data: data
         })
     }
 
-    var taskDestroy = function (params,data) {
+    var taskDestroy = function (params, data) {
         return $http({
             method: 'put',
-            url: 'http://127.0.0.1:8081/tasks/destroy',
+            url: address + '/tasks/destroy',
             params: params,
-            data:data
+            data: data
         })
     }
 
-    var taskRestart= function (params,data) {
+    var taskRestart = function (params, data) {
         return $http({
             method: 'put',
-            url: 'http://127.0.0.1:8081/tasks/restart',
+            url: address + '/tasks/restart',
             params: params,
-            data:data
+            data: data
         })
     }
 
 
-    var taskResult=function(params,data){
+    var taskResult = function (params, data) {
         return $http({
-            method:'get',
-            url:'http://127.0.0.1:8081/tasks/result',
-            params:params,
-            data:data
+            method: 'get',
+            url: address + '/tasks/result',
+            params: params,
+            data: data
         })
     }
 
-    var taskStatus=function (params,data) {
+    var taskStatus = function (params, data) {
         return $http({
-            method:'get',
-            url:'http://127.0.0.1:8081/tasks/status',
-            params:params,
-            data:data
+            method: 'get',
+            url: address + '/tasks/status',
+            params: params,
+            data: data
         })
     }
 
-    var taskConfig=function (params,data) {
+    var taskConfig = function (params, data) {
         return $http({
-            method:'get',
-            url:'http://127.0.0.1:8081/tasks/config',
-            params:params,
-            data:data
+            method: 'get',
+            url: address + '/tasks/config',
+            params: params,
+            data: data
         })
     }
 
@@ -102,28 +103,28 @@ let service = ['$q', '$http', function ($q, $http) {
         }
     ]
 
-    var taskTag='';
+    var taskTag = '';
 
-    var currentTask=function () {
+    var currentTask = function () {
         return taskTag;
     }
 
-    var setTask=function (tag) {
-        taskTag=tag;
+    var setTask = function (tag) {
+        taskTag = tag;
     }
 
 
     return {
         processorType: processorType,
-        resolveOptionType:resolveOptionType,
-        taskPush:taskPush,
-        taskPause:taskPause,
-        taskStop:taskStop,
-        taskDestroy:taskDestroy,
-        taskRestart:taskRestart,
-        taskResult:taskResult,
-        taskStatus:taskStatus,
-        taskConfig:taskConfig
+        resolveOptionType: resolveOptionType,
+        taskPush: taskPush,
+        taskPause: taskPause,
+        taskStop: taskStop,
+        taskDestroy: taskDestroy,
+        taskRestart: taskRestart,
+        taskResult: taskResult,
+        taskStatus: taskStatus,
+        taskConfig: taskConfig
     }
 }]
 

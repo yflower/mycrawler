@@ -17,22 +17,22 @@ public class RedisDuplicateProcessor implements DuplicateProcessor {
 
     private SetOperations<String, String> stringStringSetOperations;
 
-    private ValueOperations<String,Boolean> lock;
+    private ValueOperations<String, Integer> lock;
 
     public RedisDuplicateProcessor(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
         stringStringSetOperations = redisTemplate.opsForSet();
-        lock=redisTemplate.opsForValue();
+        lock = redisTemplate.opsForValue();
     }
 
     @Override
     public List<String> duplicateCheck(List<String> links, Task task) {
         //锁未创建则添加锁字段，直接获取锁
-        Boolean setSuccess = lock.setIfAbsent(task.getTaskTag() + "_lock", true);
+        Boolean setSuccess = lock.setIfAbsent(task.getTaskTag() + "_lock", 1);
         //若锁已经存在
-        if(!setSuccess){
+        if (!setSuccess) {
             //尝试获取锁
-            while (lock.getAndSet(task.getTaskTag() + "_lock",true)){
+            while (lock.getAndSet(task.getTaskTag() + "_lock", 1) == 1) {
 
             }
         }
@@ -47,7 +47,7 @@ public class RedisDuplicateProcessor implements DuplicateProcessor {
             stringStringSetOperations.add(task.getTaskTag() + "_links", validLinks.toArray(new String[0]));
         }
         //释放锁
-        lock.set(task.getTaskTag() + "_lock",false);
+        lock.set(task.getTaskTag() + "_lock", 0);
 
         return validLinks;
     }
