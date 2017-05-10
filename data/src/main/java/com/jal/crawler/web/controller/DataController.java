@@ -3,12 +3,10 @@ package com.jal.crawler.web.controller;
 import com.cufe.taskProcessor.ComponentFacade;
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
 import com.cufe.taskProcessor.context.ComponentContext;
-import com.cufe.taskProcessor.task.AbstractTask;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jal.crawler.context.DataContext;
 import com.jal.crawler.data.Data;
-import com.jal.crawler.task.Task;
 import com.jal.crawler.web.convert.WebParamToRpcParam;
 import com.jal.crawler.web.param.DataConfigParam;
 import com.jal.crawler.web.param.DataTaskOpParam;
@@ -22,10 +20,10 @@ import org.springframework.web.client.RestTemplate;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 /**
  * Created by jianganlan on 2017/4/19.
@@ -73,20 +71,32 @@ public class DataController extends ComponentFacade<DataConfigRpcParam, DataTask
         DataContext dataContext = (DataContext) componentContext;
         Map<String, Data> finishResult = dataContext.getFinishResult();
 
-        if (finishResult.containsKey(taskTag) && finishResult.get(taskTag).getDataTypeEnum().getType() == type) {
+        Function<String, ResponseEntity> result = t -> {
             Data data = finishResult.get(taskTag);
             finishResult.remove(taskTag);
             return data.getResponse();
+        };
+
+        if (finishResult.containsKey(taskTag) && finishResult.get(taskTag).getDataTypeEnum().getType() == type) {
+            return result.apply(taskTag);
         } else {
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            int retryTime = 5;
+            for (int i = 0; i < retryTime; ++i) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (finishResult.containsKey(taskTag) && finishResult.get(taskTag).getDataTypeEnum().getType() == type) {
+                    return result.apply(taskTag);
+                }
             }
-            return result(taskTag, type);
+            return ResponseEntity.notFound().build();
+
         }
 
     }
+
 
     @GetMapping(value = "/taskStatus")
     public Object status() {
