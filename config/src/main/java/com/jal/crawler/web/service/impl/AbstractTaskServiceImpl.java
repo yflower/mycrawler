@@ -79,7 +79,7 @@ public abstract class AbstractTaskServiceImpl implements ITaskService {
 
     private List<TaskStatusModel> taskStatus(String taskTag) {
         List<TaskStatusModel> result ;
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents(),taskTag);
         if (relationOptional.isPresent()) {
             AbstractHttpClient client = client(relationOptional.get());
             if (taskTag == null) {
@@ -104,7 +104,7 @@ public abstract class AbstractTaskServiceImpl implements ITaskService {
     }
 
     private TaskOperationVO taskOp(TaskOperationModel taskOperationModel) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents(),taskOperationModel.getTaskTag());
         if (relationOptional.isPresent()) {
             boolean result = client(relationOptional.get()).pushTask(taskOperationModel);
             TaskOperationVO taskOperationVO = new TaskOperationVO();
@@ -120,7 +120,7 @@ public abstract class AbstractTaskServiceImpl implements ITaskService {
     }
 
     private Optional<Map<String, Object>> taskConfigInfo(String taskTag) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents(),taskTag);
         if (relationOptional.isPresent()) {
             return client(relationOptional.get()).taskConfig(taskTag);
         } else {
@@ -129,7 +129,7 @@ public abstract class AbstractTaskServiceImpl implements ITaskService {
     }
 
     private Optional<ResponseEntity> taskResult(Map<String, Object> param) {
-        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents());
+        Optional<ComponentRelation> relationOptional = componentSelectService.selectComponent(availableComponents(),param.get("taskTag").toString());
         if (relationOptional.isPresent()) {
             return client(relationOptional.get()).result(param);
 

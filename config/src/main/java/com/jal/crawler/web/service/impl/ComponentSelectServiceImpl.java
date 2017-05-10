@@ -38,6 +38,26 @@ public class ComponentSelectServiceImpl implements IComponentSelectService {
 
         return Optional.of(ableComponents.get(Math.abs(threadLocalRandom.nextInt() % ableComponents.size())));
 
+    }
+
+    @Override
+    public Optional<ComponentRelation> selectComponent(List<ComponentRelation> componentRelations, String taskTag) {
+        List<ComponentRelation> ableComponents = componentRelations.stream()
+                .filter(t -> ableStatus(t.getStatus())).collect(Collectors.toList());
+        threadLocalRandom = ThreadLocalRandom.current();
+
+        if (ableComponents.isEmpty()) {
+//            List<ComponentRelation> notInitComponents = componentRelations.stream()
+//                    .filter(t -> t.getStatus() == StatusEnum.NO_INIT).collect(Collectors.toList());
+            if (ableComponents.isEmpty()) {
+                return Optional.empty();
+            }
+
+        }
+
+//        return Optional.of(ableComponents.get(Math.abs(threadLocalRandom.nextInt() % ableComponents.size())));
+
+        return Optional.of(ableComponents.get(Math.abs(taskTag.hashCode() % ableComponents.size())));
 
     }
 
