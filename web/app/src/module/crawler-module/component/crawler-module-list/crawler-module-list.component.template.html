@@ -47,19 +47,19 @@
     <md-card-content layout-padding flex>
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">download</md-subheader>
-            <md-list-item class="secondary-button-padding" layout="row">
+            <md-list-item class="secondary-button-padding" layout="row" ng-repeat="item in $ctrl.download">
                 <md-icon md-svg-icon="download" class="avatar"></md-icon>
                 <div class="md-list-item-text" flex="40">
-                    host:192.168.1.3
+                    host:{{item.host}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    http-port:8082
+                    http-port:{{item.httpPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    rpc-port:9001
+                    rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:STARTING
+                    status:{{item.status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
@@ -86,19 +86,19 @@
 
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">resolve</md-subheader>
-            <md-list-item class="secondary-button-padding" layout="row">
+            <md-list-item class="secondary-button-padding" layout="row" ng-repeat="item in $ctrl.resolve">
                 <md-icon md-svg-icon="processor" class="avatar"></md-icon>
                 <div class="md-list-item-text" flex="40">
-                    host:192.168.1.3
+                    host:{{item.host}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    http-port:8082
+                    http-port:{{item.httpPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    rpc-port:9001
+                    rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:STARTING
+                    status:{{item.status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
@@ -123,19 +123,19 @@
 
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">data</md-subheader>
-            <md-list-item class="secondary-button-padding" layout="row">
+            <md-list-item class="secondary-button-padding" layout="row" ng-repeat="item in $ctrl.data">
                 <md-icon md-svg-icon="data" class="avatar"></md-icon>
                 <div class="md-list-item-text" flex="40">
-                    host:192.168.1.3
+                    host:{{item.host}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    http-port:8082
+                    http-port:{{item.httpPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    rpc-port:9001
+                    rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:STARTING
+                    status:{{item.status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
@@ -160,19 +160,19 @@
 
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">link</md-subheader>
-            <md-list-item class="secondary-button-padding" layout="row">
+            <md-list-item class="secondary-button-padding" layout="row" ng-repeat="item in $ctrl.link">
                 <md-icon md-svg-icon="link" class="avatar"></md-icon>
                 <div class="md-list-item-text" flex="40">
-                    host:192.168.1.3
+                    host:{{item.host}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    http-port:8082
+                    http-port:{{item.httpPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    rpc-port:9001
+                    rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:STARTING
+                    status:{{item.status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">

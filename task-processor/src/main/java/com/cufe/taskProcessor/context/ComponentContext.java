@@ -337,6 +337,9 @@ public abstract class ComponentContext<S, R, T extends AbstractTask> {
         return componentRelationHolder;
     }
 
+    public int getThread() {
+        return thread;
+    }
 
     public ComponentClientHolder getComponentClientHolder() {
         return componentClientHolder;

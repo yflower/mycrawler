@@ -22,7 +22,7 @@ angular
             {
                 name: 'moduleInfo',
                 parent: 'moduleView',
-                url: '/moduleInfo',
+                url: '/moduleInfo/{String}',
                 template: '<module-info></module-info>'
             },
             {

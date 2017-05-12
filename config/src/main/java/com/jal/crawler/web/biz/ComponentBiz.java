@@ -55,7 +55,7 @@ public class ComponentBiz {
     private IComponentSelectService selectService;
 
 
-    public Map<String, Map<String,Object>> status(ComponentParam componentParam) {
+    public List<Map<String, Object>> status(ComponentParam componentParam) {
         List<ComponentRelation> componentRelations = new ArrayList<>();
 
         //得到组件model
@@ -66,11 +66,10 @@ public class ComponentBiz {
             componentRelations = getCurrentComponentModel();
         }
 
-        Map<String, Map<String,Object>> result =
-                componentRelations.stream()
-                        .collect(Collectors
-                                .toMap(this::address,
-                                        entry -> componentStatService.statusWithConfig(entry).orElseGet(HashMap::new)));
+
+        List<Map<String, Object>> result = componentRelations.stream()
+                .map(t -> componentStatService.statusWithConfig(t).orElseGet(HashMap::new))
+                .collect(Collectors.toList());
         LOGGER.info("获取组件状态", result);
         return result;
 

@@ -32,8 +32,8 @@ public class ComponentController {
      *
      * @return
      */
-    @GetMapping("/status")
-    public ApiResponse view(@RequestParam(required = false) ComponentParam componentParams) {
+    @PostMapping("/status")
+    public ApiResponse view(@RequestBody(required = false) ComponentParam componentParams) {
         return ApiResponse.successBuild(componentBiz.status(componentParams));
     }
 

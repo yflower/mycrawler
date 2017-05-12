@@ -48,6 +48,7 @@ public class ComponentController extends ComponentFacade<DownloadRpcConfigParam,
         result.put("rpcPort", self.getPort());
         result.put("httpPort", self.getServerPort());
         result.put("status",self.getStatus().getCode());
+        result.put("thread",componentContext.getThread());
 
         //download
         DownLoadContext downLoadContext= (DownLoadContext) componentContext;
