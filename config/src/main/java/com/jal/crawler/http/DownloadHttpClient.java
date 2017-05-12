@@ -46,6 +46,7 @@ public class DownloadHttpClient extends AbstractHttpClient<DownloadConfigRelatio
         Map<String, Object> body = new HashMap();
         body.put("host", config.getHost());
         body.put("port", config.getPort());
+        body.put("httpPort",config.getServerPort());
         body.put("thread", config.getThread());
         body.put("relationType", config.getRelationTypeEnum().getCode());
         body.put("sleepTime", config.getSleepTime());

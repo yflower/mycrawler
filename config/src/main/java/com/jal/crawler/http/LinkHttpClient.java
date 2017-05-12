@@ -43,6 +43,7 @@ public class LinkHttpClient extends AbstractHttpClient<LinkConfigRelation, LinkO
         body.put("host", config.getHost());
         body.put("port", config.getPort());
         body.put("thread", config.getThread());
+        body.put("httpPort",config.getServerPort());
         body.put("relationType", config.getRelationTypeEnum().getCode());
         body.put("mongoConfig", config.getMongoConfigModel());
         body.put("redisConfig", config.getRedisConfigModel());
