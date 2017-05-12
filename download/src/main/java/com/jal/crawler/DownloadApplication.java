@@ -24,8 +24,8 @@ public class DownloadApplication {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         Integer type = Integer.valueOf(args[0]);
         String host = args[1];
-        Integer httpPort = Integer.valueOf(args[1]);
-        Integer port = Integer.valueOf(args[2]);
+        Integer httpPort = Integer.valueOf(args[2]);
+        Integer port = Integer.valueOf(args[3]);
 
         String os = System.getProperty("os.name");
 
