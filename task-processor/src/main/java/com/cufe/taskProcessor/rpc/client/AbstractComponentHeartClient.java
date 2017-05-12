@@ -1,6 +1,7 @@
 package com.cufe.taskProcessor.rpc.client;
 
 import com.cufe.taskProcessor.component.relation.ComponentRelation;
+import com.cufe.taskProcessor.context.ComponentContext;
 import com.cufe.taskProcessor.task.StatusEnum;
 
 /**
@@ -9,9 +10,11 @@ import com.cufe.taskProcessor.task.StatusEnum;
 public abstract class AbstractComponentHeartClient< RPC_S, RPC_Q> {
     protected ComponentRelation componentRelation;
 
+    protected ComponentContext componentContext;
+
 
     public StatusEnum heart(){
-        return rpcResToLocalRes(rpcSend(localReqToRpcReq(componentRelation.getStatus())));
+        return rpcResToLocalRes(rpcSend(localReqToRpcReq(componentContext.getStatus())));
     }
 
     protected abstract RPC_Q localReqToRpcReq(StatusEnum fromStatus);
@@ -22,5 +25,9 @@ public abstract class AbstractComponentHeartClient< RPC_S, RPC_Q> {
 
     public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
+    }
+
+    public void setComponentContext(ComponentContext componentContext) {
+        this.componentContext = componentContext;
     }
 }
