@@ -40,6 +40,11 @@ let controller = ['taskService', '$location', function (taskService, $location) 
         })
 
     }
+    self.download=function down(type){
+        window.location=taskService.taskResultLink(self.taskTag,type);
+
+    }
+
 
 
 }]

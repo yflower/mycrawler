@@ -1,0 +1,21 @@
+<md-nav-bar
+        md-selected-nav-item
+        nav-bar-aria-label="navigation links"
+        md-no-ink-bar=false>
+    <!--<md-nav-item md-nav-sref="goto('page1')" name="page1">-->
+        <!--任务总览-->
+    <!--</md-nav-item>-->
+    <md-nav-item md-nav-sref="moduleList" name="moduleList">
+        模块管理
+    </md-nav-item>
+    <md-nav-item md-nav-sref="moduleInfo" name="moduleInfo">
+        模块详细
+    </md-nav-item>
+    <!--<md-nav-item md-nav-sref="modulePush" name="taskPush">-->
+        <!--模块添加-->
+    <!--</md-nav-item>-->
+</md-nav-bar>
+<md-content>
+    <ui-view ng-cloak></ui-view>
+</md-content>
+

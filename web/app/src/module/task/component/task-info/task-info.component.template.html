@@ -40,7 +40,6 @@
 
 
         <div layout="column">
-            <div flex="10"></div>
             <form layout="row" ng-cloak>
                 <md-switch ng-model="data.cb1" aria-label="Switch 1">
                     暂停
@@ -55,12 +54,28 @@
 
             <div flex="20"></div>
 
-            <div flex-offset="30">
-                数据下载
+            <div class="secondary-button-padding">
+                    JSON文件下载&nbsp;&nbsp;
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.download(0)">
                     <md-icon md-svg-icon="down"></md-icon>
-                    <md-tooltip md-direction="bottom">下载</md-tooltip>
+                    <md-tooltip md-direction="bottom">JSON</md-tooltip>
+                </md-button>
+            </div>
+            <div class="secondary-button-padding">
+                EXCEL文件下载
+                <md-button class="md-secondary md-icon-button"
+                           ng-click="$ctrl.download(2)">
+                    <md-icon md-svg-icon="down"></md-icon>
+                    <md-tooltip md-direction="bottom">EXCEL</md-tooltip>
+                </md-button>
+            </div>
+            <div>
+                TXT文件下载 &nbsp;&nbsp;&nbsp;
+                <md-button class="md-secondary md-icon-button"
+                           ng-click="$ctrl.download(1)">
+                    <md-icon md-svg-icon="down"></md-icon>
+                    <md-tooltip md-direction="bottom">TXT</md-tooltip>
                 </md-button>
             </div>
 
@@ -97,11 +112,9 @@
     </md-toolbar>
     <md-card-title>
         <md-card-title-text>
-            <!--<span class="md-headline">添加链接</span>-->
             <span class="md-subhead">task config</span>
         </md-card-title-text>
     </md-card-title>
-    <!--<md-subheader class="md-primary">添加链接</md-subheader>-->
     <md-card-content layout-padding flex>
         <form layout="column" flex>
             <md-subheader class="md-no-sticky">链接</md-subheader>

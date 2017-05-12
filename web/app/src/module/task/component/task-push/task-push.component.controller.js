@@ -7,10 +7,12 @@ let name = 'taskPushController'
 let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) {
 
     var self = this;
+    //**最终传输的数据**//
     self.urls = ["http://www.cufe.edu.cn/xyxx/zbgg/index.htm"];
     self.processors = [];
     self.resolveData = [];
-    self.resolveItem = [{
+    self.resolveItem = [
+        {
         itemName: 'testItem',
         vars: [
             {
@@ -20,19 +22,38 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
                 optionValue: ""
             }
         ]
-    }];
-    self.test = false;
-
+    }
+    ];
     self.linkPattern = ["https://item.jd.com/11926995.html/.*htm.*"];
+    self.test = false;
+    //***************//
 
     self.processorType = taskService.processorType;
     self.resolveOptionType = taskService.resolveOptionType;
-
     self.tempUrl = "";
     self.tempProcessor = {};
-    self.tempResolve = {};
-    self.taskTag = '';
+    self.tempResolve = {
+        dataType: {
+            type: 0,
+            hide: true,
+            label: ''
+        }
+    };
 
+    self.tempResolveTypeChange = function (type) {
+        self.tempResolve.dataType.type = type;
+
+        if (type == 0) {
+            self.tempResolve.dataType.hide = true;
+            self.tempResolve.dataType.label = '';
+        } else {
+            self.tempResolve.dataType.hide = false;
+            self.tempResolve.dataType.label = '表单名称';
+        }
+    }
+
+
+    self.taskTag = '';
     self.testState = {
         notWait: false,
         datas: []
@@ -55,8 +76,36 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     }
     self.addResolve = function () {
-        self.resolveData.push(self.tempResolve);
-        self.tempResolve = null;
+        console.log(self.tempResolve.dataType.type)
+        if (self.tempResolve.dataType.type == 0) {
+            //普通类型数据
+            self.resolveData.push(self.tempResolve);
+            self.tempResolve = null;
+        } else if (self.tempResolve.dataType.type == 1) {
+            //列表类型数据
+            var tmp;
+            if (self.resolveItem.find(function (value) {
+
+                    var result = value.itemName == self.tempResolve.dataType.value;
+                    if (result) {
+                        tmp = value;
+                    }
+                    return result;
+                }) != undefined) {
+                tmp.vars.push(self.tempResolve);
+                self.tempResolve = {
+                    dataType: self.tempResolve.dataType
+                };
+            }else {
+                self.resolveItem.push({
+                    itemName:self.tempResolve.dataType.value,
+                    vars:[self.tempResolve]
+                })
+            }
+        }
+        console.log(self.resolveData)
+        console.log(self.resolveItem)
+
     }
 
 

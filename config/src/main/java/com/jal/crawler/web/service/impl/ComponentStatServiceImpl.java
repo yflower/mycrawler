@@ -36,20 +36,22 @@ public class ComponentStatServiceImpl implements IComponentStatService {
         if (optional.isPresent()) {
             AbstractHttpClient client = optional.get();
             Optional<ComponentRelation> status = client.status();
-            componentVO.setStatus(status.get().getStatus().name());
-            componentVO.setAddress(client.getComponentRelation().getHost());
+            ComponentRelation response=status.get();
+            componentVO.setStatus(response.getStatus().name());
+            componentVO.setAddress(response.getHost()+":"+response.getServerPort()+"/"+response.getPort());
+            componentVO.setComponentType(response.getComponentType());
+            if(response.getLeader()==null){
+                componentVO.setLeaderAddress(componentVO.getAddress());
+                componentVO.setLeader(true);
+            }else {
+                ComponentRelation leader=response.getLeader();
+                componentVO.setLeader(false);
+                componentVO.setLeaderAddress(leader.getHost()+":"+leader.getServerPort()+"/"+leader.getPort());
+            }
             //todo thread
             return Optional.of(componentVO);
         }
         return Optional.empty();
     }
 
-    @Override
-    public Optional<TaskStatusVO> taskStatus(String taskTag) {
-        List<ComponentRelation> componentRelations = configContext.resolveComponent();
-        HttpClientHolder rpcClient = configContext.getRpcClient();
-        TaskStatusVO statusVO = new TaskStatusVO();
-
-        return null;
-    }
 }

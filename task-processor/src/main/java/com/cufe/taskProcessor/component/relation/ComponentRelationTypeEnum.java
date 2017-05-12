@@ -5,7 +5,7 @@ package com.cufe.taskProcessor.component.relation;
  */
 public enum ComponentRelationTypeEnum {
     LEADER(0, "领导"),
-    CLUSTER(1, "分支组件");
+    SLAVE(1, "分支组件");
 
     ComponentRelationTypeEnum(int code, String msg) {
         this.code = code;
@@ -30,6 +30,6 @@ public enum ComponentRelationTypeEnum {
                 return typeEnum;
             }
         }
-        return CLUSTER;
+        return SLAVE;
     }
 }

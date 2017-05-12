@@ -41,6 +41,11 @@ angular.module('app', ['ngMaterial', navModule.name])
             .icon("start", "./assets/svg/start.svg", 48)
             .icon("stop", "./assets/svg/stop.svg", 48)
             .icon("time", "./assets/svg/time.svg", 48)
+            .icon("download", "./assets/svg/download.svg", 48)
+            .icon("module", "./assets/svg/module.svg", 48)
+            .icon("http", "./assets/svg/http.svg", 48)
+            .icon("status", "./assets/svg/status.svg", 48)
+            .icon("rpc", "./assets/svg/rpc.svg", 48)
             .icon("task", "./assets/svg/task.svg", 48);
 
         $mdThemingProvider.theme('default')

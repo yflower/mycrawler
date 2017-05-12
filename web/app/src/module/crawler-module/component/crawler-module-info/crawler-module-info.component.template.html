@@ -1,0 +1,100 @@
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>组件总览</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-card-content flex layout="row">
+        <md-list flex layout="row">
+            <md-list-item class="secondary-button-padding">
+                <md-icon md-svg-icon="download" flex="30"></md-icon>
+                <h4 flex>模块类型:下载器</h4>
+            </md-list-item>
+            <md-list-item class="secondary-button-padding">
+                <md-icon md-svg-icon="time" flex></md-icon>
+                <h4 flex>总运行时间:4 天</h4>
+            </md-list-item>
+            <md-list-item>
+                <md-icon md-svg-icon="time" flex></md-icon>
+                <h4 flex>开始时间:{{$ctrl.status.beginTime | date :'yyyy-MM-dd HH:mm:ss'}}</h4>
+            </md-list-item>
+        </md-list>
+
+    </md-card-content>
+</md-card>
+
+
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>组件详细设置</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-card-content flex>
+        <form layout="column" flex>
+            <md-subheader class="md-no-sticky">基本设置</md-subheader>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="status" style="display:inline-block;"></md-icon>
+                <label>当前组件状态</label>
+                <input value="STARTING" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>地址</label>
+                <input value="192.168.1.3" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="http" style="display:inline-block;"></md-icon>
+                <label>http端口</label>
+                <input value="8082" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="rpc" style="display:inline-block;"></md-icon>
+                <label>rpc端口</label>
+                <input value="9001" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>模块集群中位置</label>
+                <input value="LEADER 主节点" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>组件的主节点地址</label>
+                <input value="192.168.1.3" flex="60" disabled>
+            </md-input-container>
+            <md-divider></md-divider>
+        </form>
+
+        <form layout="column" flex>
+            <md-subheader class="md-no-sticky">模块专属配置</md-subheader>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>线程数</label>
+                <input value="2" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>每次下载休眠时间</label>
+                <input value="0" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>是否开启代理</label>
+                <input value="否" flex="60" disabled>
+            </md-input-container>
+            <md-input-container flex="100" >
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>代理地址</label>
+                <input value="0" flex="60" disabled>
+            </md-input-container>
+            <md-divider></md-divider>
+        </form>
+    </md-card-content>
+</md-card>

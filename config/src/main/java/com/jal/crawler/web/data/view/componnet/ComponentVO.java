@@ -9,17 +9,11 @@ public class ComponentVO {
 
     private String address;
 
-    private int thread;
+    private int componentType;
 
+    private boolean isLeader;
 
-    public int getThread() {
-        return thread;
-    }
-
-    public void setThread(int thread) {
-        this.thread = thread;
-    }
-
+    private String leaderAddress;
 
     public String getAddress() {
         return address;
@@ -37,12 +31,28 @@ public class ComponentVO {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "ComponentVO{" +
-                "status='" + status + '\'' +
-                ", address='" + address + '\'' +
-                ", thread=" + thread +
-                '}';
+
+    public int getComponentType() {
+        return componentType;
+    }
+
+    public void setComponentType(int componentType) {
+        this.componentType = componentType;
+    }
+
+    public boolean isLeader() {
+        return isLeader;
+    }
+
+    public void setLeader(boolean leader) {
+        isLeader = leader;
+    }
+
+    public String getLeaderAddress() {
+        return leaderAddress;
+    }
+
+    public void setLeaderAddress(String leaderAddress) {
+        this.leaderAddress = leaderAddress;
     }
 }

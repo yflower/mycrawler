@@ -8,10 +8,11 @@ import navListComponent from "src/module/nav/component/nav-list/nav-list.compone
 import navController from "src/module/nav/nav.controller";
 
 import taskModule from "src/module/task/task.module";
+import crawlerModule from 'src/module/crawler-module/crawler-module.module';
 
 export default
 angular
-    .module('leftNav', ['ui.router', taskModule.name])
+    .module('leftNav', ['ui.router', taskModule.name,crawlerModule.name])
     .config(['$stateProvider', function ($stateProvider) {
         var states = [
             {
@@ -20,6 +21,17 @@ angular
                     "v1":{
                         name:'view',
                         template:'<task-view></task-view>'
+
+                    }
+                }
+
+            },
+            {
+                name: "moduleView",
+                views:{
+                    "v1":{
+                        name:'view',
+                        template:'<module-view></module-view>'
 
                     }
                 }

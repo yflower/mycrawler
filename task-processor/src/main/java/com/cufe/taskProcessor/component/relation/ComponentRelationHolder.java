@@ -87,7 +87,7 @@ public class ComponentRelationHolder {
             new Thread(() -> {
                 for (; ; ) {
                     List<ComponentRelation> tmpList = new ArrayList<>(connected);
-                    tmpList.stream().filter(t -> t.getRelationTypeEnum() == ComponentRelationTypeEnum.CLUSTER).forEach(t -> {
+                    tmpList.stream().filter(t -> t.getRelationTypeEnum() == ComponentRelationTypeEnum.SLAVE).forEach(t -> {
                         Optional<ComponentClient> clientOptional = componentClientHolder.from(t);
                         if (clientOptional.isPresent()) {
                             ComponentClient componentClient = clientOptional.get();

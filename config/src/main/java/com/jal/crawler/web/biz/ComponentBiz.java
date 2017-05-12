@@ -201,7 +201,7 @@ public class ComponentBiz {
 
 
     private String address(ComponentRelation componentRelation) {
-        return componentRelation.getHost() + ":" + componentRelation.getPort();
+        return componentRelation.getHost() + ":" + componentRelation.getServerPort()+"/"+componentRelation.getPort();
     }
 
 

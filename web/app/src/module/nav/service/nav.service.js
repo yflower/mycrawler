@@ -6,8 +6,14 @@ let service = ['$q', function ($q) {
     var leftNavList = [
         {
             name: "task",
-            avatar: 'task'
-        }
+            avatar: 'task',
+            router:"taskView"
+        },
+        {
+            name: "module",
+            avatar: 'module',
+            router:"moduleView"
+        },
 
     ];
 

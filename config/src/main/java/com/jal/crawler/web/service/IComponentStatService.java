@@ -15,5 +15,4 @@ public interface IComponentStatService {
 
     Optional<ComponentVO> status(ComponentRelation componentRelation);
 
-    Optional<TaskStatusVO> taskStatus(String taskTag);
 }

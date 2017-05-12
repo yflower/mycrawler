@@ -14,7 +14,11 @@ public class ComponentRelation {
 
     private String host;
 
+    //rpc port
     private int port;
+
+    //http port
+    private int serverPort;
 
     private StatusEnum status = StatusEnum.NO_INIT;
 
@@ -75,13 +79,23 @@ public class ComponentRelation {
         this.componentType = componentType;
     }
 
+    public int getServerPort() {
+        return serverPort;
+    }
+
+    public void setServerPort(int serverPort) {
+        this.serverPort = serverPort;
+    }
+
     @Override
     public String toString() {
         return "ComponentRelation{" +
                 "componentType=" + componentType +
                 ", relationTypeEnum=" + relationTypeEnum +
+                ", leader=" + leader +
                 ", host='" + host + '\'' +
                 ", port=" + port +
+                ", serverPort=" + serverPort +
                 ", status=" + status +
                 '}';
     }

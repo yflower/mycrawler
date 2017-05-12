@@ -91,6 +91,41 @@
     </md-card-content>
 </md-card>
 
+<md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
+    <md-toolbar md-colors="{background:'accent'}" md-whiteframe="-1" layout="row" class="md-toolbar-tools"
+                layout-align="center center">
+        <h1>网页中链接处理</h1>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="code"></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-card-title>
+        <md-card-title-text>
+            <!--<span class="md-headline">添加链接</span>-->
+            <span class="md-subhead">链接处理</span>
+        </md-card-title-text>
+    </md-card-title>
+    <!--<md-subheader class="md-primary">添加链接</md-subheader>-->
+    <md-card-content layout-padding flex>
+        <form layout="row" flex>
+            <md-input-container flex="100">
+                <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
+                <label>url</label>
+                <input ng-model="$ctrl.tempUrl" flex="60">
+                <md-button style="display: inline-block" ng-click="$ctrl.addLink()">
+                    <md-icon md-svg-icon="add"></md-icon>
+                    <md-tooltip md-direction="bottom">添加</md-tooltip>
+                </md-button>
+            </md-input-container>
+        </form>
+
+        <md-chips ng-model="myItems" md-max-chips="5">
+            <md-chip ng-repeat="item in $ctrl.urls">{{item}}</md-chip>
+        </md-chips>
+    </md-card-content>
+</md-card>
+
 
 <md-card layout="column" md-whiteframe="6" ng-cloak flex style="margin-top:30px;">
     <md-toolbar md-colors="{background:'accent'}" md-whiteframe="1" layout="row" class="md-toolbar-tools"
@@ -228,6 +263,19 @@
                         <md-option ng-value="1">js</md-option>
                         <md-option ng-value="2">xpath</md-option>
                     </md-select>
+                </md-input-container>
+
+                <md-input-container flex="25">
+                    <label>数据类型</label>
+                    <md-select ng-model="$ctrl.tempResolve.dataType.type" ng-change="$ctrl.tempResolveTypeChange($ctrl.tempResolve.dataType.type)">
+                        <md-option ng-value="0">普通字段</md-option>
+                        <md-option ng-value="1">表单数据</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container flex="25" ng-hide="$ctrl.tempResolve.dataType.hide">
+                    <label>{{$ctrl.tempResolve.dataType.label}}</label>
+                    <input md-select-on-focus ng-model="$ctrl.tempResolve.dataType.value">
                 </md-input-container>
 
                 <md-input-container flex="25">

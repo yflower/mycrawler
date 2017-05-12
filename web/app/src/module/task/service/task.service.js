@@ -68,6 +68,7 @@ let service = ['$q', '$http', function ($q, $http) {
         })
     }
 
+
     var taskConfig = function (params, data) {
         return $http({
             method: 'get',
@@ -75,6 +76,11 @@ let service = ['$q', '$http', function ($q, $http) {
             params: params,
             data: data
         })
+    }
+
+    var taskResultLink=function (taskTag,type) {
+        return address+"/tasks/result?taskTag="+taskTag+"&dataType="+type;
+
     }
 
     var processorType = [
@@ -123,6 +129,7 @@ let service = ['$q', '$http', function ($q, $http) {
         taskDestroy: taskDestroy,
         taskRestart: taskRestart,
         taskResult: taskResult,
+        taskResultLink:taskResultLink,
         taskStatus: taskStatus,
         taskConfig: taskConfig
     }
