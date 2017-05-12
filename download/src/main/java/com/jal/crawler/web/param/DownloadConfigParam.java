@@ -17,6 +17,9 @@ public class DownloadConfigParam {
     private int port;
 
     @Min(1)
+    private int httpPort;
+
+    @Min(1)
     private int thread;
 
     @Min(0)
@@ -104,5 +107,13 @@ public class DownloadConfigParam {
 
     public void setRelationType(int relationType) {
         this.relationType = relationType;
+    }
+
+    public int getHttpPort() {
+        return httpPort;
+    }
+
+    public void setHttpPort(int httpPort) {
+        this.httpPort = httpPort;
     }
 }

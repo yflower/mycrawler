@@ -79,6 +79,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
+            self.setServerPort(config1.selfHttpPort);
             self.setComponentType(downLoadContext.componentType());
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
             self.setStatus(StatusEnum.numberOf(config1.selfStatus));
@@ -91,6 +92,7 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
+            leader.setServerPort(config1.leaderHttpPort);
             leader.setComponentType(downLoadContext.componentType());
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
@@ -112,6 +114,9 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             config.thread = rpcRes.getThread();
             config.selfStatus = rpcRes.getSelfStatusValue();
             config.leaderStatus = rpcRes.getLeaderStatusValue();
+            config.selfHttpPort=rpcRes.getSelfHttpPort();
+            config.leaderHttpPort=rpcRes.getLeaderHttpPort();
+
 
             if (rpcRes.getPersist() == DownloadConfig.Persist.REDIS) {
                 RedisConfig redisConfig = rpcRes.getRedisConfig();
@@ -145,7 +150,8 @@ public class DownloadInitServer extends RpcDownlandConfigGrpc.RpcDownlandConfigI
             int leaderPort;
             int selfStatus;
             int leaderStatus;
-
+            int selfHttpPort;
+            int leaderHttpPort;
 
             int relationType;
 

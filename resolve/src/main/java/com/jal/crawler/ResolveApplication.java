@@ -26,8 +26,9 @@ public class ResolveApplication {
 
     public static void main(String[] args) throws IOException {
         Integer type = Integer.valueOf(args[0]);
-        Integer port = Integer.valueOf(args[1]);
-        String host = args[2];
+        String host = args[1];
+        Integer httpPort = Integer.valueOf(args[2]);
+        Integer port = Integer.valueOf(args[3]);
 
         ConfigurableApplicationContext run = SpringApplication.run(ResolveApplication.class, args);
         ResolveContext loadContext = run.getBean(ResolveContext.class);
@@ -46,7 +47,7 @@ public class ResolveApplication {
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
         self.setComponentType(loadContext.componentType());
-
+        self.setServerPort(httpPort);
 
         loadContext.componentStart(self, type == 0 ? self : null);
 

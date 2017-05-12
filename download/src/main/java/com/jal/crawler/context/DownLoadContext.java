@@ -21,6 +21,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -134,4 +137,18 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
     }
 
 
+    public int getSleepTime() {
+        return sleepTime;
+    }
+
+    public boolean isProxy() {
+        return isProxy;
+    }
+
+    public List<String> proxyList(){
+        if(isProxy){
+            return Arrays.asList(proxyHost+":"+proxyPort);
+        }
+        return new ArrayList<>();
+    }
 }

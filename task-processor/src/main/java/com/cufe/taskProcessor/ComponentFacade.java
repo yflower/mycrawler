@@ -73,6 +73,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         ComponentRelation componentRelation = new ComponentRelation();
         componentRelation.setHost(configParam.getHost());
         componentRelation.setPort(configParam.getPort());
+        componentRelation.setServerPort(configParam.getHttpPort());
         Optional<ComponentClient> componentClient;
         ComponentRelation leader = null;
 
@@ -102,6 +103,7 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         componentRelation.setLeader(leader);
         configParam.setLeaderHost(leader.getHost());
         configParam.setLeaderPort(leader.getPort());
+        configParam.setLeaderHttpPort(leader.getServerPort());
         configParam.setSelfStatus(StatusEnum.INIT.getCode());
         configParam.setLeaderStatus(leader.getStatus().getCode());
 
@@ -250,6 +252,8 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
         private int port;
 
+        private int httpPort;
+
         private int relationType;
 
         private int thread;
@@ -257,6 +261,8 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
         private String leaderHost;
 
         private int leaderPort;
+
+        private int leaderHttpPort;
 
         private int leaderStatus;
 
@@ -324,6 +330,22 @@ public abstract class ComponentFacade<CONFIG_PARAM extends ComponentFacade.initP
 
         public void setSelfStatus(int selfStatus) {
             this.selfStatus = selfStatus;
+        }
+
+        public int getHttpPort() {
+            return httpPort;
+        }
+
+        public void setHttpPort(int httpPort) {
+            this.httpPort = httpPort;
+        }
+
+        public int getLeaderHttpPort() {
+            return leaderHttpPort;
+        }
+
+        public void setLeaderHttpPort(int leaderHttpPort) {
+            this.leaderHttpPort = leaderHttpPort;
         }
     }
 
