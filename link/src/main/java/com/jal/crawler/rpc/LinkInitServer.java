@@ -64,6 +64,7 @@ public class LinkInitServer extends RpcLinkConfigGrpc.RpcLinkConfigImplBase {
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
+            self.setServerPort(config1.selfHttpPort);
             self.setComponentType(componentContext.componentType());
             self.setStatus(StatusEnum.numberOf(config1.selfStatus));
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
@@ -76,6 +77,7 @@ public class LinkInitServer extends RpcLinkConfigGrpc.RpcLinkConfigImplBase {
             ComponentRelation leader = new ComponentRelation();
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
+            leader.setServerPort(config1.leaderHttpPort);
             leader.setComponentType(componentContext.componentType());
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
@@ -105,6 +107,8 @@ public class LinkInitServer extends RpcLinkConfigGrpc.RpcLinkConfigImplBase {
             config.relationType = rpcRes.getRelationType();
             config.selfStatus = rpcRes.getSelfStatusValue();
             config.leaderStatus = rpcRes.getLeaderStatusValue();
+            config.selfHttpPort=rpcRes.getSelfHttpPort();
+            config.leaderHttpPort=rpcRes.getLeaderHttpPort();
             config.dataFetch = MongoLinkFetch.build(rpcRes.getMongoConfig().getHost(),
                     rpcRes.getMongoConfig().getPort(),
                     rpcRes.getMongoConfig().getUser(),
@@ -133,6 +137,8 @@ public class LinkInitServer extends RpcLinkConfigGrpc.RpcLinkConfigImplBase {
             int leaderPort;
             int selfStatus;
             int leaderStatus;
+            int selfHttpPort;
+            int leaderHttpPort;
 
             int relationType;
         }

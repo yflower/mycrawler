@@ -76,7 +76,7 @@ public class DataController extends ComponentFacade<LinkConfigRpcParam, LinkTask
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = "http://"+leader.getHost() + ":8085/link/list";
+        String url = "http://" + leader.getHost() + ":"+leader.getServerPort()+"/link/list";
         ResponseEntity<String> string = restTemplate.getForEntity(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(string.getBody(),

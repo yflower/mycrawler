@@ -16,6 +16,7 @@ public class WebParamToRpcParam {
         rpcConfigParam.setHost(configParam.getHost());
         rpcConfigParam.setPort(configParam.getPort());
         rpcConfigParam.setRelationType(configParam.getRelationType());
+        rpcConfigParam.setHttpPort(configParam.getHttpPort());
         if (ComponentRelationTypeEnum.numberOf(configParam.getRelationType()) == ComponentRelationTypeEnum.LEADER) {
             rpcConfigParam.setLeaderHost(configParam.getHost());
             rpcConfigParam.setLeaderPort(configParam.getPort());

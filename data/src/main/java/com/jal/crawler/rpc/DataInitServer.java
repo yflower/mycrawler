@@ -65,6 +65,7 @@ public class DataInitServer extends RpcDataConfigGrpc.RpcDataConfigImplBase {
             ComponentRelation self = new ComponentRelation();
             self.setHost(config1.selfHost);
             self.setPort(config1.selfPort);
+            self.setServerPort(config1.selfHttpPort);
             self.setStatus(StatusEnum.numberOf(config1.selfStatus));
             self.setComponentType(dataContext.componentType());
             self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(config1.relationType));
@@ -78,6 +79,7 @@ public class DataInitServer extends RpcDataConfigGrpc.RpcDataConfigImplBase {
             leader.setHost(config1.leaderHost);
             leader.setPort(config1.leaderPort);
             leader.setComponentType(dataContext.componentType());
+            leader.setServerPort(config1.leaderHttpPort);
             leader.setRelationTypeEnum(ComponentRelationTypeEnum.LEADER);
             leader.setStatus(StatusEnum.numberOf(config1.leaderStatus));
             return leader;
@@ -98,6 +100,8 @@ public class DataInitServer extends RpcDataConfigGrpc.RpcDataConfigImplBase {
             config.relationType = rpcRes.getRelationType();
             config.selfStatus = rpcRes.getSelfStatusValue();
             config.leaderStatus = rpcRes.getLeaderStatusValue();
+            config.selfHttpPort=rpcRes.getSelfHttpPort();
+            config.leaderHttpPort=rpcRes.getLeaderHttpPort();
             config.dataFetch = MongoDataFetch.build(rpcRes.getMongoConfig().getHost(),
                     rpcRes.getMongoConfig().getPort(),
                     rpcRes.getMongoConfig().getUser(),
@@ -124,6 +128,8 @@ public class DataInitServer extends RpcDataConfigGrpc.RpcDataConfigImplBase {
             int leaderPort;
             int selfStatus;
             int leaderStatus;
+            int selfHttpPort;
+            int leaderHttpPort;
             int relationType;
         }
     }

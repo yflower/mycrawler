@@ -24,6 +24,8 @@ public class LinkInitClient extends AbstractComponentInitClient<ConfigStatus, Li
                 .setRelationType(rpcParam.getRelationType())
                 .setLeaderHost(rpcParam.getLeaderHost())
                 .setLeaderPort(rpcParam.getLeaderPort())
+                .setLeaderHost(rpcParam.getLeaderHost())
+                .setLeaderPort(rpcParam.getLeaderPort())
                 .setSelfStatus(Status.forNumber(rpcParam.getSelfStatus()))
                 .setLeaderStatus(Status.forNumber(rpcParam.getLeaderStatus()))
                 .setThread(rpcParam.getThread())

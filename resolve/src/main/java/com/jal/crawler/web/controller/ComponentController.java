@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jianganlan on 2017/4/26.
@@ -34,7 +36,18 @@ public class ComponentController extends ComponentFacade<ResolveConfigRpcParam, 
 
     @GetMapping("/status")
     public Object status() {
-        return self();
+        ComponentRelation self = self();
+        Map<String,Object> result=new HashMap();
+        //common
+        result.put("componentType", self.getComponentType());
+        result.put("componentRelationType",self.getRelationTypeEnum().getCode());
+        result.put("leader",self.getLeader());
+        result.put("host",self.getHost());
+        result.put("rpcPort", self.getPort());
+        result.put("httpPort", self.getServerPort());
+        result.put("status",self.getStatus().getCode());
+
+        return result;
     }
 
     @GetMapping(value = "/taskStatus")
@@ -55,7 +68,7 @@ public class ComponentController extends ComponentFacade<ResolveConfigRpcParam, 
 
     @Override
     protected List<ComponentRelation> componentListForward(ComponentRelation leader) {
-        String url = "http://" + leader.getHost() + ":8083/resolve/list";
+        String url = "http://" + leader.getHost() + ":"+leader.getServerPort()+"/resolve/list";
         String object = restTemplate.getForObject(url, String.class);
 
         List<ComponentRelation> relations = new Gson().fromJson(object,

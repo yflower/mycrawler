@@ -23,6 +23,8 @@ public class DataInitClient extends AbstractComponentInitClient<ConfigStatus, Da
                 .setRelationType(rpcParam.getRelationType())
                 .setLeaderHost(rpcParam.getLeaderHost())
                 .setLeaderPort(rpcParam.getLeaderPort())
+                .setSelfHttpPort(rpcParam.getHttpPort())
+                .setLeaderHttpPort(rpcParam.getLeaderHttpPort())
                 .setSelfStatus(Status.forNumber(rpcParam.getSelfStatus()))
                 .setLeaderStatus(Status.forNumber(rpcParam.getLeaderStatus()))
                 .setThread(rpcParam.getThread())

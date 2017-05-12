@@ -16,6 +16,9 @@ public class LinkConfigParam {
     private int port;
 
     @Min(1)
+    private int httpPort;
+
+    @Min(1)
     private int thread;
 
     @Min(0)
@@ -73,5 +76,13 @@ public class LinkConfigParam {
 
     public void setRedisConfig(RedisConfigParam redisConfig) {
         this.redisConfig = redisConfig;
+    }
+
+    public int getHttpPort() {
+        return httpPort;
+    }
+
+    public void setHttpPort(int httpPort) {
+        this.httpPort = httpPort;
     }
 }

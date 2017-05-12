@@ -25,8 +25,9 @@ public class LinkApplication {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Integer type = Integer.valueOf(args[0]);
-        Integer port = Integer.valueOf(args[1]);
-        String host = args[2];
+        String host = args[1];
+        Integer httpPort = Integer.valueOf(args[2]);
+        Integer port = Integer.valueOf(args[3]);
         ConfigurableApplicationContext context = SpringApplication.run(LinkApplication.class, args);
 
         LinkContext loadContext = context.getBean(LinkContext.class);
@@ -44,6 +45,7 @@ public class LinkApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
+        self.setServerPort(httpPort);
         self.setComponentType(loadContext.componentType());
 
 

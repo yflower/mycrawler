@@ -16,6 +16,9 @@ public class DataConfigParam {
     private int port;
 
     @Min(1)
+    private int httpPort;
+
+    @Min(1)
     private int thread;
 
     @Min(0)
@@ -65,5 +68,11 @@ public class DataConfigParam {
         this.mongoConfig = mongoConfig;
     }
 
+    public int getHttpPort() {
+        return httpPort;
+    }
 
+    public void setHttpPort(int httpPort) {
+        this.httpPort = httpPort;
+    }
 }
