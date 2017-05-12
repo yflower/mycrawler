@@ -20,10 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -58,7 +55,7 @@ public class ComponentBiz {
     private IComponentSelectService selectService;
 
 
-    public Map<String, ComponentVO> status(ComponentParam componentParam) {
+    public Map<String, Map<String,Object>> status(ComponentParam componentParam) {
         List<ComponentRelation> componentRelations = new ArrayList<>();
 
         //得到组件model
@@ -69,11 +66,11 @@ public class ComponentBiz {
             componentRelations = getCurrentComponentModel();
         }
 
-        Map<String, ComponentVO> result =
+        Map<String, Map<String,Object>> result =
                 componentRelations.stream()
                         .collect(Collectors
                                 .toMap(this::address,
-                                        entry -> componentStatService.status(entry).orElseGet(ComponentVO::new)));
+                                        entry -> componentStatService.statusWithConfig(entry).orElseGet(HashMap::new)));
         LOGGER.info("获取组件状态", result);
         return result;
 

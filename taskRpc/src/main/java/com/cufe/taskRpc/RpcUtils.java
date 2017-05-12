@@ -55,8 +55,10 @@ public class RpcUtils {
         statusClient.setComponentContext(componentContext);
         leaderClient.setStub(leaderStub);
         leaderClient.setComponentRelation(componentRelation);
+        leaderClient.setComponentContext(componentContext);
         heartClient.setComponentRelation(componentRelation);
         heartClient.setStub(heartStub);
+        heartClient.setComponentContext(componentContext);
         componentClient.statusClient = statusClient;
         componentClient.leaderClient = leaderClient;
         componentClient.heartClient = heartClient;

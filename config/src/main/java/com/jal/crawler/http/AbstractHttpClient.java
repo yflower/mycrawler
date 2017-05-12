@@ -2,6 +2,7 @@ package com.jal.crawler.http;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jal.crawler.web.data.enums.ComponentRelationTypeEnum;
 import com.jal.crawler.web.data.enums.StatusEnum;
 import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.model.task.TaskStatusModel;
@@ -34,17 +35,56 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<ComponentRelation> status() {
-        String url = "http://" + this.componentRelation.getHost() + ":"+componentRelation.getServerPort()+"/component/status";
-        ResponseEntity<ComponentRelation> entity;
+        String url = "http://" + this.componentRelation.getHost() + ":" + componentRelation.getServerPort() + "/component/status";
+        ResponseEntity<String> entity;
         try {
-            entity = restTemplate.getForEntity(url, ComponentRelation.class);
+            entity = restTemplate.getForEntity(url, String.class);
         } catch (Exception e) {
             return Optional.empty();
         }
 
-        ComponentRelation componentRelation = entity.getBody();
+        ComponentRelation componentRelation = new ComponentRelation();
+        try {
+            Map<String, Object> result = objectMapper.readValue(entity.getBody(), new TypeReference<Map<String, Object>>() {
+            });
+            componentRelation.setComponentType((Integer) result.get("componentType"));
+            componentRelation.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf((Integer) result.get("componentRelationType")));
+            componentRelation.setServerPort((Integer) result.get("httpPort"));
+            componentRelation.setHost((String) result.get("host"));
+            componentRelation.setPort((Integer) result.get("rpcPort"));
+            componentRelation.setStatus(StatusEnum.numberOf((Integer) result.get("status")));
+
+            if (componentRelation.getLeader() != null) {
+                ComponentRelation leader = new ComponentRelation();
+                Map<String, Object> leaderMap = (Map<String, Object>) result.get("leader");
+                leader.setComponentType((Integer) leaderMap.get("componentType"));
+                leader.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf((Integer) leaderMap.get("componentRelationType")));
+                leader.setServerPort((Integer) leaderMap.get("httpPort"));
+                leader.setHost((String) leaderMap.get("host"));
+                leader.setPort((Integer) leaderMap.get("rpcPort"));
+                leader.setStatus(StatusEnum.numberOf((Integer) leaderMap.get("status")));
+                componentRelation.setLeader(leader);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         return Optional.of(componentRelation);
+    }
+
+    public Optional<Map<String, Object>> statusWithConfig() {
+        String url = "http://" + this.componentRelation.getHost() + ":" + componentRelation.getServerPort() + "/component/status";
+        ResponseEntity<String> entity;
+        Map result;
+        try {
+            entity = restTemplate.getForEntity(url, String.class);
+            result = objectMapper.readValue(entity.getBody(), new TypeReference<Map<String, Object>>() {
+            });
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+        return Optional.of(result);
     }
 
     public abstract Optional<ResponseEntity> result(Map<String, Object> param);
@@ -55,7 +95,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<TaskStatusModel> taskStatus(String taskTag) {
-        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/component/taskStatus?taskTag=" + taskTag;
+        String url = "http://" + this.componentRelation.getHost() + ":" + port() + "/component/taskStatus?taskTag=" + taskTag;
         ResponseEntity<String> entity;
         try {
             entity = restTemplate.getForEntity(url, String.class);
@@ -81,7 +121,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<List<TaskStatusModel>> taskStatus() {
-        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/component/taskStatus";
+        String url = "http://" + this.componentRelation.getHost() + ":" + port() + "/component/taskStatus";
         List<TaskStatusModel> taskStatusVOS = null;
         ResponseEntity<String> entity;
         try {
@@ -104,7 +144,7 @@ public abstract class AbstractHttpClient<C, T> {
     }
 
     public Optional<Map<String, Object>> taskConfig(String taskTag) {
-        String url = "http://" + this.componentRelation.getHost() + ":"+port()+"/component/taskConfig?taskTag=" + taskTag;
+        String url = "http://" + this.componentRelation.getHost() + ":" + port() + "/component/taskConfig?taskTag=" + taskTag;
         Map<String, Object> taskConfig = null;
         ResponseEntity<String> entity;
         try {
@@ -195,7 +235,6 @@ public abstract class AbstractHttpClient<C, T> {
     public void setComponentRelation(ComponentRelation componentRelation) {
         this.componentRelation = componentRelation;
     }
-
 
 
     public enum OPStatus {

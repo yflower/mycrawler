@@ -5,6 +5,7 @@ import com.jal.crawler.web.data.model.component.ComponentRelation;
 import com.jal.crawler.web.data.view.componnet.ComponentVO;
 import com.jal.crawler.web.data.view.task.TaskStatusVO;
 
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -14,5 +15,10 @@ public interface IComponentStatService {
     Optional<ComponentEnum> type(ComponentRelation componentRelation);
 
     Optional<ComponentVO> status(ComponentRelation componentRelation);
+
+    Optional<Map<String,Object>> statusWithConfig(ComponentRelation componentRelation);
+
+
+
 
 }

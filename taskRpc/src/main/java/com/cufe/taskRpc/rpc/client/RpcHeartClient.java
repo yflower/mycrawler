@@ -30,4 +30,8 @@ public class RpcHeartClient extends AbstractComponentHeartClient<HeartMessage, H
     public void setStub(RpcComponentHeartServiceGrpc.RpcComponentHeartServiceBlockingStub stub) {
         this.stub = stub;
     }
+
+
+
+
 }
