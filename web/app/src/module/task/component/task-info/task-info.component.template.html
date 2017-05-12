@@ -39,17 +39,34 @@
         </md-list>
 
 
-        <form layout="column" flex-offset="10" ng-cloak>
-            <md-switch ng-model="data.cb1" aria-label="Switch 1">
-                暂停
-            </md-switch>
-            <md-switch ng-model="data.cb1" aria-label="Switch 1">
-                结束
-            </md-switch>
-            <md-switch ng-model="data.cb2">
-                毁灭
-            </md-switch>
-        </form>
+        <div layout="column">
+            <div flex="10"></div>
+            <form layout="row" ng-cloak>
+                <md-switch ng-model="data.cb1" aria-label="Switch 1">
+                    暂停
+                </md-switch>
+                <md-switch ng-model="data.cb1" aria-label="Switch 1">
+                    结束
+                </md-switch>
+                <md-switch ng-model="data.cb2">
+                    毁灭
+                </md-switch>
+            </form>
+
+            <div flex="20"></div>
+
+            <div flex-offset="30">
+                数据下载
+                <md-button class="md-secondary md-icon-button"
+                           ng-click="doSecondaryAction($event)">
+                    <md-icon md-svg-icon="down"></md-icon>
+                    <md-tooltip md-direction="bottom">下载</md-tooltip>
+                </md-button>
+            </div>
+
+
+        </div>
+
 
     </md-card-content>
 </md-card>

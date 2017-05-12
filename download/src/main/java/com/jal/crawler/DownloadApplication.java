@@ -23,8 +23,9 @@ public class DownloadApplication {
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         Integer type = Integer.valueOf(args[0]);
-        Integer port = Integer.valueOf(args[1]);
-        String host = args[2];
+        String host = args[1];
+        Integer httpPort = Integer.valueOf(args[1]);
+        Integer port = Integer.valueOf(args[2]);
 
         String os = System.getProperty("os.name");
 
@@ -52,6 +53,7 @@ public class DownloadApplication {
         self.setStatus(StatusEnum.NO_INIT);
         self.setRelationTypeEnum(ComponentRelationTypeEnum.numberOf(type));
         self.setPort(port);
+        self.setServerPort(httpPort);
         self.setComponentType(loadContext.componentType());
 
 

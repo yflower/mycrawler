@@ -33,6 +33,7 @@ public class ComponentController extends ComponentFacade<DownloadRpcConfigParam,
     }
 
 
+
     @GetMapping("/status")
     public Object status() {
         return self();
