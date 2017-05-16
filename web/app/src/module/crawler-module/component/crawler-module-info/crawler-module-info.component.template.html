@@ -42,7 +42,7 @@
             <md-input-container flex="100" >
                 <md-icon md-svg-icon="status" style="display:inline-block;"></md-icon>
                 <label>当前组件状态</label>
-                <input value="{{$ctrl.component.status}}" flex="60" disabled>
+                <input value="{{$ctrl.status($ctrl.component.status)}}" flex="60" disabled>
             </md-input-container>
             <md-input-container flex="100" >
                 <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>

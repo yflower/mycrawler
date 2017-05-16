@@ -214,6 +214,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
                 }
             }
         ).then(function (result) {
+            self.test = false;
             self.taskTag = result.data.data.taskTag;
             taskService.taskResult({
                 taskTag: self.taskTag,

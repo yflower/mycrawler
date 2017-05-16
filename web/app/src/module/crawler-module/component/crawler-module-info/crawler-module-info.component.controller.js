@@ -45,6 +45,19 @@ let controller = ['moduleService', '$location', function (moduleService, $locati
         }
     }
 
+    self.status=function (s) {
+        if(s==0){
+            return '未设置'
+        }
+        if(s==1){
+            return '已设置'
+        }
+        if(s==2){
+            return '正在运行'
+        }
+
+    }
+
 }]
 
 export default {

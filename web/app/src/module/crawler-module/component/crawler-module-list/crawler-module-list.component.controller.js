@@ -55,7 +55,7 @@ let controller = ['moduleService', function (moduleService) {
             return '未设置'
         }
         if(s==1){
-            return '设置'
+            return '已设置'
         }
         if(s==2){
             return '正在运行'
