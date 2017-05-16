@@ -1,7 +1,6 @@
 package com.jal.crawler.web.service;
 
 import com.jal.crawler.web.data.model.component.ComponentRelation;
-import javafx.concurrent.Task;
 
 import java.util.List;
 import java.util.Optional;
