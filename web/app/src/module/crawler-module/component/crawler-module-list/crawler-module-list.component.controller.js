@@ -18,7 +18,6 @@ let controller = ['moduleService', function (moduleService) {
     self.link = [];
 
     self.addComponent = function ($event) {
-        alert('121')
         if (componentCheck()) {
             moduleService.componentAdd(null, {
                 components: [{
@@ -31,7 +30,7 @@ let controller = ['moduleService', function (moduleService) {
                     alert("组件添加成功");
                     fresh();
                 }
-                console.log(result)
+                console.log(result.data)
             }, function (error) {
                 alert("组件添加失败"+error)
             })
