@@ -15,7 +15,6 @@ System.config({
     "angular-messages": "github:angular/bower-angular-messages@1.6.4",
     "angular-ui-router": "npm:angular-ui-router@0.4.2",
     "css": "github:systemjs/plugin-css@0.1.33",
-    "echarts": "npm:echarts@3.5.2",
     "json": "github:systemjs/plugin-json@0.3.0",
     "text": "github:systemjs/plugin-text@0.0.9",
     "traceur": "github:jmcriffey/bower-traceur@0.0.93",
@@ -68,10 +67,6 @@ System.config({
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:echarts@3.5.2": {
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "zrender": "npm:zrender@3.4.2"
-    },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
@@ -86,9 +81,6 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
-    },
-    "npm:zrender@3.4.2": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
 });
