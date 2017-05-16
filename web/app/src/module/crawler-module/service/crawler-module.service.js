@@ -14,8 +14,17 @@ let service=['$q', '$http',function ($q,$http) {
             data: data
         })
     }
+    var componentAdd=function (params,data) {
+        return $http({
+            method: 'post',
+            url: address + '/components',
+            params: params,
+            data: data
+        })
+    }
     return {
-        componentStatus:componentStatus
+        componentStatus:componentStatus,
+        componentAdd:componentAdd
     }
 
 

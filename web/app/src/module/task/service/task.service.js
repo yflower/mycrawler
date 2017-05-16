@@ -104,7 +104,7 @@ let service = ['$q', '$http', function ($q, $http) {
         }]
     var resolveOptionType = [
         {
-            value: 0,
+            value: 'attr',
             message: '属性'
         }
     ]

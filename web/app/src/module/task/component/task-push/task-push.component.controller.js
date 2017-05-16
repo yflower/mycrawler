@@ -8,29 +8,44 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     var self = this;
     //**最终传输的数据**//
-    self.urls = ["http://www.cufe.edu.cn/xyxx/zbgg/index.htm"];
-    self.processors = [];
-    self.resolveData = [];
-    self.resolveItem = [
-        {
-        itemName: 'testItem',
-        vars: [
-            {
-                name: 'title',
-                query: "#warp > div.main > div > div > div.con03_right > div.list05 > ul > li:nth-child(4) > a",
-                option: "",
-                optionValue: ""
-            }
-        ]
-    }
+    self.urls = [
+        // "http://www.cufe.edu.cn/xyxx/zbgg/index.htm"
+        // "https://list.jd.com/list.html?cat=670,671,672"
+
     ];
-    self.linkPattern = ["https://item.jd.com/11926995.html/.*htm.*"];
+    self.processors = [];
+    self.resolveData = [
+                // {
+                //     name: 'link',
+                //     query: "#plist > ul > li:nth-child(1) > div > div.p-img > a",
+                //     option: "attr",
+                //     optionValue: "href"
+                // }
+
+    ];
+    self.resolveItem = [
+        // {
+        // itemName: 'testItem',
+        // vars: [
+        //     {
+        //         name: 'title',
+        //         query: "#warp > div.main > div > div > div.con03_right > div.list05 > ul > li:nth-child(4) > a",
+        //         option: "",
+        //         optionValue: ""
+        //     }
+        // ]
+        // }
+    ];
+    self.linkPattern = [
+        // "https://item.jd.com/11926995.html/.*htm.*"
+    ];
     self.test = false;
     //***************//
 
     self.processorType = taskService.processorType;
     self.resolveOptionType = taskService.resolveOptionType;
     self.tempUrl = "";
+    self.tempLinkPattern=""
     self.tempProcessor = {};
     self.tempResolve = {
         dataType: {
@@ -65,6 +80,13 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
             self.urls.push(self.tempUrl);
             self.tempUrl = "";
             console.log(self.urls)
+        }
+    }
+    self.addLinkPattern = function () {
+        if (!self.linkPattern.includes(self.tempLinkPattern)) {
+            self.linkPattern.push(self.tempLinkPattern);
+            self.tempLinkPattern = "";
+            console.log(self.linkPattern)
         }
     }
 

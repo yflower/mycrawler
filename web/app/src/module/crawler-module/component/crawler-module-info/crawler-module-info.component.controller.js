@@ -30,6 +30,20 @@ let controller = ['moduleService', '$location', function (moduleService, $locati
 
             })
     }
+    self.componentType=function () {
+        if(self.component.componentType==undefined){
+            return ""
+        }
+        if(self.component.componentType==0){
+            return "下载器"
+        }else if(self.component.componentType==1){
+            return '解析器'
+        }else if(self.component.componentType==2){
+            return "数据处理"
+        }else  if(self.component.componentType==3){
+            return '链接处理'
+        }
+    }
 
 }]
 

@@ -11,16 +11,16 @@
         <md-list flex layout="row">
             <md-list-item class="secondary-button-padding">
                 <md-icon md-svg-icon="download" flex="30"></md-icon>
-                <h4 flex>模块类型:下载器</h4>
+                <h4 flex>模块类型:{{$ctrl.componentType()}}</h4>
             </md-list-item>
-            <md-list-item class="secondary-button-padding">
-                <md-icon md-svg-icon="time" flex></md-icon>
-                <h4 flex>总运行时间:4 天</h4>
-            </md-list-item>
-            <md-list-item>
-                <md-icon md-svg-icon="time" flex></md-icon>
-                <h4 flex>开始时间:{{$ctrl.status.beginTime | date :'yyyy-MM-dd HH:mm:ss'}}</h4>
-            </md-list-item>
+            <!--<md-list-item class="secondary-button-padding">-->
+                <!--<md-icon md-svg-icon="time" flex></md-icon>-->
+                <!--<h4 flex>总运行时间:4 天</h4>-->
+            <!--</md-list-item>-->
+            <!--<md-list-item>-->
+                <!--<md-icon md-svg-icon="time" flex></md-icon>-->
+                <!--<h4 flex>开始时间:{{$ctrl.status.beginTime | date :'yyyy-MM-dd HH:mm:ss'}}</h4>-->
+            <!--</md-list-item>-->
         </md-list>
 
     </md-card-content>

@@ -112,8 +112,8 @@
             <md-input-container flex="100">
                 <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>
                 <label>url</label>
-                <input ng-model="$ctrl.tempUrl" flex="60">
-                <md-button style="display: inline-block" ng-click="$ctrl.addLink()">
+                <input ng-model="$ctrl.tempLinkPattern" flex="60">
+                <md-button style="display: inline-block" ng-click="$ctrl.addLinkPattern()">
                     <md-icon md-svg-icon="add"></md-icon>
                     <md-tooltip md-direction="bottom">添加</md-tooltip>
                 </md-button>
@@ -121,7 +121,7 @@
         </form>
 
         <md-chips ng-model="myItems" md-max-chips="5">
-            <md-chip ng-repeat="item in $ctrl.urls">{{item}}</md-chip>
+            <md-chip ng-repeat="item in $ctrl.linkPattern">{{item}}</md-chip>
         </md-chips>
     </md-card-content>
 </md-card>
