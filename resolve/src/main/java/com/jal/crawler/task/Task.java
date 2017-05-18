@@ -62,6 +62,7 @@ public class Task extends AbstractTask{
         int row = 1;
         List<Map<String, Object>> itemList = new ArrayList<>();
         while (true) {
+            int notFound=0;
             Map<String, Object> map = new HashMap<>();
             for (var var : item.vars) {
                 String name = var.name;
@@ -71,8 +72,10 @@ public class Task extends AbstractTask{
                 var newVar = new var(name, query, option, optionValue);
                 String string = evaluate(newVar, tag);
                 if (string.equals("")) {
-                    result.put(item.itemName, itemList);
-                    return result;
+                    notFound++;
+                    if(notFound>=5){
+                        return result;
+                    }
                 }
                 map.put(name, evaluate(newVar, tag));
             }
