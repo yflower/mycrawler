@@ -217,8 +217,12 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                     return DownloadTask.Processor.Type.LINK_TO;
                 case WAIT_UTIL:
                     return DownloadTask.Processor.Type.WAIT_UTIL;
+                case GOTO:
+                    return DownloadTask.Processor.Type.GOTO;
+                case DOWN:
+                    return DownloadTask.Processor.Type.DOWN;
                 default:
-                    return null;
+                    throw new IllegalStateException("有新的操作加入，但是为定义转化");
             }
         }
 
