@@ -132,6 +132,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
 
     self.findPre = function () {
+        console.log(self.processors)
         return self.processors.filter(function (t) {
             return t.kind == 0;
         })

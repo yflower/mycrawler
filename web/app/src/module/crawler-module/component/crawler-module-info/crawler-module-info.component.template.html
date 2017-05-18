@@ -10,8 +10,8 @@
     <md-card-content flex layout="row">
         <md-list flex layout="row">
             <md-list-item class="secondary-button-padding">
-                <md-icon md-svg-icon="download" flex="30"></md-icon>
-                <h4 flex>模块类型:{{$ctrl.componentType()}}</h4>
+                <md-icon md-svg-icon="{{$ctrl.component.componentType | componentIcon}}" flex="30"></md-icon>
+                <h4 flex>模块类型:{{$ctrl.component.componentType | componentType}}</h4>
             </md-list-item>
             <!--<md-list-item class="secondary-button-padding">-->
                 <!--<md-icon md-svg-icon="time" flex></md-icon>-->
@@ -42,7 +42,7 @@
             <md-input-container flex="100" >
                 <md-icon md-svg-icon="status" style="display:inline-block;"></md-icon>
                 <label>当前组件状态</label>
-                <input value="{{$ctrl.status($ctrl.component.status)}}" flex="60" disabled>
+                <input value="{{$ctrl.component.status | status}}" flex="60" disabled>
             </md-input-container>
             <md-input-container flex="100" >
                 <md-icon md-svg-icon="link" style="display:inline-block;"></md-icon>

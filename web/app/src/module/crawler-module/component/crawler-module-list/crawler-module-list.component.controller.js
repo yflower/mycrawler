@@ -50,18 +50,6 @@ let controller = ['moduleService', function (moduleService) {
 
     }
 
-    self.status=function (s) {
-        if(s==0){
-            return '未设置'
-        }
-        if(s==1){
-            return '已设置'
-        }
-        if(s==2){
-            return '正在运行'
-        }
-
-    }
 
     fresh();
     //加载执行

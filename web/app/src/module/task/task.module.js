@@ -6,7 +6,7 @@ import taskPushComponent from "src/module/task/component/task-push/task-push.com
 import taskInfoComponent from "src/module/task/component/task-info/task-info.component";
 import taskListComponent from "src/module/task/component/task-list/task-list.component";
 
-
+import taskFilters from "src/module/task/service/task.filters";
 import taskService from "src/module/task/service/task.service";
 
 export default
@@ -43,3 +43,8 @@ angular
     .component(taskInfoComponent.name, taskInfoComponent.config)
     .component(taskListComponent.name, taskListComponent.config)
     .service(taskService.name, taskService.service)
+    .config(['$filterProvider', function ($filterProvider) {
+        taskFilters.forEach(function (filter) {
+            $filterProvider.register(filter.name, filter.filterFactory);
+        })
+    }])

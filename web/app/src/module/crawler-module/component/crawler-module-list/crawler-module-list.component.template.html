@@ -59,7 +59,7 @@
                     rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:{{$ctrl.status(item.status)}}
+                    status:{{item.status| status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
@@ -98,7 +98,7 @@
                     rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:{{$ctrl.status(item.status)}}
+                    status:{{item.status| status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
@@ -135,7 +135,7 @@
                     rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:{{$ctrl.status(item.status)}}
+                    status:{{item.status| status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
@@ -172,7 +172,7 @@
                     rpc-port:{{item.rpcPort}}
                 </div>
                 <div class="md-list-item-text" flex="40">
-                    status:{{$ctrl.status(item.status)}}
+                    status:{{item.status| status}}
                 </div>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="$ctrl.pauseTask($event,item.taskTag)">
