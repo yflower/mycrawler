@@ -158,6 +158,9 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload download() {
+        if(pages.size()>=10){
+            isSkip=true;
+        }
         Page page = new Page();
         page.setHeaders(responseHeaders());
         page.setCode(responseCode());

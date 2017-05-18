@@ -105,6 +105,9 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                                     .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                                     .collect(Collectors.toList());
                             for(int i=0;i<post.size();++i){
+                                if(downLoad.isSkip()){
+                                    break;
+                                }
                                 if(post.get(i).getType()==DownloadTask.Processor.Type.GOTO){
                                     i=Integer.parseInt(post.get(i).getQuery());
                                 }else {
