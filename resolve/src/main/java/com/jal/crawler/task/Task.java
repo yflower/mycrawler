@@ -74,6 +74,7 @@ public class Task extends AbstractTask{
                 if (string.equals("")) {
                     notFound++;
                     if(notFound>=5){
+                        result.put(item.getItemName(),itemList);
                         return result;
                     }
                 }
