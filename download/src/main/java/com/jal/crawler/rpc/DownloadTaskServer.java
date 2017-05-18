@@ -66,6 +66,9 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
             case WAIT_UTIL:
                 dynamicDownload.waitUtilShow(action.getQuery(), 2, TimeUnit.SECONDS);
                 break;
+            case DOWN:
+                dynamicDownload.download();
+                break;
             case UNRECOGNIZED:
                 break;
         }
