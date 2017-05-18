@@ -209,7 +209,7 @@
                 </md-button>
             </md-list-item>
             <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.findPost() track by $index">
-                <p>后置处理-->{{item.type}}-->{{item.query}}-->{{item.option}}</p>
+                <p>后置处理-->{{item.type | resolveType}}-->{{item.query}}-->{{item.option}}</p>
                 <md-button class="md-secondary md-icon-button"
                            ng-click="doSecondaryAction($event)">
                     <md-icon md-svg-icon="up"></md-icon>
