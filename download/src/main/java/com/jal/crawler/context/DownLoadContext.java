@@ -42,8 +42,8 @@ public class DownLoadContext extends ComponentContext<String, List<Page>, Task> 
     private int sleepTime;
     private AbstractDownLoad.AbstractBuilder staticBuilder;
     private AbstractDownLoad.AbstractBuilder dynamicBuilder;
-    private AbstractDownLoad staticDownload;
-    private AbstractDownLoad dynamicDownload;
+    private ThreadLocal<AbstractDownLoad> staticDownload = new ThreadLocal<>();
+    private ThreadLocal<AbstractDownLoad> dynamicDownload = new ThreadLocal<>();
     private RedisTemplate redisTemplate;
     private ThreadLocal<AbstractDownLoad> downLoad = new ThreadLocal<>();
     private DownloadClientFactory downloadClientFactory = new DownloadClientFactory(this);
@@ -67,7 +67,7 @@ public class DownLoadContext extends ComponentContext<String, List<Page>, Task> 
 
 
             public void taskBeforeHook(Task task) {
-                downLoad.set(task.isDynamic() ? dynamicDownload : staticDownload);
+                downLoad.set(task.isDynamic() ? dynamicDownload.get() : staticDownload.get());
                 if (!task.isUrlInit() && !task.getStartUrls().isEmpty()) {
                     task.urlsInit(abstractPageUrlFactory);
                 }
@@ -77,26 +77,26 @@ public class DownLoadContext extends ComponentContext<String, List<Page>, Task> 
             }
 
             public void taskAfterHook(Task task) {
-                dynamicDownload.reset();
-                staticDownload.reset();
+                dynamicDownload.get().reset();
+                staticDownload.get().reset();
             }
 
 
             public void cycleBeforeHook() {
-                staticDownload = staticBuilder.build();
-                dynamicDownload = dynamicBuilder.build();
+                staticDownload.set(staticBuilder.build());
+                dynamicDownload.set(dynamicBuilder.build());
             }
 
 
             public void cycleErrorHook() {
-                dynamicDownload.close();
-                staticDownload.close();
+                dynamicDownload.get().close();
+                staticDownload.get().close();
             }
 
 
             public void cycleFinalHook() {
-                dynamicDownload.close();
-                staticDownload.close();
+                dynamicDownload.get().close();
+                staticDownload.get().close();
             }
         };
     }
@@ -145,9 +145,9 @@ public class DownLoadContext extends ComponentContext<String, List<Page>, Task> 
         return isProxy;
     }
 
-    public List<String> proxyList(){
-        if(isProxy){
-            return Arrays.asList(proxyHost+":"+proxyPort);
+    public List<String> proxyList() {
+        if (isProxy) {
+            return Arrays.asList(proxyHost + ":" + proxyPort);
         }
         return new ArrayList<>();
     }
