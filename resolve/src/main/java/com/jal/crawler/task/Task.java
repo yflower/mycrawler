@@ -61,8 +61,8 @@ public class Task extends AbstractTask{
         Map<String, Object> result = new HashMap<>();
         int row = 1;
         List<Map<String, Object>> itemList = new ArrayList<>();
+        int notFound=0;
         while (true) {
-            int notFound=0;
             Map<String, Object> map = new HashMap<>();
             for (var var : item.vars) {
                 String name = var.name;
