@@ -4,9 +4,7 @@ import com.cufe.taskProcessor.rpc.client.AbstractComponentTaskConfigClient;
 import com.jal.crawler.proto.download.DownloadTask;
 import com.jal.crawler.proto.download.RpcDownloadTaskGrpc;
 import com.jal.crawler.proto.download.TaskTag;
-import com.jal.crawler.proto.task.TaskType;
 import com.jal.crawler.task.Task;
-import org.apache.commons.collections.map.HashedMap;
 
 import java.util.HashMap;
 import java.util.Map;
