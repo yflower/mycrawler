@@ -71,25 +71,25 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
                 query: "#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div",
                 option: "",
                 optionValue: ""
-            },
-            {
-                name: 'score',
-                query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
-                option: "attr",
-                optionValue: "href"
-            },
-            {
-                name: 'store',
-                query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
-                option: "",
-                optionValue: ""
-            },
-            {
-                name: 'time',
-                query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
-                option: "",
-                optionValue: ""
             }
+        //    ， {
+        //         name: 'score',
+        //         query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
+        //         option: "attr",
+        //         optionValue: "href"
+        //     },
+        //     {
+        //         name: 'store',
+        //         query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
+        //         option: "",
+        //         optionValue: ""
+        //     },
+        //     {
+        //         name: 'time',
+        //         query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
+        //         option: "",
+        //         optionValue: ""
+        //     }
         ]
         }
     ];
