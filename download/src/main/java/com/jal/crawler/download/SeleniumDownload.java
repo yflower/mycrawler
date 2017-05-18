@@ -129,9 +129,9 @@ public class SeleniumDownload extends DynamicDownload {
             Function<WebDriver, WebElement> function = webDriver1 -> condition.apply(webDriver1);
             new WebDriverWait(webDriver, timeUnit.toSeconds(time))
                     .until(condition);
-        } catch (TimeoutException ex) {
+        } catch (Exception ex) {
             System.err.println(2);
-            isSkip = true;
+//            isSkip = true;
         }
         return this;
     }
