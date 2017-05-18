@@ -26,17 +26,17 @@ let filters = [{
     name: 'resolveType',
     filterFactory: function () {
         return function (value) {
-            if (value == undefined || isNaN(value) || value==0) {
+            if (value == undefined || isNaN(value)) {
                 return '未知操作'
-            } else if (value == 1) {
+            } else if (value == 0) {
                 return '点击'
-            } else if (value == 2) {
+            } else if (value == 1) {
                 return '输入'
-            } else if (value == 3) {
+            } else if (value == 2) {
                 return '提交'
-            }else if (value == 4) {
-                return '跳转'
             }else if (value == 3) {
+                return '跳转'
+            }else if (value == 4) {
                 return '等待'
             }
         }
