@@ -40,6 +40,7 @@ public class SeleniumDownload extends DynamicDownload {
                 isSuccess = true;
                 break;
             } catch (Exception e) {
+                System.err.println(1);
                 continue;
             }
         }
@@ -129,6 +130,7 @@ public class SeleniumDownload extends DynamicDownload {
             new WebDriverWait(webDriver, timeUnit.toSeconds(time))
                     .until(condition);
         } catch (TimeoutException ex) {
+            System.err.println(2);
             isSkip = true;
         }
         return this;
@@ -145,6 +147,7 @@ public class SeleniumDownload extends DynamicDownload {
                 isSuccess = true;
                 break;
             } catch (Exception e) {
+                System.err.println(3);
                 continue;
             }
         }
