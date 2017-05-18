@@ -112,6 +112,7 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                                 }
                                 if(post.get(i).getType()==DownloadTask.Processor.Type.GOTO){
                                     i=Integer.parseInt(post.get(i).getQuery());
+                                    i--;
                                 }else {
                                     processor(post.get(i),dynamicDownload);
                                 }
