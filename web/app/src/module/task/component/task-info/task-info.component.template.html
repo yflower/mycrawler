@@ -130,10 +130,10 @@
         <md-list ng-cloak>
             <md-subheader class="md-no-sticky">处理流程</md-subheader>
             <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.config.pre track by $index">
-                <p>前置处理-->{{item.kind}}-->{{item.query}}-->{{item.option}}</p>
+                <p>前置处理-->{{item.type}}-->{{item.query}}-->{{item.option}}</p>
             </md-list-item>
             <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.config.post track by $index">
-                <p>前置处理-->{{item.kind}}-->{{item.query}}-->{{item.option}}</p>
+                <p>后置处理-->{{item.type}}-->{{item.query}}-->{{item.option}}</p>
             </md-list-item>
             <md-divider></md-divider>
         </md-list>
