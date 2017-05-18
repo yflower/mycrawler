@@ -21,6 +21,8 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import static com.jal.crawler.task.Task.process.type.CLICK;
+
 
 /**
  * Created by jal on 2017/1/25.
@@ -92,13 +94,29 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                             .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                             .forEach(pro -> processor(pro, dynamicDownload));
                 });
+                task.setPres(((List<DownloadTask.Processor>) taskOp.get("pre")).stream().map(t->{
+                    Task.process process=new Task.process();
+                    process.setOrder(t.getOrder());
+                    process.setType(Task.process.type.numberOf(t.getType().getNumber()));
+                    process.setQuery(t.getQuery());
+                    process.setValue(t.getValue());
+                    return process;
+                }).collect(Collectors.toList()));
                 task.setPostProcessor(
                         downLoad -> {
                             DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
-                            ((List<DownloadTask.Processor>) taskOp.get("pre")).stream()
+                            ((List<DownloadTask.Processor>) taskOp.get("post")).stream()
                                     .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                                     .forEach(pro -> processor(pro, dynamicDownload));
                         });
+                task.setPosts(((List<DownloadTask.Processor>) taskOp.get("post")).stream().map(t->{
+                    Task.process process=new Task.process();
+                    process.setOrder(t.getOrder());
+                    process.setType(Task.process.type.numberOf(t.getType().getNumber()));
+                    process.setQuery(t.getQuery());
+                    process.setValue(t.getValue());
+                    return process;
+                }).collect(Collectors.toList()));
 
             } else {
                 //静态处理器
@@ -198,6 +216,8 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                     return null;
             }
         }
+
+
 
     }
 }
