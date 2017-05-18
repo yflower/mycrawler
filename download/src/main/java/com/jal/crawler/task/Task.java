@@ -141,6 +141,8 @@ public class Task extends AbstractTask {
             INPUT_SUBMIT(2),
             LINK_TO(3),
             WAIT_UTIL(4),
+            GOTO(5),
+            DOWN(6),
             NONE(15);
 
             private int code;
@@ -161,6 +163,10 @@ public class Task extends AbstractTask {
                         return LINK_TO;
                     case 4:
                         return WAIT_UTIL;
+                    case 5:
+                        return GOTO;
+                    case 6:
+                        return DOWN;
                     default:
                         return NONE;
                 }

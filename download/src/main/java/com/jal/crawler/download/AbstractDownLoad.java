@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -40,10 +41,11 @@ public abstract class AbstractDownLoad implements DownLoad {
 
 
     @Override
-    public Optional<Page> downLoad(PageRequest pageRequest) {
+    public Optional<List<Page>> downLoad(PageRequest pageRequest) {
         try {
             internalDown(pageRequest);
             postProcessor.process(this);
+
         } catch (IOException ex) {
             logger.info("fail down html  {}", pageRequest.getUrl());
             return Optional.empty();
@@ -54,7 +56,13 @@ public abstract class AbstractDownLoad implements DownLoad {
         page.setRawContent(rawContent());
         page.setHeaders(responseHeaders());
         page.setCode(responseCode());
-        return Optional.of(page);
+        List<Page> pages = extraPage();
+        if (pages == null) {
+            return Optional.of(Arrays.asList(page));
+        }
+        pages.add(page);
+        return Optional.of(pages);
+
     }
 
 
@@ -106,6 +114,8 @@ public abstract class AbstractDownLoad implements DownLoad {
     protected abstract Map<String, List<String>> responseHeaders();
 
     protected abstract void internalReset();
+
+    protected abstract List<Page> extraPage();
 
     public static abstract class AbstractBuilder {
 

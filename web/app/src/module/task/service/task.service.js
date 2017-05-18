@@ -101,6 +101,12 @@ let service = ['$q', '$http', function ($q, $http) {
         }, {
             value: 4,
             message: '等待出现'
+        }, {
+            value: 5,
+            message: '跳到某步骤'
+        }, {
+            value: 6,
+            message: '页面下载'
         }]
     var resolveOptionType = [
         {

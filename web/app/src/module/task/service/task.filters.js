@@ -38,6 +38,10 @@ let filters = [{
                 return '跳转'
             }else if (value == 4) {
                 return '等待'
+            }else if (value == 5) {
+                return '跳到某步骤'
+            }else if (value == 6) {
+                return '下载'
             }
         }
     }

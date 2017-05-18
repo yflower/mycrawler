@@ -1,6 +1,7 @@
 package com.jal.crawler.download;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jal.crawler.page.Page;
 import com.jal.crawler.request.PageRequest;
 import okhttp3.*;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +72,11 @@ public class OkHttpDownLoad extends AbstractDownLoad {
     @Override
     protected void internalReset() {
 
+    }
+
+    @Override
+    protected List<Page> extraPage() {
+        return new ArrayList<>();
     }
 
 

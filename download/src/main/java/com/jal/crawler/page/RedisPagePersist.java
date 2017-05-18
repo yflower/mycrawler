@@ -6,6 +6,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by jal on 2017/1/9.
  */
@@ -24,9 +26,11 @@ public class RedisPagePersist implements PagePersist {
 
 
     @Override
-    public void persist(String taskTag, Page page) {
+    public void persist(String taskTag, List<Page> pages) {
         try {
-            stringStringSetOperations.add(taskTag + "_page", objectMapper.writeValueAsString(page));
+            for (Page t : pages) {
+                stringStringSetOperations.add(taskTag + "_page", objectMapper.writeValueAsString(t));
+            }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

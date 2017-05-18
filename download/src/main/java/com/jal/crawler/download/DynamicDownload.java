@@ -17,4 +17,6 @@ public abstract class DynamicDownload extends AbstractDownLoad {
 
     public abstract DynamicDownload linkTo(String url);
 
+    public abstract DynamicDownload download();
+
 }

@@ -98,9 +98,17 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                 task.setPostProcessor(
                         downLoad -> {
                             DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
-                            ((List<DownloadTask.Processor>) taskOp.get("post")).stream()
+                            List<DownloadTask.Processor> post = ((List<DownloadTask.Processor>) taskOp.get("post")).stream()
                                     .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
-                                    .forEach(pro -> processor(pro, dynamicDownload));
+                                    .collect(Collectors.toList());
+                            for(int i=0;i<post.size();++i){
+                                if(post.get(i).getType()==DownloadTask.Processor.Type.GOTO){
+                                    i=Integer.parseInt(post.get(i).getValue());
+                                }else {
+                                    processor(post.get(i),dynamicDownload);
+                                }
+                            }
+
                         });
                 task.setPosts(((List<DownloadTask.Processor>) taskOp.get("post"))
                         .stream()

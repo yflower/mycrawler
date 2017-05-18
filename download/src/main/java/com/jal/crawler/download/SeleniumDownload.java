@@ -1,17 +1,18 @@
 package com.jal.crawler.download;
 
+import com.jal.crawler.page.Page;
 import com.jal.crawler.request.PageRequest;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.touch.DownAction;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.remote.*;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,8 @@ import java.util.function.Function;
 public class SeleniumDownload extends DynamicDownload {
     private WebDriver webDriver;
 
+    private List<Page> pages = new ArrayList<>();
+
     public SeleniumDownload(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -30,7 +33,7 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     protected void internalDown(PageRequest pageRequest) throws IOException {
-        webDriver.manage().timeouts().setScriptTimeout(1,TimeUnit.SECONDS);
+        webDriver.manage().timeouts().setScriptTimeout(1, TimeUnit.SECONDS);
         int tryTimes = 2;
         boolean isSuccess = false;
         for (int i = 0; i <= tryTimes; ++i) {
@@ -42,11 +45,11 @@ public class SeleniumDownload extends DynamicDownload {
                 continue;
             }
         }
-        ((RemoteWebDriver)webDriver).executeScript("window.scrollTo(0,document.body.scrollHeight);");
+        ((RemoteWebDriver) webDriver).executeScript("window.scrollTo(0,document.body.scrollHeight);");
         if (!isSuccess) {
             isSkip = true;
         }
-          }
+    }
 
     @Override
     protected void internalClose() {
@@ -71,6 +74,11 @@ public class SeleniumDownload extends DynamicDownload {
     @Override
     protected void internalReset() {
         webDriver.manage().deleteAllCookies();
+    }
+
+    @Override
+    protected List<Page> extraPage() {
+        return pages;
     }
 
     @Override
@@ -148,13 +156,22 @@ public class SeleniumDownload extends DynamicDownload {
         return this;
     }
 
+    @Override
+    public DynamicDownload download() {
+        Page page = new Page();
+        page.setHeaders(responseHeaders());
+        page.setCode(responseCode());
+        page.setRawContent(rawContent());
+        pages.add(page);
+        return this;
+    }
+
     private void link(String url) {
         webDriver.get(url);
     }
 
     public static class Builder extends AbstractBuilder {
         private DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-
 
 
         @Override

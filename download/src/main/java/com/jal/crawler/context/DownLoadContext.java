@@ -30,7 +30,7 @@ import java.util.Optional;
  * Created by home on 2017/1/9.
  */
 @Component
-public class DownLoadContext extends ComponentContext<String, Page, Task> {
+public class DownLoadContext extends ComponentContext<String, List<Page>, Task> {
 
     private static final Logger logger = LoggerFactory.getLogger(DownLoadContext.class);
 
@@ -56,11 +56,11 @@ public class DownLoadContext extends ComponentContext<String, Page, Task> {
         repository = (task, page) -> pagePersist.persist(task.getTaskTag(), page);
 
 
-        processor = new Processor<String, Page, Task>() {
+        processor = new Processor<String, List<Page>, Task>() {
             @Override
-            public Optional<Page> processor(AbstractTask task, String resource) {
+            public Optional<List<Page>> processor(AbstractTask task, String resource) {
                 long start = System.currentTimeMillis();
-                Optional<Page> result = downLoad.get().downLoad(new PageRequest(resource));
+                Optional<List<Page>> result = downLoad.get().downLoad(new PageRequest(resource));
                 logger.info("下载消耗时间 {}", System.currentTimeMillis() - start);
                 return result;
             }

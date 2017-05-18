@@ -28,6 +28,8 @@ message DownloadTask {
             INPUT_SUBMIT = 2;
             LINK_TO = 3;
             WAIT_UTIL = 4;
+            GOTO = 5;
+            DOWN = 6;
         }
     }
     repeated Processor pre = 5;
@@ -41,6 +43,6 @@ message DownloadTaskResponse {
     string task_tag = 2;
 }
 
-message TaskTag{
-    string task_tag=1;
+message TaskTag {
+    string task_tag = 1;
 }
