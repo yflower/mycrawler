@@ -36,6 +36,7 @@ public class DownloadApplication {
 
 
         System.setProperty("phantomjs.binary.path", "/tmp/phantomjs");
+        System.setProperty("webdriver.chrome.driver", "/Users/jianganlan/Downloads/chromedriver");
         ConfigurableApplicationContext context = SpringApplication.run(DownloadApplication.class, args);
 
         DownLoadContext loadContext = context.getBean(DownLoadContext.class);

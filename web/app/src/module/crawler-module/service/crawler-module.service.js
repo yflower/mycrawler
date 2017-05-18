@@ -5,7 +5,7 @@ let name='moduleService';
 
 let service=['$q', '$http',function ($q,$http) {
 
-    var address = "http://192.168.113.207:8081";
+    var address = "http://127.0.0.1:8081";
     var componentStatus = function (params, data) {
         return $http({
             method: 'post',

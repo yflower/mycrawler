@@ -9,32 +9,89 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
     var self = this;
     //**最终传输的数据**//
     self.urls = [
+        "http://wetest.qq.com/bee/Game/109#/alldata"
         // "http://www.cufe.edu.cn/xyxx/zbgg/index.htm"
         // "https://list.jd.com/list.html?cat=670,671,672"
 
     ];
-    self.processors = [];
+    self.processors = [
+        {
+            order:0,
+            kind:1,
+            type:0,
+            query:'#showpage > div.alldata > div > div.allDataPart > ul > li:nth-child(2) > div.conditionDetail.allCateType > ul > li.cateDataType.cateDataType_2',
+            option:''
+        },
+        {
+            order:1,
+            kind:1,
+            type:4,
+            query:'#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div',
+            option:''
+        },
+        {
+            order:2,
+            kind:1,
+            type:6,
+            query:'',
+            option:''
+        },{
+            order:3,
+            kind:1,
+            type:0,
+            query:'#entityPage > div > a.nextPage.checkPage',
+            option:''
+        }
+        ,{
+            order:4,
+            kind:1,
+            type:5,
+            query:1,
+            option:''
+        }
+
+        ];
     self.resolveData = [
                 // {
                 //     name: 'link',
                 //     query: "#plist > ul > li:nth-child(1) > div > div.p-img > a",
                 //     option: "attr",
                 //     optionValue: "href"
+
                 // }
+
 
     ];
     self.resolveItem = [
-        // {
-        // itemName: 'testItem',
-        // vars: [
-        //     {
-        //         name: 'title',
-        //         query: "#warp > div.main > div > div > div.con03_right > div.list05 > ul > li:nth-child(4) > a",
-        //         option: "",
-        //         optionValue: ""
-        //     }
-        // ]
-        // }
+        {
+        itemName: 'testItem',
+        vars: [
+            {
+                name: 'title',
+                query: "#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div",
+                option: "",
+                optionValue: ""
+            },
+            {
+                name: 'score',
+                query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
+                option: "attr",
+                optionValue: "href"
+            },
+            {
+                name: 'store',
+                query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
+                option: "",
+                optionValue: ""
+            },
+            {
+                name: 'time',
+                query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
+                option: "",
+                optionValue: ""
+            }
+        ]
+        }
     ];
     self.linkPattern = [
         // "https://item.jd.com/11926995.html/.*htm.*"

@@ -107,20 +107,15 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                             downLoad.setSkip(false);
                             downLoad.setPages(new ArrayList<>());
                             for(int i=0;i<post.size();++i){
-                                try {
-                                    if(downLoad.isSkip()){
-                                        break;
-                                    }
-                                    if(post.get(i).getType()==DownloadTask.Processor.Type.GOTO){
-                                        i=Integer.parseInt(post.get(i).getQuery());
-                                        i--;
-                                    }else {
-                                        processor(post.get(i),dynamicDownload);
-                                    }
-                                }catch (Exception e){
-                                    e.printStackTrace();
+                                if(downLoad.isSkip()){
+                                    break;
                                 }
-
+                                if(post.get(i).getType()==DownloadTask.Processor.Type.GOTO){
+                                    i=Integer.parseInt(post.get(i).getQuery());
+                                    i--;
+                                }else {
+                                    processor(post.get(i),dynamicDownload);
+                                }
                             }
 
                         });

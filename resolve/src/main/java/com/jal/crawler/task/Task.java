@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 /**
  * Created by home on 2017/1/20.
  */
-public class Task extends AbstractTask{
-    private final static Logger LOGGER= LoggerFactory.getLogger(Task.class);
+public class Task extends AbstractTask {
+    private final static Logger LOGGER = LoggerFactory.getLogger(Task.class);
 
 
     private List<var> vars;
@@ -40,15 +40,15 @@ public class Task extends AbstractTask{
                 .filter(t -> !t.startsWith("javascript"))
                 .filter(t -> !t.equals("#none"))
                 .filter(t -> !t.equals("#comment"))
-                .filter(t->t.startsWith("//"))
+                .filter(t -> t.startsWith("//"))
                 .collect(Collectors.toList());
         String[] split = page.getUrl().split("/");
-        String baseUrl =split[0];
+        String baseUrl = split[0];
 
-        List<String> finalLinks = validLinks.parallelStream().map(t -> baseUrl+t).collect(Collectors.toList());
-        stringMap.put("links",finalLinks);
+        List<String> finalLinks = validLinks.parallelStream().map(t -> baseUrl + t).collect(Collectors.toList());
+        stringMap.put("links", finalLinks);
         helpGC(page, htmlTag);
-        LOGGER.info("成功解析页面 {}",page.getUrl());
+        LOGGER.info("成功解析页面 {}", page.getUrl());
         return Optional.of(stringMap);
     }
 
@@ -61,9 +61,10 @@ public class Task extends AbstractTask{
         Map<String, Object> result = new HashMap<>();
         int row = 1;
         List<Map<String, Object>> itemList = new ArrayList<>();
-        int notFound=0;
+        int notFound = 0;
         while (true) {
             Map<String, Object> map = new HashMap<>();
+            int skip = 0;
             for (var var : item.vars) {
                 String name = var.name;
                 String query = itemQueryInfer(var.query, row);
@@ -72,10 +73,14 @@ public class Task extends AbstractTask{
                 var newVar = new var(name, query, option, optionValue);
                 String string = evaluate(newVar, tag);
                 if (string.equals("")) {
-                    notFound++;
-                    if(notFound>=5){
-                        result.put(item.getItemName(),itemList);
-                        return result;
+                    skip++;
+                    if (skip >= item.vars.size()) {
+                        notFound++;
+                        if (notFound >= 5) {
+                            result.put(item.getItemName(), itemList);
+                            return result;
+                        }
+
                     }
                 }
                 map.put(name, evaluate(newVar, tag));
@@ -88,10 +93,10 @@ public class Task extends AbstractTask{
 
     //目前的推测方法
     private String itemQueryInfer(String query, int row) {
-        if(query.contains("tr:nth-child")){
+        if (query.contains("tr:nth-child")) {
             return query.replaceFirst("tr:nth-child\\(.\\)", "tr:nth-child\\(" + row + "\\)");
         }
-        if(query.contains("li:nth-child")){
+        if (query.contains("li:nth-child")) {
             return query.replaceFirst("li:nth-child\\(.\\)", "li:nth-child\\(" + row + "\\)");
         }
         throw new IllegalStateException("自动解析列表数据css失败");
@@ -219,7 +224,6 @@ public class Task extends AbstractTask{
             this.vars = vars;
         }
     }
-
 
 
 }

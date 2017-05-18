@@ -2,9 +2,11 @@ package com.jal.crawler.download;
 
 import com.jal.crawler.page.Page;
 import com.jal.crawler.request.PageRequest;
-import org.openqa.selenium.*;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,7 +15,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -105,16 +106,23 @@ public class SeleniumDownload extends DynamicDownload {
             return this;
         }
         boolean clicked = false;
-        for (int retryTime = 0; retryTime < 2; ++retryTime) {
-            List<WebElement> elements = webDriver.findElements(By.cssSelector(enableClickElementQuery));
-            if (!elements.isEmpty()) {
-                elements.get(0).click();
-                clicked = true;
-                break;
-            } else {
+        for (int retryTime = 0; retryTime < 5; ++retryTime) {
+            try {
+                List<WebElement> elements = webDriver.findElements(By.cssSelector(enableClickElementQuery));
+                if (!elements.isEmpty()) {
+                    String js="document.querySelector('" + enableClickElementQuery + "').click()";
+                    ((RemoteWebDriver) webDriver).executeScript(js);
+                    clicked = true;
+                    break;
+                } else {
+                    waitUtilShow(enableClickElementQuery, 1, TimeUnit.SECONDS);
+                    retryTime++;
+                }
+            } catch (Exception e) {
                 waitUtilShow(enableClickElementQuery, 1, TimeUnit.SECONDS);
                 retryTime++;
             }
+
         }
         if (!clicked) {
             isSkip = true;
@@ -160,14 +168,14 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload download() {
-        if(getPages().size()>=10){
-            isSkip=true;
+        if (getPages().size() >= 50) {
+            isSkip = true;
         }
         Page page = new Page();
         page.setHeaders(responseHeaders());
         page.setCode(responseCode());
         page.setRawContent(rawContent());
-        if(!pages.parallelStream().filter(t->t.equals(page.getRawContent())).findAny().isPresent()){
+        if (!pages.parallelStream().filter(t -> t.equals(page.getRawContent())).findAny().isPresent()) {
             getPages().add(page);
         }
         return this;
@@ -185,10 +193,10 @@ public class SeleniumDownload extends DynamicDownload {
         protected AbstractDownLoad internalBuild() {
             try {
                 desiredCapabilities.setJavascriptEnabled(true);
-                String[] cli_args = new String[]{ "--ignore-ssl-errors=true" };
-                desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,cli_args);
-                PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
-                SeleniumDownload seleniumDownload = new SeleniumDownload(phantomJSDriver);
+//                String[] cli_args = new String[]{ "--ignore-ssl-errors=true" };
+//                desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,cli_args);
+//                PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
+                SeleniumDownload seleniumDownload = new SeleniumDownload(new ChromeDriver(desiredCapabilities));
                 return seleniumDownload;
             } catch (Exception e) {
                 e.printStackTrace();
