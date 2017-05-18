@@ -21,8 +21,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static com.jal.crawler.task.Task.process.type.CLICK;
-
 
 /**
  * Created by jal on 2017/1/25.
@@ -48,7 +46,8 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
     public void downloadTaskConfig(TaskTag request, StreamObserver<DownloadTask> responseObserver) {
         ComponentTaskConfigService componentTaskService = new ComponentTaskConfigService(downLoadContext);
         responseObserver.onNext(componentTaskService.taskConfig(request));
-        responseObserver.onCompleted();    }
+        responseObserver.onCompleted();
+    }
 
     private void processor(DownloadTask.Processor action, DynamicDownload dynamicDownload) {
         switch (action.getType()) {
@@ -94,14 +93,8 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                             .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                             .forEach(pro -> processor(pro, dynamicDownload));
                 });
-                task.setPres(((List<DownloadTask.Processor>) taskOp.get("pre")).stream().map(t->{
-                    Task.process process=new Task.process();
-                    process.setOrder(t.getOrder());
-                    process.setType(Task.process.type.numberOf(t.getType().getNumber()));
-                    process.setQuery(t.getQuery());
-                    process.setValue(t.getValue());
-                    return process;
-                }).collect(Collectors.toList()));
+                task.setPres(((List<DownloadTask.Processor>) taskOp.get("pre"))
+                        .stream().map(this::rpcProcessToLocalProcess).collect(Collectors.toList()));
                 task.setPostProcessor(
                         downLoad -> {
                             DynamicDownload dynamicDownload = (DynamicDownload) downLoad;
@@ -109,14 +102,9 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                                     .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                                     .forEach(pro -> processor(pro, dynamicDownload));
                         });
-                task.setPosts(((List<DownloadTask.Processor>) taskOp.get("post")).stream().map(t->{
-                    Task.process process=new Task.process();
-                    process.setOrder(t.getOrder());
-                    process.setType(Task.process.type.numberOf(t.getType().getNumber()));
-                    process.setQuery(t.getQuery());
-                    process.setValue(t.getValue());
-                    return process;
-                }).collect(Collectors.toList()));
+                task.setPosts(((List<DownloadTask.Processor>) taskOp.get("post"))
+                        .stream()
+                        .map(this::rpcProcessToLocalProcess).collect(Collectors.toList()));
 
             } else {
                 //静态处理器
@@ -142,6 +130,15 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
         protected DownloadTaskResponse localToRPC_Q(boolean result) {
             return DownloadTaskResponse.newBuilder().setOpStatus(result ? OPStatus.SUCCEED : OPStatus.FAILD).build();
         }
+
+        private Task.process rpcProcessToLocalProcess(DownloadTask.Processor processor) {
+            Task.process process = new Task.process();
+            process.setOrder(processor.getOrder());
+            process.setType(Task.process.type.numberOf(processor.getType().getNumber()));
+            process.setQuery(processor.getQuery());
+            process.setValue(processor.getValue());
+            return process;
+        }
     }
 
     private class ComponentTaskConfigService extends AbstractComponentTaskConfigServer<DownLoadContext, TaskTag, DownloadTask> {
@@ -166,10 +163,10 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
         @Override
         protected <T extends AbstractTask> DownloadTask localToRPC_Q(T config) {
             Task task = (Task) config;
-            if(task.getPres()==null){
+            if (task.getPres() == null) {
                 task.setPres(new ArrayList<>());
             }
-            if(task.getPosts()==null){
+            if (task.getPosts() == null) {
                 task.setPosts(new ArrayList<>());
             }
             return DownloadTask.newBuilder()
@@ -216,7 +213,6 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                     return null;
             }
         }
-
 
 
     }
