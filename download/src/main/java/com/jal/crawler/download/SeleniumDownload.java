@@ -24,8 +24,6 @@ import java.util.function.Function;
 public class SeleniumDownload extends DynamicDownload {
     private WebDriver webDriver;
 
-    private List<Page> pages = new ArrayList<>();
-
     public SeleniumDownload(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -78,7 +76,7 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     protected List<Page> extraPage() {
-        return pages;
+        return getPages();
     }
 
     @Override
@@ -158,14 +156,14 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload download() {
-        if(pages.size()>=10){
+        if(getPages().size()>=10){
             isSkip=true;
         }
         Page page = new Page();
         page.setHeaders(responseHeaders());
         page.setCode(responseCode());
         page.setRawContent(rawContent());
-        pages.add(page);
+        getPages().add(page);
         return this;
     }
 

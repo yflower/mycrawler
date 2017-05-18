@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Created by home on 2017/1/8.
@@ -23,6 +20,7 @@ public abstract class AbstractDownLoad implements DownLoad {
     protected int proxyPort;
     protected boolean isProxy;
     protected boolean isSkip;
+    protected List<Page> pages = new ArrayList<>();
 
     public AbstractDownLoad init() {
         preProcessor.process(this);
@@ -103,6 +101,13 @@ public abstract class AbstractDownLoad implements DownLoad {
         this.postProcessor = postProcessor;
     }
 
+    public void setPages(List<Page> pages) {
+        this.pages = pages;
+    }
+
+    public List<Page> getPages() {
+        return pages;
+    }
 
     protected abstract void internalDown(PageRequest pageRequest) throws IOException;
 
@@ -117,6 +122,8 @@ public abstract class AbstractDownLoad implements DownLoad {
     protected abstract void internalReset();
 
     protected abstract List<Page> extraPage();
+
+
 
     public static abstract class AbstractBuilder {
 
