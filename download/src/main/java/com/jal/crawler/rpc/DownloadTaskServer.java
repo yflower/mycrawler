@@ -104,9 +104,9 @@ public class DownloadTaskServer extends RpcDownloadTaskGrpc.RpcDownloadTaskImplB
                             List<DownloadTask.Processor> post = ((List<DownloadTask.Processor>) taskOp.get("post")).stream()
                                     .sorted(Comparator.comparingInt(DownloadTask.Processor::getOrder))
                                     .collect(Collectors.toList());
+                            downLoad.setSkip(false);
+                            downLoad.setPages(new ArrayList<>());
                             for(int i=0;i<post.size();++i){
-                                downLoad.setSkip(false);
-                                downLoad.setPages(new ArrayList<>());
                                 if(downLoad.isSkip()){
                                     break;
                                 }
