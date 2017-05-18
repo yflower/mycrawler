@@ -61,6 +61,7 @@ public abstract class AbstractDownLoad implements DownLoad {
             return Optional.of(Arrays.asList(page));
         }
         pages.add(page);
+        pages.forEach(t->t.setUrl(pageRequest.getUrl()));
         return Optional.of(pages);
 
     }
