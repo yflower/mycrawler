@@ -4,6 +4,7 @@ import com.jal.crawler.page.Page;
 import com.jal.crawler.request.PageRequest;
 import org.openqa.selenium.*;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -184,6 +185,8 @@ public class SeleniumDownload extends DynamicDownload {
         protected AbstractDownLoad internalBuild() {
             try {
                 desiredCapabilities.setJavascriptEnabled(true);
+                String[] cli_args = new String[]{ "--ignore-ssl-errors=true" };
+                desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,cli_args);
                 PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
                 SeleniumDownload seleniumDownload = new SeleniumDownload(phantomJSDriver);
                 return seleniumDownload;
