@@ -166,7 +166,9 @@ public class SeleniumDownload extends DynamicDownload {
         page.setHeaders(responseHeaders());
         page.setCode(responseCode());
         page.setRawContent(rawContent());
-        getPages().add(page);
+        if(!pages.parallelStream().filter(t->t.equals(page.getRawContent())).findAny().isPresent()){
+            getPages().add(page);
+        }
         return this;
     }
 
