@@ -64,7 +64,6 @@ public class Task extends AbstractTask {
         int notFound = 0;
         while (true) {
             Map<String, Object> map = new HashMap<>();
-            int skip = 0;
             for (var var : item.vars) {
                 String name = var.name;
                 String query = itemQueryInfer(var.query, row);
@@ -73,17 +72,15 @@ public class Task extends AbstractTask {
                 var newVar = new var(name, query, option, optionValue);
                 String string = evaluate(newVar, tag);
                 if (string.equals("")) {
-                    skip++;
-                    if (skip >= item.vars.size()) {
-                        notFound++;
-                        if (notFound >= 5) {
-                            result.put(item.getItemName(), itemList);
-                            return result;
-                        }
+                    notFound++;
+                    if (notFound >= item.vars.size()) {
+                        result.put(item.getItemName(), itemList);
+                        return result;
 
                     }
+                } else {
+                    map.put(name, evaluate(newVar, tag));
                 }
-                map.put(name, evaluate(newVar, tag));
             }
             itemList.add(map);
             row++;

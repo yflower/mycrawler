@@ -168,7 +168,7 @@ public class SeleniumDownload extends DynamicDownload {
 
     @Override
     public DynamicDownload download() {
-        if (getPages().size() >= 50) {
+        if (getPages().size() >= 30) {
             isSkip = true;
         }
         Page page = new Page();
