@@ -73,7 +73,7 @@ public class Task extends AbstractTask {
                 String string = evaluate(newVar, tag);
                 if (string.equals("")) {
                     notFound++;
-                    if (notFound >= 10) {
+                    if (notFound >= 50) {
                         result.put(item.getItemName(), itemList);
                         return result;
 

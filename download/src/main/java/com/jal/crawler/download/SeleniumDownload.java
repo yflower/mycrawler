@@ -7,6 +7,8 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -49,6 +51,11 @@ public class SeleniumDownload extends DynamicDownload {
         ((RemoteWebDriver) webDriver).executeScript("window.scrollTo(0,document.body.scrollHeight);");
         if (!isSuccess) {
             isSkip = true;
+        }
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -127,6 +134,11 @@ public class SeleniumDownload extends DynamicDownload {
         if (!clicked) {
             isSkip = true;
         }
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
@@ -163,6 +175,11 @@ public class SeleniumDownload extends DynamicDownload {
         if (!isSuccess) {
             isSkip = true;
         }
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
@@ -193,10 +210,10 @@ public class SeleniumDownload extends DynamicDownload {
         protected AbstractDownLoad internalBuild() {
             try {
                 desiredCapabilities.setJavascriptEnabled(true);
-//                String[] cli_args = new String[]{ "--ignore-ssl-errors=true" };
-//                desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,cli_args);
-//                PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
-                SeleniumDownload seleniumDownload = new SeleniumDownload(new ChromeDriver(desiredCapabilities));
+                String[] cli_args = new String[]{ "--ignore-ssl-errors=true" };
+                desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,cli_args);
+                PhantomJSDriver phantomJSDriver = new PhantomJSDriver(desiredCapabilities);
+                SeleniumDownload seleniumDownload = new SeleniumDownload(phantomJSDriver);
                 return seleniumDownload;
             } catch (Exception e) {
                 e.printStackTrace();
