@@ -8,6 +8,7 @@ import 'angular-animate';
 import 'angular-ui-router';
 import appController from 'src/app.controller';
 // import echartService from 'src/service/echart.service';
+import appService from 'src/service/app.service';
 import navModule from 'src/module/nav/nav.module';
 
 export default
@@ -57,4 +58,5 @@ angular.module('app', ['ngMaterial', navModule.name])
             .accentPalette('cyan')
     })
     // .service(echartService.name,echartService.service)
+    .service(appService.name,appService.service)
     .controller(appController.name, appController.controller)

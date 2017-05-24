@@ -3,9 +3,9 @@
  */
 let name='moduleService';
 
-let service=['$q', '$http',function ($q,$http) {
+let service=['$q', '$http','appService',function ($q,$http,appService) {
 
-    var address = "http://192.168.113.207:8081";
+    var address = appService.serverAddress;
     var componentStatus = function (params, data) {
         return $http({
             method: 'post',

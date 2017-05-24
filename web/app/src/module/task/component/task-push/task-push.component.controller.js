@@ -16,81 +16,81 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
     ];
     self.processors = [
         {
-            order:0,
-            kind:1,
-            type:0,
-            query:'#showpage > div.alldata > div > div.allDataPart > ul > li:nth-child(2) > div.conditionDetail.allCateType > ul > li.cateDataType.cateDataType_2',
-            option:''
+            order: 0,
+            kind: 1,
+            type: 0,
+            query: '#showpage > div.alldata > div > div.allDataPart > ul > li:nth-child(2) > div.conditionDetail.allCateType > ul > li.cateDataType.cateDataType_2',
+            option: ''
         },
         {
-            order:1,
-            kind:1,
-            type:4,
-            query:'#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div',
-            option:''
+            order: 1,
+            kind: 1,
+            type: 4,
+            query: '#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div',
+            option: ''
         },
         {
-            order:2,
-            kind:1,
-            type:6,
-            query:'',
-            option:''
-        },{
-            order:3,
-            kind:1,
-            type:0,
-            query:'#entityPage > div > a.nextPage.checkPage',
-            option:''
+            order: 2,
+            kind: 1,
+            type: 6,
+            query: '',
+            option: ''
+        }, {
+            order: 3,
+            kind: 1,
+            type: 0,
+            query: '#entityPage > div > a.nextPage.checkPage',
+            option: ''
         }
-        ,{
-            order:4,
-            kind:1,
-            type:5,
-            query:1,
-            option:''
+        , {
+            order: 4,
+            kind: 1,
+            type: 5,
+            query: 1,
+            option: ''
         }
 
-        ];
+    ];
     self.resolveData = [
-                // {
-                //     name: 'link',
-                //     query: "#plist > ul > li:nth-child(1) > div > div.p-img > a",
-                //     option: "attr",
-                //     optionValue: "href"
+        // {
+        //     name: 'link',
+        //     query: "#plist > ul > li:nth-child(1) > div > div.p-img > a",
+        //     option: "attr",
+        //     optionValue: "href"
 
-                // }
+        // }
 
 
     ];
     self.resolveItem = [
         {
-        itemName: 'testItem',
-        vars: [
-            {
-                name: 'title',
-                query: "#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div",
-                option: "",
-                optionValue: ""
-            }
-           , {
-                name: 'score',
-                query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
-                option: "attr",
-                optionValue: "href"
-            },
-            {
-                name: 'store',
-                query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
-                option: "",
-                optionValue: ""
-            },
-            {
-                name: 'time',
-                query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
-                option: "",
-                optionValue: ""
-            }
-        ]
+            itemName: 'testItem',
+            vars: [
+                {
+                    name: 'title',
+                    query: "#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div",
+                    option: "",
+                    optionValue: ""
+                }
+                , {
+                    name: 'score',
+                    query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
+                    option: "attr",
+                    optionValue: "href"
+                },
+                {
+                    name: 'store',
+                    query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
+                    option: "",
+                    optionValue: ""
+                },
+                {
+                    name: 'time',
+                    query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
+                    option: "",
+                    optionValue: ""
+                }
+            ]
         }
     ];
     self.linkPattern = [
@@ -102,7 +102,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
     self.processorType = taskService.processorType;
     self.resolveOptionType = taskService.resolveOptionType;
     self.tempUrl = "";
-    self.tempLinkPattern=""
+    self.tempLinkPattern = ""
     self.tempProcessor = {};
     self.tempResolve = {
         dataType: {
@@ -136,14 +136,12 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
         if (!self.urls.includes(self.tempUrl)) {
             self.urls.push(self.tempUrl);
             self.tempUrl = "";
-            console.log(self.urls)
         }
     }
     self.addLinkPattern = function () {
         if (!self.linkPattern.includes(self.tempLinkPattern)) {
             self.linkPattern.push(self.tempLinkPattern);
             self.tempLinkPattern = "";
-            console.log(self.linkPattern)
         }
     }
 
@@ -155,7 +153,6 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     }
     self.addResolve = function () {
-        console.log(self.tempResolve.dataType.type)
         if (self.tempResolve.dataType.type == 0) {
             //普通类型数据
             self.resolveData.push(self.tempResolve);
@@ -175,21 +172,18 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
                 self.tempResolve = {
                     dataType: self.tempResolve.dataType
                 };
-            }else {
+            } else {
                 self.resolveItem.push({
-                    itemName:self.tempResolve.dataType.value,
-                    vars:[self.tempResolve]
+                    itemName: self.tempResolve.dataType.value,
+                    vars: [self.tempResolve]
                 })
             }
         }
-        console.log(self.resolveData)
-        console.log(self.resolveItem)
 
     }
 
 
     self.findPre = function () {
-        console.log(self.processors)
         return self.processors.filter(function (t) {
             return t.kind == 0;
         })
@@ -199,6 +193,50 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
         return self.processors.filter(function (t) {
             return t.kind == 1;
         })
+    }
+    self.processorOrderMove = function (kind, oldOrder, direction) {
+        //第一个元素点击向上无效
+        if (oldOrder == 0 && direction == 0) {
+            return;
+        }
+        //最后一个元素点击向下无效
+        if ((oldOrder == self.processors.length - 1) && direction == 1) {
+            return;
+        }
+        var pro = self.processors.find(function (t) {
+            return t.kind == kind && t.order == oldOrder;
+        })
+        if (direction == 0) {
+            var upObj = self.processors.find(function (t) {
+                return t.kind == kind && t.order == oldOrder - 1;
+            })
+            pro.order = oldOrder - 1;
+            upObj.order = oldOrder;
+        }
+        if (direction == 1) {
+            var downObj = self.processors.find(function (t) {
+                return t.kind == kind && t.order == oldOrder + 1;
+            })
+            pro.order = oldOrder + 1;
+            downObj.order = oldOrder;
+        }
+        // console.table(self.processors)
+
+    }
+
+    self.processorDelete = function (kind, order) {
+        var index = self.processors.findIndex(function (t) {
+            return t.kind == kind && t.order == order;
+
+        });
+        self.processors.splice(index, 1);
+        self.processors.filter(function (t, i) {
+            return i >= index;
+        }).forEach(function (t) {
+            t.order = t.order - 1;
+        })
+        console.table(self.processors)
+
     }
     self.submit = function (ev) {
         if (paramCheck()) {

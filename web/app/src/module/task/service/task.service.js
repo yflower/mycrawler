@@ -3,8 +3,8 @@
  */
 let name = 'taskService';
 
-let service = ['$q', '$http', function ($q, $http) {
-    var address = "http://192.168.113.207:8081";
+let service = ['$q', '$http','appService', function ($q, $http,appService) {
+    var address = appService.serverAddress;
     var taskPush = function (params, data) {
         return $http({
             method: 'post',

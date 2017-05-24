@@ -6,12 +6,12 @@
                 请确认是否正确填写爬虫设置的相关的选项，强烈建议你先进行一次测试爬虫来确保设置正确性
             </p>
             <md-dialog-actions>
-                <md-button aria-label="Facebook" class="md-fab md-raised md-mini"
+                <md-button aria-label="" class="md-fab md-raised md-mini"
                            ng-click="$ctrl.pushRequest($event)">
                     <md-icon md-svg-icon="done" aria-label="done"></md-icon>
                     <md-tooltip>提交</md-tooltip>
                 </md-button>
-                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini"
+                <md-button aria-label="" class="md-fab md-raised md-mini"
                         ng-click="$ctrl.taskTest($event)">
                     <md-icon md-svg-icon="test" aria-label="test"></md-icon>
                     <md-tooltip>测试</md-tooltip>
@@ -80,13 +80,12 @@
                 <input ng-model="$ctrl.tempUrl" flex="60">
                 <md-button style="display: inline-block" ng-click="$ctrl.addLink()">
                     <md-icon md-svg-icon="add"></md-icon>
-                    <md-tooltip md-direction="bottom">添加</md-tooltip>
+                    <md-tooltip  md-direction="bottom">添加</md-tooltip>
                 </md-button>
             </md-input-container>
         </form>
 
-        <md-chips ng-model="myItems" md-max-chips="5">
-            <md-chip ng-repeat="item in $ctrl.urls">{{item}}</md-chip>
+        <md-chips md-removable="true" md-enable-chip-edit="true" ng-model="$ctrl.urls" md-max-chips="5" >
         </md-chips>
     </md-card-content>
 </md-card>
@@ -120,8 +119,7 @@
             </md-input-container>
         </form>
 
-        <md-chips ng-model="myItems" md-max-chips="5">
-            <md-chip ng-repeat="item in $ctrl.linkPattern">{{item}}</md-chip>
+        <md-chips ng-model="$ctrl.linkPattern" md-max-chips="5" md-enable-chip-edit="true" ng-model="$ctrl.urls">
         </md-chips>
     </md-card-content>
 </md-card>
@@ -188,12 +186,12 @@
             <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.findPre() track by $index">
                 <p>前置处理-->{{item.type | resolveType}}-->{{item.query}}-->{{item.option}}</p>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.processorOrderMove(0,item.order,0)">
                     <md-icon md-svg-icon="up"></md-icon>
                     <md-tooltip md-direction="bottom">向上</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click=$ctrl.processorOrderMove(0,item.order,1)">
                     <md-icon md-svg-icon="down"></md-icon>
                     <md-tooltip md-direction="bottom">向下</md-tooltip>
                 </md-button>
@@ -202,34 +200,34 @@
                     <md-icon md-svg-icon="delete"></md-icon>
                     <md-tooltip md-direction="bottom">清除</md-tooltip>
                 </md-button>
-                <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
-                    <md-icon md-svg-icon="edit"></md-icon>
-                    <md-tooltip md-direction="bottom">编辑</md-tooltip>
-                </md-button>
+                <!--<md-button class="md-secondary md-icon-button"-->
+                           <!--ng-click="doSecondaryAction($event)">-->
+                    <!--<md-icon md-svg-icon="edit"></md-icon>-->
+                    <!--<md-tooltip md-direction="bottom">编辑</md-tooltip>-->
+                <!--</md-button>-->
             </md-list-item>
-            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.findPost() track by $index">
+            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.findPost() | orderBy: 'order'">
                 <p>后置处理-->{{item.type | resolveType}}-->{{item.query}}-->{{item.option}}</p>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.processorOrderMove(1,item.order,0)">
                     <md-icon md-svg-icon="up"></md-icon>
                     <md-tooltip md-direction="bottom">向上</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.processorOrderMove(1,item.order,1)">
                     <md-icon md-svg-icon="down"></md-icon>
                     <md-tooltip md-direction="bottom">向下</md-tooltip>
                 </md-button>
                 <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
+                           ng-click="$ctrl.processorDelete(item.kind,item.order)">
                     <md-icon md-svg-icon="delete"></md-icon>
                     <md-tooltip md-direction="bottom">清除</md-tooltip>
                 </md-button>
-                <md-button class="md-secondary md-icon-button"
-                           ng-click="doSecondaryAction($event)">
-                    <md-icon md-svg-icon="edit"></md-icon>
-                    <md-tooltip md-direction="bottom">编辑</md-tooltip>
-                </md-button>
+                <!--<md-button class="md-secondary md-icon-button"-->
+                           <!--ng-click="doSecondaryAction($event)">-->
+                    <!--<md-icon md-svg-icon="edit"></md-icon>-->
+                    <!--<md-tooltip md-direction="bottom">编辑</md-tooltip>-->
+                <!--</md-button>-->
             </md-list-item>
             <md-divider></md-divider>
         </md-list>
@@ -357,7 +355,7 @@
 <div class="lock-size" ng-cloak
      layout-align="center center"
 
-     style="position:fixed;z-index:21;bottom:100px;right:200px">
+     style="position:fixed;z-index:200;bottom:100px;right:200px">
     <md-fab-speed-dial md-direction="up"
                        class="md-fling">
         <md-fab-trigger>
@@ -369,15 +367,15 @@
         <!--style="position: fixed;right: 150px;bottom: 100px"-->
         <md-fab-actions>
             <md-button aria-label="push" class="md-fab md-raised md-mini" ng-click="$ctrl.submit($event)">
-                <md-icon md-svg-icon="done" aria-label="push"></md-icon>
+                <md-icon md-svg-icon="done" aria-label="push" style="z-index: -2"></md-icon>
                 <md-tooltip>提交</md-tooltip>
             </md-button>
             <md-button aria-label="clear" class="md-fab md-raised md-mini" ng-click="$ctrl.clear($event)">
-                <md-icon md-svg-icon="fresh" aria-label="clear"></md-icon>
+                <md-icon md-svg-icon="fresh" aria-label="clear" style="z-index: -2"></md-icon>
                 <md-tooltip>重置</md-tooltip>
             </md-button>
             <md-button aria-label="test" class="md-fab md-raised md-mini" ng-click="$ctrl.taskTest($event)">
-                <md-icon md-svg-icon="test" aria-label="test"></md-icon>
+                <md-icon md-svg-icon="test" aria-label="test" style="z-index: -2"></md-icon>
                 <md-tooltip>测试</md-tooltip>
             </md-button>
         </md-fab-actions>
