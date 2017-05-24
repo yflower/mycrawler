@@ -63,35 +63,35 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     ];
     self.resolveItem = [
-        // {
-        //     itemName: 'testItem',
-        //     vars: [
-        //         {
-        //             name: 'title',
-        //             query: "#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div",
-        //             option: "",
-        //             optionValue: ""
-        //         }
-        //         , {
-        //             name: 'score',
-        //             query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
-        //             option: "attr",
-        //             optionValue: "href"
-        //         },
-        //         {
-        //             name: 'store',
-        //             query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
-        //             option: "",
-        //             optionValue: ""
-        //         },
-        //         {
-        //             name: 'time',
-        //             query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
-        //             option: "",
-        //             optionValue: ""
-        //         }
-        //     ]
-        // }
+        {
+            itemName: 'testItem',
+            vars: [
+                {
+                    name: 'title',
+                    query: "#entityTable > table > tbody > tr:nth-child(4) > td.starContent > div",
+                    option: "",
+                    optionValue: ""
+                }
+                , {
+                    name: 'score',
+                    query: "#entityTable > table > tbody > tr:nth-child(27) > td:nth-child(3) > img",
+                    option: "attr",
+                    optionValue: "href"
+                },
+                {
+                    name: 'store',
+                    query: "#entityTable > table > tbody > tr:nth-child(26) > td:nth-child(4)",
+                    option: "",
+                    optionValue: ""
+                },
+                {
+                    name: 'time',
+                    query: "#entityTable > table > tbody > tr:nth-child(25) > td:nth-child(5)",
+                    option: "",
+                    optionValue: ""
+                }
+            ]
+        }
     ];
     self.linkPattern = [
         // "https://item.jd.com/11926995.html/.*htm.*"
@@ -153,6 +153,7 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
 
     }
     self.addResolve = function () {
+        console.log(self.tempResolve)
         if (self.tempResolve.dataType.type == 0) {
             //普通类型数据
             self.resolveData.push(self.tempResolve);
@@ -237,6 +238,20 @@ let controller = ['taskService', '$mdDialog', function (taskService, $mdDialog) 
         })
         console.table(self.processors)
 
+    }
+
+    self.resolveDelete = function (isItem, name) {
+        if (isItem == 0) {
+            var index = self.resolveData.findIndex(function (t) {
+                t.name == name;
+            });
+            self.resolveData.splice(index, 1);
+        } else if (isItem == 1) {
+            var index = self.resolveItem.findIndex(function (t) {
+                t.itemName == name;
+            })
+            self.resolveItem.splice(index, 1)
+        }
     }
     self.submit = function (ev) {
         if (paramCheck()) {

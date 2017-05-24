@@ -11,7 +11,7 @@
         <md-list flex="35">
             <md-list-item class="secondary-button-padding">
                 <md-icon md-svg-icon="time" flex="10"></md-icon>
-                <h4 flex>总运行时间:1 天</h4>
+                <h4 flex>总运行时间:{{$ctrl.startDay()}}天</h4>
             </md-list-item>
             <md-list-item>
                 <md-icon md-svg-icon="time" flex="10"></md-icon>
@@ -26,7 +26,7 @@
         <md-list flex="35">
             <md-list-item class="secondary-button-padding">
                 <md-icon md-svg-icon="time" flex="10"></md-icon>
-                <h4 flex>总获取数据行数:1 天</h4>
+                <h4 flex>总获取数据行数:{{$ctrl.status.pageTimes}}</h4>
             </md-list-item>
             <!--<md-list-item>-->
                 <!--<md-icon md-svg-icon="time" flex="10"></md-icon>-->
@@ -159,10 +159,60 @@
                     </div>
                     <div layout="row">
                         <span flex="5"></span>
-                        <h4>option-value:{{item.optionValue}}r</h4>
+                        <h4>option-value:{{item.optionValue}}</h4>
                     </div>
                     <h3>}</h3>
                 </div>
+            </md-list-item>
+            <md-list-item class="secondary-button-padding" ng-repeat="item in $ctrl.config.items track by $index">
+                <div class="md-list-item-text" flex="80">
+                    <h3>{</h3>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>itemName:{{item.itemName}}</h4>
+                    </div>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>vars:{</h4>
+                    </div>
+                    <div ng-repeat="var in item.vars">
+                        <div layout="row">
+                            <span flex="10"></span>
+                            <h4>{</h4>
+                        </div>
+                        <div layout="row">
+                            <span flex="15"></span>
+                            <h4>name:{{var.name}}</h4>
+                        </div>
+                        <div layout="row">
+                            <span flex="15"></span>
+                            <h4>query:{{var.query}}</h4>
+                        </div>
+                        <div layout="row">
+                            <span flex="15"></span>
+                            <h4>option:{{var.option}}</h4>
+                        </div>
+                        <div layout="row">
+                            <span flex="15"></span>
+                            <h4>option-value:{{var.optionValue}}</h4>
+                        </div>
+                        <div layout="row">
+                            <span flex="10"></span>
+                            <h4>}</h4>
+                        </div>
+                    </div>
+                    <div layout="row">
+                        <span flex="5"></span>
+                        <h4>}</h4>
+                    </div>
+                    <h3>}</h3>
+                </div>
+                <md-button class="md-secondary md-icon-button"
+                           ng-click="doSecondaryAction($event)">
+                    <md-icon md-svg-icon="delete"></md-icon>
+                    <md-tooltip md-direction="bottom">清除</md-tooltip>
+                </md-button>
+                <md-divider></md-divider>
             </md-list-item>
             <md-divider></md-divider>
         </md-list>
@@ -191,7 +241,8 @@
                     <h3>}</h3>
                 </div>
             </md-list-item>
-            <md-divider></md-divider>
+            <md-divider></md-divider
+
         </md-list>
     </md-card-content>
 </md-card>

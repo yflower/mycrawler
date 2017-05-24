@@ -44,6 +44,10 @@ let controller = ['taskService', '$location', function (taskService, $location) 
         window.location=taskService.taskResultLink(self.taskTag,type);
 
     }
+    
+    self.startDay=function () {
+       return Math.floor((Date.now()-self.status.beginTime)/(24*3600*1000))+1;
+    }
 
 
 
